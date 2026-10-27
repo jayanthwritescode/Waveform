@@ -1,4 +1,4 @@
-/* Phase 2 catalogue and real playback controls. */
+/* Catalogue search, metadata and attribution. */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -62,7 +62,6 @@
 @keyframes shimmer {from {background-position: 100% 0;} to {background-position: -100% 0;}}
 .track-card .cover-wrap {padding: 0; color: inherit;}
 .track-card .track-title:hover {color: var(--accent); text-decoration: underline;}
-.unavailable-badge {position: absolute; left: 10px; bottom: 12px; padding: 4px 7px; border-radius: 4px; font-size: 9px; background: #101014de; color: #ddd1ea;}
 .detail-back {margin: 2px 0 24px;}
 .track-detail {display: grid; grid-template-columns: minmax(150px,280px) minmax(0,1fr); gap: 35px; align-items: center;}
 .detail-art {width: 100%; border-radius: 12px;}
@@ -72,40 +71,16 @@
 .detail-tags>span {padding: 5px 9px; border: 1px solid #c5b5d62a; border-radius: 20px;}
 .metadata-panel {margin-top: 30px; padding: 25px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--panel);}
 .metadata-panel h2 {font-size: 17px; font-weight: 500;}
-.metadata-panel p, .audio-install-note {font-size: 12px; color: #a89cb3; line-height: 1.9; margin-top: 15px;}
+.metadata-panel p {font-size: 12px; color: #a89cb3; line-height: 1.9; margin-top: 15px;}
 .metadata-panel dl {display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 22px 0; font-size: 12px;}
 .metadata-panel dt {color: var(--muted); font-size: 10px; margin-bottom: 5px;}
 .metadata-panel dd {margin: 0;}
 .credit-links {display: flex; gap: 20px; font-size: 12px; margin-top: 15px;}
-.player-track #player-title {font-size: 11px; font-weight: 500; display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
-.player-track #player-title:hover {color: var(--accent);}
-.player-track #player-credit {font-size: 8px; color: #bba7ca; display: block; margin-top: 3px;}
-.play-button:not(:disabled) {opacity: 1; background: var(--accent);}
-.transport [aria-pressed=true] {color: var(--accent); background: #b9a1ff17;}
-#repeat[data-mode=one]:after {content: '1'; font-size: 8px; margin-left: 1px;}
-.timeline input {min-width: 0; width: 100%; height: 4px; margin: 0; accent-color: var(--accent); cursor: pointer;}
-.timeline>span {min-width: 24px;}
-.volume {opacity: 1;}
-.volume input {cursor: pointer;}
-.player-error {position: absolute; bottom: calc(100% + 10px); right: 18px; left: auto; max-width: min(450px,calc(100vw - 36px)); padding: 13px 17px; background: #382731; color: #f4d9e1; border: 1px solid #82586d; border-radius: 8px; font-size: 12px; box-shadow: 0 8px 30px #0008;}
-.player-error[hidden] {display: none;}
 @media(max-width:1100px) {
   .search-panel {flex-wrap: wrap;}
   .search-field {flex-basis: 100%;}
 }
 @media(max-width:680px) {
-  :root {--player-height: 132px;}
-  .player {grid-template-columns: minmax(0,1fr) 90px; grid-template-rows: auto auto; gap: 6px 12px; padding: 10px 16px;}
-  .player-center {grid-column: 1 / -1; grid-row: 2; max-width: 100%;}
-  .transport {gap: 15px;}
-  .transport .icon-button:first-child, .transport .icon-button:last-child {display: inline-flex;}
-  .player-right {display: flex; align-items: end; grid-row: 1; grid-column: 2; gap: 8px;}
-  .player-right .volume {display: flex;}
-  .volume input {width: 55px;}
-  .playback-label {max-width: 90px; font-size: 8px;}
-  .player-track #player-credit {font-size: 7px;}
-  .timeline {font-size: 8px;}
-  .player-error {font-size: 11px;}
   .search-panel {padding: 14px; gap: 10px;}
   .search-field {padding: 10px;}
   .filter-field {flex: 1; min-width: 100px;}

@@ -20,4 +20,3 @@ export const getTracks = (filters = {}, signal) => {
   return request(`/api/tracks?${params}`, signal);
 };
 export const getTrack = id => request(`/api/tracks/${encodeURIComponent(id)}`);
-export const audioUrl = track => track.audio_url ? `${base}${track.audio_url}` : null;

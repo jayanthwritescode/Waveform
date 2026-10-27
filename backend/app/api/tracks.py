@@ -1,5 +1,4 @@
 from fastapi import APIRouter, HTTPException, Query
-from fastapi.responses import FileResponse
 from app.schemas.track import Track, TrackPage
 from app.services.catalogue import catalogue
 
@@ -23,17 +22,3 @@ def track_detail(track_id: str) -> Track:
     if track is None:
         raise HTTPException(status_code=404, detail="Track not found")
     return track
-
-
-@router.api_route("/{track_id}/audio", methods=["GET", "HEAD"])
-def track_audio(track_id: str) -> FileResponse:
-    if track_id not in catalogue.records:
-        raise HTTPException(status_code=404, detail="Track not found")
-    path = catalogue.audio_path(track_id)
-    if path is None:
-        raise HTTPException(
-            status_code=404,
-            detail="Audio is not installed. Run python scripts/download_audio.py from the project root.",
-        )
-    # Starlette FileResponse supports HTTP byte ranges for seeking.
-    return FileResponse(path, media_type="audio/mpeg", content_disposition_type="inline")

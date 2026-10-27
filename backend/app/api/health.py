@@ -7,8 +7,8 @@ router = APIRouter()
 class HealthResponse(BaseModel):
     status: str
     app: str
-    phase: int
+    phase: float
 
 @router.get("/health", response_model=HealthResponse, tags=["health"])
 def health() -> HealthResponse:
-    return HealthResponse(status="ok", app=settings.app_name, phase=2)
+    return HealthResponse(status="ok", app=settings.app_name, phase=2.5)

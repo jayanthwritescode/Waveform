@@ -1,4 +1,5 @@
 import {icon} from '../components/icons.js';
+import {draftButton} from '../components/draft-actions.js';
 import {skeletonCards, trackCard, catalogueCredits} from '../components/cards.js';
 import {escapeHtml as html, formatTime} from '../utils/html.js';
 
@@ -12,7 +13,7 @@ export function discoverPage() {
       <button class="text-button" type="reset">Clear</button>
     </form>
     <section class="music-section" aria-labelledby="results-heading"><div class="section-heading"><div><h2 id="results-heading">The collection</h2><p id="result-count" role="status">Loading tracks…</p></div></div><div id="catalogue-results">${skeletonCards()}</div></section>
-    ${catalogueCredits()}<div class="preview-note">${icon('headphones')}<span>A curated playback collection from one composer. Search matches source metadata; these tracks are not personalized recommendations.</span></div>`;
+    ${catalogueCredits()}<div class="preview-note">${icon('playlists')}<span>A curated metadata collection from one composer. Search matches source metadata; these tracks are not personalized recommendations.</span></div>`;
 }
 
 export function renderResults(page) {
@@ -25,9 +26,8 @@ export function trackPage(track) {
     <section class="track-detail"><img class="detail-art" src="${html(track.artwork)}" alt="Original Waveform illustration, not the artist’s album artwork">
       <div><div class="eyebrow">FROM THE OPEN COLLECTION</div><h1>${html(track.title)}</h1><p class="detail-artist">${html(track.artist)}</p>
       <div class="detail-tags"><span>${html(track.genre)}</span><span>${formatTime(track.duration_seconds)}</span>${track.bpm ? `<span>${html(track.bpm)} BPM</span>` : ''}</div>
-      <button class="primary-button" data-track="${html(track.id)}">${icon('play')} Play track</button>
-      ${track.audio_available ? '' : '<p class="audio-install-note">Audio is not installed. Run <code>python scripts/download_audio.py</code> from the project root, then reload.</p>'}
+      ${draftButton(track, 'primary-button')}
       </div></section>
-    <section class="metadata-panel"><h2>Inside the track</h2><dl><div><dt>Instruments</dt><dd>${html(track.instruments.join(', '))}</dd></div><div><dt>Source tags</dt><dd>${html(track.tags.join(' · '))}</dd></div><div><dt>ISRC</dt><dd>${html(track.id)}</dd></div><div><dt>Album</dt><dd>${html(track.album || 'Not supplied by source')}</dd></div></dl><p>Tempo, duration, genre, instruments, and tags come from the composer’s catalogue. Energy, valence, acousticness, and instrumentalness are not supplied and remain unknown.</p></section>
+    <section class="metadata-panel"><h2>Inside the track</h2><dl><div><dt>Instruments</dt><dd>${html(track.instruments.join(', '))}</dd></div><div><dt>Source tags</dt><dd>${html(track.tags.join(' · '))}</dd></div><div><dt>ISRC</dt><dd>${html(track.id)}</dd></div><div><dt>Album</dt><dd>${html(track.album || 'Not supplied by source')}</dd></div><div><dt>Release year</dt><dd>${html(track.release_year || 'Not supplied by source')}</dd></div><div><dt>Dataset source</dt><dd>${html(track.dataset_source)}</dd></div></dl><p>Tempo, duration, genre, instruments, and tags come from the composer’s catalogue. Energy, valence, acousticness, and instrumentalness are not supplied and remain unknown.</p></section>
     <section class="metadata-panel credit-panel"><h2>Music credits</h2><p>${html(track.attribution)}</p><div class="credit-links"><a href="${html(track.source_url)}" target="_blank" rel="noopener noreferrer">Track source ↗</a><a href="${html(track.license_url)}" target="_blank" rel="noopener noreferrer">${html(track.license_name)} ↗</a></div></section>`;
 }

@@ -9,6 +9,7 @@ class TrackRecord(BaseModel):
     title: str
     artist: str
     album: str | None
+    release_year: int | None = Field(default=None, ge=1000, le=9999)
     genre: str
     duration_seconds: int = Field(gt=0)
     bpm: float | None = Field(default=None, gt=0)
@@ -20,12 +21,10 @@ class TrackRecord(BaseModel):
     instrumentalness: float | None = Field(default=None, ge=0, le=1)
     artwork: str = Field(pattern=r"^assets/images/catalogue-[0-9]+\.svg$")
     source_url: HttpUrl
-    audio_source_url: HttpUrl
     license_name: Literal["CC BY 4.0"]
     license_url: HttpUrl
     attribution: str
     source_uploaded: date
-    audio_sha256: str | None = Field(default=None, pattern=r"^[a-f0-9]{64}$")
 
 
 class CatalogueManifest(BaseModel):
@@ -38,8 +37,8 @@ class CatalogueManifest(BaseModel):
 
 
 class Track(TrackRecord):
-    audio_available: bool
-    audio_url: str | None
+    dataset_source: str
+    source_identifier: str
 
 
 class TrackPage(BaseModel):

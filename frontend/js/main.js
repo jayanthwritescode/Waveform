@@ -2,12 +2,15 @@ import {renderShell, routes} from './components/shell.js';
 import {homePage} from './pages/home.js';
 import {placeholderPage} from './pages/placeholder.js';
 import {discoverPage, renderResults, trackPage} from './pages/discover.js';
-import {initializePlayer, playTrack} from './player/player.js';
+import {draft} from './state/draft.js';
+import {renderDraftDock, syncDraftButtons} from './components/draft-actions.js';
+import {builderPage, refreshBuilder} from './pages/builder.js';
+import {toast} from './utils/toast.js';
 import {getHealth, getTracks, getTrack} from './api/client.js';
 import {catalogueError} from './components/cards.js';
 
 renderShell();
-initializePlayer();
+renderDraftDock(draft.snapshot());
 let routeVersion = 0;
 let searchVersion = 0;
 let displayedTracks = [];
@@ -20,7 +23,8 @@ function navigate() {
   ++searchVersion;
   clearTimeout(filterTimer);
   searchRequest?.abort();
-  const requested = location.hash.replace('#/', '') || 'home';
+  let requested = location.hash.replace('#/', '') || 'home';
+  if (requested === 'playlists') {requested = 'builder'; history.replaceState(null, '', '#/builder');}
   const trackMatch = /^track\/([A-Za-z0-9]+)$/.exec(requested);
   const route = trackMatch ? 'track' : routes.some(([id]) => id === requested) ? requested : 'home';
   if (requested !== route && !trackMatch || !location.hash) history.replaceState(null, '', '#/home');
@@ -34,12 +38,13 @@ function navigate() {
   });
   const main = document.querySelector('#main');
   displayedTracks = [];
-  main.innerHTML = route === 'home' ? homePage() : route === 'discover' ? discoverPage() : route === 'track' ? '<div class="catalogue-state" role="status">Loading track…</div>' : placeholderPage(route);
+  main.innerHTML = route === 'home' ? homePage() : route === 'discover' ? discoverPage() : route === 'builder' ? builderPage() : route === 'track' ? '<div class="catalogue-state" role="status">Loading track…</div>' : placeholderPage(route);
   if (route === 'home') loadHome(routeVersion);
   if (route === 'discover') {
     document.querySelector('#music-search').value = filters.q;
     loadDiscover(routeVersion);
   }
+  if (route === 'builder') refreshBuilder(draft.snapshot());
   if (trackMatch) loadDetail(trackMatch[1], routeVersion);
   document.body.classList.remove('nav-open');
   document.querySelector('.menu-button').setAttribute('aria-expanded', 'false');
@@ -130,6 +135,10 @@ document.addEventListener('submit', event => {
   loadDiscover(routeVersion);
 });
 document.addEventListener('input', event => {
+  if (event.target.id === 'draft-title' || event.target.id === 'draft-description') {
+    draft.setMetadata(event.target.id === 'draft-title' ? 'title' : 'description', event.target.value);
+    return;
+  }
   if (event.target.id !== 'music-search') return;
   clearTimeout(filterTimer);
   // Invalidate an older request immediately, before the debounce expires.
@@ -155,10 +164,38 @@ document.addEventListener('reset', event => {
 });
 document.addEventListener('click', async event => {
   if (event.target.closest('.skip-link')) {event.preventDefault(); document.querySelector('#main').focus(); return;}
-  const card = event.target.closest('[data-track]');
-  if (card) {
-    const track = displayedTracks.find(item => item.id === card.dataset.track);
-    if (track) playTrack(track, displayedTracks);
+  const toggle = event.target.closest('[data-draft-toggle]');
+  if (toggle) {
+    const id = toggle.dataset.draftToggle;
+    if (draft.has(id)) {draft.remove(id); toast('Track removed from your draft.');}
+    else {
+      const track = displayedTracks.find(item => item.id === id);
+      if (track) {draft.add(track); toast(`${track.title} added to your draft.`);}
+    }
+  }
+  const move = event.target.closest('[data-move-track]');
+  if (move) {
+    const id = move.dataset.moveTrack;
+    draft.move(id, Number(move.dataset.direction));
+    const row = [...document.querySelectorAll('[data-draft-row]')].find(item => item.dataset.draftRow === id);
+    const target = [...row.querySelectorAll('[data-move-track]')].find(button => button.dataset.direction === move.dataset.direction && !button.disabled) || row.querySelector('button:not(:disabled)');
+    target?.focus({preventScroll:true});
+    toast('Playlist order updated.');
+  }
+  const remove = event.target.closest('[data-remove-track]');
+  if (remove) {
+    const rows = [...document.querySelectorAll('[data-draft-row]')];
+    const index = rows.findIndex(row => row.dataset.draftRow === remove.dataset.removeTrack);
+    draft.remove(remove.dataset.removeTrack);
+    const remaining = document.querySelectorAll('[data-remove-track]');
+    if (remaining.length) remaining[Math.min(index, remaining.length - 1)].focus({preventScroll:true});
+    else document.querySelector('#main').focus({preventScroll:true});
+    toast('Track removed from your draft.');
+  }
+  if (event.target.closest('[data-clear-draft]')) {
+    draft.clear();
+    document.querySelector('#main').focus({preventScroll:true});
+    toast('All tracks removed. Your draft title and description are kept.');
   }
   if (event.target.closest('[data-retry-catalogue]')) navigate();
   if (event.target.closest('#check-health')) {
@@ -169,5 +206,10 @@ document.addEventListener('click', async event => {
     catch {status.textContent = 'Backend unavailable. Start the FastAPI server on port 8000 and try again.';}
     finally {button.disabled = false;}
   }
+});
+draft.subscribe((snapshot, change) => {
+  renderDraftDock(snapshot);
+  syncDraftButtons();
+  refreshBuilder(snapshot, change);
 });
 navigate();

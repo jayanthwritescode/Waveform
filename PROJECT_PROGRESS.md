@@ -4,93 +4,107 @@ Last updated: 27 October 2026 (Asia/Kolkata).
 
 ## Current checkpoint
 
-**Phase 2: Music Catalogue and Functional Player — complete, awaiting user review and manual GitHub commit.**
+**Phase 2.5: Product Pivot and Architectural Refactoring — complete, awaiting user review and manual GitHub commit.**
 
-Phases 1 and 2 are complete. The user's “continue” authorized Phase 2 only. Phase 3 has not started. No automated Git commits, pushes, pull requests, or deployment were performed.
+**Product:** context-aware music discovery, recommendation and playlist generation.
+**Tagline:** Your music. Your moment.
 
-## Phase 1 — completed foundation
+Only the transition phase was authorized and implemented. Phase 3 has not started. No automatic commits, pushes, destructive Git operations, pull requests or deployment were performed.
 
-Separated vanilla HTML/CSS/JavaScript frontend and FastAPI backend; responsive midnight/lavender design system, original illustrations, eight-page navigation, placeholder pages, accessible focus/skip navigation, environment settings, health route, documentation and initial backend tests. Phase 1's fictional track fixtures and disabled player shell were replaced by real catalogue data and playback in Phase 2. Future-feature pages remain honest placeholders.
+## Repository audit
 
-## Phase 2 — implemented features
+- The working tree was clean at the start, at commit `8625bfc` (`feat: implement music catalogue`). No uncommitted user changes were overwritten.
+- Read/inventoried the existing architecture, routes, data, settings, styles, documentation and tests. Baseline: 15 backend tests and 5 frontend tests passed.
+- Phase 1 provided the reusable design system, responsive shell, navigation and FastAPI foundation.
+- Phase 2 genuinely provided an eight-track metadata catalogue, search/filtering, credits and a working local player. No database models/files, saved playlists, preferences, listening history, trained model or genuine recommendations existed.
+- Full technical assessment of retained/modified/removed components and migration risks: [docs/PIVOT_AUDIT.md](docs/PIVOT_AUDIT.md).
 
-- Selected a curated **eight-track Kevin MacLeod / Incompetech collection** with real metadata and openly licensed MP3 audio, across five publisher-defined genres.
-- Evaluated FMA and Last.fm as future research sources without downloading or merging those datasets. Documented source, licenses, feature coverage, single-composer bias, and lack of interaction data.
-- Tracked metadata manifest with ISRC IDs, source URLs, CC BY 4.0 credits/license links, source tags, instruments, tempo, duration, and verified audio SHA-256 hashes.
-- Unknown album/standardized energy, valence, acousticness, and instrumentalness remain null. Artwork is original Waveform illustration, explicitly distinguished from artist album covers.
-- Typed track schemas, a separated catalogue service, metadata detail/retrieval endpoints, combinable case-insensitive search/genre/artist filters, pagination, and query validation.
-- Local GET/HEAD MP3 routes with HTTP byte ranges for seeking and explicit missing-audio responses. Runtime routes resolve known manifest IDs and do not fetch arbitrary URLs or accept filesystem paths.
-- Audio installer using root environment configuration, bounded downloads, pinned checksum verification, idempotent reuse, atomic replacement, partial-file cleanup, and nonzero failure exit status.
-- All eight originals installed locally (about 60 MiB), deliberately ignored by Git. A fresh clone uses the download script.
-- Discover search and filters, clear action, result counts, loading skeletons, empty/error/retry states, and individual track detail/credit pages.
-- Home's catalogue cards now load real tracks from the API; fictional samples are no longer presented as music records.
-- One persistent HTMLAudioElement with play/pause, previous/next, seeking, volume, shuffle, repeat off/all/one, queue completion and failure recovery.
-- In-memory playback queue snapshots the visible results when a track is selected and survives search and internal navigation. Track-detail playback creates a one-track queue. Refresh intentionally resets playback.
-- Queue policy separated from audio side effects. Shuffle consumes unvisited tracks, repeat all wraps, repeat one loops natural ending, and manual Next advances normally. Previous restarts after three seconds or follows queue history.
-- All transport and volume controls remain available on narrow mobile layouts.
-- Updated README, data/license documentation, architecture notes and this progress checkpoint. Root-only model-artifact ignore rule preserves future `backend/app/models` source files.
+## Preserved
+
+- Waveform branding and the midnight/lavender design language, original illustrations, responsive sidebar/top bar, reusable cards and accessibility primitives.
+- All eight genuine catalogue records and their original source/license provenance. The original manifest remains byte-for-byte unchanged.
+- Search/filter behavior, pagination, typed metadata/detail API, source credits, loading/empty/error/retry states, and configurable API/CORS boundaries.
+- SQLAlchemy, database URL and reserved model/service/recommender directories. No database migration was needed.
+- All eight ignored local MP3 files remain byte-for-byte unchanged, unserved and unused. No existing data or user-generated files were deleted.
+- Historical README/progress/architecture/data notes are archived in [docs/history/PHASE_2.md](docs/history/PHASE_2.md).
+
+## Removed
+
+- Persistent audio player, Audio element creation, playback queue/history policy, buffering/error logic, play/pause/previous/next/shuffle/repeat/seek/volume controls and playback-only icons/styles.
+- Local GET/HEAD audio endpoint and file availability checks. Public API records no longer expose audio URLs, checksums or availability fields.
+- Audio download script, AUDIO_DIR setting/example and audio-only tests. Existing `.env` files are not overwritten; legacy AUDIO_DIR is ignored.
+- No audio-exclusive installed dependency existed. General FastAPI, HTTP testing and SQLAlchemy dependencies are retained.
+
+## Modified and added
+
+- Home is playlist-oriented, with the new tagline, original decorative playlist illustration and an honest “Generate Your Playlist” entry to Vibe Control's future-feature explanation. Manual building is functional today; no generation is simulated.
+- Playlist Builder replaces Smart Playlists in navigation. `#/playlists` remains a compatible alias. Listening Insights becomes Taste Insights at the existing `#/insights` route.
+- Catalogue and detail pages add/remove tracks from a shared frontend draft. Selected states stay synchronized when returning to a page.
+- `state/draft.js`: duplicate-safe ordered track snapshots, editable title/description, removal, move controls, clear and observable changes. Defensive copies prevent accidental external mutation.
+- Playlist Builder: title/description fields, artist/title/album/duration rows, up/down controls, boundary handling, remove/clear, estimated totals and an empty state. Keyboard focus is restored after row changes.
+- Optional draft dock: title, count, estimated duration, editor link and clear; shown only for a nonempty draft. Layout space is reserved only while visible.
+- Draft state survives internal navigation and search; it remains in memory only. Clear keeps title/description and removes tracks.
+- Metadata API adds dataset/source identifiers and nullable release year. It does not infer release year from upload dates. Historical audio provenance remains in the original manifest, ignored by public models; presentation omits obsolete audio-use wording.
+- Health/API version reports phase 2.5. Only health and catalogue list/detail routes remain.
+- Updated root README, architecture, data documentation, migration audit, revised roadmap and this checkpoint.
+
+## Important files changed
+
+- Backend: `app/api/tracks.py`, `app/api/health.py`, `app/services/catalogue.py`, `app/schemas/track.py`, `app/config.py`, `app/main.py`, metadata/health tests.
+- Frontend: shell/cards/draft action components, `state/draft.js`, `pages/builder.js`, Home/Discover/placeholders, router/events, API client, index/styles/icons and new draft tests.
+- Documentation: root README/progress, `data/README.md`, architecture, audit, roadmap and historical checkpoint.
+- Removed source files: player controller, queue policy, player CSS, downloader and playback-only tests. Their history remains available through Git.
 
 ## Validation actually performed
 
 | Check | Result |
 | --- | --- |
-| `.venv/bin/python -m pytest -c backend/pytest.ini -q` | **15 passed**: health/CORS, real records/credits, search/filter combinations, pagination, input bounds, details/404, missing audio, GET range/HEAD/416 responses, checksum failure preserving an existing file, reuse without networking |
-| `node --test frontend/tests/queue.test.mjs` | **5 passed**: sequential progression/end, repeat modes, shuffle exclusion/exhaustion, escaping and duration formatting |
-| Node syntax checks | All frontend ES modules passed |
-| Audio download | Eight originals downloaded from composer URLs; SHA-256 hashes recorded and then independently reverified by rerunning the installer |
-| MP3 structure | All eight inspected with local `ffprobe`; recognized MP3 streams and expected durations |
-| Browser decoding | All eight selected and decoded with finite durations, correct local source URLs, and unpaused playback state; test audio volume muted |
-| Playback progression | Cipher's actual media time advanced; pause/resume and keyboard seeking worked |
-| Persistent playback | Cipher continued playing while navigating to Settings; exactly one audio element remained mounted |
-| Previous/next | Next advanced Cipher → Carefree; seeking to start then Previous returned to Cipher |
-| Repeat/shuffle | Repeat one restarted Cipher after seeking to its end; repeat all wrapped Sneaky Snitch → Dreams Become Real; shuffle changed tracks; pure policy tests covered exhaustion and edge cases |
-| Search | `piano` returned three source matches; Contemporary combined with that search returned Dreams Become Real; impossible query showed empty state; Clear restored eight tracks |
-| Details/credits | Individual source metadata and full license/attribution links rendered correctly |
-| Home integration | Real catalogue cards loaded after navigating Home and back to Discover |
-| Audio failure/recovery | Temporarily moved a locally installed original; HTTP 404 produced a persistent error. Restored file and pressed Play; decoding resumed and error cleared. Test file restored |
-| Backend outage/retry | Stopped backend; catalogue showed connection error and retry button. Restarted backend; retry restored all eight results |
-| Responsive layouts | Discover at 320, 390, 768, 1024 and 1440px: document width matched viewport; fixed player remained within viewport; seeking visible. Mobile transport, repeat, shuffle and volume visible |
-| Assets | Final catalogue inspection: all rendered illustrations loaded |
-| Expected errors | Deliberate offline/missing-file tests generated expected failed network requests; no unhandled application failure observed |
+| `.venv/bin/python -m pytest -c backend/pytest.ini -q` | **13 passed**: metadata integrity, provenance/null missing fields, health/CORS, search/filtering/pagination, query validation, details/404, metadata-only response and removed streaming routes/OpenAPI contract |
+| `node --test frontend/tests/draft.test.mjs` | **6 passed**: duplicate protection, order/boundaries/removal, copied state, metadata/clear/notifications, unknown durations, invalid input/bounded and escaped rendering primitives |
+| Node syntax checks | All remaining ES modules passed |
+| Browser initial load | Catalogue loaded eight real metadata records; no audio/video elements; empty draft dock hidden |
+| Adding/editing/reordering | Added Dreams Become Real, Cipher and Carefree; title/description edits worked; moved Carefree up; order and **14:06 estimated** summary updated |
+| Navigation consistency | Title, description, selected track states, order and summaries survived navigation to Discover and back; removing/readding updated the same draft without duplicates |
+| Removal/clear | Removed an editor row with usable focus; Clear removed all rows, hid dock, restored zero bottom offset and retained title/description |
+| Search/filter regression | `piano` returned three results; Contemporary combined with it returned one; Clear restored eight; impossible query showed empty state |
+| Detail actions | Added from an individual track detail page and returned to the same shared draft |
+| Navigation | Home, Discover, Vibe Control, Your Library, Taste Insights, Explorer, Settings and Builder loaded; old playlists hash normalized to builder |
+| Generation boundary | Home's Generate Your Playlist link opened the explanatory Vibe Control page, not a fabricated result |
+| Responsive builder | 320, 390, 768, 1024 and 1440px: no horizontal overflow; dock actual height matched its reserved offset; no media elements |
+| Console | No errors/warnings in the normal browser checks |
+| Existing data | SHA-256 comparison confirmed all **nine** original data files (manifest + eight MP3s) preserved exactly |
+| Repository checks | No obsolete playback imports/API calls in active frontend; Git whitespace checks passed |
 
-During implementation, a failed media load could incorrectly show “Paused” after its error. The pause-event handler now preserves the unavailable status; the failure/recovery path was retested successfully. An initial search check incorrectly expected two piano matches; the publisher metadata correctly contains three, including electric piano. No catalogue data was changed to fit that expectation.
+Temporary local servers are stopped after verification. Use README commands to start them for review.
 
-Test servers are stopped after final verification. Exact startup and verification commands are in README.md.
+## Known limitations and remaining work
 
-## Known issues and limitations
+- No known blocking Phase 2.5 regressions from the checks above. Browser QA used the in-app browser; a wider browser/accessibility audit remains for Phase 8.
+- Drafts are not saved: a full reload or closing the page resets them. This is clearly disclosed. Persistent playlists are Phase 3.
+- Like/dislike feedback, favorite artists/genres, sessions, CSV/TXT/JSON import/export and Spotify/Apple Music/YouTube Music search links are Phase 3, not implemented now. No nonfunctional save/export buttons or fake integrations exist.
+- Recommendation generation begins in Phase 4; mood/activity/context ranking follows in Phase 5. Current mood/theme links are explanatory navigation, not context scoring or automatic generation.
+- The catalogue is small and limited to one composer. Album, release year, standardized musical features and platform-specific identifiers are unavailable. Nothing has been fabricated or claimed to exist on a destination platform.
+- Public audio API fields/routes are deliberately incompatible with the retired player. Old links to streaming endpoints now return 404.
+- Legacy MP3 files consume disk space but remain preserved, ignored and inaccessible through application routes. No manual audio installation is needed.
 
-- No known blocking Phase 2 defects from the checks above.
-- Eight tracks from one composer are sufficient for playback demonstration, not a representative training/evaluation corpus.
-- No model, recommendation scores, analytics, stored listening events, user profile, likes/dislikes, or playlist persistence exists yet.
-- The source provides no standardized energy/valence/acousticness/instrumentalness or album values for this manifest; these fields remain unknown.
-- Source duration is rounded; the player uses decoded media duration, which can differ slightly.
-- A clean clone needs network access for the initial audio download. Changed source checksums require explicit source review before updating the manifest.
-- Audio installed while the app is open requires a catalogue reload to refresh availability. Playback, queue, volume and filter state are in-memory and reset on full reload.
-- Browser QA used the in-app browser; a full cross-browser and accessibility audit remains for Phase 8.
-- Publisher source/download URLs may change in future; runtime local playback is independent of them after installation.
+## Revised roadmap and next authorization
 
-## Next phase objectives — not started
-
-**Phase 3: User Preferences and Listening History**
-
-1. Add SQLAlchemy persistence and a reliable local single-user profile.
-2. Store favorite genres/artists and preference settings.
-3. Implement track likes/dislikes, recorded plays/skips, and listening history.
-4. Build Your Library from actual stored data.
-5. Add playlist creation, renaming and deletion with persistent user state.
-6. Validate reload persistence and database error handling, without adding complex authentication.
-
-## Phase status
+See [docs/ROADMAP.md](docs/ROADMAP.md) for the complete revised roadmap and export/provider boundaries.
 
 | Phase | Status |
 | --- | --- |
-| 1 — Foundation and design system | Complete |
-| 2 — Catalogue and player | Complete; awaiting review |
-| 3 — Preferences and history | Not started |
-| 4 — Content-based recommendations | Not started |
-| 5 — Context-aware recommendations | Not started |
-| 6 — Collaborative and hybrid recommendations | Not started |
-| 7 — Explorer and analytics | Not started |
-| 8 — Polish, documentation, deployment | Not started |
+| 1 — Foundation and design system | Completed under original roadmap |
+| 2 — Catalogue and functional player | Completed under original roadmap; player retired in 2.5 |
+| 2.5 — Product pivot and architecture | Complete; awaiting review |
+| 3 — User preferences and playlist management | Not started |
+| 4 — Content-based recommendation engine | Not started |
+| 5 — Context-aware playlist generation | Not started |
+| 6 — Collaborative filtering and hybrid recommendations | Not started |
+| 7 — Recommendation Explorer and Taste Insights | Not started |
+| 8 — Export integration, polish and deployment | Not started |
 
-Suggested manual commit: `feat: implement music catalogue and audio playback`
+**Next phase:** local profile/preferences, likes/dislikes, persistent playlist CRUD, portable CSV/TXT/JSON import/export and encoded external music searches; recommendation sessions only when actual sessions exist. No playback-based history will be invented.
+
+Suggested manual commit: `refactor: pivot Waveform from music player to playlist recommendation platform`
+
+**STOP after Phase 2.5. Do not begin Phase 3 until the user reviews, commits and explicitly authorizes it.**

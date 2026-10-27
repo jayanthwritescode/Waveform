@@ -10,10 +10,10 @@ body {
   line-height:1.5;
   -webkit-font-smoothing:antialiased
 }
-button,input,a {
+button,input,textarea,select,a {
   -webkit-tap-highlight-color:transparent
 }
-button,input {
+button,input,textarea,select {
   font:inherit
 }
 button,a {
@@ -32,10 +32,10 @@ button {
 button:disabled {
   cursor:not-allowed
 }
-button,a,input {
+button,a,input,textarea,select {
   outline-offset:5px
 }
-button:focus-visible,a:focus-visible,input:focus-visible {
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible {
   outline:2px solid var(--accent)
 }
 img {
@@ -132,7 +132,7 @@ main:focus {
 }
 .toast {
   position:fixed;
-  bottom:120px;
+  bottom:calc(var(--draft-offset) + 20px);
   left:50%;
   transform:translate(-50%,15px);
   opacity:0;

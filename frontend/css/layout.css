@@ -1,6 +1,6 @@
 .sidebar {
   position:fixed;
-  inset:0 auto var(--player-height) 0;
+  inset:0 auto var(--draft-offset) 0;
   width:var(--sidebar-width);
   padding:30px 18px 0;
   background:var(--sidebar);
@@ -180,7 +180,7 @@
 }
 .workspace {
   margin-left:var(--sidebar-width);
-  padding-bottom:var(--player-height)
+  padding-bottom:var(--draft-offset)
 }
 .topbar {
   height:82px;

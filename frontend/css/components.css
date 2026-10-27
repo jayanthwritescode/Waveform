@@ -73,103 +73,6 @@
   display:grid;
   place-items:center
 }
-.vinyl {
-  position:relative;
-  width:268px;
-  height:268px;
-  border-radius:50%;
-  background:repeating-radial-gradient(circle at center,transparent 0 2px,#cbaeea0d 2.5px 3px,transparent 3.5px 5px),conic-gradient(from 40deg,#141119,#5f4969 14%,#1b1722 24%,#27202f 47%,#756582 61%,#1a1721 73%,#141119);
-  box-shadow:14px 22px 40px #10091b80,inset 0 0 3px #ead7ff80;
-  transform:rotate(-20deg);
-  display:grid;
-  place-items:center
-}
-.vinyl:after {
-  content:'';
-  position:absolute;
-  border:1px solid #e1c9f025;
-  inset:13px;
-  border-radius:50%
-}
-.vinyl-core {
-  height:88px;
-  width:88px;
-  border-radius:50%;
-  background:linear-gradient(135deg,#dcc5da,#a88aaf 48%,#806c95);
-  display:grid;
-  place-items:center;
-  box-shadow:0 0 0 7px #19141d,0 0 0 8px #c2a2d222
-}
-.vinyl-core:after {
-  content:'';
-  position:absolute;
-  width:8px;
-  height:8px;
-  background:#29212e;
-  border:2px solid #c4a9cd;
-  border-radius:50%
-}
-.tiny-wave {
-  font-size:46px;
-  font-weight:200;
-  color:#6a4d78;
-  transform:translateY(-5px)
-}
-.orbit-ring {
-  position:absolute;
-  border:1px solid #d2b1e51a;
-  border-radius:50%;
-  width:390px;
-  height:240px;
-  transform:rotate(-34deg)
-}
-.ring-two {
-  width:490px;
-  height:310px
-}
-.ring-three {
-  width:590px;
-  height:380px
-}
-.art-coordinate {
-  position:absolute;
-  right:24px;
-  top:24px;
-  font-size:7px;
-  letter-spacing:1.4px;
-  color:#dbc5df70
-}
-.art-caption {
-  display:flex;
-  align-items:center;
-  gap:10px;
-  position:absolute;
-  bottom:26px;
-  right:25px;
-  font-size:7px;
-  letter-spacing:1.6px;
-  color:#cbb0d6
-}
-.mini-bars {
-  display:flex;
-  align-items:center;
-  gap:2px;
-  height:16px
-}
-.mini-bars i {
-  height:8px;
-  width:2px;
-  background:#bca1cc
-}
-.mini-bars i:nth-child(2) {
-  height:15px
-}
-.mini-bars i:nth-child(3) {
-  height:11px
-}
-.mini-bars i:nth-child(4) {
-  height:5px
-}
 .context-strip {
   display:flex;
   align-items:center;
@@ -310,31 +213,9 @@
   font-size:9px;
   letter-spacing:1px
 }
-.cover-action {
-  width:32px;
-  height:32px;
-  background:#f0e9ff;
-  position:absolute;
-  bottom:12px;
-  right:12px;
-  display:grid;
-  place-items:center;
-  border-radius:50%;
-  color:#30203f;
-  opacity:0;
-  transform:translateY(8px);
-  transition:opacity .2s,transform .2s
-}
-.cover-action .icon {
-  width:16px
-}
 .track-card:hover .cover,.track-card:focus-visible .cover {
   transform:scale(1.04);
   filter:brightness(1.08)
-}
-.track-card:hover .cover-action,.track-card:focus-visible .cover-action {
-  opacity:1;
-  transform:translateY(0)
 }
 .track-title {
   font-size:12px;

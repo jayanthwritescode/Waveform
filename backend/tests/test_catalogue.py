@@ -2,7 +2,6 @@ import asyncio
 import httpx
 import pytest
 from app.main import app
-from app.services.catalogue import catalogue
 
 
 def request(path, method="GET", headers=None):
@@ -54,29 +53,17 @@ def test_track_detail_and_missing_track():
     assert request("/api/tracks/unknown/audio").status_code == 404
 
 
-def test_missing_audio_is_explicit(tmp_path, monkeypatch):
-    monkeypatch.setattr(catalogue, "audio_dir", tmp_path)
-    track = request("/api/tracks/USUAN1500027").json()
-    assert track["audio_available"] is False
-    assert track["audio_url"] is None
-    response = request("/api/tracks/USUAN1500027/audio")
-    assert response.status_code == 404
-    assert "download_audio.py" in response.json()["detail"]
+def test_catalogue_is_metadata_only():
+    page = request("/api/tracks").json()
+    for track in page["items"]:
+        assert not any(key.startswith("audio_") for key in track)
+        assert track["source_identifier"] == track["id"]
+        assert track["dataset_source"]
+        assert track["release_year"] is None
+        assert "Audio unmodified" not in track["attribution"]
 
 
-def test_audio_stream_range_and_head(tmp_path, monkeypatch):
-    monkeypatch.setattr(catalogue, "audio_dir", tmp_path)
-    payload = b"ID3" + bytes(range(256))
-    (tmp_path / "USUAN1500027.mp3").write_bytes(payload)
-    track = request("/api/tracks/USUAN1500027").json()
-    assert track["audio_available"] is True
-    url = track["audio_url"]
-    response = request(url, headers={"Range": "bytes=5-14"})
-    assert response.status_code == 206
-    assert response.content == payload[5:15]
-    assert response.headers["content-range"] == f"bytes 5-14/{len(payload)}"
-    head = request(url, method="HEAD")
-    assert head.status_code == 200
-    assert head.content == b""
-    assert head.headers["content-type"] == "audio/mpeg"
-    assert request(url, headers={"Range": "bytes=99999-"}).status_code == 416
+def test_streaming_route_is_removed():
+    assert request("/api/tracks/USUAN1500027/audio").status_code == 404
+    paths = request("/openapi.json").json()["paths"]
+    assert set(paths) == {"/api/health", "/api/tracks", "/api/tracks/{track_id}"}
