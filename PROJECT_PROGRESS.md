@@ -4,60 +4,58 @@ Last updated: 28 October 2026 (Asia/Kolkata).
 
 ## Current checkpoint
 
-**Phase 5: Context-Aware Playlist Generation — complete, awaiting review and manual Git commit.**
+**Phase 6 — collaborative experiment and available-signal hybrid: complete, awaiting review and manual Git commit.**
 
-The user authorized Phase 5. Phase 6 has not started. No automatic commit, push, PR, deployment or destructive Git operation was performed. Starting HEAD was `dbc1624` with a clean working tree. Prior checkpoint documentation is archived in [Phase 4 history](docs/history/PHASE_4.md).
+The user authorized Phase 6. Phase 7 has not started. Starting HEAD was `d153718`, with a clean tree. No automatic commit, push, PR, deployment, destructive Git operation or schema reset was performed. The prior checkpoint is archived in [Phase 5 history](docs/history/PHASE_5.md).
 
 ## Implemented
 
-- Functional Vibe Control replaces its placeholder: mood/activity, optional manual time/weather, moment energy and instrumental choices, preferred genre/artist labels, familiarity/discovery and count/duration controls.
-- Context suitability changes ranking using actual source energy, valence, acousticness, instrumentalness and BPM. Configurable versioned target/tolerance rules are explicitly labeled heuristics, not measured mood/activity labels or trained suitability predictions.
-- Evidence coverage reduces the context contribution when requested features are missing. Source values remain unknown; explanations identify omitted features and actual weighted contributions. Explicit energy/instrumental choices replace corresponding inferred rule targets.
-- Existing content/taste ranking combines with context and catalogue-relative discovery. Familiarity uses likes/favorite artist labels, not listening history. Missing familiarity signals produce a notice and omit that block. Saved dislikes and explicit exclusions are never silently relaxed.
-- Duration-budget generation respects an upper ceiling, reports remaining gaps and omits unknown-duration tracks. Count mode retains unique bounded results. Regeneration excludes the immediately preceding batch and current draft selections.
-- Shared editor/save/export integration retains replacement guards and explicit saves. Generation locks controls while pending; failures retain input, prior results and draft.
-- Actual context generation snapshots store input context, length, ordered results, explanations and model version. Library routes content/context sessions to the right page, restoring recorded controls without reranking or creating another session.
-- Home mood links preselect Vibe Control; Settings describes discovery's implemented behavior. Phase 4 content-only endpoint remains independently available and unchanged in rank output.
+- Evaluated the official HetRec Last.fm interaction dataset and source usage terms. It is a non-commercial, artist-level dataset with no verified mapping to the 520-track catalogue. It remains a separate research experiment; no artist-name crosswalk or fabricated collaborative track score is used.
+- Reproducible pinned-archive preparation and fitting: 1,892 users, 17,632 artists and 92,834 positive relations. Binary cosine user-neighborhood filtering uses up to 40 neighbors and two-neighbor support. Raw/fitted profile artifacts stay ignored; tracked provenance captures source hashes, actual counts and scope.
+- Artist Lab provides source artist search, reference selection, real artist recommendations and supporting profile counts. Empty/no-overlap/insufficient-support queries get labeled train-popularity fallback with null personalized scores. It never adds artists as songs or writes track sessions.
+- Catalogue hybrid independently combines normalized content, preferences, context and discovery using configurable defaults/request weights. Unavailable collaborative track evidence is explicitly omitted, with available weights renormalized. Cold-start and collaborative-only configurations remain unscored where no usable signal exists.
+- Same-input/count content/context/hybrid comparison API and basic Vibe comparison view, without recording sessions or replacing the editor. Full Explorer visualization remains Phase 7.
+- Hybrid generation retains duration bounds, dislikes/exclusions, regeneration and editor/save/export workflows. Effective weights, model version and original output are saved/reopened as actual hybrid sessions.
+- Strict validation, optional model/setup/error handling, actual held-out artist benchmark, new unit/API/frontend tests and current documentation. No new runtime dependency, dataset mutation or migration was required.
 
 ## Important files
 
-- `backend/app/recommender/context.py` and `context_rules.json`: context features, coverage, discovery, final ranking and length selection.
-- `schemas/recommendation.py`, `api/recommendations.py`, `services/recommendations.py`: strict context/length schema, model/generation routes and transactional session snapshots.
-- `frontend/js/pages/moment-controls.js`, `recommendations.js`, shared CSS, routing, home/settings/library and API client.
-- `backend/tests/test_context.py`, `frontend/tests/moment-controls.test.mjs`, `scripts/evaluate_context.py` and actual `docs/context-evaluation.json`.
-- [Context model](docs/CONTEXT_MODEL.md), README/run instructions, architecture, roadmap, prior checkpoint archive and this report. No package or dataset changes were needed.
+- `recommender/collaborative.py`, `hybrid.py`, `hybrid_weights.json`; strict request schemas, recommendation service/router and separate `api/experiments.py`.
+- `scripts/prepare_collaborative.py`, `evaluate_collaborative.py`, `data/catalogue/lastfm_provenance.json`, `docs/collaborative-evaluation.json`.
+- `frontend/js/pages/hybrid-controls.js`, `artist-lab.js`, generation/comparison/history integration, routing and responsive CSS.
+- `backend/tests/test_collaborative.py`, `test_hybrid.py`, frontend hybrid controls test, health version check.
+- [Hybrid/collaborative model documentation](docs/HYBRID_MODEL.md), README/run/setup instructions, architecture, roadmap, data notes and prior checkpoint archive.
 
-## Validation performed
+## Validation actually performed
 
 | Check | Result |
 | --- | --- |
-| Backend suite | **50 passed**: existing regressions plus same-genre context sensitivity, mood/activity/time/weather/instrumental effects, explicit override, discovery/fallback, duration bounds, partial/missing evidence, hard exclusions, validation, recorded context and alternatives |
-| Frontend suite | **13 passed**: existing draft/platform behavior plus zero-valued controls, comma/newline labels, context/length restoration and escaped contribution labels |
-| Real-catalogue context diagnostic | **4 contexts passed** determinism, ranking sensitivity, valid unique results, score accounting, alternative-batch exclusion and duration ceiling; actual report in `docs/context-evaluation.json` |
-| Phase 4 regression diagnostic | All **12 content seeds** produce exactly the same diagnostic report/model version as the committed Phase 4 report |
-| Browser ranking | Calm focus/rainy night and energetic workout returned distinct real record sets |
-| Browser alternatives | Regenerated workout batch contained no IDs from the immediately preceding batch |
-| Browser duration | 12-minute budget with 4-track cap returned **686 seconds (11:26)**, a 34-second gap and no overshoot |
-| Browser editor/save | Loaded the context selection, saved a 4-track QA playlist and found it in Library |
-| Browser history | Original four IDs, energetic/workout context, 12-minute duration mode and 4-track cap restored; opening history created no new session |
-| Failure retention | With backend stopped, generation retained 4 results, 4 draft tracks, context and length; actionable error appeared and controls re-enabled |
-| Responsive layout | Vibe form/results at **320, 390, 768, 1024 and 1440px**, no horizontal overflow |
-| Browser console | No warning/error logs in normal tested flows; failed network request was deliberately exercised separately |
-| Preservation | Original/FMA manifests, provenance, eight legacy MP3s and production SQLite database match all starting hashes |
-| Syntax/whitespace | All JavaScript modules parse; `git diff --check` passes |
+| Backend suite | **60 passed**: previous regressions plus hand-computable neighbor support, seed exclusions, self-retrieval prevention, popularity/empty/unknown fallbacks, absent optional model, hybrid weight sensitivity/contributions, disabled explanations, duration/exclusions, saved weights and no-write comparison |
+| Frontend suite | **14 passed**: draft/platform/moment regressions plus custom/zero hybrid weight serialization and restoration |
+| Prior diagnostics | All 12 content seed outputs and all four Phase 5 context diagnostic outputs match the committed reports exactly |
+| Actual held-out artist benchmark | 1,877 deterministic holdouts; 90,957 train relations; fixed 100-user cohort, query users excluded from neighbors. KNN hits@10 **29/100**, NDCG@10 **0.1664**; train-popularity **10/100**, NDCG@10 **0.0504**; 242 distinct recommended artists, zero fallback users |
+| Browser comparison | Same count/inputs returned content fallback versus scored context/hybrid; explicitly reports no session writes or accuracy metric |
+| Browser hybrid save/history | Generated with context-only custom weights, saved four real tracks, reopened the original session with model and all five exact weights restored |
+| Browser artist experiment | Selected Radiohead from real source search; returned Muse/Beatles/other artist neighbors with real weighted support and dataset model version |
+| Browser cold start | Cleared the reference; result switched to labeled training popularity with no personalized score |
+| Browser failure | Stopped backend; artist request kept ten previous artist results and showed a retry message |
+| Responsive QA | Vibe custom hybrid/result/comparison and Artist Lab at 320, 390, 768 and 1440px: no horizontal overflow |
+| Browser console | No warnings/errors in normal checked flows; unavailable-network request deliberately exercised separately |
+| Integrity | Original/FMA manifests, FMA provenance, eight legacy MP3s and production SQLite file match all 12 starting hashes |
+| Syntax/whitespace | All JavaScript modules parse; Git whitespace check passes |
 
-Browser QA uses a separate temporary SQLite database. Production preferences, playlists, feedback and history are preserved. The review screenshot shows actual recorded QA recommendations. Review identified and corrected partial-feature ranking bias: BPM-only records initially competed as if they satisfied a richer context. Coverage weighting and a regression test now expose and reduce that contribution. Test servers are stopped at completion.
+Browser QA uses a temporary SQLite database. Production profile, feedback, playlists and historical sessions remain unchanged. Review screenshot shows actual artist experiment results. Test servers are stopped at completion.
 
-## Limits and next phase
+## Scope and limits
 
-No blocking Phase 5 defects are known from the checks above. Rules/tolerances/weights are documented product heuristics; no relevance accuracy or psychological suitability is established. The historical feature-complete FMA subset and artist-display-name identity retain their selection/source limitations. Context score coverage is not a probability. Final blocks renormalize available evidence, which can still affect cross-record comparability.
+No blocking Phase 6 defects are known from these checks. Collaborative evidence remains artist-only. The hybrid correctly falls back to available track signals and does not claim fully integrated collaborative filtering. Training matrix preparation is genuine neighborhood-model fitting, not matrix factorization/ALS.
 
-Time/weather are explicit manual inputs; no live services, geolocation or listening data are accessed. Duration selection is greedy ranking order with a ceiling, not exact-fit optimization. Unknown durations are omitted in duration mode. Regeneration excludes only the immediately preceding batch and current exclusions, so older batches can recur. Generation/editing is metadata-only; files/search links do not verify streaming-platform availability.
+The artist source is licensed for non-commercial use; raw/model artifacts are optional and ignored, with setup instructions for fresh checkouts. The benchmark is a small fixed historical cohort, one held-out positive per eligible user, no negatives or temporal split. Its metrics do not establish playlist relevance, general superiority, statistical significance or a tuned production model. Unobserved does not mean disliked.
 
-No collaborative or interaction-data hybrid training, Explorer comparison, Taste Insights, playback, direct platform integration or public multi-user deployment was added. Existing local single-user SQLite/tab-recovery limitations remain. No schema reset/migration or dependency change was required.
+Hybrid component scales are bounded by construction, with per-candidate availability renormalization. Defaults are starting values, not tuned accuracy claims. Missing context evidence and discovery limitations remain documented. Existing local-only single-user SQLite, tab recovery, metadata-only export/search and duration-greedy limitations still apply. No audio playback, direct streaming integration, multi-user deployment, Explorer analytics or Taste Insights were added.
 
-**Next:** Phase 6 — appropriate interaction data and collaborative/hybrid modeling, preserving dataset alignment and honest benchmark boundaries. Do not begin without authorization.
+**Next:** Phase 7 — full Recommendation Explorer, genuine interaction/context/playlist insights and broader reproducible evaluation. Await explicit authorization.
 
-Suggested manual commit: `feat: add context-aware Vibe Control and playlist regeneration`
+Suggested manual commit: `feat: add collaborative artist experiment and configurable hybrid recommendations`
 
-**STOP after Phase 5. Await review, manual commit and explicit Phase 6 authorization.**
+**STOP after Phase 6. Await review, manual commit and explicit Phase 7 authorization.**

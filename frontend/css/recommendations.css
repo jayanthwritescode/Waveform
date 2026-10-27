@@ -47,3 +47,13 @@
 #regenerate-recommendations {margin-top:10px;}
 .recommendation-explanation details {margin:10px 0;}
 @media(max-width:680px){.moment-grid {grid-template-columns:1fr;}#regenerate-recommendations {width:100%;} .generation-panel button {max-width:100%;white-space:normal;}}
+#hybrid-weight-panel {margin-top:18px;font-size:12px;color:var(--muted);}
+#hybrid-weight-panel summary {cursor:pointer;color:var(--accent);}
+.comparison-grid {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;}
+.comparison-grid article {margin:0;overflow-wrap:anywhere;}
+.comparison-grid h3 {color:var(--text);text-transform:capitalize;margin:0 0 12px;}
+.comparison-grid ol {padding-left:18px;}
+#artist-model {font-size:12px;color:var(--muted);line-height:1.8;margin-bottom:20px;}
+#artist-seeds {display:flex;flex-wrap:wrap;gap:10px;margin:15px 0;}
+#artist-status {font-size:12px;color:var(--accent);line-height:1.8;}
+@media(max-width:850px){.comparison-grid {grid-template-columns:1fr;}}

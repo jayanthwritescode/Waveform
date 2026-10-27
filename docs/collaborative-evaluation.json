@@ -1,0 +1,25 @@
+{
+  "dataset": "HetRec 2011 Last.fm user-artist interactions",
+  "scope": "Separate artist experiment; these metrics do not evaluate Waveform track playlists",
+  "protocol": "One SHA-256-selected artist held out for every user with >=5 positives; fixed SHA-256 cohort of 100 users; train-only features/popularity; query user excluded from neighbors",
+  "training_interactions": 90957,
+  "heldout_users": 1877,
+  "evaluated_users": 100,
+  "k": 10,
+  "user_knn": {
+    "hit_rate_at_10": 0.29,
+    "ndcg_at_10": 0.16636766544001141,
+    "unique_recommended_artists": 242,
+    "fallback_users": 0
+  },
+  "popularity": {
+    "hit_rate_at_10": 0.1,
+    "ndcg_at_10": 0.05043066671367367
+  },
+  "model_version": "artist-userknn-v1-687bb63e7b86",
+  "limitations": [
+    "Small fixed cohort, one positive per user, no negatives or temporal split; unobserved does not mean disliked.",
+    "Historical artist benchmark, no verified track mapping, no tuning/test separation study or track-quality claim."
+  ]
+}
+

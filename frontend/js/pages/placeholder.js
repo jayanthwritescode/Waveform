@@ -1,7 +1,7 @@
 import {icon} from '../components/icons.js';
 const content = {
  insights: ['Taste Insights', 'Get to know your taste.', 'Your preferences, reflected back.', 'Phase 7 will use genuine feedback, saved playlists, and context selections. No listening or playback statistics are collected.', 7, 'insights'],
- explorer: ['Recommendation Explorer', 'Behind every discovery.', 'Understand what brings a song to you.', 'Content-based discovery is available now. Model comparisons and evaluation visuals arrive in Phase 7; collaborative filtering is not implemented.', 7, 'explorer'],
+ explorer: ['Recommendation Explorer', 'Behind every discovery.', 'Understand what brings a song to you.', 'Content-based discovery is available now. Model comparisons and evaluation visuals arrive in Phase 7; a separate collaborative artist lab and basic Vibe model comparison are available.', 7, 'explorer'],
 };
 export function placeholderPage(route) {
  const [title, headline, subtitle, description, phase, symbol] = content[route];

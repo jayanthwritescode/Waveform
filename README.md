@@ -2,11 +2,13 @@
 
 **Your music. Your moment.**
 
-Waveform is a platform-independent music discovery and playlist project. **Phase 5 is complete:** Vibe Control adds explicit context-aware ranking, duration budgets, regeneration and contextual explanations.
+Waveform is a platform-independent music discovery and playlist project. **Phase 6 is complete:** a separate collaborative artist experiment, configurable catalogue hybrid and basic model comparison.
 
 ## Working today
 
 - 520 genuine metadata records: eight preserved Incompetech tracks and a reproducible 512-track FMA metadata subset, covering 368 artist names and 18 primary genres.
+- Available-signal hybrid with per-request weights, explicit missing collaborative track signal and recorded weight restoration. Basic content/context/hybrid comparison creates no sessions.
+- Separate Artist Lab fitted on 92,834 real HetRec Last.fm user–artist relations; optional non-commercial research data, no invented track mapping.
 - Vibe Control: mood, activity, manual time/optional weather, moment energy/instrumental/genre/artist preferences and catalogue-relative discovery.
 - Count or duration-budget generation, visible duration gaps and alternative batches that exclude previous results.
 - Recommendations from reference tracks, recent explicit likes and saved genre/artist/energy/instrumental preferences. Dislikes and explicit exclusions remove candidates.
@@ -15,7 +17,7 @@ Waveform is a platform-independent music discovery and playlist project. **Phase
 - Paginated catalogue search, details, local profile/feedback, persistent playlist CRUD, revision protection, CSV/TXT/JSON files and external service searches.
 - Responsive midnight/lavender interface, refresh recovery and retained drafts on request failures.
 
-Vibe Control uses documented heuristics over genuine source features. Collaborative models, Explorer comparisons and Taste Insights remain later phases. No audio hosting/playback or direct music-service integration is included.
+Vibe Control uses documented heuristics over genuine source features. The full Recommendation Explorer and Taste Insights remain Phase 7. No audio hosting/playback or direct music-service integration is included.
 
 ## Setup and run
 
@@ -28,7 +30,7 @@ source .venv/bin/activate
 python -m pip install -r backend/requirements-dev.txt
 ```
 
-For a fresh checkout, copy `.env.example` to `.env` if custom configuration is needed. Preserve an existing `.env`. Runtime dependencies are in `backend/requirements.txt`; `requirements-lock.txt` captures the verified versions. The model uses NumPy, Pandas, SciPy and scikit-learn; Phase 5 adds no dependencies. The bundled metadata subset makes first startup offline; no raw dataset download or model training is required.
+For a fresh checkout, copy `.env.example` to `.env` if custom configuration is needed. Preserve an existing `.env`. Runtime dependencies are in `backend/requirements.txt`; `requirements-lock.txt` captures the verified versions. The model uses NumPy, Pandas, SciPy and scikit-learn; Phases 5–6 add no package dependencies. The bundled metadata subset makes first startup offline; no raw dataset download or model training is required.
 
 Backend, terminal 1:
 
@@ -44,7 +46,7 @@ cd /Users/jayanth/Desktop/Waveform
 python3.11 -m http.server 5173 --bind 127.0.0.1 --directory frontend
 ```
 
-Open [Waveform](http://127.0.0.1:5173), [Your Library](http://127.0.0.1:5173/#/library), [Settings](http://127.0.0.1:5173/#/settings), [Vibe Control](http://127.0.0.1:5173/#/vibe), [Recommendations](http://127.0.0.1:5173/#/recommend), or [API docs](http://127.0.0.1:8000/docs). Serve the frontend over HTTP and only from `frontend/`, outside the preserved legacy audio directory.
+Open [Waveform](http://127.0.0.1:5173), [Your Library](http://127.0.0.1:5173/#/library), [Settings](http://127.0.0.1:5173/#/settings), [Vibe Control](http://127.0.0.1:5173/#/vibe), [Artist Lab](http://127.0.0.1:5173/#/lab), [Recommendations](http://127.0.0.1:5173/#/recommend), or [API docs](http://127.0.0.1:8000/docs). Serve the frontend over HTTP and only from `frontend/`, outside the preserved legacy audio directory.
 
 ## Local storage and configuration
 
@@ -80,7 +82,7 @@ The frontend API defaults to `http://127.0.0.1:8000`. Override with `window.WAVE
 
 | Method/path | Behavior |
 | --- | --- |
-| GET `/api/health` | Status and phase 5 |
+| GET `/api/health` | Status and phase 6 |
 | GET `/api/tracks`, `/api/tracks/{catalogue_id}` | Metadata search/details; no audio routes |
 | GET/PUT `/api/profile` | Local profile/preferences; revision required for update |
 | GET `/api/feedback`; PUT `/api/feedback/{catalogue_id}` | Explicit like/dislike/null feedback |
@@ -93,6 +95,9 @@ The frontend API defaults to `http://127.0.0.1:8000`. Override with `window.WAVE
 | POST `/api/recommendations` | Generate real results and record successful nonempty sessions |
 | GET `/api/recommendations/context/model` | Context rules, weights and feature coverage |
 | POST `/api/recommendations/context` | Context-aware generation, count/duration control and session recording |
+| GET `/api/recommendations/hybrid/model`; POST `/api/recommendations/hybrid` | Available-signal hybrid defaults/generation; optional request weights |
+| POST `/api/recommendations/compare` | Same count/inputs across three catalogue models; no writes |
+| GET `/api/experiments/collaborative/model`, `/artists?q=...`; POST `/api/experiments/collaborative` | Separate artist experiment; no track/session writes |
 | GET `/api/recommendations/sessions/{id}` | Original result snapshot; no reranking |
 | GET `/api/library` | Saved playlists, feedback, profile and real recommendation sessions |
 
@@ -106,13 +111,24 @@ cd /Users/jayanth/Desktop/Waveform
 node --test frontend/tests/*.test.mjs
 ```
 
-**50 backend tests and 13 frontend tests pass.** Database tests use isolated temporary SQLite files, not the user's workspace. Tests cover persistence/reopen, profile validation, feedback, playlist CRUD/order/revision conflicts, all three file round trips, Unicode/multiline CSV/quotes, formula-safe CSV, empty exports, unmatched imports, malformed files, byte limits, database failures, draft identity and encoded platform searches.
+**60 backend tests and 14 frontend tests pass.** Database tests use isolated temporary SQLite files, not the user's workspace. Tests cover persistence/reopen, profile validation, feedback, playlist CRUD/order/revision conflicts, all three file round trips, Unicode/multiline CSV/quotes, formula-safe CSV, empty exports, unmatched imports, malformed files, byte limits, database failures, draft identity and encoded platform searches.
 
-Browser QA verified context-sensitive ranking, alternatives, duration budget, generated playlist saving, recorded context/length restoration, failure retention and responsive layouts from 320 to 1440px. Tests use isolated SQLite databases; production state is preserved. See [PROJECT_PROGRESS.md](PROJECT_PROGRESS.md).
+Browser QA verified model comparison, custom hybrid generation/save/history, collaborative artist search/results, cold-start popularity, failure retention and responsive layouts from 320 to 1440px. Tests use isolated SQLite databases; production state is preserved. See [PROJECT_PROGRESS.md](PROJECT_PROGRESS.md).
+
+## Optional collaborative artist experiment
+
+The catalogue works without the artist model. The official HetRec Last.fm data permits **non-commercial use**; its source README and commercial-use contact are documented in [HYBRID_MODEL.md](docs/HYBRID_MODEL.md). Raw data and fitted profile artifacts are ignored and not bundled in Git. To reproduce locally:
+
+```sh
+.venv/bin/python scripts/prepare_collaborative.py --download --build
+.venv/bin/python scripts/evaluate_collaborative.py
+```
+
+Restart the backend after building. Artist Lab then searches/recommends source artists from 1,892 training users. It does not insert artists as tracks or map your saved profile into the experiment. Missing optional artifacts produce setup guidance while catalogue generation remains available. The tracked evaluation report measures only a fixed historical artist cohort, not track-playlist relevance.
 
 ## Content model and dataset
 
-See [CONTEXT_MODEL.md](docs/CONTEXT_MODEL.md) for Vibe Control rules, length/regeneration behavior and limitations. [RECOMMENDATION_MODEL.md](docs/RECOMMENDATION_MODEL.md) for the scoring formulas, missing-data rules, configurable weights and evaluation limits, and [data/README.md](data/README.md) for provenance, licensing and reproducible preprocessing.
+See [HYBRID_MODEL.md](docs/HYBRID_MODEL.md) for collaborative data, hybrid equations, model comparison and the actual held-out artist benchmark. See [CONTEXT_MODEL.md](docs/CONTEXT_MODEL.md) for Vibe Control rules, length/regeneration behavior and limitations, [RECOMMENDATION_MODEL.md](docs/RECOMMENDATION_MODEL.md) for the scoring formulas, missing-data rules, configurable weights and evaluation limits, and [data/README.md](data/README.md) for provenance, licensing and reproducible preprocessing.
 
 ```sh
 .venv/bin/python scripts/evaluate_content.py
@@ -123,6 +139,6 @@ See [CONTEXT_MODEL.md](docs/CONTEXT_MODEL.md) for Vibe Control rules, length/reg
 
 The diagnostic script checks ranking invariants on 12 real seeds. It does not measure relevance accuracy: there are no held-out user relevance labels. FMA's metadata license is distinct from recording rights. Missing original-track features stay null. Search links do not verify destination availability.
 
-Open Vibe Control, choose a mood/activity and optional preferences, select track count or duration budget, then Generate playlist. Regenerate with different tracks excludes the immediately previous batch; Generate again uses current inputs without that extra exclusion. The separate Recommendations page still supports content-only references. Use these tracks in the editor preserves their order; save explicitly for a durable playlist. Saved profile preferences affect recommendations, while catalogue search retains its source order. Vibe Control applies familiarity/discovery to liked/favorite artist labels when available; the content-only Recommendations page keeps its Phase 4 behavior. Familiarity is not listening history.
+Open Vibe Control, choose hybrid or context, optionally adjust hybrid weights, then choose a mood/activity and optional preferences, select track count or duration budget, then Generate playlist. Regenerate with different tracks excludes the immediately previous batch; Generate again uses current inputs without that extra exclusion. The separate Recommendations page still supports content-only references. Use these tracks in the editor preserves their order; save explicitly for a durable playlist. Saved profile preferences affect recommendations, while catalogue search retains its source order. Vibe Control applies familiarity/discovery to liked/favorite artist labels when available; the content-only Recommendations page keeps its Phase 4 behavior. Familiarity is not listening history.
 
-See [roadmap](docs/ROADMAP.md), [architecture](docs/ARCHITECTURE.md) and [Phase 4 archive](docs/history/PHASE_4.md). **Stop after Phase 5 for manual review/commit.** No automated commits, pushes or Phase 6 work.
+See [roadmap](docs/ROADMAP.md), [architecture](docs/ARCHITECTURE.md) and [Phase 5 archive](docs/history/PHASE_5.md). **Stop after Phase 6 for manual review/commit.** No automated commits, pushes or Phase 7 work.

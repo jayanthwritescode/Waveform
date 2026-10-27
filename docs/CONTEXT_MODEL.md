@@ -1,4 +1,6 @@
-# Phase 5: Vibe Control and context suitability
+# Context suitability model
+
+The Phase 5 context endpoint remains available. Phase 6 adds a selectable [available-signal hybrid and separate artist experiment](HYBRID_MODEL.md).
 
 Vibe Control adds explicit moment inputs to the Phase 4 metadata model. It operates locally, without audio, location, weather services, music-platform APIs or a language model. This is an inspectable heuristic ranking system, not a classifier trained on measured mood/activity labels. Collaborative/hybrid interaction models remain Phase 6.
 

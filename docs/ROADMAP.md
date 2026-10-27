@@ -13,8 +13,8 @@ Waveform does not host or stream music. It operates independently of music-platf
 | 2.5 | Product pivot: remove playback, retain discovery, add frontend playlist draft/editor/dock, update architecture and tests | Complete |
 | 3 | Local profile; favorite genres/artists; likes/dislikes; persistent playlist CRUD; CSV/TXT/JSON import/export; Spotify/Apple Music/YouTube Music track search links; previous recommendation sessions where actual sessions exist | Complete |
 | 4 | Legitimate dataset preprocessing, feature engineering, content similarity, preference profiles, recommendation API, basic playlist generation, explanations and evaluation tests | Complete |
-| 5 | Vibe Control: moods, activities, energy/instrumental/genre/artist preferences, desired length, familiarity/discovery, time and optional weather; context-aware ranking, length controls, regeneration and honest explanations | Complete; awaiting review |
-| 6 | Appropriate interaction data, collaborative model or separate benchmark when unaligned, normalized hybrid signals, cold start, configurable weights and model comparison | Not started |
+| 5 | Vibe Control: moods, activities, energy/instrumental/genre/artist preferences, desired length, familiarity/discovery, time and optional weather; context-aware ranking, length controls, regeneration and honest explanations | Complete |
+| 6 | Appropriate interaction data, collaborative model or separate benchmark when unaligned, normalized hybrid signals, cold start, configurable weights and model comparison | Complete; awaiting review |
 | 7 | Recommendation Explorer, Taste Insights, actual feedback/context/playlist statistics, held-out evaluation and reproducible metrics | Not started |
 | 8 | Finalize portable exports/search workflows, consider permitted official direct integrations, matching reliability, design/responsiveness/accessibility/performance, integration tests, documentation and deployment | Not started |
 

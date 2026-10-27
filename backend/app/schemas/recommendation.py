@@ -40,3 +40,25 @@ class ContextRecommendationRequest(RecommendationRequest):
         if (self.length_mode == 'duration') != (self.duration_minutes is not None):
             raise ValueError('Provide duration_minutes only with duration length mode')
         return self
+
+
+class ComparisonContentRequest(RecommendationRequest):
+    exclude_ids: list[TrackId] = Field(default_factory=list,max_length=1000)
+
+
+class HybridWeights(BaseModel):
+    model_config = ConfigDict(extra='forbid')
+    content: float = Field(default=.25,ge=0,le=1,allow_inf_nan=False)
+    preference: float = Field(default=.25,ge=0,le=1,allow_inf_nan=False)
+    context: float = Field(default=.30,ge=0,le=1,allow_inf_nan=False)
+    discovery: float = Field(default=.10,ge=0,le=1,allow_inf_nan=False)
+    collaborative: float = Field(default=.10,ge=0,le=1,allow_inf_nan=False)
+
+    @model_validator(mode='after')
+    def nonzero(self):
+        if sum(self.model_dump().values()) <= 0: raise ValueError('At least one hybrid weight must be positive')
+        return self
+
+
+class HybridRecommendationRequest(ContextRecommendationRequest):
+    weights: HybridWeights | None = None

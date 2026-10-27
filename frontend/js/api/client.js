@@ -51,3 +51,10 @@ export const getRecommendationSession = id => request(`/api/recommendations/sess
 
 export const getContextModel = () => request('/api/recommendations/context/model');
 export const generateContextRecommendations = payload => request('/api/recommendations/context', {method:'POST',body:payload});
+
+export const getHybridModel = () => request('/api/recommendations/hybrid/model');
+export const generateHybridRecommendations = payload => request('/api/recommendations/hybrid', {method:'POST',body:payload});
+export const compareRecommendations = payload => request('/api/recommendations/compare', {method:'POST',body:payload});
+export const getArtistModel = () => request('/api/experiments/collaborative/model');
+export const findArtists = q => request('/api/experiments/collaborative/artists?q='+encodeURIComponent(q));
+export const recommendArtists = payload => request('/api/experiments/collaborative', {method:'POST',body:payload});

@@ -1,0 +1,24 @@
+{
+  "available": true,
+  "model_name": "HetRec artist user-KNN",
+  "model_version": "artist-userknn-v1-2f6abfc0b773",
+  "users": 1892,
+  "artists": 17632,
+  "positive_interactions": 92834,
+  "neighbors": 40,
+  "minimum_neighbor_support": 2,
+  "scope": "Separate artist-level non-commercial research experiment; not the playlist track catalogue",
+  "license": "HetRec Last.fm data: non-commercial use; contact Last.fm for commercial use",
+  "source": "https://lenskit.grouplens.org/datasets/hetrec-2011/",
+  "collaborative_track_mapping": false,
+  "archive_url": "https://files.grouplens.org/datasets/hetrec2011/hetrec2011-lastfm-2k.zip",
+  "archive_sha256": "6738f48195667ff03caaab4d32ca9a3133d8cc026b7c3cdaf6ce1010e913c59c",
+  "retrieved_on": "2026-10-28",
+  "source_members": {
+    "artists.dat": "c173881362c6b28551368fecb3c0be5a6a30a6cd859e1f5775413dfe46d48648",
+    "user_artists.dat": "001400dc3c7d2667fca6e4ea6dc6acc31a9dd28ad5cd0f74cea988c019934d3b",
+    "readme.txt": "6fe5d1e6f67b025fc50cd70883dd1a1ff16c5ff37b5b7abfb33644b83468b209"
+  },
+  "transform": "Positive listening counts binarized per user-artist pair; no friends/tags/images or user names used",
+  "redistribution": "Raw data and fitted user-profile artifacts stay Git-ignored; only provenance/aggregate evaluation are tracked"
+}

@@ -2,7 +2,7 @@ import {icon, logo} from './icons.js';
 export const routes = [
  ['home','Home','home'], ['discover','Discover','discover'], ['recommend','Recommendations','spark'], ['vibe','Vibe Control','spark'],
  ['builder','Playlist Builder','playlists'], ['library','Your Library','library'],
- ['insights','Taste Insights','insights'], ['explorer','Recommendation Explorer','explorer'], ['settings','Settings','settings'],
+ ['insights','Taste Insights','insights'], ['explorer','Recommendation Explorer','explorer'], ['settings','Settings','settings'], ['lab','Artist Lab','explorer'],
 ];
 export function renderShell() {
  document.querySelector('#sidebar').innerHTML = `<a class="brand" href="#/home" aria-label="Waveform home">${logo}<span>waveform<span class="brand-dot">.</span></span></a>
