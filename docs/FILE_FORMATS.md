@@ -63,3 +63,7 @@ Links encode the artist and track title as a search query on these public interf
 - [YouTube Music search](https://music.youtube.com/search?q=music)
 
 Links are generated from fixed HTTPS origins, use encoded query/path values and `noopener noreferrer`, and require no linked account in Waveform. They open searches, not guessed song IDs or export APIs. Music services may redirect to a regional site or require their own login. No third-party account tokens, scopes, private endpoints or scraping are used.
+
+## Phase 4 FMA identities
+
+FMA catalogue IDs use `fma-` plus six digits. They are not ISRCs; ISRC remains null when the source does not supply it. CSV/TXT imports also resolve the exact pair `dataset_source = FMA metadata subset (2017)` and numeric `source_identifier`. These portable fields preserve canonical FMA identity without fuzzy title matching. JSON retains source genres, feature provenance, metadata license scope and separate recording-license text. Canonical matches restore full current catalogue metadata; no streaming-platform match is claimed.

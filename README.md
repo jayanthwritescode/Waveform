@@ -2,21 +2,18 @@
 
 **Your music. Your moment.**
 
-Waveform is a platform-independent music discovery, recommendation and playlist generation project. **Phase 3 is complete: local preferences, feedback, saved playlists and portable files.** Recommendation algorithms start in Phase 4; the app does not simulate generated recommendations or listening history.
+Waveform is a platform-independent music discovery and playlist project. **Phase 4 is complete:** content-based recommendations, saved taste, explainable ranking and basic playlist generation.
 
 ## Working today
 
-- Responsive midnight/lavender interface, eight real credited track metadata records and catalogue search/filtering.
-- Local single-user profile: name, favorite/disliked genres, favorite artists, energy range, instrumental and familiarity/discovery preferences.
-- Persisted Like/Dislike feedback with mutually exclusive, reversible selections.
-- Playlist Builder: title/description, add/remove/reorder, estimated duration, explicit save/update and save a copy.
-- Your Library: saved playlist editing/deletion, file exports, liked/disliked tracks, favorite artists/genres, and an honest empty recommendation-session state.
-- UTF-8 CSV, TXT and JSON export; validated imports with previews, exact source-ID matching and clearly labeled unmatched metadata.
-- Properly encoded Spotify, Apple Music and YouTube Music searches on catalogue/details/editor tracks. These are search links, not direct playlist transfers or verified destination matches.
-- SQLite persistence through SQLAlchemy; saved records survive frontend reloads and backend restarts. Revision checks protect against stale edits/deletions in another tab.
-- Editor recovery on refresh in the current tab using session storage. Save to Your Library for permanent storage. Failed requests retain the draft and form inputs.
+- 520 genuine metadata records: eight preserved Incompetech tracks and a reproducible 512-track FMA metadata subset, covering 368 artist names and 18 primary genres.
+- Recommendations from reference tracks, recent explicit likes and saved genre/artist/energy/instrumental preferences. Dislikes and explicit exclusions remove candidates.
+- Real score contributions and source-based explanations; cold-start discovery has no personalized score. Generate 1–30 unique tracks, then refine/save/export through the existing editor.
+- Recorded recommendation sessions reopen their original results, explanations and model version.
+- Paginated catalogue search, details, local profile/feedback, persistent playlist CRUD, revision protection, CSV/TXT/JSON files and external service searches.
+- Responsive midnight/lavender interface, refresh recovery and retained drafts on request failures.
 
-The home generation link still explains future generation. No recommendation model, automatic playlist generation, Taste Insights metrics, playback or third-party account integration has been added.
+Context scoring and Vibe Control remain Phase 5. Collaborative models, Explorer comparisons and Taste Insights remain later phases. No audio hosting/playback or direct music-service integration is included.
 
 ## Setup and run
 
@@ -29,7 +26,7 @@ source .venv/bin/activate
 python -m pip install -r backend/requirements-dev.txt
 ```
 
-For a fresh checkout, copy `.env.example` to `.env` if custom configuration is needed. Preserve an existing `.env`. Runtime dependencies are in `backend/requirements.txt`; `requirements-lock.txt` captures the verified versions. Phase 3 adds no package dependencies.
+For a fresh checkout, copy `.env.example` to `.env` if custom configuration is needed. Preserve an existing `.env`. Runtime dependencies are in `backend/requirements.txt`; `requirements-lock.txt` captures the verified versions. Phase 4 adds NumPy, Pandas, SciPy and scikit-learn. The bundled metadata subset makes first startup offline; no raw dataset download or model training is required.
 
 Backend, terminal 1:
 
@@ -45,7 +42,7 @@ cd /Users/jayanth/Desktop/Waveform
 python3.11 -m http.server 5173 --bind 127.0.0.1 --directory frontend
 ```
 
-Open [Waveform](http://127.0.0.1:5173), [Your Library](http://127.0.0.1:5173/#/library), [Settings](http://127.0.0.1:5173/#/settings), or [API docs](http://127.0.0.1:8000/docs). Serve the frontend over HTTP and only from `frontend/`, outside the preserved legacy audio directory.
+Open [Waveform](http://127.0.0.1:5173), [Your Library](http://127.0.0.1:5173/#/library), [Settings](http://127.0.0.1:5173/#/settings), [Recommendations](http://127.0.0.1:5173/#/recommend), or [API docs](http://127.0.0.1:8000/docs). Serve the frontend over HTTP and only from `frontend/`, outside the preserved legacy audio directory.
 
 ## Local storage and configuration
 
@@ -81,8 +78,8 @@ The frontend API defaults to `http://127.0.0.1:8000`. Override with `window.WAVE
 
 | Method/path | Behavior |
 | --- | --- |
-| GET `/api/health` | Status and phase 3 |
-| GET `/api/tracks`, `/api/tracks/{ISRC}` | Metadata search/details; no audio routes |
+| GET `/api/health` | Status and phase 4 |
+| GET `/api/tracks`, `/api/tracks/{catalogue_id}` | Metadata search/details; no audio routes |
 | GET/PUT `/api/profile` | Local profile/preferences; revision required for update |
 | GET `/api/feedback`; PUT `/api/feedback/{catalogue_id}` | Explicit like/dislike/null feedback |
 | GET/POST `/api/playlists` | List/create saved playlists |
@@ -90,6 +87,9 @@ The frontend API defaults to `http://127.0.0.1:8000`. Override with `window.WAVE
 | GET `/api/playlists/{id}/export?format=csv|txt|json` | Export saved playlist |
 | POST `/api/playlist-export?format=csv|txt|json` | Export editor payload without saving |
 | POST `/api/playlist-import` | Validate `{format, content}` and preview; no database write |
+| GET `/api/recommendations/model` | Algorithm, weights, version and feature coverage |
+| POST `/api/recommendations` | Generate real results and record successful nonempty sessions |
+| GET `/api/recommendations/sessions/{id}` | Original result snapshot; no reranking |
 | GET `/api/library` | Saved playlists, feedback, profile and real recommendation sessions |
 
 Playlist inputs contain title, description and ordered track metadata. Imports and saves normalize catalogue identities and remove duplicates. Unknown imported records retain provenance and missing values. No arbitrary remote URLs are fetched. Input validation errors omit raw file payloads; database failures return a useful 503; stale revisions return 409 and retain the editor.
@@ -102,20 +102,22 @@ cd /Users/jayanth/Desktop/Waveform
 node --test frontend/tests/*.test.mjs
 ```
 
-**30 backend tests and 10 frontend tests pass.** Database tests use isolated temporary SQLite files, not the user's workspace. Tests cover persistence/reopen, profile validation, feedback, playlist CRUD/order/revision conflicts, all three file round trips, Unicode/multiline CSV/quotes, formula-safe CSV, empty exports, unmatched imports, malformed files, byte limits, database failures, draft identity and encoded platform searches.
+**40 backend tests and 10 frontend tests pass.** Database tests use isolated temporary SQLite files, not the user's workspace. Tests cover persistence/reopen, profile validation, feedback, playlist CRUD/order/revision conflicts, all three file round trips, Unicode/multiline CSV/quotes, formula-safe CSV, empty exports, unmatched imports, malformed files, byte limits, database failures, draft identity and encoded platform searches.
 
-Browser QA verified profile reload, feedback changes, playlist save/reopen/rename/reorder, editor recovery, a real JSON download and import preview/load, backend restart persistence, failed-save retention and responsive library/editor/settings layouts. No platform playlist was created. Exact results and checkpoint status are in [PROJECT_PROGRESS.md](PROJECT_PROGRESS.md).
+Browser QA verified cold-start generation, seeded ranking and explanations, loading/saving a generated playlist, recorded-session reopening, FMA details and responsive recommendation layouts. Previous Phase 3 workflows remain covered by regression tests. Exact scope and checks are in [PROJECT_PROGRESS.md](PROJECT_PROGRESS.md).
 
-## Data and remaining work
+## Content model and dataset
 
-The original catalogue contains eight Kevin MacLeod records and one composer. It is not representative enough to evaluate recommendation quality. Album, release year and standardized energy/valence/acousticness/instrumentalness remain unknown; upload date is not release year. See [data/README.md](data/README.md) for source/credit details and preservation notes.
+See [RECOMMENDATION_MODEL.md](docs/RECOMMENDATION_MODEL.md) for the scoring formulas, missing-data rules, configurable weights and evaluation limits, and [data/README.md](data/README.md) for provenance, licensing and reproducible preprocessing.
 
-Profile preferences and feedback are saved now; they do not yet change catalogue ranking. The recommendation session table remains empty until the engine records genuine output. Manual drafts/imports are not fabricated sessions or audio plays.
+```sh
+.venv/bin/python scripts/evaluate_content.py
+# Optional: fetch only the three official metadata CSV members, then reproduce the subset
+.venv/bin/python scripts/prepare_fma.py --download --build
+```
 
-- Phase 4: legitimate preprocessing, content-based recommendations, basic playlist generation and explanations.
-- Phase 5: context-aware playlist generation and Vibe Control.
-- Phase 6: collaborative/hybrid models where valid.
-- Phase 7: Explorer and Taste Insights from genuine interactions/evaluation.
-- Phase 8: export refinements, optional official integrations, polish, tests and deployment.
+The diagnostic script checks ranking invariants on 12 real seeds. It does not measure relevance accuracy: there are no held-out user relevance labels. FMA's metadata license is distinct from recording rights. Missing original-track features stay null. Search links do not verify destination availability.
 
-See [roadmap](docs/ROADMAP.md), [architecture](docs/ARCHITECTURE.md) and the archived [Phase 2.5 checkpoint](docs/history/PHASE_2_5.md). Stop after Phase 3 for manual review/commit. No automated commits, pushes, destructive Git operations or Phase 4 work.
+Open Recommendations, optionally choose a reference track, then Generate playlist. Use these tracks in the editor preserves their order; save explicitly for a durable playlist. Saved profile preferences affect recommendations, while catalogue search retains its source order. The familiarity/discovery slider is stored for Phase 5 and currently has no ranking effect.
+
+See [roadmap](docs/ROADMAP.md), [architecture](docs/ARCHITECTURE.md) and [Phase 3 archive](docs/history/PHASE_3.md). **Stop after Phase 4 for manual review/commit.** No automated commits, pushes or Phase 5 work.

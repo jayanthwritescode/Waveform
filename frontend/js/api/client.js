@@ -45,3 +45,6 @@ export const exportPlaylist = (payload, format) => request(`/api/playlist-export
 export const previewImport = (content, format) => request('/api/playlist-import', {method:'POST',body:{content,format}});
 
 export const exportSaved = (id, format) => request(`/api/playlists/${encodeURIComponent(id)}/export?format=${format}`, {blob:true});
+export const getRecommendationModel = () => request('/api/recommendations/model');
+export const generateRecommendations = payload => request('/api/recommendations', {method:'POST',body:payload});
+export const getRecommendationSession = id => request(`/api/recommendations/sessions/${encodeURIComponent(id)}`);

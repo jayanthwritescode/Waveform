@@ -1,0 +1,7 @@
+{
+  "content_weights": {"genre": 0.4, "metadata": 0.25, "artist": 0.1, "numeric": 0.25},
+  "numeric_gamma": 4.0,
+  "ranking_weights": {"content": 0.65, "preference": 0.35},
+  "preference_weights": {"genres": 0.4, "artists": 0.25, "energy": 0.2, "instrumental": 0.15},
+  "maximum_liked_seeds": 50
+}

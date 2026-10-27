@@ -49,6 +49,7 @@ class PlaylistTrack(BaseModel):
     artist: Label
     album: str | None = Field(default=None, max_length=200)
     genre: str | None = Field(default=None, max_length=120)
+    genres: list[Label] = Field(default_factory=list, max_length=100)
     duration_seconds: int | None = Field(default=None, gt=0, le=86400)
     release_year: int | None = Field(default=None, ge=1000, le=9999)
     bpm: float | None = Field(default=None, gt=0, le=1000)
@@ -64,6 +65,9 @@ class PlaylistTrack(BaseModel):
     source_uploaded: date | None = None
     source_url: HttpUrl | None = None
     license_name: str | None = Field(default=None, max_length=100)
+    license_scope: Literal["music", "metadata"] = "music"
+    recording_license: str | None = Field(default=None, max_length=500)
+    feature_source: str | None = Field(default=None, max_length=200)
     license_url: HttpUrl | None = None
     attribution: str | None = Field(default=None, max_length=2000)
     provenance: Literal["catalogue", "user_import"] = "user_import"

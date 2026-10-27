@@ -15,9 +15,9 @@ def test_catalogue_has_real_credited_records():
     response = request("/api/tracks")
     assert response.status_code == 200
     body = response.json()
-    assert body["total"] == 8
-    assert len({track["id"] for track in body["items"]}) == 8
-    for track in body["items"]:
+    assert body["total"] == 520
+    assert len({track["id"] for track in body["items"]}) == len(body["items"])
+    for track in body["items"][:8]:
         assert track["artist"] == "Kevin MacLeod"
         assert track["license_name"] == "CC BY 4.0"
         assert track["energy"] is None
@@ -29,7 +29,7 @@ def test_search_and_filters_combine():
     response = request("/api/tracks?q=PIANO&genre=Contemporary&artist=Kevin%20MacLeod")
     assert [track["title"] for track in response.json()["items"]] == ["Dreams Become Real"]
     assert request("/api/tracks?q=not-a-real-track").json()["total"] == 0
-    assert request("/api/tracks?genre=Jazz").json()["total"] == 2
+    assert request("/api/tracks?genre=Jazz").json()["total"] == 38
     assert request("/api/tracks?artist=unknown").json()["total"] == 0
 
 
@@ -57,9 +57,12 @@ def test_catalogue_is_metadata_only():
     page = request("/api/tracks").json()
     for track in page["items"]:
         assert not any(key.startswith("audio_") for key in track)
-        assert track["source_identifier"] == track["id"]
+        assert track["source_identifier"] == (str(int(track["id"][4:])) if track["id"].startswith("fma-") else track["id"])
         assert track["dataset_source"]
-        assert track["release_year"] is None
+        if track["id"].startswith("USUAN"):
+            assert track["release_year"] is None
+        else:
+            assert track["license_scope"] == "metadata"
         assert "Audio unmodified" not in track["attribution"]
 
 

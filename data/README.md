@@ -1,52 +1,29 @@
-# Waveform metadata catalogue — Phase 3
+# Waveform metadata catalogue — Phase 4
 
-## Preserved source records
+The catalogue contains 520 genuine records across 368 artist names and 18 primary genres: the original eight Incompetech records plus a reproducible 512-record FMA metadata subset. No audio or album images were downloaded for Phase 4.
 
-The original `catalogue/tracks.json` is preserved byte-for-byte from Phase 2. It contains eight genuine Kevin MacLeod tracks, retrieved from the public [Incompetech pieces.json](https://incompetech.com/music/royalty-free/pieces.json) on 27 October 2026. Genre IDs were mapped using the [catalogue page](https://incompetech.com/music/royalty-free/music.html). Phase 2.5 repurposed those factual records for discovery and playlist drafts. Phase 3 adds saved user state in a separate local SQLite database.
+## FMA source and licensing
 
-| ISRC | Title | Source genre | Source duration |
-| --- | --- | --- | --- |
-| USUAN1500027 | Dreams Become Real | Contemporary | 6:50 |
-| USUAN1100844 | Cipher | Electronica | 3:51 |
-| USUAN1400037 | Carefree | Contemporary | 3:25 |
-| USUAN1300010 | Local Forecast | Jazz | 2:45 |
-| USUAN1400011 | Monkeys Spinning Monkeys | Soundtrack | 2:05 |
-| USUAN2100030 | Space Jazz | Jazz | 6:10 |
-| USUAN1100192 | Ishikari Lore | World | 2:44 |
-| USUAN1100772 | Sneaky Snitch | Soundtrack | 2:17 |
+Source: [FMA: A Dataset for Music Analysis](https://github.com/mdeff/fma), Michaël Defferrard, Kirell Benzi, Pierre Vandergheynst and Xavier Bresson, ISMIR 2017. The official repository distributes metadata under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); recording licenses vary and remain separate. The subset transforms source rows into Waveform's schema, selects records and normalizes dates/labels; it contains no recordings. Each API record retains metadata attribution, license scope, feature provenance and source recording-license text. Reused local illustrations are Waveform assets, not original album art.
 
+The official [2017 metadata ZIP](https://os.unil.cloud.switch.ch/fma/fma_metadata.zip) contains `tracks.csv`, `genres.csv` and `echonest.csv`. `scripts/prepare_fma.py --download` reads only these members through HTTP byte ranges, validates ZIP CRCs and uses atomic writes. It does not download the recording archives. Raw CSVs (~290 MiB) remain ignored in `data/raw/fma/`; they are optional for running the app. Source ZIP member sizes/CRCs and extracted SHA-256 hashes are recorded in `catalogue/fma_provenance.json` and checked on rebuild.
 
-## Available and missing metadata
+## Reproducible subset
 
-Titles, artist, ISRC, genre, duration, source-provided tempo, instrument labels, feel tags, source upload date, credits and source URLs are available. The API also supplies the catalogue name as `dataset_source` and the ISRC as `source_identifier`.
+Run `.venv/bin/python scripts/prepare_fma.py --download --build`, or `--build` if the verified raw files are already available. Streaming CSV preprocessing joins exact FMA track IDs to Echonest audio-feature rows. It excludes invalid/bounded title, artist, album, duration and incomplete required feature records. Only factual metadata and source features are copied; biographies and descriptions are excluded.
 
-Album, release year, energy, valence, acousticness and instrumentalness are unavailable and remain null. `source_uploaded` is an upload date, not a release date. Playlist duration is an estimate from source durations; unknown durations will be labeled rather than invented. The illustrations are original Waveform assets, not source album art.
+From 106,574 source track rows, 13,126 eligible records supply a deterministic 512-track subset. Source top genres are used, or derived from the source genre taxonomy when absent. Round-robin genre selection uses SHA-256 track-ID ordering and an initial four-record artist cap. The subset has 367 artist names and 14 primary genres, with 36–37 records per genre. Selection logic, counts, source hashes and output SHA-256 are recorded in provenance. `catalogue/fma.json` is intentionally tracked as a small attributed metadata snapshot so startup is offline and deterministic.
 
-One composer, eight tracks and five genres are adequate for exercising search/draft editing but insufficient for representative recommendation evaluation or collaborative training. Phase 3 stores explicit user preferences/feedback and saved playlists separately. No trained model, generated recommendation session or reliable platform track matching exists. Do not assume these records are on every streaming service.
+IDs use `fma-` plus six digits; numeric source identifiers remain separate. No ISRC is invented. Album release date supplies release year; source upload date is separate. BPM, energy, valence, acousticness and instrumentalness come from the archived Echonest `audio_features` table, not inferred from titles. The feature source is labeled explicitly; historical feature values need not equal current platform values.
 
-## Provenance and credits
+## Original records and preservation
 
-Keep attribution to Kevin MacLeod / incompetech.com and the supplied [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license/source links with the catalogue. Individual track pages retain those credits. No additional music or cover art is downloaded during this phase.
+`catalogue/tracks.json` remains byte-for-byte unchanged. The eight Kevin MacLeod / Incompetech records were retrieved from [pieces.json](https://incompetech.com/music/royalty-free/pieces.json) on 27 October 2026. Genre mapping came from the [catalogue](https://incompetech.com/music/royalty-free/music.html). Keep supplied source/CC BY 4.0 links and Kevin MacLeod attribution. Their album, release year and standardized energy/valence/acousticness/instrumentalness remain unknown. Source upload date is not release year.
 
-The original JSON includes historical `audio_source_url`, `audio_sha256` and audio-use attribution wording. These remain in the original file for provenance and preservation, but public API models ignore audio fields and presented credits omit the obsolete “Audio unmodified” notice. The raw file is not exposed through an API/static route.
+Historical audio URLs/hashes remain only in the preserved manifest. Public models omit audio fields, and static serving is limited to `frontend/`. All eight ignored legacy MP3s remain untouched and unused. The production SQLite database is separate from source metadata and was preserved during Phase 4 QA, which used a temporary database. Saved playlists/imports/preferences never mutate source manifests.
 
-## Legacy audio preservation
+## User state, portability and limits
 
-Existing MP3 files remain untouched in ignored `data/audio/`. They are not deleted, read, indexed, served or needed by Waveform. The download script, streaming route, AUDIO_DIR setting and player were removed. The frontend static server must continue serving only `frontend/`, as documented; do not point it at the repository root.
+Exact catalogue ID, ISRC or dataset/source-ID pairs resolve canonical metadata. Unmatched imports retain explicit user-import provenance and unknown optional values. CSV/TXT carry portable fields; JSON preserves validated full metadata, license scope and feature provenance. No platform availability or destination identity is claimed.
 
-No database or user-generated playlist file existed at the Phase 2.5 audit. Phase 3 initializes `data/waveform.db` (Git-ignored) with a local profile, saved playlists, explicit feedback, and an empty session table. The original metadata/audio files remain unchanged. Historical documentation is archived under `docs/history/`.
-
-## Future dataset strategy
-
-The earlier source evaluation is retained in the historical checkpoint: [FMA](https://github.com/mdeff/fma) provides metadata and feature data suitable for later content-based experiments; [HetRec Last.fm](https://lenskit.grouplens.org/datasets/hetrec-2011/) is an artist-interaction candidate for a separate collaborative experiment. Neither was imported or trained. Review their licenses and feature coverage before using them. Do not merge unaligned artist-level interactions with these track records or fabricate matches.
-
-A broader legitimate metadata dataset and documented preprocessing are Phase 4 work. Direct platform identifiers need reliable matching; Phase 3 provides encoded external search queries and portable CSV/TXT/JSON workflows, with no direct service integration.
-
-`raw/` and `processed/` remain reserved/ignored. There is no training catalogue or trained artifact yet.
-
-
-## Phase 3 imported metadata and user state
-
-Import previews and playlist saves resolve known IDs/exact ISRCs to canonical catalogue records. Unmatched tracks remain explicitly labeled `user_import` with stable imported IDs, unknown optional features and no claimed platform match. Imported image references are restricted to local artwork. The original catalogue manifest is never changed by imports, likes/dislikes, preferences or saved playlists.
-
-Full JSON exports preserve validated playlist/track metadata; CSV/TXT use documented portable fields. Files do not contain profiles or account tokens. See `docs/FILE_FORMATS.md`. No preference settings or playlists are inferred from audio listening. Recommendation-session history remains genuinely empty until an engine creates output in Phase 4.
+The broader catalogue supports real content-based experiments, but this genre-balanced, historical subset is not a representative relevance benchmark. The 12-seed diagnostic checks correctness, not user relevance accuracy. No collaborative interactions were merged or trained. See [model documentation](../docs/RECOMMENDATION_MODEL.md), [file formats](../docs/FILE_FORMATS.md) and [Phase 3 archive](../docs/history/PHASE_3.md).

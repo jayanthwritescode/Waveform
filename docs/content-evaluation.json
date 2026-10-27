@@ -1,0 +1,331 @@
+{
+  "model": {
+    "model_name": "Content similarity v1",
+    "model_version": "content-v1-0ee256c3c66d",
+    "catalogue_tracks": 520,
+    "artists": 368,
+    "primary_genres": 18,
+    "genre_labels": 92,
+    "fit_kind": "Unsupervised metadata index; no supervised or collaborative training",
+    "content_weights": {
+      "genre": 0.4,
+      "metadata": 0.25,
+      "artist": 0.1,
+      "numeric": 0.25
+    },
+    "ranking_weights": {
+      "content": 0.65,
+      "preference": 0.35
+    },
+    "preference_weights": {
+      "genres": 0.4,
+      "artists": 0.25,
+      "energy": 0.2,
+      "instrumental": 0.15
+    },
+    "numeric_coverage": {
+      "duration_seconds": {
+        "known": 520,
+        "missing": 0,
+        "used": true,
+        "lower_5pct": 76.9,
+        "upper_95pct": 528.2499999999998
+      },
+      "bpm": {
+        "known": 520,
+        "missing": 0,
+        "used": true,
+        "lower_5pct": 66.16055,
+        "upper_95pct": 180.65614999999997
+      },
+      "energy": {
+        "known": 512,
+        "missing": 8,
+        "used": true,
+        "lower_5pct": 0.0290018639,
+        "upper_95pct": 0.917282014485
+      },
+      "valence": {
+        "known": 512,
+        "missing": 8,
+        "used": true,
+        "lower_5pct": 0.04738885735,
+        "upper_95pct": 0.9259634169350001
+      },
+      "acousticness": {
+        "known": 512,
+        "missing": 8,
+        "used": true,
+        "lower_5pct": 0.00272291579,
+        "upper_95pct": 0.99574599535
+      },
+      "instrumentalness": {
+        "known": 512,
+        "missing": 8,
+        "used": true,
+        "lower_5pct": 1.4800230000000005e-05,
+        "upper_95pct": 0.96140276382
+      }
+    },
+    "score_meaning": "Relative weighted content/preference ranking score, not probability or prediction accuracy",
+    "context_aware": false,
+    "collaborative": false
+  },
+  "checked_seeds": 12,
+  "integrity_checks": "passed",
+  "evaluation_scope": "Determinism, valid IDs, uniqueness, seed exclusion, finite scores, contribution accounting; no held-out relevance metrics",
+  "examples": [
+    {
+      "seed_id": "USUAN1500027",
+      "seed_title": "Dreams Become Real",
+      "neighbors": [
+        {
+          "id": "USUAN1400037",
+          "title": "Carefree",
+          "score": 0.683213
+        },
+        {
+          "id": "USUAN2100030",
+          "title": "Space Jazz",
+          "score": 0.388231
+        },
+        {
+          "id": "fma-010682",
+          "title": "She Said Nothing",
+          "score": 0.329476
+        }
+      ]
+    },
+    {
+      "seed_id": "fma-005398",
+      "seed_title": "Guarana Superpower",
+      "neighbors": [
+        {
+          "id": "fma-025641",
+          "title": "Şahane Tersane",
+          "score": 0.769459
+        },
+        {
+          "id": "fma-025635",
+          "title": "Adrasan Dub",
+          "score": 0.742134
+        },
+        {
+          "id": "fma-017633",
+          "title": "Caira",
+          "score": 0.626462
+        }
+      ]
+    },
+    {
+      "seed_id": "fma-012294",
+      "seed_title": "The Phenylethylamine Affair",
+      "neighbors": [
+        {
+          "id": "fma-012299",
+          "title": "Love Lickin'",
+          "score": 0.764463
+        },
+        {
+          "id": "fma-012297",
+          "title": "Soul Thing (Written By Keith Mansfield)",
+          "score": 0.759645
+        },
+        {
+          "id": "fma-012288",
+          "title": "The Making Of 'RoXanne' (The FliX MiX)",
+          "score": 0.738296
+        }
+      ]
+    },
+    {
+      "seed_id": "fma-016687",
+      "seed_title": "Nobody",
+      "neighbors": [
+        {
+          "id": "fma-016680",
+          "title": "Finest Morning",
+          "score": 0.826995
+        },
+        {
+          "id": "fma-016684",
+          "title": "Hi-4",
+          "score": 0.813697
+        },
+        {
+          "id": "fma-016683",
+          "title": "Fujjad!",
+          "score": 0.777098
+        }
+      ]
+    },
+    {
+      "seed_id": "fma-020155",
+      "seed_title": "Roamin' in the Gloamin'",
+      "neighbors": [
+        {
+          "id": "fma-020139",
+          "title": "That Mountain Melody",
+          "score": 0.860664
+        },
+        {
+          "id": "fma-024553",
+          "title": "Achin' Hearted Blues",
+          "score": 0.858053
+        },
+        {
+          "id": "fma-018006",
+          "title": "What's the Matter with the Moon Tonight",
+          "score": 0.85779
+        }
+      ]
+    },
+    {
+      "seed_id": "fma-025176",
+      "seed_title": "A Bit of Drama",
+      "neighbors": [
+        {
+          "id": "fma-010363",
+          "title": "She's dancing her heart away",
+          "score": 0.759516
+        },
+        {
+          "id": "fma-018014",
+          "title": "Pay Day",
+          "score": 0.745816
+        },
+        {
+          "id": "fma-017987",
+          "title": "You'll Find Old Dixieland in France",
+          "score": 0.745612
+        }
+      ]
+    },
+    {
+      "seed_id": "fma-031938",
+      "seed_title": "je sui ton 4x4",
+      "neighbors": [
+        {
+          "id": "fma-026704",
+          "title": "anemia or tuberculosis",
+          "score": 0.555638
+        },
+        {
+          "id": "fma-086670",
+          "title": "Stumble",
+          "score": 0.549542
+        },
+        {
+          "id": "fma-012109",
+          "title": "The Mysticism of my Fucking Sound",
+          "score": 0.529602
+        }
+      ]
+    },
+    {
+      "seed_id": "fma-038780",
+      "seed_title": "Maid Behind the Bar",
+      "neighbors": [
+        {
+          "id": "fma-003587",
+          "title": "Interigation",
+          "score": 0.533367
+        },
+        {
+          "id": "fma-006390",
+          "title": "track 5",
+          "score": 0.522599
+        },
+        {
+          "id": "fma-042242",
+          "title": "[interview]",
+          "score": 0.519222
+        }
+      ]
+    },
+    {
+      "seed_id": "fma-041968",
+      "seed_title": "Naves que dan vueltas a un balon",
+      "neighbors": [
+        {
+          "id": "fma-103522",
+          "title": "Stupid",
+          "score": 0.738963
+        },
+        {
+          "id": "fma-041977",
+          "title": "Capitán (con Elsa de Alfonso)",
+          "score": 0.730618
+        },
+        {
+          "id": "fma-014590",
+          "title": "Helen Entrance",
+          "score": 0.71924
+        }
+      ]
+    },
+    {
+      "seed_id": "fma-046464",
+      "seed_title": "Spirit Songs",
+      "neighbors": [
+        {
+          "id": "fma-012901",
+          "title": "Follow the Drinking Gourd",
+          "score": 0.647781
+        },
+        {
+          "id": "fma-005050",
+          "title": "Forever",
+          "score": 0.624337
+        },
+        {
+          "id": "fma-020578",
+          "title": "Two",
+          "score": 0.623337
+        }
+      ]
+    },
+    {
+      "seed_id": "fma-055558",
+      "seed_title": "Ordinary Person Who Has Gone Insane",
+      "neighbors": [
+        {
+          "id": "fma-083715",
+          "title": "J6 On The Rising Sun",
+          "score": 0.836833
+        },
+        {
+          "id": "fma-011830",
+          "title": "We Don't Stop (prod. 6th Sense)",
+          "score": 0.805611
+        },
+        {
+          "id": "fma-032662",
+          "title": "Dark America feat. Smoke 'n' Mirroz",
+          "score": 0.791129
+        }
+      ]
+    },
+    {
+      "seed_id": "fma-083715",
+      "seed_title": "J6 On The Rising Sun",
+      "neighbors": [
+        {
+          "id": "fma-083712",
+          "title": "When Microphones Attack",
+          "score": 0.897633
+        },
+        {
+          "id": "fma-011830",
+          "title": "We Don't Stop (prod. 6th Sense)",
+          "score": 0.846608
+        },
+        {
+          "id": "fma-055558",
+          "title": "Ordinary Person Who Has Gone Insane",
+          "score": 0.836833
+        }
+      ]
+    }
+  ]
+}

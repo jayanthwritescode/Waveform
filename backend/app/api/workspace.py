@@ -147,5 +147,5 @@ def get_library(db: Session = Database):
     return {"profile":ProfileOut.model_validate(profile_record(db)),
             "playlists":[PlaylistOut.model_validate(row) for row in list_playlists(db)],
             "feedback":feedback,
-            "recommendation_sessions":[{"id":row.id, "model_name":row.model_name, "context":row.context,
+            "recommendation_sessions":[{"id":row.id, "model_name":row.model_name, "context":{"kind":row.context.get("kind"), "model_version":row.context.get("result",{}).get("model",{}).get("model_version")},
                                         "track_ids":row.track_ids, "created_at":row.created_at} for row in sessions]}

@@ -1,0 +1,56 @@
+{
+  "source": {
+    "archive_url": "https://os.unil.cloud.switch.ch/fma/fma_metadata.zip",
+    "archive_bytes": 358412441,
+    "tables": {
+      "tracks.csv": {
+        "bytes": 260414445,
+        "zip_crc32": "5e6f68ec",
+        "sha256": "f73260fd112b8cd42bcd4f7c8918fc66b19d9d4c7b97f4faedce524b59e95d6b"
+      },
+      "genres.csv": {
+        "bytes": 3922,
+        "zip_crc32": "8e472fbc",
+        "sha256": "cbd1d1b8f8922b2164f22ca0eacab23fe7107a283586026cf74dbc259b471da2"
+      },
+      "echonest.csv": {
+        "bytes": 44000447,
+        "zip_crc32": "361aef35",
+        "sha256": "cc2f9f40d284731e8da56cd37bddde402d27e95754eacbef879efbee1eddd596"
+      }
+    }
+  },
+  "selection": "Exact FMA ID join to Echonest audio_features; source genre round-robin, SHA-256 ID order, artist cap starts at 4",
+  "target_tracks": 512,
+  "selected_tracks": 512,
+  "artists": 367,
+  "counts": {
+    "source_track_rows": 106574,
+    "eligible_rows": 13126,
+    "rejected_title_artist_album": 3
+  },
+  "genres": {
+    "Blues": 37,
+    "Classical": 37,
+    "Country": 37,
+    "Easy Listening": 37,
+    "Electronic": 37,
+    "Experimental": 37,
+    "Folk": 37,
+    "Hip-Hop": 37,
+    "Instrumental": 36,
+    "International": 36,
+    "Jazz": 36,
+    "Old-Time / Historic": 36,
+    "Pop": 36,
+    "Rock": 36
+  },
+  "feature_known": {
+    "bpm": 512,
+    "energy": 512,
+    "valence": 512,
+    "acousticness": 512,
+    "instrumentalness": 512
+  },
+  "snapshot_sha256": "d3e73a0520343e37141146bb56d05282adc4ae28c64cecab9fbee17e4e0850b9"
+}

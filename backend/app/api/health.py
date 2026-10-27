@@ -11,4 +11,4 @@ class HealthResponse(BaseModel):
 
 @router.get("/health", response_model=HealthResponse, tags=["health"])
 def health() -> HealthResponse:
-    return HealthResponse(status="ok", app=settings.app_name, phase=3)
+    return HealthResponse(status="ok", app=settings.app_name, phase=4)
