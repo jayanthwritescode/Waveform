@@ -44,7 +44,7 @@ class TrackFeedback(Base):
 
 
 class RecommendationSession(Base):
-    """Reserved for real engine output in Phase 4; no simulated sessions are inserted."""
+    """Actual content/context generation snapshots; manual drafts are never sessions."""
     __tablename__ = "recommendation_sessions"
     id: Mapped[str] = mapped_column(String(36), primary_key=True)
     model_name: Mapped[str] = mapped_column(String(80))

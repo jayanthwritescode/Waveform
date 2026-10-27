@@ -45,14 +45,14 @@ function navigate() {
   });
   const main = document.querySelector('#main');
   displayedTracks = [];
-  main.innerHTML = route === 'home' ? homePage() : route === 'discover' ? discoverPage() : route === 'builder' ? builderPage() : route === 'recommend' ? recommendationsPage() : route === 'library' ? libraryPage() : route === 'settings' ? settingsPage() : route === 'track' ? '<div class="catalogue-state" role="status">Loading track…</div>' : placeholderPage(route);
+  main.innerHTML = route === 'home' ? homePage() : route === 'discover' ? discoverPage() : route === 'builder' ? builderPage() : ['recommend','vibe'].includes(route) ? recommendationsPage(route==='vibe') : route === 'library' ? libraryPage() : route === 'settings' ? settingsPage() : route === 'track' ? '<div class="catalogue-state" role="status">Loading track…</div>' : placeholderPage(route);
   if (route === 'home') loadHome(routeVersion);
   if (route === 'discover') {
     document.querySelector('#music-search').value = filters.q;
     loadDiscover(routeVersion);
   }
   const version = routeVersion;
-  if (route === 'recommend') mountRecommendations(new URLSearchParams(query),()=>version === routeVersion,tracks=>{if (version === routeVersion) displayedTracks=tracks;});
+  if (['recommend','vibe'].includes(route)) mountRecommendations(new URLSearchParams(query),()=>version === routeVersion,tracks=>{if (version === routeVersion) displayedTracks=tracks;},route==='vibe');
   if (route === 'settings') mountSettings(() => version === routeVersion);
   if (route === 'library') mountLibrary(() => version === routeVersion).then(tracks => {if (tracks && version === routeVersion) displayedTracks = tracks;});
   if (route === 'builder') refreshBuilder(draft.snapshot());

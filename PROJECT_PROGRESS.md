@@ -4,57 +4,60 @@ Last updated: 28 October 2026 (Asia/Kolkata).
 
 ## Current checkpoint
 
-**Phase 4: Content-Based Recommendation Engine — complete, awaiting review and manual Git commit.**
+**Phase 5: Context-Aware Playlist Generation — complete, awaiting review and manual Git commit.**
 
-User authorized Phase 4. Phase 5 has not started. No automatic commit, push, PR, deployment or destructive Git operation was performed. Starting HEAD was `c7f7c3d` with a clean working tree. The previous checkpoint is preserved in [Phase 3 history](docs/history/PHASE_3.md).
+The user authorized Phase 5. Phase 6 has not started. No automatic commit, push, PR, deployment or destructive Git operation was performed. Starting HEAD was `dbc1624` with a clean working tree. Prior checkpoint documentation is archived in [Phase 4 history](docs/history/PHASE_4.md).
 
 ## Implemented
 
-- Legitimate FMA metadata preprocessing: official ZIP member range download, CRC/SHA checks, streaming exact-ID join and reproducible balanced 512-record subset. Attribution, selection rules, feature source and separate metadata/recording-license scope are documented. No audio was downloaded or analyzed.
-- Combined 520-track catalogue: 368 artist names, 18 primary genres; original eight records and their missing values preserved. Discover pagination, mixed-source credits and FMA detail/identity support.
-- Feature engineering with genre cosine, source tag/instrument TF-IDF cosine, artist labels and shared-known robust-scaled numeric distance. Configurable validated weights and a catalogue/configuration fingerprint.
-- User preference profiling from recent explicit likes, favorite genres/artists, saved energy range and instrumental preference. Dislikes and requested exclusions remove candidates; deterministic cold-start discovery has no personalized score.
-- Recommendation API/model metadata, real ranked results, score contributions and source-based explanations. Unique results, bounded counts and explicit empty-result behavior.
-- Basic playlist generation UI, optional reference search, draft exclusions and existing editor/save/export workflow. Failed requests retain prior results and editor contents.
-- Genuine generation sessions with original metadata/result/explanation snapshots, model version and request/profile-feature/feedback snapshots. Library reopens recorded results without reranking or writing another session.
-- Correctness diagnostics and regression tests, model/data documentation, refreshed dependency lock and archived prior checkpoint.
+- Functional Vibe Control replaces its placeholder: mood/activity, optional manual time/weather, moment energy and instrumental choices, preferred genre/artist labels, familiarity/discovery and count/duration controls.
+- Context suitability changes ranking using actual source energy, valence, acousticness, instrumentalness and BPM. Configurable versioned target/tolerance rules are explicitly labeled heuristics, not measured mood/activity labels or trained suitability predictions.
+- Evidence coverage reduces the context contribution when requested features are missing. Source values remain unknown; explanations identify omitted features and actual weighted contributions. Explicit energy/instrumental choices replace corresponding inferred rule targets.
+- Existing content/taste ranking combines with context and catalogue-relative discovery. Familiarity uses likes/favorite artist labels, not listening history. Missing familiarity signals produce a notice and omit that block. Saved dislikes and explicit exclusions are never silently relaxed.
+- Duration-budget generation respects an upper ceiling, reports remaining gaps and omits unknown-duration tracks. Count mode retains unique bounded results. Regeneration excludes the immediately preceding batch and current draft selections.
+- Shared editor/save/export integration retains replacement guards and explicit saves. Generation locks controls while pending; failures retain input, prior results and draft.
+- Actual context generation snapshots store input context, length, ordered results, explanations and model version. Library routes content/context sessions to the right page, restoring recorded controls without reranking or creating another session.
+- Home mood links preselect Vibe Control; Settings describes discovery's implemented behavior. Phase 4 content-only endpoint remains independently available and unchanged in rank output.
 
 ## Important files
 
-- `scripts/prepare_fma.py`, `data/catalogue/fma.json`, `data/catalogue/fma_provenance.json` and `data/README.md`.
-- `backend/app/recommender/features.py`, `engine.py`, `settings.json`; recommendation service/schema/router and catalogue/playlist normalization.
-- `frontend/js/pages/recommendations.js`, `frontend/css/recommendations.css`; routing/navigation, Discover pagination, shared cards/details, API client and Library history.
-- `backend/tests/test_recommender.py`, updated catalogue/health tests, `scripts/evaluate_content.py`.
-- `docs/RECOMMENDATION_MODEL.md`, architecture, roadmap, file formats, README and this checkpoint.
+- `backend/app/recommender/context.py` and `context_rules.json`: context features, coverage, discovery, final ranking and length selection.
+- `schemas/recommendation.py`, `api/recommendations.py`, `services/recommendations.py`: strict context/length schema, model/generation routes and transactional session snapshots.
+- `frontend/js/pages/moment-controls.js`, `recommendations.js`, shared CSS, routing, home/settings/library and API client.
+- `backend/tests/test_context.py`, `frontend/tests/moment-controls.test.mjs`, `scripts/evaluate_context.py` and actual `docs/context-evaluation.json`.
+- [Context model](docs/CONTEXT_MODEL.md), README/run instructions, architecture, roadmap, prior checkpoint archive and this report. No package or dataset changes were needed.
 
 ## Validation performed
 
 | Check | Result |
 | --- | --- |
-| Backend suite | **40 passed**: prior workspace regressions, feature math/missing/invalid/constant data, rank sensitivity, deterministic scores, exclusions, cold start, weight validation, API/history persistence, FMA portable round trips and dataset hash |
-| Frontend suite | **10 passed**: draft correctness, identity/revision behavior, safe artwork and encoded external searches |
-| Model diagnostic | **12 real seeds passed** deterministic/unique/valid-ID/seed-exclusion/bounded-score/contribution checks; output in `docs/content-evaluation.json` |
-| Reproducible build | Rebuilt the subset from raw metadata and verified pinned source/output hashes |
-| Browser generation | Cold-start fallback has null scores; explicit/reference-search seeds produce ranked picks and real explanations |
-| Browser editor | Loaded 10 generated tracks, saved the playlist and found the exact order/metadata in Library |
-| Browser history | Reopened original results without a new generation; verified model version and UTC session timestamp |
-| Browser details/pagination | Verified FMA features, unknown ISRC, metadata-license label, Find similar link and next/previous catalogue pages |
-| Failure retention | Stopped backend and retried generation: useful retry message; all 10 prior results and editor tracks retained |
-| Responsiveness | Recommendations at 320/390/768/1024/1440px and Discover at 320/768/1440px: no horizontal overflow |
-| Browser console | No warning/error logs during normal tested flows; unavailable-backend request deliberately exercised later |
-| Preservation | Original source manifest, all eight legacy MP3s and production database match all 10 starting SHA-256 hashes |
-| Syntax/whitespace | JavaScript syntax and `git diff --check` passed |
+| Backend suite | **50 passed**: existing regressions plus same-genre context sensitivity, mood/activity/time/weather/instrumental effects, explicit override, discovery/fallback, duration bounds, partial/missing evidence, hard exclusions, validation, recorded context and alternatives |
+| Frontend suite | **13 passed**: existing draft/platform behavior plus zero-valued controls, comma/newline labels, context/length restoration and escaped contribution labels |
+| Real-catalogue context diagnostic | **4 contexts passed** determinism, ranking sensitivity, valid unique results, score accounting, alternative-batch exclusion and duration ceiling; actual report in `docs/context-evaluation.json` |
+| Phase 4 regression diagnostic | All **12 content seeds** produce exactly the same diagnostic report/model version as the committed Phase 4 report |
+| Browser ranking | Calm focus/rainy night and energetic workout returned distinct real record sets |
+| Browser alternatives | Regenerated workout batch contained no IDs from the immediately preceding batch |
+| Browser duration | 12-minute budget with 4-track cap returned **686 seconds (11:26)**, a 34-second gap and no overshoot |
+| Browser editor/save | Loaded the context selection, saved a 4-track QA playlist and found it in Library |
+| Browser history | Original four IDs, energetic/workout context, 12-minute duration mode and 4-track cap restored; opening history created no new session |
+| Failure retention | With backend stopped, generation retained 4 results, 4 draft tracks, context and length; actionable error appeared and controls re-enabled |
+| Responsive layout | Vibe form/results at **320, 390, 768, 1024 and 1440px**, no horizontal overflow |
+| Browser console | No warning/error logs in normal tested flows; failed network request was deliberately exercised separately |
+| Preservation | Original/FMA manifests, provenance, eight legacy MP3s and production SQLite database match all starting hashes |
+| Syntax/whitespace | All JavaScript modules parse; `git diff --check` passes |
 
-Browser QA used an isolated temporary SQLite database, preserving production playlists/profile/feedback/history. Screenshots show real generated QA output. Review caught and fixed a JSON dirty-tracking issue that initially omitted session ID/timestamp from stored snapshots; regression tests now inspect both returned history and persisted JSON. Test servers are stopped at completion.
+Browser QA uses a separate temporary SQLite database. Production preferences, playlists, feedback and history are preserved. The review screenshot shows actual recorded QA recommendations. Review identified and corrected partial-feature ranking bias: BPM-only records initially competed as if they satisfied a richer context. Coverage weighting and a regression test now expose and reduce that contribution. Test servers are stopped at completion.
 
-## Limits and next checkpoint
+## Limits and next phase
 
-No blocking Phase 4 defects are known from these checks. The index is unsupervised and the historical genre-balanced subset has selection bias. Correctness tests do not establish user relevance accuracy; there are no held-out interaction labels or invented Precision@K/recall metrics. Source numeric features and artist display-name matching have documented limits.
+No blocking Phase 5 defects are known from the checks above. Rules/tolerances/weights are documented product heuristics; no relevance accuracy or psychological suitability is established. The historical feature-complete FMA subset and artist-display-name identity retain their selection/source limitations. Context score coverage is not a probability. Final blocks renormalize available evidence, which can still affect cross-record comparability.
 
-Context inputs, desired-duration generation and familiarity/discovery blending remain Phase 5. The discovery slider is retained but unused by this model. Collaborative/hybrid training remains Phase 6; Explorer/Insights and held-out evaluation remain Phase 7. No playback, direct platform integration, audio hosting or public multi-user deployment was added.
+Time/weather are explicit manual inputs; no live services, geolocation or listening data are accessed. Duration selection is greedy ranking order with a ceiling, not exact-fit optimization. Unknown durations are omitted in duration mode. Regeneration excludes only the immediately preceding batch and current exclusions, so older batches can recur. Generation/editing is metadata-only; files/search links do not verify streaming-platform availability.
 
-Existing local-only, single-user SQLite and tab-recovery limitations still apply. Files/search links do not prove destination availability or create platform playlists. FMA metadata rights do not grant recording rights. No schema change/reset was required.
+No collaborative or interaction-data hybrid training, Explorer comparison, Taste Insights, playback, direct platform integration or public multi-user deployment was added. Existing local single-user SQLite/tab-recovery limitations remain. No schema reset/migration or dependency change was required.
 
-Suggested manual commit: `feat: add content-based recommendations and playlist generation`
+**Next:** Phase 6 — appropriate interaction data and collaborative/hybrid modeling, preserving dataset alignment and honest benchmark boundaries. Do not begin without authorization.
 
-**STOP after Phase 4. Await review, manual commit and explicit Phase 5 authorization.**
+Suggested manual commit: `feat: add context-aware Vibe Control and playlist regeneration`
+
+**STOP after Phase 5. Await review, manual commit and explicit Phase 6 authorization.**

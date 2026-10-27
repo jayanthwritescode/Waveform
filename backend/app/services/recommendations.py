@@ -3,6 +3,8 @@ from uuid import uuid4
 from sqlalchemy import select
 from app.models.workspace import Profile, RecommendationSession, TrackFeedback
 from app.recommender.engine import ContentEngine
+from app.recommender.context import ContextEngine
+from app.schemas.recommendation import ContextRecommendationRequest
 from app.schemas.workspace import ProfileOut
 from app.services.catalogue import catalogue
 
@@ -13,15 +15,21 @@ def get_engine():
     return ContentEngine(rows)
 
 
+@lru_cache(maxsize=1)
+def get_context_engine():
+    return ContextEngine(get_engine())
+
+
 def generate_recommendations(payload, db, engine):
     profile = db.get(Profile,1) if payload.use_profile else None
     values = ProfileOut.model_validate(profile).model_dump() if profile is not None else {}
     feedback = db.scalars(select(TrackFeedback).order_by(TrackFeedback.updated_at.desc(),TrackFeedback.track_id)).all() if payload.use_profile else []
     likes = [row.track_id for row in feedback if row.value == 'like' and row.track_id in engine.index.ids]
     dislikes = [row.track_id for row in feedback if row.value == 'dislike']
+    extra = {'context':payload.context.model_dump(),'length_mode':payload.length_mode,'duration_minutes':payload.duration_minutes} if isinstance(payload,ContextRecommendationRequest) else {}
     result = engine.recommend(seed_ids=payload.seed_ids, liked_ids=likes, disliked_ids=dislikes,
                               exclude_ids=payload.exclude_ids, profile=values, use_profile=payload.use_profile,
-                              include_liked=payload.include_liked,limit=payload.limit)
+                              include_liked=payload.include_liked,limit=payload.limit,**extra)
     for item in result['items']:
         item['track'] = catalogue.get(item['track_id']).model_dump(mode='json')
     result['request'] = payload.model_dump()
@@ -30,10 +38,10 @@ def generate_recommendations(payload, db, engine):
     result['created_at'] = None
     if result['items']:
         identifier = str(uuid4())
-        name = 'Genre-balanced fallback' if result['fallback'] else 'Content similarity v1'
+        name = 'Balanced discovery' if result['fallback'] else result['model']['model_name']
         record = RecommendationSession(id=identifier,model_name=name,
                     track_ids=[item['track_id'] for item in result['items']],
-                    context={'kind':'content-generation','request':payload.model_dump(),
+                    context={'kind':'context-generation' if extra else 'content-generation','request':payload.model_dump(),
                              'feedback':{row.track_id:row.value for row in feedback},
                              'profile_features':{key:value for key,value in values.items() if key not in {'name','revision'}}})
         db.add(record); db.flush()

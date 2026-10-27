@@ -1,0 +1,32 @@
+{
+  "version": "moment-rules-v1",
+  "ranking_weights": {"base": 0.35, "context": 0.55, "discovery": 0.10},
+  "numeric_tolerances": {"energy": 0.35, "valence": 0.35, "acousticness": 0.4, "instrumentalness": 0.4, "bpm": 45},
+  "mood": {
+    "calm": {"energy": 0.2, "valence": 0.5, "acousticness": 0.7},
+    "happy": {"energy": 0.7, "valence": 0.85},
+    "energetic": {"energy": 0.9, "bpm": 140},
+    "melancholic": {"energy": 0.3, "valence": 0.2},
+    "relaxed": {"energy": 0.25, "bpm": 80},
+    "focused": {"energy": 0.35, "instrumentalness": 0.95}
+  },
+  "activity": {
+    "focus": {"instrumentalness": 0.95, "energy": 0.35, "bpm": 95},
+    "workout": {"energy": 0.9, "bpm": 140},
+    "relax": {"energy": 0.2, "bpm": 75},
+    "commute": {"energy": 0.6, "bpm": 110},
+    "social": {"valence": 0.75, "energy": 0.65}
+  },
+  "time_of_day": {
+    "morning": {"energy": 0.6, "valence": 0.65},
+    "afternoon": {"energy": 0.65},
+    "evening": {"energy": 0.4},
+    "night": {"energy": 0.2, "bpm": 75}
+  },
+  "weather": {
+    "clear": {"valence": 0.75, "energy": 0.6},
+    "rainy": {"energy": 0.3, "acousticness": 0.65},
+    "overcast": {"valence": 0.4, "energy": 0.4},
+    "snowy": {"energy": 0.2, "acousticness": 0.7}
+  }
+}

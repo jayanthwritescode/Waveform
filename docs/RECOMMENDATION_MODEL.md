@@ -1,4 +1,6 @@
-# Phase 4 content recommendation model
+# Content-only recommendation model
+
+This endpoint retains Phase 4 behavior. Phase 5 adds a separate [Vibe Control context layer](CONTEXT_MODEL.md) with moment scoring, discovery blending and count/duration controls.
 
 This is an unsupervised metadata similarity index, fitted at API startup. It is not a supervised relevance predictor or a collaborative model. No audio is read, and titles/artwork are not used to guess features.
 

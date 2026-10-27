@@ -1,6 +1,5 @@
 import {icon} from '../components/icons.js';
 const content = {
- vibe: ['Vibe Control', 'What does this moment sound like?', 'Your state of mind sets the tone.', 'Content-based playlist generation is available now. Mood, activity, time and optional weather ranking arrive in Phase 5.', 5, 'spark'],
  insights: ['Taste Insights', 'Get to know your taste.', 'Your preferences, reflected back.', 'Phase 7 will use genuine feedback, saved playlists, and context selections. No listening or playback statistics are collected.', 7, 'insights'],
  explorer: ['Recommendation Explorer', 'Behind every discovery.', 'Understand what brings a song to you.', 'Content-based discovery is available now. Model comparisons and evaluation visuals arrive in Phase 7; collaborative filtering is not implemented.', 7, 'explorer'],
 };

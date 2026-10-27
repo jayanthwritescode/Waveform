@@ -1,0 +1,140 @@
+{
+  "model_version": "context-v1-0f89c59098-content-v1-0ee256c3c66d",
+  "checked_contexts": 4,
+  "checks": "passed",
+  "scope": "Deterministic ranking sensitivity, score accounting, uniqueness, alternatives and duration bound; no measured relevance or mood accuracy",
+  "cases": {
+    "calm_focus": {
+      "ids": [
+        "fma-016688",
+        "fma-081782",
+        "fma-043094",
+        "fma-012790",
+        "fma-013662",
+        "fma-001046",
+        "fma-081381",
+        "fma-044795",
+        "fma-018014",
+        "fma-024611"
+      ],
+      "examples": [
+        {
+          "title": "One Version (Album Version)",
+          "score": 0.966171,
+          "context_coverage": 1.0
+        },
+        {
+          "title": "Love Sprouts",
+          "score": 0.963773,
+          "context_coverage": 1.0
+        },
+        {
+          "title": "Tanabata",
+          "score": 0.96164,
+          "context_coverage": 1.0
+        }
+      ]
+    },
+    "workout": {
+      "ids": [
+        "fma-022443",
+        "fma-121462",
+        "fma-071365",
+        "fma-112316",
+        "fma-005267",
+        "fma-055915",
+        "fma-044058",
+        "fma-041497",
+        "fma-070718",
+        "fma-034422"
+      ],
+      "examples": [
+        {
+          "title": "Until I Sleep",
+          "score": 0.997669,
+          "context_coverage": 1.0
+        },
+        {
+          "title": "Don't Come To Me",
+          "score": 0.996708,
+          "context_coverage": 1.0
+        },
+        {
+          "title": "Burning Soul",
+          "score": 0.996684,
+          "context_coverage": 1.0
+        }
+      ]
+    },
+    "rainy_night": {
+      "ids": [
+        "fma-023080",
+        "fma-019350",
+        "fma-020777",
+        "fma-075475",
+        "fma-044259",
+        "fma-050443",
+        "fma-013209",
+        "fma-056444",
+        "fma-004540",
+        "fma-032443"
+      ],
+      "examples": [
+        {
+          "title": "Rub",
+          "score": 0.982864,
+          "context_coverage": 1.0
+        },
+        {
+          "title": "I Mould U Jelly O",
+          "score": 0.981075,
+          "context_coverage": 1.0
+        },
+        {
+          "title": "01 ProudFlesh",
+          "score": 0.98037,
+          "context_coverage": 1.0
+        }
+      ]
+    },
+    "clear_morning": {
+      "ids": [
+        "fma-012287",
+        "fma-011796",
+        "fma-047745",
+        "fma-018974",
+        "fma-089841",
+        "fma-017633",
+        "fma-039569",
+        "fma-038400",
+        "fma-017631",
+        "fma-063228"
+      ],
+      "examples": [
+        {
+          "title": "Love her to death",
+          "score": 0.993666,
+          "context_coverage": 1.0
+        },
+        {
+          "title": "Beyon My",
+          "score": 0.991713,
+          "context_coverage": 1.0
+        },
+        {
+          "title": "Legs",
+          "score": 0.991074,
+          "context_coverage": 1.0
+        }
+      ]
+    }
+  },
+  "duration_example": {
+    "mode": "duration",
+    "requested_minutes": 30,
+    "total_known_seconds": 1784,
+    "unknown_duration_tracks": 0,
+    "maximum_tracks": 30,
+    "remaining_seconds": 16
+  }
+}

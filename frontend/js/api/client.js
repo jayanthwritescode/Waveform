@@ -48,3 +48,6 @@ export const exportSaved = (id, format) => request(`/api/playlists/${encodeURICo
 export const getRecommendationModel = () => request('/api/recommendations/model');
 export const generateRecommendations = payload => request('/api/recommendations', {method:'POST',body:payload});
 export const getRecommendationSession = id => request(`/api/recommendations/sessions/${encodeURIComponent(id)}`);
+
+export const getContextModel = () => request('/api/recommendations/context/model');
+export const generateContextRecommendations = payload => request('/api/recommendations/context', {method:'POST',body:payload});

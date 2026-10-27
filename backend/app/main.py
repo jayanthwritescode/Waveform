@@ -10,7 +10,7 @@ from app.api.tracks import router as tracks_router
 from app.api.workspace import router as workspace_router
 from app.config import settings
 from app.api.recommendations import router as recommendations_router
-from app.services.recommendations import get_engine
+from app.services.recommendations import get_engine, get_context_engine
 from app.database.core import initialize_database
 
 
@@ -18,11 +18,12 @@ from app.database.core import initialize_database
 async def lifespan(app):
     initialize_database()
     get_engine()
+    get_context_engine()
     yield
 
 
-app = FastAPI(title=settings.app_name, version="0.4.0", lifespan=lifespan,
-              description="Waveform — Your music. Your moment. Content-based discovery, preferences, playlists and portable exports.")
+app = FastAPI(title=settings.app_name, version="0.5.0", lifespan=lifespan,
+              description="Waveform — Your music. Your moment. Context-aware discovery, preferences, playlists and portable exports.")
 app.add_middleware(CORSMiddleware, allow_origins=settings.cors_origins,
                    allow_methods=["GET", "POST", "PUT", "DELETE"], allow_headers=["*"],
                    expose_headers=["Content-Disposition"])
