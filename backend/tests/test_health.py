@@ -14,7 +14,7 @@ def request_health(origin=None):
 def test_health():
     response = request_health()
     assert response.status_code == 200
-    assert response.json() == {"status": "ok", "app": "Waveform", "phase": 1}
+    assert response.json() == {"status": "ok", "app": "Waveform", "phase": 2}
 
 
 def test_allowed_frontend_origin():

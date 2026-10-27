@@ -1,0 +1,265 @@
+{
+  "name": "Waveform curated Incompetech collection",
+  "version": 1,
+  "retrieved_on": "2026-10-27",
+  "metadata_url": "https://incompetech.com/music/royalty-free/pieces.json",
+  "license_source": "https://incompetech.com/music/royalty-free/music.html",
+  "tracks": [
+    {
+      "id": "USUAN1500027",
+      "title": "Dreams Become Real",
+      "artist": "Kevin MacLeod",
+      "album": null,
+      "genre": "Contemporary",
+      "duration_seconds": 410,
+      "bpm": 60.0,
+      "instruments": [
+        "Piano",
+        "Synths"
+      ],
+      "tags": [
+        "Calming",
+        "Somber"
+      ],
+      "energy": null,
+      "valence": null,
+      "acousticness": null,
+      "instrumentalness": null,
+      "artwork": "assets/images/catalogue-1.svg",
+      "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1500027",
+      "audio_source_url": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Dreams%20Become%20Real.mp3",
+      "license_name": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution": "“Dreams Become Real” — Kevin MacLeod (incompetech.com). Licensed under Creative Commons Attribution 4.0. Audio unmodified. Waveform artwork is an original illustration, not the artist’s album artwork.",
+      "source_uploaded": "2015-04-21",
+      "audio_sha256": "a8ea5df5f969ed8d898af7fe07eb4712233f03e9d83f7ebcc88d1c851f3171b0"
+    },
+    {
+      "id": "USUAN1100844",
+      "title": "Cipher",
+      "artist": "Kevin MacLeod",
+      "album": null,
+      "genre": "Electronica",
+      "duration_seconds": 231,
+      "bpm": 150.0,
+      "instruments": [
+        "Synths",
+        "Electric Piano",
+        "Percussion",
+        "Strings"
+      ],
+      "tags": [
+        "Bright",
+        "Grooving",
+        "Uplifting"
+      ],
+      "energy": null,
+      "valence": null,
+      "acousticness": null,
+      "instrumentalness": null,
+      "artwork": "assets/images/catalogue-2.svg",
+      "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100844",
+      "audio_source_url": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Cipher2.mp3",
+      "license_name": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution": "“Cipher” — Kevin MacLeod (incompetech.com). Licensed under Creative Commons Attribution 4.0. Audio unmodified. Waveform artwork is an original illustration, not the artist’s album artwork.",
+      "source_uploaded": "2011-07-29",
+      "audio_sha256": "d3d0614535a61d748e2fd8d5117fc4d781022a7624794802a2462d8af3fdd522"
+    },
+    {
+      "id": "USUAN1400037",
+      "title": "Carefree",
+      "artist": "Kevin MacLeod",
+      "album": null,
+      "genre": "Contemporary",
+      "duration_seconds": 205,
+      "bpm": 96.0,
+      "instruments": [
+        "Ukulele",
+        "Guitar",
+        "Marimba",
+        "Glockenspiel",
+        "Percussion"
+      ],
+      "tags": [
+        "Bouncy",
+        "Bright",
+        "Calming",
+        "Uplifting"
+      ],
+      "energy": null,
+      "valence": null,
+      "acousticness": null,
+      "instrumentalness": null,
+      "artwork": "assets/images/catalogue-3.svg",
+      "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1400037",
+      "audio_source_url": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Carefree.mp3",
+      "license_name": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution": "“Carefree” — Kevin MacLeod (incompetech.com). Licensed under Creative Commons Attribution 4.0. Audio unmodified. Waveform artwork is an original illustration, not the artist’s album artwork.",
+      "source_uploaded": "2014-08-16",
+      "audio_sha256": "8433b770a630d9b1594fd484442c677907ece899a4d149954cd2e74fd733e311"
+    },
+    {
+      "id": "USUAN1300010",
+      "title": "Local Forecast",
+      "artist": "Kevin MacLeod",
+      "album": null,
+      "genre": "Jazz",
+      "duration_seconds": 165,
+      "bpm": 93.0,
+      "instruments": [
+        "Piano",
+        "Bass",
+        "Drum Kit",
+        "Electric Piano",
+        "Flute",
+        "Trumpet",
+        "Percussion",
+        "Guitar"
+      ],
+      "tags": [
+        "Bouncy",
+        "Bright",
+        "Grooving"
+      ],
+      "energy": null,
+      "valence": null,
+      "acousticness": null,
+      "instrumentalness": null,
+      "artwork": "assets/images/catalogue-4.svg",
+      "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1300010",
+      "audio_source_url": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Local%20Forecast.mp3",
+      "license_name": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution": "“Local Forecast” — Kevin MacLeod (incompetech.com). Licensed under Creative Commons Attribution 4.0. Audio unmodified. Waveform artwork is an original illustration, not the artist’s album artwork.",
+      "source_uploaded": "2013-02-02",
+      "audio_sha256": "c0b120cb91a62468f5024162c8942dd2310696c076b6a1df2b88892350575b87"
+    },
+    {
+      "id": "USUAN1400011",
+      "title": "Monkeys Spinning Monkeys",
+      "artist": "Kevin MacLeod",
+      "album": null,
+      "genre": "Soundtrack",
+      "duration_seconds": 125,
+      "bpm": 144.0,
+      "instruments": [
+        "Flutes",
+        "Violin",
+        "Viola",
+        "Cello"
+      ],
+      "tags": [
+        "Bouncy",
+        "Bright",
+        "Humorous",
+        "Uplifting"
+      ],
+      "energy": null,
+      "valence": null,
+      "acousticness": null,
+      "instrumentalness": null,
+      "artwork": "assets/images/catalogue-5.svg",
+      "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1400011",
+      "audio_source_url": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Monkeys%20Spinning%20Monkeys.mp3",
+      "license_name": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution": "“Monkeys Spinning Monkeys” — Kevin MacLeod (incompetech.com). Licensed under Creative Commons Attribution 4.0. Audio unmodified. Waveform artwork is an original illustration, not the artist’s album artwork.",
+      "source_uploaded": "2014-02-03",
+      "audio_sha256": "a5bb345c23849ad0786aa0bc5157a9f2d4039660fe00282e55754d475f36dc14"
+    },
+    {
+      "id": "USUAN2100030",
+      "title": "Space Jazz",
+      "artist": "Kevin MacLeod",
+      "album": null,
+      "genre": "Jazz",
+      "duration_seconds": 370,
+      "bpm": 89.0,
+      "instruments": [
+        "Synths"
+      ],
+      "tags": [
+        "Bright",
+        "Grooving",
+        "Relaxed"
+      ],
+      "energy": null,
+      "valence": null,
+      "acousticness": null,
+      "instrumentalness": null,
+      "artwork": "assets/images/catalogue-6.svg",
+      "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN2100030",
+      "audio_source_url": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Space%20Jazz.mp3",
+      "license_name": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution": "“Space Jazz” — Kevin MacLeod (incompetech.com). Licensed under Creative Commons Attribution 4.0. Audio unmodified. Waveform artwork is an original illustration, not the artist’s album artwork.",
+      "source_uploaded": "2021-09-29",
+      "audio_sha256": "51924be4565a2f101f4daa45998aa4c3577dab05ba5d1067ffb7bc57583ad503"
+    },
+    {
+      "id": "USUAN1100192",
+      "title": "Ishikari Lore",
+      "artist": "Kevin MacLeod",
+      "album": null,
+      "genre": "World",
+      "duration_seconds": 164,
+      "bpm": 82.0,
+      "instruments": [
+        "Koto",
+        "Flute",
+        "Percussion"
+      ],
+      "tags": [
+        "Calming",
+        "Mystical",
+        "Relaxed"
+      ],
+      "energy": null,
+      "valence": null,
+      "acousticness": null,
+      "instrumentalness": null,
+      "artwork": "assets/images/catalogue-7.svg",
+      "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100192",
+      "audio_source_url": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Ishikari%20Lore.mp3",
+      "license_name": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution": "“Ishikari Lore” — Kevin MacLeod (incompetech.com). Licensed under Creative Commons Attribution 4.0. Audio unmodified. Waveform artwork is an original illustration, not the artist’s album artwork.",
+      "source_uploaded": "2007-01-01",
+      "audio_sha256": "2ae7e32d371f839c507f44397473942a9fbaffcea4c1ac1f94331fdf70a2b581"
+    },
+    {
+      "id": "USUAN1100772",
+      "title": "Sneaky Snitch",
+      "artist": "Kevin MacLeod",
+      "album": null,
+      "genre": "Soundtrack",
+      "duration_seconds": 137,
+      "bpm": 87.0,
+      "instruments": [
+        "Oboe",
+        "Strings",
+        "Snare Drum"
+      ],
+      "tags": [
+        "Bouncy",
+        "Dark",
+        "Humorous",
+        "Mysterious"
+      ],
+      "energy": null,
+      "valence": null,
+      "acousticness": null,
+      "instrumentalness": null,
+      "artwork": "assets/images/catalogue-8.svg",
+      "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100772",
+      "audio_source_url": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/Sneaky%20Snitch.mp3",
+      "license_name": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/",
+      "attribution": "“Sneaky Snitch” — Kevin MacLeod (incompetech.com). Licensed under Creative Commons Attribution 4.0. Audio unmodified. Waveform artwork is an original illustration, not the artist’s album artwork.",
+      "source_uploaded": "2010-11-25",
+      "audio_sha256": "db1710333d68a215277f77e4e17e1a64bf4ed38f87c70f8d0f56b16b6aa4f884"
+    }
+  ]
+}
