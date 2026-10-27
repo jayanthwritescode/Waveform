@@ -6,8 +6,13 @@ import {draft} from './state/draft.js';
 import {renderDraftDock, syncDraftButtons} from './components/draft-actions.js';
 import {builderPage, refreshBuilder} from './pages/builder.js';
 import {toast} from './utils/toast.js';
-import {getHealth, getTracks, getTrack} from './api/client.js';
+import {getTracks, getTrack} from './api/client.js';
 import {catalogueError} from './components/cards.js';
+import {libraryPage, mountLibrary} from './pages/library.js';
+import {settingsPage, mountSettings} from './pages/settings.js';
+import {workspace, loadWorkspace, subscribeWorkspace, toggleFeedback} from './state/workspace.js';
+import {syncFeedbackButtons} from './components/track-actions.js';
+import {saveEditor, downloadEditor, readImport, loadImport, openSaved, removeSaved, downloadSaved, requestReplacement} from './components/playlist-tools.js';
 
 renderShell();
 renderDraftDock(draft.snapshot());
@@ -38,12 +43,15 @@ function navigate() {
   });
   const main = document.querySelector('#main');
   displayedTracks = [];
-  main.innerHTML = route === 'home' ? homePage() : route === 'discover' ? discoverPage() : route === 'builder' ? builderPage() : route === 'track' ? '<div class="catalogue-state" role="status">Loading track…</div>' : placeholderPage(route);
+  main.innerHTML = route === 'home' ? homePage() : route === 'discover' ? discoverPage() : route === 'builder' ? builderPage() : route === 'library' ? libraryPage() : route === 'settings' ? settingsPage() : route === 'track' ? '<div class="catalogue-state" role="status">Loading track…</div>' : placeholderPage(route);
   if (route === 'home') loadHome(routeVersion);
   if (route === 'discover') {
     document.querySelector('#music-search').value = filters.q;
     loadDiscover(routeVersion);
   }
+  const version = routeVersion;
+  if (route === 'settings') mountSettings(() => version === routeVersion);
+  if (route === 'library') mountLibrary(() => version === routeVersion).then(tracks => {if (tracks && version === routeVersion) displayedTracks = tracks;});
   if (route === 'builder') refreshBuilder(draft.snapshot());
   if (trackMatch) loadDetail(trackMatch[1], routeVersion);
   document.body.classList.remove('nav-open');
@@ -147,6 +155,7 @@ document.addEventListener('input', event => {
   filterTimer = setTimeout(() => {captureFilters(); loadDiscover(routeVersion);}, 250);
 });
 document.addEventListener('change', event => {
+  if (event.target.id === 'playlist-file') {readImport(event.target.files[0]); return;}
   if (!['genre-filter','artist-filter'].includes(event.target.id)) return;
   clearTimeout(filterTimer);
   captureFilters();
@@ -170,7 +179,7 @@ document.addEventListener('click', async event => {
     if (draft.has(id)) {draft.remove(id); toast('Track removed from your draft.');}
     else {
       const track = displayedTracks.find(item => item.id === id);
-      if (track) {draft.add(track); toast(`${track.title} added to your draft.`);}
+      if (track) {try {draft.add(track); toast(`${track.title} added to your draft.`);} catch(error) {toast(error.message);}}
     }
   }
   const move = event.target.closest('[data-move-track]');
@@ -197,19 +206,50 @@ document.addEventListener('click', async event => {
     document.querySelector('#main').focus({preventScroll:true});
     toast('All tracks removed. Your draft title and description are kept.');
   }
-  if (event.target.closest('[data-retry-catalogue]')) navigate();
-  if (event.target.closest('#check-health')) {
-    const button = document.querySelector('#check-health');
-    const status = document.querySelector('#connection-status');
-    button.disabled = true; status.textContent = 'Connecting…';
-    try {const health = await getHealth(); status.textContent = `${health.app}: ${health.status} · Phase ${health.phase}`;}
-    catch {status.textContent = 'Backend unavailable. Start the FastAPI server on port 8000 and try again.';}
-    finally {button.disabled = false;}
+  if (event.target.closest('[data-retry-catalogue],[data-retry-page]')) navigate();
+  if (event.target.closest('[data-retry-workspace]')) loadWorkspace();
+  const feedback = event.target.closest('[data-feedback]');
+  if (feedback) {
+    try {await toggleFeedback(feedback.dataset.feedbackTrack,feedback.dataset.feedback); if (location.hash === '#/library') navigate();}
+    catch (error) {toast(error.message || 'Feedback could not be saved. Check the backend and retry.');}
   }
+  if (event.target.closest('#save-playlist')) saveEditor();
+  if (event.target.closest('#save-copy')) saveEditor(true);
+  if (event.target.closest('#new-playlist')) requestReplacement(()=>{draft.newPlaylist(); toast('New playlist draft started.');},'Start a new playlist?');
+  const exportButton = event.target.closest('[data-export-format]');
+  if (exportButton) downloadEditor(exportButton.dataset.exportFormat,exportButton);
+  if (event.target.closest('#load-import')) {loadImport(); document.querySelector('#import-preview').replaceChildren();}
+  const open = event.target.closest('[data-open-playlist]');
+  if (open) {const version=routeVersion; openSaved(open.dataset.openPlaylist,()=>version===routeVersion);}
+  const exportSavedButton = event.target.closest('[data-export-saved]');
+  if (exportSavedButton) downloadSaved(exportSavedButton.dataset.exportSaved,exportSavedButton.dataset.format,exportSavedButton);
+  const removeSavedButton = event.target.closest('[data-delete-playlist]');
+  if (removeSavedButton) {
+    removeSavedButton.disabled=true;
+    const version = routeVersion;
+    try {await removeSaved(removeSavedButton.dataset.deletePlaylist,Number(removeSavedButton.dataset.revision)); if (version===routeVersion) navigate(); toast('Saved playlist deleted.');}
+    catch(error) {toast(error.message || 'Delete failed. The saved playlist is kept.'); removeSavedButton.disabled=false;}
+  }
+
 });
 draft.subscribe((snapshot, change) => {
   renderDraftDock(snapshot);
   syncDraftButtons();
   refreshBuilder(snapshot, change);
 });
+subscribeWorkspace(() => {
+  syncFeedbackButtons();
+  const notice = document.querySelector('#workspace-notice');
+  notice.hidden = !workspace.error;
+  if (workspace.error) {
+    notice.replaceChildren(document.createTextNode('Local preferences/feedback are unavailable. Your editor draft is kept. '));
+    const retry = document.createElement('button'); retry.className='text-button'; retry.dataset.retryWorkspace=''; retry.textContent='Retry connection'; notice.append(retry);
+  }
+  if (workspace.profile) {
+    document.querySelectorAll('.profile strong').forEach(element=>element.textContent=workspace.profile.name);
+    document.querySelectorAll('.avatar,.top-avatar').forEach(element=>element.textContent=workspace.profile.name[0].toUpperCase());
+  }
+});
+window.addEventListener('waveform-library-changed',()=>{if (location.hash === '#/library') navigate();});
+loadWorkspace();
 navigate();

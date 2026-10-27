@@ -2,27 +2,25 @@
 
 **Your music. Your moment.**
 
-Waveform is a platform-independent music discovery, recommendation and playlist generation project. The current **Phase 2.5 transition** preserves the existing discovery catalogue and adds a working manual playlist draft. Automatic recommendations and persistent playlists are future phases.
-
-The intended journey is **Choose Context → Generate Recommendations → Refine Playlist → Save or Export**. Waveform does not host or stream music and works independently of third-party platform APIs.
+Waveform is a platform-independent music discovery, recommendation and playlist generation project. **Phase 3 is complete: local preferences, feedback, saved playlists and portable files.** Recommendation algorithms start in Phase 4; the app does not simulate generated recommendations or listening history.
 
 ## Working today
 
-- Existing midnight/lavender design system, responsive sidebar, navigation and original illustrations.
-- Eight real Kevin MacLeod track metadata records, with source identifiers, ISRCs, genre, instruments, tags, tempo, duration and licensing provenance.
-- Discover search across title, artist, genre, instruments and tags; combined genre/artist filters, clear filters, loading/empty/error/retry states.
-- Metadata detail pages with individual source and credit links.
-- Add/remove draft actions on catalogue cards and track details; no playback controls.
-- Playlist Builder with editable title/description, ordered track list, accessible move up/down buttons, removal and clear.
-- Optional draft dock with title, track count, estimated duration, editor link and clear action. It appears only while tracks are selected.
-- Draft state remains consistent across internal navigation and search. **Refreshing or closing the page clears the draft.** Clear removes tracks but keeps the current title and description.
-- Taste Insights replaces Listening Insights. Future pages clearly explain their planned scope.
+- Responsive midnight/lavender interface, eight real credited track metadata records and catalogue search/filtering.
+- Local single-user profile: name, favorite/disliked genres, favorite artists, energy range, instrumental and familiarity/discovery preferences.
+- Persisted Like/Dislike feedback with mutually exclusive, reversible selections.
+- Playlist Builder: title/description, add/remove/reorder, estimated duration, explicit save/update and save a copy.
+- Your Library: saved playlist editing/deletion, file exports, liked/disliked tracks, favorite artists/genres, and an honest empty recommendation-session state.
+- UTF-8 CSV, TXT and JSON export; validated imports with previews, exact source-ID matching and clearly labeled unmatched metadata.
+- Properly encoded Spotify, Apple Music and YouTube Music searches on catalogue/details/editor tracks. These are search links, not direct playlist transfers or verified destination matches.
+- SQLite persistence through SQLAlchemy; saved records survive frontend reloads and backend restarts. Revision checks protect against stale edits/deletions in another tab.
+- Editor recovery on refresh in the current tab using session storage. Save to Your Library for permanent storage. Failed requests retain the draft and form inputs.
 
-The home “Generate Your Playlist” link opens an honest explanation of upcoming generation, with a route to manual building. It does not produce simulated recommendations. Saving, CSV/TXT/JSON import/export, feedback and external platform searches are revised Phase 3 work; no nonfunctional export or save buttons are shown.
+The home generation link still explains future generation. No recommendation model, automatic playlist generation, Taste Insights metrics, playback or third-party account integration has been added.
 
-## Setup
+## Setup and run
 
-Use Python 3.11+ and a modern browser supporting ES modules, Fetch and `structuredClone`. Node.js is optional for frontend tests. No frontend dependency installation/build is required.
+Use Python 3.11+ and a modern browser with native ES modules, Fetch, structuredClone, Blob downloads and File/TextDecoder APIs. Node.js is optional for frontend tests. No frontend install/build is needed, and no audio download is required.
 
 ```sh
 cd /Users/jayanth/Desktop/Waveform
@@ -31,87 +29,93 @@ source .venv/bin/activate
 python -m pip install -r backend/requirements-dev.txt
 ```
 
-For a fresh checkout, copy `.env.example` to `.env` if custom configuration is needed. Preserve an existing `.env`. `backend/requirements.txt` lists runtime dependencies; `requirements-lock.txt` records the verified development versions.
+For a fresh checkout, copy `.env.example` to `.env` if custom configuration is needed. Preserve an existing `.env`. Runtime dependencies are in `backend/requirements.txt`; `requirements-lock.txt` captures the verified versions. Phase 3 adds no package dependencies.
 
-**No audio download or installation is required.** Legacy MP3 files from Phase 2 remain untouched in ignored `data/audio/`, but the application neither reads nor serves them. The audio downloader and streaming endpoints have been retired.
-
-## Run locally
-
-Backend, in terminal 1:
+Backend, terminal 1:
 
 ```sh
 cd /Users/jayanth/Desktop/Waveform
 .venv/bin/python -m uvicorn app.main:app --app-dir backend --reload --host 127.0.0.1 --port 8000
 ```
 
-Frontend, in terminal 2:
+Frontend, terminal 2:
 
 ```sh
 cd /Users/jayanth/Desktop/Waveform
 python3.11 -m http.server 5173 --bind 127.0.0.1 --directory frontend
 ```
 
-Open [Waveform](http://127.0.0.1:5173), [Discover](http://127.0.0.1:5173/#/discover), [Playlist Builder](http://127.0.0.1:5173/#/builder), or [API docs](http://127.0.0.1:8000/docs). Serve the frontend over HTTP rather than `file://`.
+Open [Waveform](http://127.0.0.1:5173), [Your Library](http://127.0.0.1:5173/#/library), [Settings](http://127.0.0.1:5173/#/settings), or [API docs](http://127.0.0.1:8000/docs). Serve the frontend over HTTP and only from `frontend/`, outside the preserved legacy audio directory.
 
-## Manual review
-
-1. Open Discover. The dock is hidden while the draft is empty.
-2. Search `piano` (three tracks), then choose Contemporary (one track). Clear filters to restore all eight.
-3. Add Dreams Become Real, Cipher and Carefree. The dock shows three tracks and **14:06 estimated**.
-4. Open **Edit playlist**. Change the title and description; move Carefree up, remove a track, and check the row order/count/duration.
-5. Visit Discover, Home and a track detail page, then return to the builder. The same draft and metadata remain; selected cards show **In your draft**.
-6. Clear the draft. The dock hides and the editor shows its empty state; the title/description remain available for another selection.
-7. Test keyboard focus and narrow mobile layouts. Refresh intentionally starts a new empty draft.
-8. Stop the backend and search again to check the connection error. Restart it and choose **Try again**. Settings also has a connection check.
-
-## Configuration
+## Local storage and configuration
 
 The backend loads the root `.env`, with environment variables taking precedence.
 
 | Variable | Default | Purpose |
 | --- | --- | --- |
-| `APP_NAME` | `Waveform` | API application name |
-| `APP_ENV` | `development` | Environment label |
-| `CORS_ORIGINS` | `["http://localhost:5173", "http://127.0.0.1:5173"]` | JSON array of allowed frontend origins |
-| `DATABASE_URL` | `sqlite:///./data/waveform.db` | Reserved database setting for Phase 3; no database created yet |
+| APP_NAME | Waveform | API name |
+| APP_ENV | development | Environment label |
+| CORS_ORIGINS | `["http://localhost:5173", "http://127.0.0.1:5173"]` | Allowed frontend origins; JSON array |
+| DATABASE_URL | `sqlite:///./data/waveform.db` | Local workspace database; relative SQLite paths resolve from the project root |
 
-An old `AUDIO_DIR` entry in `.env` is ignored and can be removed manually; the pivot does not overwrite existing environment files.
+First startup creates the initial tables and default local profile without dropping existing data. Database files are Git-ignored. Back up the SQLite file while the server is stopped; do not commit it. Existing source metadata and legacy MP3 files remain unchanged and are not served. Legacy AUDIO_DIR is ignored.
 
-The browser API defaults to `http://127.0.0.1:8000`. To override it, assign `window.WAVEFORM_API_BASE` before the module script in `frontend/index.html`. This is public configuration; do not put secrets there. Python's static server does not read `.env`.
+This is a single-user local app bound to loopback, with no account authentication. It is not configured for public multi-user deployment. SQLAlchemy keeps database access separate from routes; PostgreSQL needs an appropriate driver and future deployment/migration work. Phase 3 introduces the first schema using `create_all`; future schema changes require explicit migrations.
 
-## Metadata API
+The editor's tab recovery is separate from saved playlists. It survives a reload in the same tab; closing/clearing the browser session may remove it. If session storage is unavailable, the editor reports that limitation and remains usable in memory. Save to the backend to keep a playlist. New/open/import actions distinguish replacing the editor from updating a saved playlist. Clear removes tracks but retains the current title/description.
 
-| Method and path | Behavior |
+The frontend API defaults to `http://127.0.0.1:8000`. Override with `window.WAVEFORM_API_BASE` before the module script; this browser-visible setting must not contain secrets.
+
+## Using the app
+
+1. In Settings, edit your profile and preferences, then Save preferences. Use one artist/genre per line; commas inside an artist name are preserved. Conflicting favorite/disliked genres or invalid energy ranges are rejected without losing the form.
+2. In Discover, search/filter, select Like/Dislike, and add tracks to the draft. Clicking the active feedback again clears it.
+3. In Playlist Builder, edit metadata/order and Save playlist. Open saved playlists from Your Library, then Save changes or Save a copy. Delete uses a separate disclosure and explicit delete action.
+4. Download CSV/TXT/JSON from the editor or saved library. No file download is represented as a transfer to a streaming service.
+5. Select a file to preview its metadata, matches and warnings. Load it explicitly as a new unsaved draft, then save if wanted. Invalid files do not replace the draft.
+6. Expand Find on music services to search by artist/title without linking an account.
+
+[FILE_FORMATS.md](docs/FILE_FORMATS.md) defines accepted file versions/columns, escaping, matching, unknown metadata and size limits. JSON retains full validated metadata; CSV/TXT retain portable fields. TXT import supports Waveform v1 exports; CSV requires Track Title and Artist. No exact platform availability is assumed.
+
+## API
+
+| Method/path | Behavior |
 | --- | --- |
-| `GET /api/health` | Application status and phase `2.5` |
-| `GET /api/tracks` | Catalogue with `q`, `genre`, `artist`, `limit` (1–100), `offset` (0+) |
-| `GET /api/tracks/{ISRC}` | Metadata, source identifiers, credits and provenance |
+| GET `/api/health` | Status and phase 3 |
+| GET `/api/tracks`, `/api/tracks/{ISRC}` | Metadata search/details; no audio routes |
+| GET/PUT `/api/profile` | Local profile/preferences; revision required for update |
+| GET `/api/feedback`; PUT `/api/feedback/{catalogue_id}` | Explicit like/dislike/null feedback |
+| GET/POST `/api/playlists` | List/create saved playlists |
+| GET/PUT/DELETE `/api/playlists/{id}` | Read/update/delete; updates and deletes require current revision |
+| GET `/api/playlists/{id}/export?format=csv|txt|json` | Export saved playlist |
+| POST `/api/playlist-export?format=csv|txt|json` | Export editor payload without saving |
+| POST `/api/playlist-import` | Validate `{format, content}` and preview; no database write |
+| GET `/api/library` | Saved playlists, feedback, profile and real recommendation sessions |
 
-Search is case-insensitive; all query terms must match searchable metadata. Filters combine with AND. Ordering is deterministic catalogue order, not personalized ranking. Filter choices describe the whole collection.
+Playlist inputs contain title, description and ordered track metadata. Imports and saves normalize catalogue identities and remove duplicates. Unknown imported records retain provenance and missing values. No arbitrary remote URLs are fetched. Input validation errors omit raw file payloads; database failures return a useful 503; stale revisions return 409 and retain the editor.
 
-The former `/api/tracks/{ISRC}/audio` route returns 404. Audio URLs, hashes and availability fields are not exposed by the API. The original manifest preserves historical audio provenance without requiring a destructive data migration. Restart FastAPI after editing catalogue metadata.
-
-## Tests
+## Testing and review
 
 ```sh
 cd /Users/jayanth/Desktop/Waveform
 .venv/bin/python -m pytest -c backend/pytest.ini -q
-node --test frontend/tests/draft.test.mjs
-curl http://127.0.0.1:8000/api/health
-curl 'http://127.0.0.1:8000/api/tracks?q=piano&genre=Contemporary'
+node --test frontend/tests/*.test.mjs
 ```
 
-Expected current results: **13 backend tests and 6 frontend tests pass**. Backend tests cover metadata integrity, health/CORS, search/filtering/pagination, validation, 404s, and removal of streaming endpoints/public audio fields. Frontend tests cover duplicate prevention, ordering/removal, copied state, metadata/clear notifications, unknown durations and safe rendering primitives. No tests download music or contact a music platform.
+**30 backend tests and 10 frontend tests pass.** Database tests use isolated temporary SQLite files, not the user's workspace. Tests cover persistence/reopen, profile validation, feedback, playlist CRUD/order/revision conflicts, all three file round trips, Unicode/multiline CSV/quotes, formula-safe CSV, empty exports, unmatched imports, malformed files, byte limits, database failures, draft identity and encoded platform searches.
 
-## Data and roadmap
+Browser QA verified profile reload, feedback changes, playlist save/reopen/rename/reorder, editor recovery, a real JSON download and import preview/load, backend restart persistence, failed-save retention and responsive library/editor/settings layouts. No platform playlist was created. Exact results and checkpoint status are in [PROJECT_PROGRESS.md](PROJECT_PROGRESS.md).
 
-The eight-track metadata scaffold contains one composer and is not representative enough for evaluating recommendation quality. Album, release year and standardized energy/valence/acousticness/instrumentalness are unavailable and remain null. The catalogue upload date is not used as release year. Platform-specific identifiers/matching are not available; presence in this collection does not guarantee presence on Spotify, Apple Music or YouTube Music.
+## Data and remaining work
 
-Metadata and credits originate from [Incompetech](https://incompetech.com/music/royalty-free/music.html). Original Waveform illustrations are distinguished from artist album artwork. Details and limitations are in [data/README.md](data/README.md).
+The original catalogue contains eight Kevin MacLeod records and one composer. It is not representative enough to evaluate recommendation quality. Album, release year and standardized energy/valence/acousticness/instrumentalness remain unknown; upload date is not release year. See [data/README.md](data/README.md) for source/credit details and preservation notes.
 
-- [Revised roadmap](docs/ROADMAP.md): Phase 3 persistence, portable file export/import and external search; Phases 4–6 recommendation models; Phase 7 Explorer/Taste Insights; Phase 8 polish and optional official integrations.
-- [Architecture](docs/ARCHITECTURE.md) and [pivot audit](docs/PIVOT_AUDIT.md): retained components, changes and compatibility risks.
-- [Project progress](PROJECT_PROGRESS.md): completed work and actual validation.
-- [Phase 2 history](docs/history/PHASE_2.md): preserved historical documentation, not current startup instructions.
+Profile preferences and feedback are saved now; they do not yet change catalogue ranking. The recommendation session table remains empty until the engine records genuine output. Manual drafts/imports are not fabricated sessions or audio plays.
 
-Phase 2.5 stops for review and a user-managed GitHub commit. Do not begin Phase 3 until explicitly authorized. No automated commits, pushes, destructive Git operations or deployment.
+- Phase 4: legitimate preprocessing, content-based recommendations, basic playlist generation and explanations.
+- Phase 5: context-aware playlist generation and Vibe Control.
+- Phase 6: collaborative/hybrid models where valid.
+- Phase 7: Explorer and Taste Insights from genuine interactions/evaluation.
+- Phase 8: export refinements, optional official integrations, polish, tests and deployment.
+
+See [roadmap](docs/ROADMAP.md), [architecture](docs/ARCHITECTURE.md) and the archived [Phase 2.5 checkpoint](docs/history/PHASE_2_5.md). Stop after Phase 3 for manual review/commit. No automated commits, pushes, destructive Git operations or Phase 4 work.

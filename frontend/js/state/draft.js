@@ -1,7 +1,9 @@
-/** Frontend-only draft. No listening events, persistence, or generated rankings. */
+/** Editor state; tab recovery is separate from saved backend playlists. */
 export class PlaylistDraft {
-  #state = {title: 'My moment', description: '', tracks: []};
+  #state = {title: 'My moment', description: '', tracks: [], savedId:null, savedRevision:null, dirty:false};
   #listeners = new Set();
+  #generation = 0;
+  get generation() {return this.#generation;}
 
   snapshot() {
     return structuredClone(this.#state);
@@ -17,12 +19,14 @@ export class PlaylistDraft {
   }
 
   #notify(change) {
+    if (!['saved','load'].includes(change)) this.#state.dirty = true;
     for (const listener of this.#listeners) listener(this.snapshot(), change);
   }
 
   add(track) {
     if (!track?.id || !track.title || !track.artist) throw new TypeError('A draft track needs an ID, title, and artist.');
     if (this.has(track.id)) return false;
+    if (this.#state.tracks.length >= 500) throw new RangeError('A playlist can contain at most 500 tracks.');
     this.#state.tracks.push(structuredClone(track));
     this.#notify('add');
     return true;
@@ -46,6 +50,7 @@ export class PlaylistDraft {
   }
 
   setMetadata(field, value) {
+    if (!['title','description'].includes(field)) return false;
     const maximum = {title: 80, description: 500}[field];
     if (!maximum || typeof value !== 'string') return false;
     const next = value.slice(0, maximum);
@@ -53,6 +58,41 @@ export class PlaylistDraft {
     this.#state[field] = next;
     this.#notify('metadata');
     return true;
+  }
+
+  load(playlist, {saved = false, recover = false} = {}) {
+    if (!playlist || typeof playlist.title !== 'string' || typeof playlist.description !== 'string' || !Array.isArray(playlist.tracks) || playlist.tracks.length > 500) throw new TypeError('Invalid playlist draft');
+    const ids = new Set();
+    const tracks = playlist.tracks.filter(track => {
+      if (!track || typeof track.id !== 'string' || typeof track.title !== 'string' || typeof track.artist !== 'string' || ids.has(track.id)) return false;
+      ids.add(track.id); return true;
+    });
+    ++this.#generation;
+    this.#state = {title:playlist.title.slice(0,80), description:playlist.description.slice(0,500), tracks:structuredClone(tracks),
+      savedId:saved ? playlist.id : recover ? playlist.savedId || null : null,
+      savedRevision:saved ? playlist.revision : recover ? playlist.savedRevision || null : null,
+      dirty:recover ? Boolean(playlist.dirty) : !saved};
+    this.#notify('load');
+  }
+
+  markSaved(playlist, unchanged = true) {
+    this.#state.savedId = playlist.id;
+    this.#state.savedRevision = playlist.revision;
+    this.#state.dirty = !unchanged;
+    this.#notify('saved');
+  }
+
+  newPlaylist() {
+    ++this.#generation;
+    this.#state = {title:'My moment', description:'', tracks:[], savedId:null, savedRevision:null, dirty:false};
+    this.#notify('load');
+  }
+
+  unlink(id) {
+    if (this.#state.savedId !== id) return;
+    this.#state.savedId = null;
+    this.#state.savedRevision = null;
+    this.#notify('unlink');
   }
 
   clear() {
@@ -73,3 +113,16 @@ export function summarizeDraft(snapshot) {
 }
 
 export const draft = new PlaylistDraft();
+
+export let recoveryWarning = '';
+if (typeof window !== 'undefined') {
+  try {
+    const storage = window.sessionStorage;
+    const recovered = JSON.parse(storage.getItem('waveform-draft-v1') || 'null');
+    if (recovered?.version === 1) draft.load(recovered.draft, {recover:true});
+  } catch {recoveryWarning = 'The previous tab draft could not be restored. Saved playlists remain in Your Library.';}
+  draft.subscribe(snapshot => {
+    try {sessionStorage.setItem('waveform-draft-v1', JSON.stringify({version:1,draft:snapshot}));}
+    catch {recoveryWarning = 'Tab recovery is unavailable. Save your playlist to keep it after leaving this page.';}
+  });
+}

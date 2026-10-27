@@ -158,3 +158,8 @@ main:focus {
     scroll-behavior:auto!important
   }
 }
+
+/* Keep semantic visibility authoritative over component display rules. */
+[hidden] {
+  display:none!important;
+}

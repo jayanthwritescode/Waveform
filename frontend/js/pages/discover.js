@@ -1,5 +1,6 @@
 import {icon} from '../components/icons.js';
 import {draftButton} from '../components/draft-actions.js';
+import {feedbackButtons, platformLinks} from '../components/track-actions.js';
 import {skeletonCards, trackCard, catalogueCredits} from '../components/cards.js';
 import {escapeHtml as html, formatTime} from '../utils/html.js';
 
@@ -27,6 +28,7 @@ export function trackPage(track) {
       <div><div class="eyebrow">FROM THE OPEN COLLECTION</div><h1>${html(track.title)}</h1><p class="detail-artist">${html(track.artist)}</p>
       <div class="detail-tags"><span>${html(track.genre)}</span><span>${formatTime(track.duration_seconds)}</span>${track.bpm ? `<span>${html(track.bpm)} BPM</span>` : ''}</div>
       ${draftButton(track, 'primary-button')}
+      ${feedbackButtons(track)}${platformLinks(track)}
       </div></section>
     <section class="metadata-panel"><h2>Inside the track</h2><dl><div><dt>Instruments</dt><dd>${html(track.instruments.join(', '))}</dd></div><div><dt>Source tags</dt><dd>${html(track.tags.join(' · '))}</dd></div><div><dt>ISRC</dt><dd>${html(track.id)}</dd></div><div><dt>Album</dt><dd>${html(track.album || 'Not supplied by source')}</dd></div><div><dt>Release year</dt><dd>${html(track.release_year || 'Not supplied by source')}</dd></div><div><dt>Dataset source</dt><dd>${html(track.dataset_source)}</dd></div></dl><p>Tempo, duration, genre, instruments, and tags come from the composer’s catalogue. Energy, valence, acousticness, and instrumentalness are not supplied and remain unknown.</p></section>
     <section class="metadata-panel credit-panel"><h2>Music credits</h2><p>${html(track.attribution)}</p><div class="credit-links"><a href="${html(track.source_url)}" target="_blank" rel="noopener noreferrer">Track source ↗</a><a href="${html(track.license_url)}" target="_blank" rel="noopener noreferrer">${html(track.license_name)} ↗</a></div></section>`;

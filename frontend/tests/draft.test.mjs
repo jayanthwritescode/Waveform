@@ -66,3 +66,29 @@ test('metadata is bounded and escaped before HTML rendering', () => {
   assert.equal(formatTime(410), '6:50');
   assert.equal(formatTime(null), '0:00');
 });
+test('loading/saving binds revisions and newer changes remain dirty', () => {
+  const draft = new PlaylistDraft();
+  draft.load({id:'saved',revision:2,title:'Saved',description:'Description',tracks:[track('a')]},{saved:true});
+  assert.equal(draft.snapshot().savedRevision,2);
+  assert.equal(draft.snapshot().dirty,false);
+  draft.setMetadata('title','Newer title');
+  draft.markSaved({id:'saved',revision:3},false);
+  assert.equal(draft.snapshot().dirty,true);
+  assert.equal(draft.snapshot().title,'Newer title');
+  draft.unlink('saved');
+  assert.equal(draft.snapshot().savedId,null);
+  const generation = draft.generation;
+  draft.newPlaylist();
+  assert.ok(draft.generation > generation);
+  assert.equal(draft.snapshot().tracks.length,0);
+});
+test('recovered draft identity and imported draft identity stay separate', () => {
+  const draft = new PlaylistDraft();
+  const saved = {title:'Draft',description:'',tracks:[track('a')],savedId:'id',savedRevision:3,dirty:true};
+  draft.load(saved,{recover:true});
+  assert.equal(draft.snapshot().savedId,'id');
+  draft.load(saved);
+  assert.equal(draft.snapshot().savedId,null);
+  assert.equal(draft.snapshot().dirty,true);
+  assert.equal(draft.setMetadata('__proto__','invalid'),false);
+});

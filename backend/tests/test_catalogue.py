@@ -66,4 +66,5 @@ def test_catalogue_is_metadata_only():
 def test_streaming_route_is_removed():
     assert request("/api/tracks/USUAN1500027/audio").status_code == 404
     paths = request("/openapi.json").json()["paths"]
-    assert set(paths) == {"/api/health", "/api/tracks", "/api/tracks/{track_id}"}
+    assert {"/api/health", "/api/tracks", "/api/tracks/{track_id}"}.issubset(paths)
+    assert not any(path.endswith("/audio") for path in paths)

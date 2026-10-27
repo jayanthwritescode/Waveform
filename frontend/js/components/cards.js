@@ -1,4 +1,5 @@
 import {icon} from './icons.js';
+import {feedbackButtons, platformLinks} from './track-actions.js';
 import {draftButton} from './draft-actions.js';
 import {escapeHtml as html, formatTime} from '../utils/html.js';
 
@@ -11,6 +12,7 @@ export const trackCard = (track, index) => `<article class="track-card">
   <span class="track-artist">${html(track.artist)}</span>
   <span class="track-meta">${html(track.genre)}<span>${formatTime(track.duration_seconds)}</span></span>
   ${draftButton(track)}
+  ${feedbackButtons(track)}${platformLinks(track)}
 </article>`;
 
 export const mixCard = mix => `<a class="mix-card" href="#/builder"><img src="assets/images/${mix.artwork}.svg" alt="" loading="lazy"><span class="mix-content"><span class="mix-tag">${mix.tag}</span><strong>${mix.title}</strong><span>${mix.subtitle}</span></span><span class="mix-arrow">${icon('arrow')}</span></a>`;

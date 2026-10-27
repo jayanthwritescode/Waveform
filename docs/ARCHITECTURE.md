@@ -1,39 +1,52 @@
-# Waveform architecture — Phase 2.5
+# Waveform architecture — Phase 3
 
-Waveform is a music discovery and playlist-building application with a vanilla frontend and metadata-only FastAPI backend. Product direction and future phases are in [ROADMAP.md](ROADMAP.md); the verified migration audit is in [PIVOT_AUDIT.md](PIVOT_AUDIT.md). Historical architecture is preserved in [history/PHASE_2.md](history/PHASE_2.md).
+Waveform retains the buildless vanilla frontend, metadata catalogue and FastAPI boundaries established in Phase 2.5. Phase 3 adds a local persistent workspace, portable files and external searches. Prior architecture is archived in [history/PHASE_2_5.md](history/PHASE_2_5.md); scope remains defined by [ROADMAP.md](ROADMAP.md).
 
-## Frontend
+## Database and startup
 
-`index.html` provides semantic shell landmarks and the optional `#draft-dock`. JavaScript is served as native ES modules without a framework, bundler or runtime dependencies.
+`database/core.py` normalizes relative SQLite URLs against the project root, creates the parent directory, builds a SQLAlchemy engine and yields transactional sessions. SQLite enables foreign-key enforcement and a bounded busy timeout; the dependency rolls back errors and closes sessions. FastAPI lifespan creates the initial tables without dropping data and seeds one default profile before serving concurrent requests.
 
-- `main.js`: hash routing, asynchronous catalogue/detail loading, debounced search, race/abort guards, filter state, and delegated draft actions. Route changes replace main content while the draft store stays alive.
-- `components/shell.js`: sidebar/top bar/navigation. Playlist Builder replaces Smart Playlists; Taste Insights uses the previous insights hash. Old `#/playlists` links redirect to the builder.
-- `components/cards.js`: reusable track/mix templates, skeletons, attribution and request error UI. Artwork/title open details; separate buttons add/remove draft tracks.
-- `state/draft.js`: an observable, frontend-only draft store. Snapshots and additions are copied to prevent mutation through shared references. IDs prevent duplicate entries; bounded metadata editing, removal, reordering and clear produce change notifications. No storage or backend writes occur.
-- `components/draft-actions.js`: shared selection buttons, selected-state synchronization and dock summaries. The dock is hidden for an empty draft and reserves no page space until populated.
-- `pages/builder.js`: editable title/description, ordered track rows, album/duration fallbacks, move/remove actions, summaries and an empty state. Metadata edits update the dock without rebuilding focused input fields. Reordering/removal restores usable keyboard focus after row rendering.
-- `pages/discover.js`: catalogue/search and source/credit detail views; existing search/filter behavior is retained.
-- `pages/home.js`: playlist-oriented discovery, honest future-generation entry point and original decorative playlist illustration. Mood links remain explanatory navigation until Phase 5.
-- `pages/placeholder.js`: future feature boundaries, with no fabricated saved playlists, feedback, sessions or analytics.
-- `api/client.js`: metadata-only Fetch boundary with public origin configuration, timeout and HTTP failure handling.
-- `utils/html.js`: escapes rendered metadata and draft title/description; formats durations. Source URLs use validated HTTP(S) catalogue metadata and new-tab links use `noopener noreferrer`.
-- CSS: retained variables, layout, global/components, responsive and catalogue styles; `playlist.css` adds the editor/dock and conditional layout offset. All player-specific styles and transport icons are removed.
+`models/workspace.py` defines:
 
-Drafts survive internal navigation/search/filter requests. A complete refresh starts a new empty draft. Clear removes tracks but retains the current title and description. Displayed duration is an estimate from known source durations; unknown durations are counted rather than treated as real zero-length tracks. Subscribers drive dock/card/editor consistency. No generated playlist or recommendation ranking is claimed.
+- `profiles`: the local singleton profile, favorite/disliked genres, favorite artists, energy range, instrumental/discovery preferences and revision.
+- `playlists`: UUID, title, description, ordered validated track snapshots, creation/update UTC timestamps and revision.
+- `track_feedback`: one like/dislike per catalogue track; clearing removes the row. It is explicit feedback, never a simulated audio play.
+- `recommendation_sessions`: reserved storage/read support for future genuine model output. Phase 3 inserts no records and exposes no fake generation endpoint.
 
-## Backend and data
+This is the first database schema, so `create_all` bootstraps empty installations. Future schema changes need explicit migrations. The database and journal files are ignored by Git; back up SQLite while the server is stopped. Existing catalogue/audio data is unchanged. No complex authentication or multiple profiles are introduced; bind locally as documented.
 
-- `config.py`: root `.env`, application settings, configured CORS origins and reserved database URL. Legacy AUDIO_DIR in an existing `.env` is ignored; the file need not be changed.
-- `schemas/track.py`: validated metadata, provenance and response types. Album, release year and unavailable standardized musical features remain null. Source upload date is distinct from release year.
-- `services/catalogue.py`: validates the unchanged original manifest, rejects duplicate IDs, and performs deterministic metadata search, exact case-insensitive genre/artist filtering and pagination. Public records contain dataset/source identifiers and omit legacy audio fields. It never reads audio files.
-- `api/tracks.py`: query validation, list/detail endpoints and missing-track 404s.
-- `api/health.py`: typed status reporting phase 2.5.
-- `main.py`: FastAPI version 0.2.5, configured local CORS and route registration. No audio route, static file serving, remote proxy or platform API client exists.
+## API and service separation
 
-The metadata manifest is loaded once at startup. Restart FastAPI after editing it. Original audio files and historical audio metadata are preserved for migration safety, but are not required, read or exposed by the application. The static frontend root is `frontend/`, outside the legacy audio directory.
+- `api/tracks.py` and `services/catalogue.py` retain metadata-only search, filters, pagination and detail lookups. No streaming endpoint exists.
+- `schemas/workspace.py` bounds input sizes, accepts known preference enums, rejects contradictory genres/energy ranges, validates URLs/ISRCs and sanitizes artwork to local assets.
+- `api/workspace.py` handles profile/feedback, playlist CRUD, import preview/export, and library retrieval using injected sessions. Updates/deletes compare revisions atomically and return 409 on stale requests. Transactions do not silently overwrite newer data.
+- `services/playlists.py` normalizes source identities and removes duplicates. Only stable catalogue IDs/exact ISRCs canonicalize source metadata. Unmatched imported tracks get stable `import:` IDs and explicit provenance; artist/title similarity does not claim a match.
+- `services/portable.py` is independent of database/platform access. It serializes UTF-8 CSV/TXT/JSON and parses documented formats. JSON retains complete validated metadata; CSV/TXT are portable subsets. CSV uses proper quoting and reversible spreadsheet formula/control-character escaping. Parsing has file/track bounds, malformed inputs fail without saving, and preview never mutates the database.
+- `main.py` permits required local-origin GET/POST/PUT/DELETE CORS methods, exposes attachment headers, reports version 0.3.0, handles database errors as useful 503 responses, and omits raw import/preference payloads from 422 responses.
 
-SQLAlchemy and database configuration are retained for Phase 3. No profile, playlist database table, interaction record or recommendation model exists yet; no data migration was necessary.
+The catalogue is loaded once per backend startup. User state is queried from the database and is independent of the source JSON. Imported saved playlists store metadata snapshots, so they remain readable if catalogue coverage later changes.
 
-## Future boundaries
+## Frontend state and rendering
 
-Phase 3 adds persistent profiles/preferences/playlists, explicit likes/dislikes and actual recommendation sessions when available, portable file import/export and external search links. Playlist serializers and provider search/integration modules should consume the existing metadata and ordered draft without owning it. Direct provider authorization/creation is deferred until official capability checks. Recommendation models are Phase 4 onward; context selection/ranking is Phase 5. Taste Insights uses only genuine application data, not invented listening statistics.
+- `state/draft.js`: copied, duplicate-safe editor state plus saved ID/revision, dirty status and a generation counter. Session storage journals a versioned draft for refresh recovery in the same tab. Backend saves remain the durable source of saved playlists. Storage failures preserve in-memory editing and expose a recovery limitation.
+- `state/workspace.js`: separately loads profile/feedback, drives a connection notice, disables unready/pending feedback actions and synchronizes successful server responses. Failed feedback is not presented as saved.
+- `main.js`: existing route/search guards and shared draft actions, plus mounts for Library/Settings and delegated persistence/file controls. API failures preserve editor/form contents. Async actions guard against overwriting a different loaded/new draft.
+- `pages/settings.js`: a real profile/preferences form with validation feedback; artist/genre entries are newline-separated. Successful saves update the sidebar identity; failed saves keep inputs.
+- `pages/library.js`: actual saved records, explicit liked/disliked tracks, favorite artists/genres and genuine session records or their empty state. Saved playlist editing loads an existing revision; delete is a separate explicit action.
+- `components/playlist-tools.js`: save/update/copy, generation/fingerprint guards for edits made during a pending save, Blob file downloads, UTF-8 import decoding/preview, explicit import replacement, and protection before opening a saved playlist/new editor over unsaved changes.
+- `pages/builder.js`: retains ordered editing, summaries and shared draft state; adds save/file tools, imported-track labels, unknown duration fallback and service searches. Unknown imports do not link to non-existent catalogue detail routes.
+- `components/track-actions.js` and `utils/platforms.js`: mutually exclusive Like/Dislike actions and fixed-origin encoded search links. Search links neither call an API nor claim destination IDs/availability/playlist creation.
+- `api/client.js`: typed-purpose request helpers, network/timeout/validation/database messages, JSON requests and Blob responses. No secrets or third-party account tokens exist in browser configuration.
+- CSS: existing design system and shell are retained; `workspace.css` adds Settings, Library, feedback, file tools and responsive styles.
+
+An editor save snapshots the payload. If the user edits while it is pending, the returned revision is adopted but newer edits remain dirty; loading/new actions change the generation so an old response cannot bind a different draft. A saved copy gets a new UUID. Session-recovered drafts retain their binding; imported files deliberately become unsaved independent copies. Clear removes tracks but keeps editor metadata. Replacement prompts provide Cancel rather than discarding unsaved edits silently.
+
+## Files and third-party boundaries
+
+[FILE_FORMATS.md](FILE_FORMATS.md) documents formats, columns, versions, escaping and matching. Imports are limited to one million UTF-8 bytes and 500 tracks. No arbitrary remote URL is fetched. Imported image URLs are not loaded; untrusted metadata/title/description is escaped in HTML. Downloads are actual local files, not reported as service transfers.
+
+Spotify/Apple Music/YouTube Music links open public search interfaces with encoded artist/title queries and safe new-tab attributes. No account credentials, OAuth scopes, private APIs or scraping are used. Any future provider architecture must verify official capabilities/permissions and remain separate from the serializer and ordered playlist state.
+
+## Phase boundary
+
+Preferences and explicit feedback are persisted but do not yet change catalogue ranking. A recommendation session is not fabricated from a manual draft, import or save. Phase 4 will introduce genuine feature processing, content-based recommendations and recorded recommendation sessions. Context scoring remains Phase 5; collaborative/hybrid models, Taste Insights and final integration/polish remain later phases.
