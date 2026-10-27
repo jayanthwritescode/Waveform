@@ -1,0 +1,16 @@
+:root {
+  color-scheme:dark;
+  --bg:#101014;
+  --sidebar:#131317;
+  --panel:#19191f;
+  --panel-raised:#202027;
+  --border:#ffffff0d;
+  --text:#f2f1f7;
+  --muted:#92909f;
+  --accent:#b9a1ff;
+  --accent-strong:#9872f4;
+  --sidebar-width:238px;
+  --player-height:100px;
+  --radius:12px;
+  --font:Inter,'Helvetica Neue',Arial,sans-serif
+}

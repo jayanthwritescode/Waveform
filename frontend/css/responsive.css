@@ -1,0 +1,468 @@
+@media(min-width:1600px) {
+  main {
+    padding-top:45px
+  }
+  .hero {
+    min-height:400px
+  }
+  .hero-text {
+    padding:43px
+  }
+  .hero h2 {
+    font-size:64px
+  }
+  .vinyl {
+    width:325px;
+    height:325px
+  }
+  .vinyl-core {
+    width:105px;
+    height:105px
+  }
+  .hero-art {
+    width:58%
+  }
+  .track-grid {
+    gap:26px
+  }
+  .mix-card {
+    min-height:165px
+  }
+}
+@media(max-width:1190px) {
+  :root {
+    --sidebar-width:210px
+  }
+  .sidebar {
+    padding-left:12px;
+    padding-right:12px
+  }
+  .brand {
+    font-size:24px
+  }
+  .nav-link {
+    font-size:11px;
+    gap:9px
+  }
+  .nav-link.active:before {
+    left:-12px
+  }
+  .topbar {
+    padding:0 28px
+  }
+  main {
+    padding:28px 28px 0
+  }
+  .page-footer {
+    padding:24px 28px
+  }
+  .context-strip {
+    align-items:start;
+    flex-direction:column;
+    gap:12px
+  }
+  .context-heading div {
+    display:flex;
+    gap:12px;
+    align-items:center
+  }
+  .track-grid {
+    gap:15px
+  }
+  .hero h2 {
+    font-size:47px
+  }
+  .vinyl {
+    width:235px;
+    height:235px
+  }
+  .hero-text {
+    padding:30px
+  }
+  .hero-art {
+    width:50%
+  }
+  .mix-content {
+    padding:16px
+  }
+  .mix-content strong {
+    font-size:18px
+  }
+  .mix-content>span:last-child {
+    font-size:8px
+  }
+  .player {
+    grid-template-columns:1fr 1.2fr .8fr;
+    gap:12px
+  }
+  .player-track>.icon-button {
+    display:none
+  }
+}
+@media(max-width:900px) {
+  :root {
+    --sidebar-width:185px
+  }
+  .brand {
+    font-size:21px;
+    gap:8px;
+    padding:0 5px
+  }
+  .wave-mark {
+    gap:2px
+  }
+  .wave-mark i {
+    width:2px
+  }
+  .nav-link {
+    padding:10px;
+    gap:8px
+  }
+  .nav-link .icon {
+    width:16px
+  }
+  .nav-link[data-route=explorer] span {
+    max-width:112px
+  }
+  .foundation-card {
+    padding:12px 10px
+  }
+  .foundation-card strong {
+    font-size:11px
+  }
+  main {
+    padding:26px 22px 0
+  }
+  .topbar {
+    padding:0 22px;
+    height:70px
+  }
+  .hero {
+    min-height:325px
+  }
+  .hero-text {
+    padding:27px 24px;
+    width:60%
+  }
+  .hero h2 {
+    font-size:43px
+  }
+  .hero-art {
+    right:-35px
+  }
+  .vinyl {
+    width:205px;
+    height:205px
+  }
+  .hero-art .art-caption {
+    display:none
+  }
+  .hero-footnote {
+    font-size:8px
+  }
+  .today-label {
+    display:none
+  }
+  .mood-pill {
+    padding:6px 10px
+  }
+  .track-grid {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:24px 18px
+  }
+  .mix-grid {
+    grid-template-columns:1fr
+  }
+  .mix-card {
+    min-height:125px
+  }
+  .mix-content strong {
+    font-size:22px
+  }
+  .mix-content>span:last-child {
+    font-size:10px
+  }
+  .mix-card>img {
+    object-position:center 45%
+  }
+  .player-right .volume {
+    display:none
+  }
+  .player-right {
+    align-items:center
+  }
+  .playback-label {
+    max-width:70px;
+    line-height:1.6
+  }
+  .section-heading h2 {
+    font-size:17px
+  }
+  .page-footer {
+    padding:22px
+  }
+  .page-footer span:last-child {
+    display:none
+  }
+}
+@media(max-width:680px) {
+  :root {
+    --sidebar-width:0px;
+    --player-height:84px
+  }
+  .sidebar {
+    width:238px;
+    transform:translateX(-100%);
+    transition:transform .25s;
+    top:68px;
+    padding-top:20px;
+    box-shadow:16px 0 50px #0008
+  }
+  .nav-open .sidebar {
+    transform:translateX(0)
+  }
+  .sidebar .brand {
+    display:none
+  }
+  .sidebar .nav-link {
+    font-size:12px
+  }
+  .sidebar .nav-link[data-route=explorer] span {
+    max-width:none
+  }
+  .sidebar .nav-link.active:before {
+    left:-12px
+  }
+  .sidebar-bottom {
+    padding-top:20px
+  }
+  .foundation-card {
+    display:none
+  }
+  .menu-button {
+    display:flex
+  }
+  .topbar {
+    height:68px;
+    position:sticky;
+    top:0;
+    z-index:11;
+    background:#101014f5;
+    backdrop-filter:blur(14px);
+    padding:0 18px
+  }
+  .topbar-left {
+    gap:10px
+  }
+  .breadcrumb {
+    font-size:10px
+  }
+  .breadcrumb span {
+    margin:0 9px
+  }
+  .topbar-right {
+    gap:12px
+  }
+  .phase-badge {
+    font-size:8px;
+    padding:5px 8px
+  }
+  main {
+    padding:25px 18px 0
+  }
+  .page-intro {
+    margin-bottom:23px
+  }
+  .page-intro h1 {
+    font-size:29px
+  }
+  .page-intro p {
+    font-size:11px
+  }
+  .eyebrow {
+    font-size:8px;
+    letter-spacing:1.7px
+  }
+  .hero {
+    min-height:335px
+  }
+  .hero-text {
+    padding:26px 22px;
+    width:70%
+  }
+  .hero h2 {
+    font-size:45px
+  }
+  .hero-art {
+    right:-95px;
+    width:65%;
+    opacity:.65
+  }
+  .vinyl {
+    width:220px;
+    height:220px
+  }
+  .hero-art .art-coordinate {
+    display:none
+  }
+  .hero p {
+    font-size:11px
+  }
+  .hero .primary-button {
+    margin-top:21px
+  }
+  .hero-footnote {
+    max-width:145px;
+    line-height:1.7
+  }
+  .context-strip {
+    padding:21px 0
+  }
+  .context-heading div {
+    display:block
+  }
+  .context-heading div>span {
+    display:block;
+    margin-top:2px
+  }
+  .mood-links {
+    gap:7px
+  }
+  .mood-pill {
+    font-size:9px;
+    padding:7px 10px
+  }
+  .music-section {
+    margin-top:25px
+  }
+  .section-heading {
+    align-items:start
+  }
+  .section-heading h2 {
+    font-size:16px;
+    gap:7px
+  }
+  .section-heading p {
+    font-size:9px;
+    line-height:1.7;
+    max-width:250px
+  }
+  .text-link {
+    font-size:9px;
+    margin-top:4px;
+    gap:4px
+  }
+  .track-grid {
+    gap:22px 15px
+  }
+  .track-title {
+    font-size:12px
+  }
+  .track-artist {
+    font-size:10px
+  }
+  .cover-action {
+    opacity:1;
+    transform:none;
+    width:26px;
+    height:26px;
+    bottom:9px;
+    right:9px;
+    background:#efe8ffa8
+  }
+  .player {
+    padding:12px 16px;
+    grid-template-columns:minmax(0,1fr) 110px;
+    gap:12px
+  }
+  .player-track>img {
+    height:44px;
+    width:44px
+  }
+  .player-center {
+    display:flex;
+    flex-direction:column
+  }
+  .transport {
+    gap:3px
+  }
+  .transport .icon-button {
+    width:29px;
+    height:29px
+  }
+  .transport .icon-button:first-child,.transport .icon-button:last-child {
+    display:none
+  }
+  .play-button {
+    width:29px;
+    height:29px
+  }
+  .timeline {
+    width:100%;
+    font-size:6px;
+    gap:5px
+  }
+  .player-right {
+    display:none
+  }
+  .player-track {
+    gap:10px
+  }
+  .player-sample {
+    display:none
+  }
+  .toast {
+    bottom:100px;
+    font-size:11px
+  }
+  .preview-note {
+    font-size:9px;
+    align-items:start
+  }
+  .empty-state {
+    min-height:400px;
+    padding:30px 22px
+  }
+  .empty-state h2 {
+    font-size:25px
+  }
+  .empty-state p {
+    font-size:12px
+  }
+  .connection-card {
+    align-items:start;
+    flex-direction:column
+  }
+  .page-footer {
+    padding:20px 18px;
+    font-size:9px
+  }
+}
+@media(max-width:360px) {
+  .hero h2 {
+    font-size:40px
+  }
+  .hero-art {
+    right:-110px
+  }
+  .phase-badge {
+    display:none
+  }
+  .mood-pill {
+    padding:6px 8px
+  }
+  .section-heading {
+    gap:6px
+  }
+  .track-grid {
+    gap:20px 12px
+  }
+}
+@media(max-width:680px) {
+  .sidebar {
+    visibility:hidden
+  }
+  .nav-open .sidebar {
+    visibility:visible
+  }
+}
