@@ -1,3 +1,5 @@
+import {renderComparison} from './explorer-results.js';
+import {mountEvaluation} from './evaluation.js';
 import {hybridControls, readWeights, restoreWeights, defaultWeights} from './hybrid-controls.js';
 import {getRecommendationModel, getRecommendationSession, generateRecommendations, getHybridModel, generateHybridRecommendations, compareRecommendations, getContextModel, generateContextRecommendations, getTracks, getTrack} from '../api/client.js';
 import {momentControls, readMoment, restoreMoment, syncLength, momentSummary, signalDetails} from './moment-controls.js';
@@ -6,16 +8,17 @@ import {trackCard} from '../components/cards.js';
 import {requestReplacement} from '../components/playlist-tools.js';
 import {escapeHtml as html} from '../utils/html.js';
 
-export function recommendationsPage(contextMode=false) {
-  return `<section class="page-intro"><div><div class="eyebrow">FOLLOW YOUR CURIOSITY</div><h1>${contextMode ? 'Vibe Control' : 'Recommendations'}<span class="title-dot">.</span></h1><p>${contextMode ? 'Set the mood. Shape the moment. Make it yours.' : 'Real content signals. New tracks to make your own.'}</p></div><a class="text-link" href="#/settings">Edit your taste ↗</a></section>
-    <section class="generation-panel"><form id="recommendation-form">${contextMode ? hybridControls()+momentControls() : ''}<div class="generation-grid"><label>Playlist title<input id="generation-title" maxlength="80" value="My discovery playlist" required></label><label><span id="count-label">Number of tracks</span><input id="generation-count" type="number" min="1" max="30" value="10" required></label></div>
+export function recommendationsPage(contextMode=false,explorerMode=false) {
+  return `<section class="page-intro"><div><div class="eyebrow">FOLLOW YOUR CURIOSITY</div><h1>${explorerMode ? 'Recommendation Explorer' : contextMode ? 'Vibe Control' : 'Recommendations'}<span class="title-dot">.</span></h1><p>${explorerMode ? 'Compare the evidence. Follow the ranking.' : contextMode ? 'Set the mood. Shape the moment. Make it yours.' : 'Real content signals. New tracks to make your own.'}</p></div><a class="text-link" href="#/settings">Edit your taste ↗</a></section>
+    <section class="generation-panel"><form id="recommendation-form">${contextMode ? (explorerMode ? `<details class="explorer-inputs"><summary>Comparison context and hybrid weights</summary>${hybridControls()+momentControls()}</details>` : hybridControls()+momentControls()) : ''}<div class="generation-grid"><label>Playlist title<input id="generation-title" maxlength="80" value="My discovery playlist" required></label><label><span id="count-label">Number of tracks</span><input id="generation-count" type="number" min="1" max="30" value="10" required></label></div>
     <label class="seed-search-label">Find a reference track (optional)<input id="seed-search" type="search" maxlength="120" placeholder="Search a title or artist" autocomplete="off"></label><div id="seed-options"></div><div id="selected-seed"></div><p class="generation-help">Choose a reference, or leave it empty to use your liked tracks and saved preferences. Reference tracks themselves are excluded.</p>
     <div class="generation-options"><label><input id="use-taste" type="checkbox" checked> Use saved taste and exclusions</label><label><input id="include-liked" type="checkbox"> Include liked tracks in results</label><label><input id="exclude-draft" type="checkbox" checked> Exclude tracks already in my draft</label></div>
-    <button class="primary-button" id="generate-recommendations" type="submit">Generate playlist</button> <button type="button" class="secondary-button" id="regenerate-recommendations" hidden>Regenerate with different tracks</button>${contextMode ? ' <button type="button" class="secondary-button" id="compare-models">Compare models</button>' : ''}<p id="generation-status" role="status" aria-live="polite"></p></form></section>
-    <div id="model-summary" class="model-summary" role="status">Loading content index details…</div><section id="recommendation-results"></section><section id="model-comparison" class="music-section"></section><div id="replace-editor" hidden></div>`;
+    <button class="${explorerMode ? 'secondary-button' : 'primary-button'}" id="generate-recommendations" type="${explorerMode ? 'button' : 'submit'}">Generate playlist</button> <button type="button" class="secondary-button" id="regenerate-recommendations" hidden>Regenerate with different tracks</button>${contextMode ? `<button type="button" class="${explorerMode ? 'primary-button' : 'secondary-button'}" id="compare-models">Compare models</button>` : ''}<p id="generation-status" role="status" aria-live="polite"></p></form></section>
+    <div id="model-summary" class="model-summary" role="status">Loading content index details…</div><section id="recommendation-results"></section><section id="model-comparison" class="music-section"></section>${explorerMode ? '<div id="evaluation-panel" class="music-section" role="region" aria-label="Saved evaluation report">Loading saved evaluation report…</div>' : ''}<div id="replace-editor" hidden></div>`;
 }
 
-export async function mountRecommendations(params, isCurrent, onTracks, contextMode=false) {
+export async function mountRecommendations(params, isCurrent, onTracks, contextMode=false, explorerMode=false) {
+  if (explorerMode) mountEvaluation(isCurrent);
   let selectedSeed = null;
   let invalidSeed = false;
   let activeResult = null;
@@ -106,7 +109,12 @@ export async function mountRecommendations(params, isCurrent, onTracks, contextM
     try {
       if (compare) {
         const comparison=await compareRecommendations(payload);if (!isCurrent())return;
-        document.querySelector('#model-comparison').innerHTML=`<div class="section-heading"><h2>Same inputs. Different models.</h2></div><p class="generation-help">${html(comparison.scope)} Showing up to five results per model.</p><div class="comparison-grid">${Object.entries(comparison.results).map(([name,result])=>`<article class="generation-notice"><h3>${html(name)}</h3><p>${result.returned_count} results · ${result.fallback ? 'unscored fallback' : 'relative ranking values'}</p><ol>${result.items.slice(0,5).map(item=>`<li>${html(item.track.title)} · ${html(item.track.artist)}${item.score===null?'':` · ${item.score.toFixed(3)}`}</li>`).join('')}</ol></article>`).join('')}</div>`;
+        const comparisonElement=document.querySelector('#model-comparison');
+        comparisonElement.innerHTML=renderComparison(comparison,explorerMode);
+        comparisonElement.querySelectorAll('[data-use-comparison]').forEach(button=>button.addEventListener('click',()=>{
+          const model=button.dataset.useComparison,result=comparison.results[model];
+          requestReplacement(()=>{draft.load({title:document.querySelector('#generation-title').value.trim() || 'Model comparison selection',description:`Selection from ${model} comparison · ${result.model.model_version}`,tracks:result.items.map(item=>item.track)});location.hash='#/builder';},'Use these compared tracks in the editor?');
+        }));
         status.textContent='Compared without creating sessions. Existing generated results and editor are kept.';return;
       }
       const result=await (hybrid ? generateHybridRecommendations(payload) : contextMode ? generateContextRecommendations(payload) : generateRecommendations(payload));
@@ -117,7 +125,8 @@ export async function mountRecommendations(params, isCurrent, onTracks, contextM
     } catch(error) {if (isCurrent()) status.textContent=`${error.message} Your editor and previous results are kept.`;}
     finally {pending=false;controls.forEach(({control,disabled})=>control.disabled=disabled);syncModelControls();}
   }
-  form.addEventListener('submit',event=>generate(event));
+  form.addEventListener('submit',event=>generate(event,false,explorerMode));
+  if (explorerMode) generateButton.addEventListener('click',event=>generate(event));
   document.querySelector('#compare-models')?.addEventListener('click',event=>generate(event,false,true));
   regenerateButton.addEventListener('click',event=>generate(event,true));
   try {

@@ -1,4 +1,4 @@
-# Waveform architecture — Phase 6
+# Waveform architecture — Phase 7
 
 Waveform uses a buildless vanilla JavaScript frontend and a FastAPI/SQLAlchemy SQLite backend. Phase 4 extends the persistent workspace with metadata feature processing, content recommendations and real session snapshots. The previous detailed workspace architecture is preserved in [Phase 3](history/PHASE_3.md).
 
@@ -41,3 +41,11 @@ The shared generation page renders context controls only on `#/vibe`; `moment-co
 `recommender/collaborative.py` is a separate binary-cosine user-KNN artist model. `scripts/prepare_collaborative.py` validates the official archive and builds ignored local sparse/user-profile artifacts. `api/experiments.py` lazily loads verified optional artifacts and exposes artist-only search/recommendations. Missing/corrupt models yield setup guidance/503 without disabling catalogue endpoints. It does not query the user's workspace or write sessions. There is no verified artist-to-track crosswalk. Source/provenance, algorithms, licenses and held-out benchmark are documented in [HYBRID_MODEL.md](HYBRID_MODEL.md).
 
 Vibe Control adds model/weight selection and basic three-column comparison, keeping editor guards and error retention. `artist-lab.js` provides a clearly separated non-commercial artist flow with no track-add/export actions. Hybrid library history restores effective weights and model. Phase 7 still owns full Explorer/Insights visuals. Version is 0.6.0; no new packages, migration, deployment or audio behavior was introduced.
+
+## Phase 7 read-only analysis and full Explorer
+
+`services/insights.py` aggregates actual current profiles/feedback/playlist snapshots separately from UTC-windowed stored generation sessions. `api/insights.py` exposes the read-only summaries and a cached, bounded saved evaluation report. Neither endpoint records views or creates sessions; no schema changes are needed. Definitions and missing-value/window rules are in [INSIGHTS_AND_EVALUATION.md](INSIGHTS_AND_EVALUATION.md).
+
+Explorer reuses the shared validated comparison/generation controller, with expandable controls, all requested ranks, exact-identity overlap, actual component meters and explicit guarded editor selection. `explorer-results.js` is pure rendering/overlap logic. `evaluation.js` loads independent saved artist metrics. `insights.js` and pure `analysis-charts.js` render real counts, source-energy means, SVG UTC series and equivalent accessible tables; `analysis.css` supplies responsive panels and internal table scrolling. Obsolete placeholder pages are removed.
+
+`scripts/evaluate_models.py` performs two fixed full-eligible-user artist holdout experiments with frozen KNN settings, train-only baseline, self-exclusion, cold-target misses, standard rank metrics, profile strata and descriptive bootstrap intervals. It uses copies of ignored fitted matrices, preserving the interactive model. Only aggregate report/protocols are tracked. All catalogue ranking engines remain unchanged. Version is 0.7.0; no new packages, schema reset or deployment is introduced.

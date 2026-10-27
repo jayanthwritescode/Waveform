@@ -58,3 +58,6 @@ export const compareRecommendations = payload => request('/api/recommendations/c
 export const getArtistModel = () => request('/api/experiments/collaborative/model');
 export const findArtists = q => request('/api/experiments/collaborative/artists?q='+encodeURIComponent(q));
 export const recommendArtists = payload => request('/api/experiments/collaborative', {method:'POST',body:payload});
+
+export const getInsights = (days=30) => request('/api/insights?days='+days);
+export const getEvaluation = () => request('/api/evaluation');

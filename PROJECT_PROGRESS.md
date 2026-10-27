@@ -4,58 +4,59 @@ Last updated: 28 October 2026 (Asia/Kolkata).
 
 ## Current checkpoint
 
-**Phase 6 — collaborative experiment and available-signal hybrid: complete, awaiting review and manual Git commit.**
+**Phase 7 — Recommendation Explorer, Taste Insights and reproducible evaluation: complete, awaiting review and manual Git commit.**
 
-The user authorized Phase 6. Phase 7 has not started. Starting HEAD was `d153718`, with a clean tree. No automatic commit, push, PR, deployment, destructive Git operation or schema reset was performed. The prior checkpoint is archived in [Phase 5 history](docs/history/PHASE_5.md).
+The user authorized Phase 7. Phase 8 has not started. Starting HEAD was `2d83e50` with a clean tree. No automatic commit, push, PR, deployment, destructive Git operation, new dependency or schema reset was performed. The previous checkpoint is archived in [Phase 6 history](docs/history/PHASE_6.md).
 
 ## Implemented
 
-- Evaluated the official HetRec Last.fm interaction dataset and source usage terms. It is a non-commercial, artist-level dataset with no verified mapping to the 520-track catalogue. It remains a separate research experiment; no artist-name crosswalk or fabricated collaborative track score is used.
-- Reproducible pinned-archive preparation and fitting: 1,892 users, 17,632 artists and 92,834 positive relations. Binary cosine user-neighborhood filtering uses up to 40 neighbors and two-neighbor support. Raw/fitted profile artifacts stay ignored; tracked provenance captures source hashes, actual counts and scope.
-- Artist Lab provides source artist search, reference selection, real artist recommendations and supporting profile counts. Empty/no-overlap/insufficient-support queries get labeled train-popularity fallback with null personalized scores. It never adds artists as songs or writes track sessions.
-- Catalogue hybrid independently combines normalized content, preferences, context and discovery using configurable defaults/request weights. Unavailable collaborative track evidence is explicitly omitted, with available weights renormalized. Cold-start and collaborative-only configurations remain unscored where no usable signal exists.
-- Same-input/count content/context/hybrid comparison API and basic Vibe comparison view, without recording sessions or replacing the editor. Full Explorer visualization remains Phase 7.
-- Hybrid generation retains duration bounds, dislikes/exclusions, regeneration and editor/save/export workflows. Effective weights, model version and original output are saved/reopened as actual hybrid sessions.
-- Strict validation, optional model/setup/error handling, actual held-out artist benchmark, new unit/API/frontend tests and current documentation. No new runtime dependency, dataset mutation or migration was required.
+- Full Recommendation Explorer replaces the placeholder, reusing validated common inputs and the existing read-only comparison endpoint. It shows all requested ranks, exact-ID overlap/Jaccard, other-model rank offsets, response artist/genre diversity, actual contribution meters and source explanations.
+- Explicit model-result selection loads the shared editor through its replacement guard. Comparison and selection create no generation sessions; explicit Generate still records actual nonempty output and Save remains separate.
+- Taste Insights replaces its placeholder with current playlist/feedback totals, explicit saved preferences, liked/saved source metadata distributions, known/missing energy means and playlist duration estimates. These are saved-state properties, not inferred listening.
+- Windowed UTC generation counts, explicit recorded moods/activities, snapshot model use, fallback counts and daily charts/count tables use genuine stored sessions. Empty states and unknown features are labeled. Current state and windowed session denominators are visibly distinct.
+- Read-only `/api/insights` and `/api/evaluation`, independent report-error behavior, stale-response guards, refresh failure retention, safe source-label rendering and responsive internally scrolling tables.
+- Broader held-out artist evaluation uses all 1,877 eligible source users in two fixed splits, train-only features/popularity, self-exclusion, cold-target misses, precision/recall/NDCG/MRR, coverage, profile groups and descriptive bootstrap intervals. The saved aggregate report displays independently of optional model artifacts.
+- Existing catalogue ranking engines and the fitted Artist Lab model remain unchanged. No collaborative track mapping or track relevance metric is fabricated. Obsolete placeholder code is removed.
 
 ## Important files
 
-- `recommender/collaborative.py`, `hybrid.py`, `hybrid_weights.json`; strict request schemas, recommendation service/router and separate `api/experiments.py`.
-- `scripts/prepare_collaborative.py`, `evaluate_collaborative.py`, `data/catalogue/lastfm_provenance.json`, `docs/collaborative-evaluation.json`.
-- `frontend/js/pages/hybrid-controls.js`, `artist-lab.js`, generation/comparison/history integration, routing and responsive CSS.
-- `backend/tests/test_collaborative.py`, `test_hybrid.py`, frontend hybrid controls test, health version check.
-- [Hybrid/collaborative model documentation](docs/HYBRID_MODEL.md), README/run/setup instructions, architecture, roadmap, data notes and prior checkpoint archive.
+- `backend/app/services/insights.py`, `api/insights.py`: real persisted-state summaries and bounded/cached saved evaluation report.
+- `frontend/js/pages/insights.js`, `analysis-charts.js`, `explorer-results.js`, `evaluation.js`, shared generation controller and route integration; `frontend/css/analysis.css`.
+- `scripts/evaluate_models.py`, actual `docs/evaluation-report.json` and [definitions/protocols](docs/INSIGHTS_AND_EVALUATION.md).
+- `backend/tests/test_insights.py`; frontend chart/Explorer tests; version/health and API helpers.
+- README/run instructions, architecture, roadmap, Phase 6 archive, checkpoint and real QA review screenshots.
 
 ## Validation actually performed
 
 | Check | Result |
 | --- | --- |
-| Backend suite | **60 passed**: previous regressions plus hand-computable neighbor support, seed exclusions, self-retrieval prevention, popularity/empty/unknown fallbacks, absent optional model, hybrid weight sensitivity/contributions, disabled explanations, duration/exclusions, saved weights and no-write comparison |
-| Frontend suite | **14 passed**: draft/platform/moment regressions plus custom/zero hybrid weight serialization and restoration |
-| Prior diagnostics | All 12 content seed outputs and all four Phase 5 context diagnostic outputs match the committed reports exactly |
-| Actual held-out artist benchmark | 1,877 deterministic holdouts; 90,957 train relations; fixed 100-user cohort, query users excluded from neighbors. KNN hits@10 **29/100**, NDCG@10 **0.1664**; train-popularity **10/100**, NDCG@10 **0.0504**; 242 distinct recommended artists, zero fallback users |
-| Browser comparison | Same count/inputs returned content fallback versus scored context/hybrid; explicitly reports no session writes or accuracy metric |
-| Browser hybrid save/history | Generated with context-only custom weights, saved four real tracks, reopened the original session with model and all five exact weights restored |
-| Browser artist experiment | Selected Radiohead from real source search; returned Muse/Beatles/other artist neighbors with real weighted support and dataset model version |
-| Browser cold start | Cleared the reference; result switched to labeled training popularity with no personalized score |
-| Browser failure | Stopped backend; artist request kept ten previous artist results and showed a retry message |
-| Responsive QA | Vibe custom hybrid/result/comparison and Artist Lab at 320, 390, 768 and 1440px: no horizontal overflow |
-| Browser console | No warnings/errors in normal checked flows; unavailable-network request deliberately exercised separately |
-| Integrity | Original/FMA manifests, FMA provenance, eight legacy MP3s and production SQLite file match all 12 starting hashes |
-| Syntax/whitespace | All JavaScript modules parse; Git whitespace check passes |
+| Backend suite | **67 passed**: existing regressions plus true empty/current-state summaries, source/missing energy, distinct occurrence/identity denominators, reversible feedback, actual-session versus comparison counts, UTC boundaries, legacy sessions, no-write reads, independent report failure and hand-calculated ranking metrics |
+| Frontend suite | **19 passed**: prior behavior plus exact-identity overlap/empty union, escaped source labels, actual contributions, empty charts and accessible daily-count tables |
+| Full artist benchmark | Both fixed splits evaluate all **1,877** eligible users with **90,957** training relations. User-KNN recall@10 **0.1865 / 0.1721**; train-popularity **0.0645 / 0.0677**; **213 / 212** held-out targets absent from training remain misses |
+| Reproduction | Re-ran the full benchmark; parsed aggregate report matches exactly, including bootstrap intervals, coverage and profile groups |
+| Browser empty state | Fresh temporary database showed zero genuine totals, no sample charts, unknown/no-sample feature labels and no fabricated history |
+| Browser genuine actions | Generated one real hybrid session, liked one result, explicitly selected three compared tracks and saved one playlist; Insights showed exactly 1 generation, 1 like, 1 playlist and 3 saved occurrences |
+| Browser Explorer | Full rank lists, ID overlap/Jaccard, outside-returned-set labels, contribution details and explicit guarded model selection worked. Comparisons and editor selection did not inflate session totals |
+| Browser time windows | Selected seven UTC days; displayed boundaries/daily counts changed while current saved-state totals remained distinct |
+| Report UI | Both saved splits, standard metrics, intervals, cold targets, coverage, profile groups and limits displayed independently of live comparison |
+| Failure retention | With backend stopped, failed comparison kept all three completed model columns; failed Insights refresh kept its populated figures and displayed window, with an actionable retry message |
+| Responsive QA | Both populated Insights and Explorer/results/report at **320, 390, 768, 1024 and 1440px**, no horizontal overflow; evaluation tables scroll within their panels |
+| Browser console | No warnings/errors during normal tested flows. Unavailable-network requests were deliberately exercised separately |
+| Preservation | Original/FMA metadata, provenance, eight legacy MP3s, production SQLite database and fitted artist artifacts match all starting hashes |
+| Syntax/whitespace | All JavaScript modules parse; `git diff --check` passes |
 
-Browser QA uses a temporary SQLite database. Production profile, feedback, playlists and historical sessions remain unchanged. Review screenshot shows actual artist experiment results. Test servers are stopped at completion.
+Browser QA uses a separate temporary SQLite database. Production preferences, feedback, playlists and sessions are preserved. Screenshots show genuine QA state with a clearly named Phase 7 playlist, not fabricated user activity. Test servers are stopped at completion.
 
-## Scope and limits
+## Limits and next phase
 
-No blocking Phase 6 defects are known from these checks. Collaborative evidence remains artist-only. The hybrid correctly falls back to available track signals and does not claim fully integrated collaborative filtering. Training matrix preparation is genuine neighborhood-model fitting, not matrix factorization/ALS.
+No blocking Phase 7 defects are known from these checks. Insights describe current rows/snapshots and actual generation sessions, not a complete event log. Feedback clears and playlist deletions change current totals. UTC windows apply only to generations, not current preferences/playlists. Imported metadata contributes only as explicitly labeled saved snapshot data. No audio play count, listening time or mood inference is collected.
 
-The artist source is licensed for non-commercial use; raw/model artifacts are optional and ignored, with setup instructions for fresh checkouts. The benchmark is a small fixed historical cohort, one held-out positive per eligible user, no negatives or temporal split. Its metrics do not establish playlist relevance, general superiority, statistical significance or a tuned production model. Unobserved does not mean disliked.
+Explorer overlap/diversity is descriptive, and model score magnitudes are not comparable accuracy estimates. Comparisons use count mode; duration remains a separate generation control. Collaborative artist data has no verified track mapping, so track relevance metrics remain unavailable. Separate artist metrics are historical, non-commercial, positive-only, non-temporal and selection-biased. Two splits reuse users; bootstrap intervals are descriptive and cannot be pooled as independent population evidence. Weights/neighbor settings remain frozen rather than tuned on holdouts.
 
-Hybrid component scales are bounded by construction, with per-candidate availability renormalization. Defaults are starting values, not tuned accuracy claims. Missing context evidence and discovery limitations remain documented. Existing local-only single-user SQLite, tab recovery, metadata-only export/search and duration-greedy limitations still apply. No audio playback, direct streaming integration, multi-user deployment, Explorer analytics or Taste Insights were added.
+Existing local-only single-user SQLite, tab recovery, metadata-only export/search and greedy-duration limitations remain. No streaming integration, playback, multi-user public deployment or Phase 8 polish/deployment work was added.
 
-**Next:** Phase 7 — full Recommendation Explorer, genuine interaction/context/playlist insights and broader reproducible evaluation. Await explicit authorization.
+**Next:** Phase 8 — final integration/export reliability, accessibility/responsiveness/performance review, integration checks, documentation and deployment decisions. Await explicit authorization.
 
-Suggested manual commit: `feat: add collaborative artist experiment and configurable hybrid recommendations`
+Suggested manual commit: `feat: add recommendation explorer taste insights and reproducible evaluation`
 
-**STOP after Phase 6. Await review, manual commit and explicit Phase 7 authorization.**
+**STOP after Phase 7. Await review, manual commit and explicit Phase 8 authorization.**

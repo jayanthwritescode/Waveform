@@ -1,0 +1,226 @@
+{
+  "report_version": 1,
+  "dataset": "HetRec 2011 Last.fm",
+  "scope": "Separate historical artist benchmark; no measured track/content/context/hybrid relevance labels exist.",
+  "source_archive_sha256": "6738f48195667ff03caaab4d32ca9a3133d8cc026b7c3cdaf6ce1010e913c59c",
+  "full_model_version": "artist-userknn-v1-2f6abfc0b773",
+  "k": 10,
+  "protocol": "All users with >=5 positives; one SHA-256-selected held-out artist per user per split; all holdouts removed before fitting; train-only features/popularity; query user excluded from neighbors and baseline counts; known artists excluded.",
+  "uncertainty": "500 fixed-seed user-bootstrap resamples per split, percentile 95% intervals. Splits reuse users and are not independent replicates; intervals are descriptive, not significance tests.",
+  "splits": [
+    {
+      "seed": "waveform-phase7-a",
+      "model_version": "artist-userknn-v1-378587a4e19e",
+      "training_interactions": 90957,
+      "evaluated_users": 1877,
+      "cold_heldout_artists": 213,
+      "candidate_artists": 17420,
+      "models": {
+        "user_knn": {
+          "users": 1877,
+          "metrics": {
+            "precision_at_10": 0.018646776771443795,
+            "recall_at_10": 0.18646776771443793,
+            "ndcg_at_10": 0.10810272798392316,
+            "mrr_at_10": 0.08432550253274813
+          },
+          "bootstrap_95pct": {
+            "precision_at_10": [
+              0.016941928609483316,
+              0.020351624933404516
+            ],
+            "recall_at_10": [
+              0.16941928609483217,
+              0.2035162493340437
+            ],
+            "ndcg_at_10": [
+              0.09648486278574357,
+              0.11975140496223186
+            ],
+            "mrr_at_10": [
+              0.07420453632527418,
+              0.09500137419556696
+            ]
+          },
+          "unique_recommended_artists": 622,
+          "candidate_coverage": 0.0357060849598163,
+          "fallback_users": 0
+        },
+        "popularity": {
+          "users": 1877,
+          "metrics": {
+            "precision_at_10": 0.006446457112413427,
+            "recall_at_10": 0.06446457112413426,
+            "ndcg_at_10": 0.03595397346430362,
+            "mrr_at_10": 0.027255160632891056
+          },
+          "bootstrap_95pct": {
+            "precision_at_10": [
+              0.0053809270111880554,
+              0.0074866808737346635
+            ],
+            "recall_at_10": [
+              0.053809270111880664,
+              0.07486680873734682
+            ],
+            "ndcg_at_10": [
+              0.028869983058019542,
+              0.04265528625068057
+            ],
+            "mrr_at_10": [
+              0.020983009657423623,
+              0.03345952676932966
+            ]
+          },
+          "unique_recommended_artists": 29,
+          "candidate_coverage": 0.0016647531572904707,
+          "fallback_users": 0
+        }
+      },
+      "profile_groups": {
+        "4–19 train artists": {
+          "user_knn": {
+            "users": 17,
+            "recall_at_10": 0.23529411764705882
+          },
+          "popularity": {
+            "users": 17,
+            "recall_at_10": 0.058823529411764705
+          }
+        },
+        "20–48 train artists": {
+          "user_knn": {
+            "users": 31,
+            "recall_at_10": 0.25806451612903225
+          },
+          "popularity": {
+            "users": 31,
+            "recall_at_10": 0.03225806451612903
+          }
+        },
+        "49+ train artists": {
+          "user_knn": {
+            "users": 1829,
+            "recall_at_10": 0.18480043739748497
+          },
+          "popularity": {
+            "users": 1829,
+            "recall_at_10": 0.06506287588846364
+          }
+        }
+      }
+    },
+    {
+      "seed": "waveform-phase7-b",
+      "model_version": "artist-userknn-v1-aea284dc41dd",
+      "training_interactions": 90957,
+      "evaluated_users": 1877,
+      "cold_heldout_artists": 212,
+      "candidate_artists": 17420,
+      "models": {
+        "user_knn": {
+          "users": 1877,
+          "metrics": {
+            "precision_at_10": 0.01720831113478956,
+            "recall_at_10": 0.17208311134789558,
+            "ndcg_at_10": 0.10748891976440338,
+            "mrr_at_10": 0.08794534507107762
+          },
+          "bootstrap_95pct": {
+            "precision_at_10": [
+              0.015716568993074134,
+              0.01880660628662772
+            ],
+            "recall_at_10": [
+              0.15716568993074054,
+              0.18806606286627597
+            ],
+            "ndcg_at_10": [
+              0.09584807947051252,
+              0.11855909691114104
+            ],
+            "mrr_at_10": [
+              0.07728190459277297,
+              0.0983947123068726
+            ]
+          },
+          "unique_recommended_artists": 633,
+          "candidate_coverage": 0.03633754305396097,
+          "fallback_users": 0
+        },
+        "popularity": {
+          "users": 1877,
+          "metrics": {
+            "precision_at_10": 0.006766116142781034,
+            "recall_at_10": 0.06766116142781034,
+            "ndcg_at_10": 0.03632294619913455,
+            "mrr_at_10": 0.026886876220919904
+          },
+          "bootstrap_95pct": {
+            "precision_at_10": [
+              0.005700586041555662,
+              0.007938199254128909
+            ],
+            "recall_at_10": [
+              0.05700586041555674,
+              0.07938199254128929
+            ],
+            "ndcg_at_10": [
+              0.029590769703542096,
+              0.04415853297799109
+            ],
+            "mrr_at_10": [
+              0.021155386635208173,
+              0.03311344090113405
+            ]
+          },
+          "unique_recommended_artists": 30,
+          "candidate_coverage": 0.001722158438576349,
+          "fallback_users": 0
+        }
+      },
+      "profile_groups": {
+        "4–19 train artists": {
+          "user_knn": {
+            "users": 17,
+            "recall_at_10": 0.11764705882352941
+          },
+          "popularity": {
+            "users": 17,
+            "recall_at_10": 0.11764705882352941
+          }
+        },
+        "20–48 train artists": {
+          "user_knn": {
+            "users": 31,
+            "recall_at_10": 0.03225806451612903
+          },
+          "popularity": {
+            "users": 31,
+            "recall_at_10": 0.06451612903225806
+          }
+        },
+        "49+ train artists": {
+          "user_knn": {
+            "users": 1829,
+            "recall_at_10": 0.17495899398578457
+          },
+          "popularity": {
+            "users": 1829,
+            "recall_at_10": 0.06724986331328595
+          }
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Historical, non-commercial artist data; no verified catalogue track mapping.",
+    "No temporal order, explicit negatives or randomized user relevance judgments. Unobserved is not disliked.",
+    "Weights/k were frozen from Phase 6; no tuning on these holdouts. Candidate cold targets are retained as misses.",
+    "Confidence intervals do not capture dataset/split/selection bias; splits must not be pooled as independent users."
+  ],
+  "catalogue_metrics": {
+    "relevance": "unavailable",
+    "reason": "No held-out track judgments or aligned collaborative interactions; live comparison shows descriptive overlap/diversity and actual contribution accounting only."
+  }
+}

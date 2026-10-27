@@ -1,7 +1,7 @@
 import {artistLabPage,mountArtistLab} from './pages/artist-lab.js';
 import {renderShell, routes} from './components/shell.js';
 import {homePage} from './pages/home.js';
-import {placeholderPage} from './pages/placeholder.js';
+import {insightsPage,mountInsights} from './pages/insights.js';
 import {discoverPage, renderResults, trackPage} from './pages/discover.js';
 import {draft} from './state/draft.js';
 import {renderDraftDock, syncDraftButtons} from './components/draft-actions.js';
@@ -46,15 +46,16 @@ function navigate() {
   });
   const main = document.querySelector('#main');
   displayedTracks = [];
-  main.innerHTML = route === 'lab' ? artistLabPage() : route === 'home' ? homePage() : route === 'discover' ? discoverPage() : route === 'builder' ? builderPage() : ['recommend','vibe'].includes(route) ? recommendationsPage(route==='vibe') : route === 'library' ? libraryPage() : route === 'settings' ? settingsPage() : route === 'track' ? '<div class="catalogue-state" role="status">Loading track…</div>' : placeholderPage(route);
+  main.innerHTML = route === 'lab' ? artistLabPage() : route === 'home' ? homePage() : route === 'discover' ? discoverPage() : route === 'builder' ? builderPage() : route === 'insights' ? insightsPage() : ['recommend','vibe','explorer'].includes(route) ? recommendationsPage(route!=='recommend',route==='explorer') : route === 'library' ? libraryPage() : route === 'settings' ? settingsPage() : route === 'track' ? '<div class="catalogue-state" role="status">Loading track…</div>' : homePage();
   if (route === 'home') loadHome(routeVersion);
   if (route === 'discover') {
     document.querySelector('#music-search').value = filters.q;
     loadDiscover(routeVersion);
   }
   const version = routeVersion;
-  if (['recommend','vibe'].includes(route)) mountRecommendations(new URLSearchParams(query),()=>version === routeVersion,tracks=>{if (version === routeVersion) displayedTracks=tracks;},route==='vibe');
+  if (['recommend','vibe','explorer'].includes(route)) mountRecommendations(new URLSearchParams(query),()=>version === routeVersion,tracks=>{if (version === routeVersion) displayedTracks=tracks;},route!=='recommend',route==='explorer');
   if (route === 'lab') mountArtistLab(()=>version===routeVersion);
+  if (route === 'insights') mountInsights(()=>version===routeVersion);
   if (route === 'settings') mountSettings(() => version === routeVersion);
   if (route === 'library') mountLibrary(() => version === routeVersion).then(tracks => {if (tracks && version === routeVersion) displayedTracks = tracks;});
   if (route === 'builder') refreshBuilder(draft.snapshot());

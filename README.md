@@ -2,11 +2,13 @@
 
 **Your music. Your moment.**
 
-Waveform is a platform-independent music discovery and playlist project. **Phase 6 is complete:** a separate collaborative artist experiment, configurable catalogue hybrid and basic model comparison.
+Waveform is a platform-independent music discovery and playlist project. **Phase 7 is complete:** full Recommendation Explorer, genuine Taste Insights and reproducible multi-split artist evaluation.
 
 ## Working today
 
 - 520 genuine metadata records: eight preserved Incompetech tracks and a reproducible 512-track FMA metadata subset, covering 368 artist names and 18 primary genres.
+- Recommendation Explorer: full rankings, overlap/rank offsets, contribution charts, editor selection and a saved evaluation panel.
+- Taste Insights: actual current likes/playlists and windowed generation/mood/activity/model statistics, with honest empty/missing values.
 - Available-signal hybrid with per-request weights, explicit missing collaborative track signal and recorded weight restoration. Basic content/context/hybrid comparison creates no sessions.
 - Separate Artist Lab fitted on 92,834 real HetRec Last.fm user–artist relations; optional non-commercial research data, no invented track mapping.
 - Vibe Control: mood, activity, manual time/optional weather, moment energy/instrumental/genre/artist preferences and catalogue-relative discovery.
@@ -17,7 +19,7 @@ Waveform is a platform-independent music discovery and playlist project. **Phase
 - Paginated catalogue search, details, local profile/feedback, persistent playlist CRUD, revision protection, CSV/TXT/JSON files and external service searches.
 - Responsive midnight/lavender interface, refresh recovery and retained drafts on request failures.
 
-Vibe Control uses documented heuristics over genuine source features. The full Recommendation Explorer and Taste Insights remain Phase 7. No audio hosting/playback or direct music-service integration is included.
+Vibe Control uses documented heuristics over genuine source features. Explorer statistics are descriptive; held-out artist metrics remain separate from track quality. No audio hosting/playback or direct music-service integration is included.
 
 ## Setup and run
 
@@ -30,7 +32,7 @@ source .venv/bin/activate
 python -m pip install -r backend/requirements-dev.txt
 ```
 
-For a fresh checkout, copy `.env.example` to `.env` if custom configuration is needed. Preserve an existing `.env`. Runtime dependencies are in `backend/requirements.txt`; `requirements-lock.txt` captures the verified versions. The model uses NumPy, Pandas, SciPy and scikit-learn; Phases 5–6 add no package dependencies. The bundled metadata subset makes first startup offline; no raw dataset download or model training is required.
+For a fresh checkout, copy `.env.example` to `.env` if custom configuration is needed. Preserve an existing `.env`. Runtime dependencies are in `backend/requirements.txt`; `requirements-lock.txt` captures the verified versions. The model uses NumPy, Pandas, SciPy and scikit-learn; Phases 5–7 add no package dependencies. The bundled metadata subset makes first startup offline; no raw dataset download or model training is required.
 
 Backend, terminal 1:
 
@@ -46,7 +48,7 @@ cd /Users/jayanth/Desktop/Waveform
 python3.11 -m http.server 5173 --bind 127.0.0.1 --directory frontend
 ```
 
-Open [Waveform](http://127.0.0.1:5173), [Your Library](http://127.0.0.1:5173/#/library), [Settings](http://127.0.0.1:5173/#/settings), [Vibe Control](http://127.0.0.1:5173/#/vibe), [Artist Lab](http://127.0.0.1:5173/#/lab), [Recommendations](http://127.0.0.1:5173/#/recommend), or [API docs](http://127.0.0.1:8000/docs). Serve the frontend over HTTP and only from `frontend/`, outside the preserved legacy audio directory.
+Open [Waveform](http://127.0.0.1:5173), [Your Library](http://127.0.0.1:5173/#/library), [Settings](http://127.0.0.1:5173/#/settings), [Vibe Control](http://127.0.0.1:5173/#/vibe), [Artist Lab](http://127.0.0.1:5173/#/lab), [Explorer](http://127.0.0.1:5173/#/explorer), [Taste Insights](http://127.0.0.1:5173/#/insights), [Recommendations](http://127.0.0.1:5173/#/recommend), or [API docs](http://127.0.0.1:8000/docs). Serve the frontend over HTTP and only from `frontend/`, outside the preserved legacy audio directory.
 
 ## Local storage and configuration
 
@@ -82,7 +84,7 @@ The frontend API defaults to `http://127.0.0.1:8000`. Override with `window.WAVE
 
 | Method/path | Behavior |
 | --- | --- |
-| GET `/api/health` | Status and phase 6 |
+| GET `/api/health` | Status and phase 7 |
 | GET `/api/tracks`, `/api/tracks/{catalogue_id}` | Metadata search/details; no audio routes |
 | GET/PUT `/api/profile` | Local profile/preferences; revision required for update |
 | GET `/api/feedback`; PUT `/api/feedback/{catalogue_id}` | Explicit like/dislike/null feedback |
@@ -99,6 +101,8 @@ The frontend API defaults to `http://127.0.0.1:8000`. Override with `window.WAVE
 | POST `/api/recommendations/compare` | Same count/inputs across three catalogue models; no writes |
 | GET `/api/experiments/collaborative/model`, `/artists?q=...`; POST `/api/experiments/collaborative` | Separate artist experiment; no track/session writes |
 | GET `/api/recommendations/sessions/{id}` | Original result snapshot; no reranking |
+| GET `/api/insights?days=30` (7, 30 or 90) | Read-only current-state summaries and windowed UTC generation statistics |
+| GET `/api/evaluation` | Saved, aggregate artist benchmark report; no training |
 | GET `/api/library` | Saved playlists, feedback, profile and real recommendation sessions |
 
 Playlist inputs contain title, description and ordered track metadata. Imports and saves normalize catalogue identities and remove duplicates. Unknown imported records retain provenance and missing values. No arbitrary remote URLs are fetched. Input validation errors omit raw file payloads; database failures return a useful 503; stale revisions return 409 and retain the editor.
@@ -111,9 +115,21 @@ cd /Users/jayanth/Desktop/Waveform
 node --test frontend/tests/*.test.mjs
 ```
 
-**60 backend tests and 14 frontend tests pass.** Database tests use isolated temporary SQLite files, not the user's workspace. Tests cover persistence/reopen, profile validation, feedback, playlist CRUD/order/revision conflicts, all three file round trips, Unicode/multiline CSV/quotes, formula-safe CSV, empty exports, unmatched imports, malformed files, byte limits, database failures, draft identity and encoded platform searches.
+**67 backend tests and 19 frontend tests pass.** Database tests use isolated temporary SQLite files, not the user's workspace. Tests cover persistence/reopen, profile validation, feedback, playlist CRUD/order/revision conflicts, all three file round trips, Unicode/multiline CSV/quotes, formula-safe CSV, empty exports, unmatched imports, malformed files, byte limits, database failures, draft identity and encoded platform searches.
 
-Browser QA verified model comparison, custom hybrid generation/save/history, collaborative artist search/results, cold-start popularity, failure retention and responsive layouts from 320 to 1440px. Tests use isolated SQLite databases; production state is preserved. See [PROJECT_PROGRESS.md](PROJECT_PROGRESS.md).
+Browser QA verified empty/populated Insights, real generation/feedback/save totals, full comparison and explicit editor selection, UTC filtering, accessible count tables, report display, failure retention and responsive layouts from 320 to 1440px. Tests use isolated SQLite databases; production state is preserved. See [PROJECT_PROGRESS.md](PROJECT_PROGRESS.md).
+
+## Explorer and Taste Insights
+
+[INSIGHTS_AND_EVALUATION.md](docs/INSIGHTS_AND_EVALUATION.md) defines all denominators, UTC windows, rank overlap and evaluation protocols. Compare shows full ranked sets without recording sessions. Use a model's tracks explicitly loads an unsaved editor selection; Save is still required. Generate separately records genuine nonempty results.
+
+Taste Insights separates current likes/playlists from recorded generations in the selected window. Refresh after changing state. It never infers listening time, plays or mood. Missing source features remain unknown.
+
+```sh
+.venv/bin/python scripts/evaluate_models.py > docs/evaluation-report.json
+```
+
+The committed report displays offline without optional artist artifacts. Reproduction evaluates all 1,877 eligible source users in two fixed splits with train-only features, self-exclusion and descriptive bootstrap intervals. These are historical artist metrics; catalogue relevance metrics remain unavailable. Restart after replacing the saved report.
 
 ## Optional collaborative artist experiment
 
@@ -141,4 +157,4 @@ The diagnostic script checks ranking invariants on 12 real seeds. It does not me
 
 Open Vibe Control, choose hybrid or context, optionally adjust hybrid weights, then choose a mood/activity and optional preferences, select track count or duration budget, then Generate playlist. Regenerate with different tracks excludes the immediately previous batch; Generate again uses current inputs without that extra exclusion. The separate Recommendations page still supports content-only references. Use these tracks in the editor preserves their order; save explicitly for a durable playlist. Saved profile preferences affect recommendations, while catalogue search retains its source order. Vibe Control applies familiarity/discovery to liked/favorite artist labels when available; the content-only Recommendations page keeps its Phase 4 behavior. Familiarity is not listening history.
 
-See [roadmap](docs/ROADMAP.md), [architecture](docs/ARCHITECTURE.md) and [Phase 5 archive](docs/history/PHASE_5.md). **Stop after Phase 6 for manual review/commit.** No automated commits, pushes or Phase 7 work.
+See [roadmap](docs/ROADMAP.md), [architecture](docs/ARCHITECTURE.md) and [Phase 6 archive](docs/history/PHASE_6.md). **Stop after Phase 7 for manual review/commit.** No automated commits, pushes or Phase 8 work.
