@@ -17,3 +17,7 @@ The retained interface, live MusicBrainz song/artist/genre searches, explicit de
 Storage belongs to this browser/origin. Clearing site data or using a different device loses access to local copies. Storage failures use explicitly temporary memory. Historical code/data are preserved in `legacy/` and root `data/`, excluded from the served frontend.
 
 See [architecture](docs/ARCHITECTURE.md) and [progress](PROJECT_PROGRESS.md).
+
+## Create and export
+
+Choose mood/activity/genres in Vibe Control, generate, then Edit this playlist. In Builder, rename, replace, remove and reorder tracks; save in Your Library. CSV/TXT exports support manual transfer and JSON is a full backup. Expand the Soundiiz instructions for its documented import steps, or search individual tracks on Spotify, Apple Music and YouTube Music. No direct platform playlist creation or playback is included. See [file formats](docs/FILE_FORMATS.md).

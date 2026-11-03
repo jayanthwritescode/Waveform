@@ -25,3 +25,11 @@ Phase 3 checkpoint: `46fdefb`, pushed successfully to `origin/waveform-static-pi
 Implemented configurable six-mood/seven-activity mappings, combined live candidate searches, 35/25/20/10/10 scoring with missing-weight redistribution, source-based explanations, explicit preferences/exclusions, editorial energy proxies, conservative recording/version deduplication, artist/genre diversification, 10/20/30 selection, shortfalls, seeded regeneration and reserve replacement. Vibe Control reuses existing panels and cards; generated playlists load into the retained editor through its unsaved-change guard. Last ten genuine generation snapshots and last settings remain local.
 
 Validation: 34 JavaScript tests pass, including all 42 mood/activity combinations at all three lengths using the genuine fallback, deterministic ordering, preference effects, score sums, artist limits, versions, exclusions, outage candidates and replacement. Browser QA generated 20 real fallback tracks, verified explanations, replaced a track from reserve and loaded the editor. Fixed the discovered genre-chip input hit area before completion. See `docs/RECOMMENDATION_MODEL.md`.
+
+Phase 4 checkpoint: `d4f04d6`, pushed successfully to `origin/waveform-static-pivot`.
+
+## Phase 5 — playlist builder and export
+
+Added editor reserve replacement, drag ordering with existing keyboard up/down controls, context retention, local named saves, UTF-8 CSV/TXT/full JSON downloads, file preview/import (including old JSON v1 migration), clipboard fallback, encoded service searches and documented manual Soundiiz guidance. No OAuth/account connection or simulated transfer is included.
+
+Validation: 40 JavaScript tests pass. Actual browser downloads each contained 20 tracks; CSV had exact title/artist/album/isrc/duration headers and seconds, TXT had 20 Artist - Title lines, JSON retained stable IDs and explanations. Actual downloaded JSON was selected through the file picker, previewed and loaded through the dirty-editor guard. Browser replacement, button reordering, local save and clipboard contents were verified. CSV/TXT parser tests cover quoting, Unicode, formula protection, unknowns, malformed files and limits. Official Soundiiz format/import instructions verified; no third-party account transfer was attempted.

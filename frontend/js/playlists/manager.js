@@ -23,7 +23,7 @@ export async function savePlaylist(input,id) {
     const existing=id?data.playlists.find(p=>p.id===id):null;
     if(id && (!existing || existing.revision!==input.revision)) fail('This playlist changed in another tab. Reopen it or save a copy.');
     if(!id && data.playlists.length>=50) fail('The local library supports 50 small playlists. Export or remove one first.');
-    result={id:id || crypto.randomUUID(),revision:(existing?.revision || 0)+1,title:String(input.title || 'Untitled playlist').slice(0,80),description:String(input.description || '').slice(0,500),tracks,updated_at:new Date().toISOString()};
+    result={id:id || crypto.randomUUID(),revision:(existing?.revision || 0)+1,title:String(input.title || 'Untitled playlist').slice(0,80),context:input.context?structuredClone(input.context):null,description:String(input.description || '').slice(0,500),tracks,updated_at:new Date().toISOString()};
     data.playlists=existing?data.playlists.map(p=>p.id===id?result:p):[result,...data.playlists];
   });
   return result;

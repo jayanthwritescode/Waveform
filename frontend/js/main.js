@@ -18,7 +18,7 @@ import {libraryPage, mountLibrary} from './pages/library.js';
 import {settingsPage, mountSettings} from './pages/settings.js';
 import {workspace, loadWorkspace, subscribeWorkspace, toggleFeedback} from './state/workspace.js';
 import {syncFeedbackButtons} from './components/track-actions.js';
-import {saveEditor, openSaved, removeSaved, requestReplacement} from './components/playlist-tools.js';
+import {saveEditor, downloadEditor, downloadSaved,readImport,loadImport,replaceEditorTrack, openSaved, removeSaved, requestReplacement} from './components/playlist-tools.js';
 
 renderShell();
 renderDraftDock(draft.snapshot());
@@ -168,6 +168,7 @@ document.addEventListener('input', event => {
   filterTimer = setTimeout(() => {captureFilters(); loadDiscover(routeVersion);}, 250);
 });
 document.addEventListener('change', event => {
+  if(event.target.id==='playlist-file'){readImport(event.target.files[0]);return;}
   if (event.target.id==='search-service') {updateSearchLinks();return;}
   if (!['genre-filter','artist-filter','search-type'].includes(event.target.id)) return;
   clearTimeout(filterTimer);
@@ -236,10 +237,14 @@ document.addEventListener('click', async event => {
   if (event.target.closest('#save-playlist')) saveEditor();
   if (event.target.closest('#save-copy')) saveEditor(true);
   if (event.target.closest('#new-playlist')) requestReplacement(()=>{draft.newPlaylist(); toast('New playlist draft started.');},'Start a new playlist?');
+  const replaceEditor=event.target.closest('[data-replace-editor]');if(replaceEditor)replaceEditorTrack(replaceEditor.dataset.replaceEditor);
+  if(event.target.closest('#load-import'))loadImport();
   const exportButton = event.target.closest('[data-export-format]');
+  if(exportButton)downloadEditor(exportButton.dataset.exportFormat);
   const open = event.target.closest('[data-open-playlist]');
   if (open) {const version=routeVersion; openSaved(open.dataset.openPlaylist,()=>version===routeVersion);}
   const exportSavedButton = event.target.closest('[data-export-saved]');
+  if(exportSavedButton)downloadSaved(exportSavedButton.dataset.exportSaved,exportSavedButton.dataset.format);
   const removeSavedButton = event.target.closest('[data-delete-playlist]');
   if (removeSavedButton) {
     removeSavedButton.disabled=true;
@@ -272,3 +277,9 @@ loadWorkspace();
 navigate();
 function storageNotice(){const notice=document.querySelector('#workspace-notice');if(store.warning){notice.hidden=false;notice.textContent=store.warning;}}
 window.addEventListener('waveform-storage-status',storageNotice);storageNotice();
+
+let draggedTrack=null;
+document.addEventListener('dragstart',event=>{const row=event.target.closest('[data-draft-row]');if(!row || event.target.closest('a,button,input')){event.preventDefault();return;}draggedTrack=row.dataset.draftRow;event.dataTransfer.effectAllowed='move';event.dataTransfer.setData('text/plain',draggedTrack);row.classList.add('dragging');});
+document.addEventListener('dragover',event=>{if(draggedTrack && event.target.closest('[data-draft-row]')){event.preventDefault();event.dataTransfer.dropEffect='move';}});
+document.addEventListener('drop',event=>{const row=event.target.closest('[data-draft-row]');if(row&&draggedTrack){event.preventDefault();draft.moveTo(draggedTrack,row.dataset.draftRow);toast('Playlist order updated.');}draggedTrack=null;});
+document.addEventListener('dragend',()=>{draggedTrack=null;document.querySelectorAll('.dragging').forEach(row=>row.classList.remove('dragging'));});

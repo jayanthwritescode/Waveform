@@ -1,6 +1,6 @@
 /** Editor state; browser-local editor recovery is separate from named playlists. */
 export class PlaylistDraft {
-  #state = {title: 'My moment', description: '', tracks: [], savedId:null, savedRevision:null, dirty:false};
+  #state = {title: 'My moment', description: '', tracks: [], context:null, savedId:null, savedRevision:null, dirty:false};
   #listeners = new Set();
   #generation = 0;
   get generation() {return this.#generation;}
@@ -49,6 +49,17 @@ export class PlaylistDraft {
     return true;
   }
 
+  moveTo(id,targetId) {
+    const index=this.#state.tracks.findIndex(t=>t.id===id),target=this.#state.tracks.findIndex(t=>t.id===targetId);
+    if(index<0 || target<0 || index===target)return false;
+    const [track]=this.#state.tracks.splice(index,1);this.#state.tracks.splice(target,0,track);this.#notify('move');return true;
+  }
+  replace(id,track) {
+    if(!track?.id || !track.title || !track.artist || this.has(track.id))return false;
+    const index=this.#state.tracks.findIndex(t=>t.id===id);if(index<0)return false;
+    this.#state.tracks[index]=structuredClone(track);this.#notify('replace');return true;
+  }
+
   setMetadata(field, value) {
     if (!['title','description'].includes(field)) return false;
     const maximum = {title: 80, description: 500}[field];
@@ -68,7 +79,7 @@ export class PlaylistDraft {
       ids.add(track.id); return true;
     });
     ++this.#generation;
-    this.#state = {title:playlist.title.slice(0,80), description:playlist.description.slice(0,500), tracks:structuredClone(tracks),
+    this.#state = {title:playlist.title.slice(0,80), description:playlist.description.slice(0,500), tracks:structuredClone(tracks),context:playlist.context?structuredClone(playlist.context):null,
       savedId:saved ? playlist.id : recover ? playlist.savedId || null : null,
       savedRevision:saved ? playlist.revision : recover ? playlist.savedRevision || null : null,
       dirty:recover ? Boolean(playlist.dirty) : !saved};
@@ -84,7 +95,7 @@ export class PlaylistDraft {
 
   newPlaylist() {
     ++this.#generation;
-    this.#state = {title:'My moment', description:'', tracks:[], savedId:null, savedRevision:null, dirty:false};
+    this.#state = {title:'My moment', description:'', tracks:[], context:null, savedId:null, savedRevision:null, dirty:false};
     this.#notify('load');
   }
 
