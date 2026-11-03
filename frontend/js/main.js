@@ -286,6 +286,6 @@ document.addEventListener('dragstart',event=>{const row=event.target.closest('[d
 document.addEventListener('dragover',event=>{if(draggedTrack && event.target.closest('[data-draft-row]')){event.preventDefault();event.dataTransfer.dropEffect='move';}});
 document.addEventListener('drop',event=>{const row=event.target.closest('[data-draft-row]');if(row&&draggedTrack){event.preventDefault();draft.moveTo(draggedTrack,row.dataset.draftRow);toast('Playlist order updated.');}draggedTrack=null;});
 document.addEventListener('dragend',()=>{draggedTrack=null;document.querySelectorAll('.dragging').forEach(row=>row.classList.remove('dragging'));});
-if(location.port!=='5173' && 'serviceWorker' in navigator && window.isSecureContext)navigator.serviceWorker.register(new URL('../sw.js',import.meta.url),{scope:new URL('../',import.meta.url).pathname}).catch(()=>{toast('Offline shell caching is unavailable. The online app still works.');});
+if(location.port!=='5173' && 'serviceWorker' in navigator && window.isSecureContext)navigator.serviceWorker.register(new URL('../sw.js',import.meta.url),{scope:new URL('../',import.meta.url).pathname}).then(()=>navigator.serviceWorker.ready).then(()=>{document.querySelector('#offline-status').textContent='OFFLINE DEMO READY';}).catch(()=>{toast('Offline shell caching is unavailable. The online app still works.');});
 
 window.addEventListener('storage',event=>{if(event.key==='waveform.workspace.v2'){loadWorkspace();if(['#/library','#/insights'].includes(location.hash))navigate();}});

@@ -25,7 +25,7 @@ export function importText(content,format) {
     if(data?.format!=='waveform-playlist'||![1,2].includes(data.version)||!data.playlist||!Array.isArray(data.playlist.tracks))throw Error('Choose a Waveform playlist JSON v1 or v2 file.');
     playlist=data.playlist;
     // Older source IDs can be retained without invoking the removed backend.
-    playlist.tracks=playlist.tracks.map(t=>({...t,id:t.id || t.catalogue_id || `import:${hash(JSON.stringify([t.title,t.artist,t.album,t.isrc]))}`,genres:t.genres || (t.genre?[t.genre]:[]),source:t.source || t.dataset_source || 'import',sourceId:t.sourceId || t.source_identifier || t.id}));
+    playlist.tracks=playlist.tracks.map(t=>({...t,id:t.id || t.catalogue_id || `import:${hash(JSON.stringify([t.title,t.artist,t.album,t.isrc]))}`,genres:t.genres || (t.genre?[t.genre]:[]),source:t.source || t.dataset_source || 'import',sourceId:t.sourceId || t.source_identifier || t.id,sourceUrl:t.sourceUrl || t.source_url}));
   } else if(format==='csv') {
     const rows=parseCSV(content),headers=rows.shift()?.map(x=>x.trim().toLowerCase());
     if(!headers || new Set(headers).size!==headers.length)throw Error('CSV has missing or duplicate column headers.');

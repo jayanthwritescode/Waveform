@@ -41,3 +41,15 @@ Phase 5 checkpoint: `64fd80b`, pushed successfully to `origin/waveform-static-pi
 Preserved the original dark/violet identity and refined source notices, controls, recent playlists, activity shortcuts, editor rows and responsive layouts. Added actual local Taste Insights, accessible mobile inert/focus behavior, named sliders, reduced-motion handling, skeleton feedback, route cancellation, bounded caches, corrupt-state validation and honest temporary-save notices. Added production offline-shell service worker and generated asset manifest (development port 5173 intentionally skips caching). Inactive backend-dependent UI/tests and old environment example are preserved under `legacy/`, excluded from the static app.
 
 Validation: 37 active JavaScript tests pass; nine obsolete tests were archived with inactive features. Browser QA covered seven routes at 320/768/1024/1440px without overflow, menu/Escape/hidden-link focus, ten real live recommendations, actual native drag ordering, and no captured console errors. All 27 preserved root data files match the pre-pivot hash baseline. Full testing detail is in `docs/QA.md`. Production artifact/offline/deployment checks continue in Phase 7.
+
+Phase 6 checkpoint: `d58906d`, pushed successfully to `origin/waveform-static-pivot`.
+
+## Phase 7 — static deployment and final verification
+
+Implemented root npm scripts (zero dependencies), allowlisted production build, content-versioned offline cache, equivalent Vercel/Netlify static deployment/security headers, artifact/HTTP verification scripts and complete setup/deployment/limits documentation. Historical full-stack docs/reports/screenshots are preserved under `docs/history/backend/`. No mandatory environment variables, backend, database, account or paid service exists in the active runtime.
+
+Validation: 38 active JavaScript tests pass; production build/artifact verification passes (63 files, 343,587 bytes, 208 fallback tracks, zero dependencies/functions). All 68 HTTP checks passed. Real production-browser workflow covered LIVE generation → replace → reorder → save → actual CSV download → manual transfer instructions → Library reload. With the static server stopped, cached reload and ten-track FALLBACK generation also passed. Old JSON v1 migration retains source ID/URL/duration; all 27 original data files remain unchanged. See `docs/QA.md`.
+
+Deployment status: ready for Vercel/Netlify free static hosting, but **not publicly deployed**. Vercel was discoverable but uninstalled/unconnected; no connected Netlify account or authenticated deployment CLI was available. No hosting resources, paid services, OAuth connections, PR or main-branch changes were created. Deployed-origin CORS remains a manual verification step documented in `docs/DEPLOYMENT.md`.
+
+All requested implementation phases (2.5–7) are complete. This final checkpoint’s commit hash and verified push result are recorded in the Codex completion report and Git history; prior verified checkpoints are listed above. The branch remains `waveform-static-pivot`.

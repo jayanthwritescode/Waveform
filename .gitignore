@@ -19,3 +19,7 @@ data/audio/*
 
 .env.auth
 .env.auth.*
+
+dist/
+.vercel/
+.netlify/

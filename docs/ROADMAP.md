@@ -1,32 +1,14 @@
-# Revised Waveform roadmap
+# Static pivot roadmap
 
-**Product:** context-aware music discovery, recommendation and playlist generation.
-**Tagline:** Your music. Your moment.
-**Journey:** Choose Context → Generate Recommendations → Refine Playlist → Save or Export.
+The 3 November 2026 simplified-architecture brief supersedes the historical full-stack/Render roadmap. It authorizes automatic phase commits and pushes on `waveform-static-pivot`; no force pushes or main-branch rewrites.
 
-Waveform does not host or stream music. It operates independently of music-platform APIs. Every phase stops for user review and a manual GitHub commit; never automatically commit, push or begin the next phase.
+| Phase | Completed scope |
+| --- | --- |
+| 2.5 | Audit, preserved design/data/history, static data service, normalized tracks, local draft/profile/playlists, inactive backend archive |
+| 3 | Official MusicBrainz searches, real browser CORS, rate queue/cache/retry/timeout, normalization and verified fallback |
+| 4 | Mood/activity mappings, combined candidates, weighted browser scoring/explanations, diversity/version/artist limits, variation/reserve |
+| 5 | Editing, drag/keyboard order, local saves/recovery, CSV/TXT/JSON, imports/clipboard, service searches/manual transfer |
+| 6 | Responsive visual polish, mobile focus, source/error/empty/loading states, storage recovery, local Insights and offline shell |
+| 7 | Static build/allowlist, Vercel/Netlify configs, production browser/HTTP/offline verification, final docs/repository review |
 
-| Phase | Scope | Status |
-| --- | --- | --- |
-| 1 | Foundation and design system | Completed under original roadmap |
-| 2 | Catalogue and functional player | Completed under original roadmap; metadata retained, player retired |
-| 2.5 | Product pivot: remove playback, retain discovery, add frontend playlist draft/editor/dock, update architecture and tests | Complete |
-| 3 | Local profile; favorite genres/artists; likes/dislikes; persistent playlist CRUD; CSV/TXT/JSON import/export; Spotify/Apple Music/YouTube Music track search links; previous recommendation sessions where actual sessions exist | Complete |
-| 4 | Legitimate dataset preprocessing, feature engineering, content similarity, preference profiles, recommendation API, basic playlist generation, explanations and evaluation tests | Complete |
-| 5 | Vibe Control: moods, activities, energy/instrumental/genre/artist preferences, desired length, familiarity/discovery, time and optional weather; context-aware ranking, length controls, regeneration and honest explanations | Complete |
-| 6 | Appropriate interaction data, collaborative model or separate benchmark when unaligned, normalized hybrid signals, cold start, configurable weights and model comparison | Complete |
-| 7 | Recommendation Explorer, Taste Insights, actual feedback/context/playlist statistics, held-out evaluation and reproducible metrics | Complete; awaiting review |
-| 8 | Finalize portable exports/search workflows, consider permitted official direct integrations, matching reliability, design/responsiveness/accessibility/performance, integration tests, documentation and deployment | Not started |
-
-## Export and platform boundaries
-
-- Mandatory portable formats in Phase 3: UTF-8 CSV with correct escaping, human-readable TXT, and JSON preserving playlist metadata. Include known titles, artists, album, duration, ISRC and source identifiers. Do not claim every platform directly imports these files.
-- Mandatory external searches in Phase 3: encoded artist/title queries opening Spotify, Apple Music and YouTube Music search interfaces; no invented song-specific IDs or account linking required.
-- Optional direct integration: verify current official API capabilities, developer access, authorization/scopes, restrictions, rate limits, matching and playlist creation support before implementing any provider. No undocumented scraping/private endpoints. Confirm success from the destination before reporting a transfer.
-- Phase 3 implements portable files and fixed-origin external search links. Direct provider integration remains optional future work, separate from playlist state and serialization.
-
-## Data and measurement boundaries
-
-Use actual metadata and available/derived, documented features. Never invent missing values or claim collaborative training without sufficient interactions. Do not silently align incompatible datasets. Context must influence ranking beyond genre filtering when Phase 5 is implemented. Use real score contributions for explanations; no fabricated match percentages.
-
-Record future explicit feedback, saves and recommendation interactions without presenting them as audio plays or listening time. Optional imported listening data must remain identified by its source. Do not fabricate sessions or analytics.
+All implementation phases are complete locally. Public deployment/deployed-origin CORS is unverified because no destination account was connected. No paid hosting resources or OAuth integrations were created. Historical milestones/research results remain under `docs/history/` and `legacy/`.
