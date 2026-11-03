@@ -15,7 +15,7 @@ export const trackCard = (track, index) => `<article class="track-card">
   ${feedbackButtons(track)}${platformLinks(track)}
 </article>`;
 
-export const mixCard = mix => `<a class="mix-card" href="#/builder"><img src="assets/images/${mix.artwork}.svg" alt="" loading="lazy"><span class="mix-content"><span class="mix-tag">${mix.tag}</span><strong>${mix.title}</strong><span>${mix.subtitle}</span></span><span class="mix-arrow">${icon('arrow')}</span></a>`;
+export const mixCard = mix => `<a class="mix-card" href="#/vibe?mood=${mix.tag.includes('FOCUS')?'focused':'relaxed'}"><img src="assets/images/${mix.artwork}.svg" alt="" loading="lazy"><span class="mix-content"><span class="mix-tag">${mix.tag}</span><strong>${mix.title}</strong><span>${mix.subtitle}</span></span><span class="mix-arrow">${icon('arrow')}</span></a>`;
 
 export const skeletonCards = () => `<div class="track-grid" aria-busy="true" aria-label="Loading catalogue">${Array.from({length:4},()=>'<div class="skeleton-card"><div></div><span></span><span></span></div>').join('')}</div>`;
 export const catalogueError = () => `<div class="catalogue-state" role="alert"><h3>The catalogue couldn’t connect.</h3><p>The local fallback file could not load. Reload or check your static host.</p><button class="secondary-button" data-retry-catalogue>Try again</button></div>`;

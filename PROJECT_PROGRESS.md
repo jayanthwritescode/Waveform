@@ -17,3 +17,11 @@ Phase 2.5 checkpoint: `a26b594`, pushed successfully to `origin/waveform-static-
 Added official MusicBrainz recording and artist adapters, source normalization, literal query escaping, debounced search, genre queries, serial requests with a cross-tab Web Lock held for at least 1.1 seconds, bounded retry/timeout/Retry-After handling, 24-hour cache and explicit source states. A 208-record attributed fallback uses preserved genuine metadata. Missing metadata stays unknown. No artwork enrichment, audio or proxy is needed.
 
 Validation: 28 JavaScript tests pass, including rate spacing, cache, 429/503/cooldown, malformed replies, abort, timeout and missing fields. Actual browser search for Get Lucky returned 690 MusicBrainz results with no CORS errors; browser fetch binding was corrected during this check. Artist searches also use the same browser endpoint. Vercel/Netlify deployed-origin verification remains for Phase 7.
+
+Phase 3 checkpoint: `46fdefb`, pushed successfully to `origin/waveform-static-pivot`. Actual artist-name search for Daft Punk returned 2,028 source recordings.
+
+## Phase 4 — contextual recommendation engine
+
+Implemented configurable six-mood/seven-activity mappings, combined live candidate searches, 35/25/20/10/10 scoring with missing-weight redistribution, source-based explanations, explicit preferences/exclusions, editorial energy proxies, conservative recording/version deduplication, artist/genre diversification, 10/20/30 selection, shortfalls, seeded regeneration and reserve replacement. Vibe Control reuses existing panels and cards; generated playlists load into the retained editor through its unsaved-change guard. Last ten genuine generation snapshots and last settings remain local.
+
+Validation: 34 JavaScript tests pass, including all 42 mood/activity combinations at all three lengths using the genuine fallback, deterministic ordering, preference effects, score sums, artist limits, versions, exclusions, outage candidates and replacement. Browser QA generated 20 real fallback tracks, verified explanations, replaced a track from reserve and loaded the editor. Fixed the discovered genre-chip input hit area before completion. See `docs/RECOMMENDATION_MODEL.md`.

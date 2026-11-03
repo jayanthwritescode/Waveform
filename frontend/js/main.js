@@ -1,3 +1,4 @@
+import {vibePage,mountVibe} from './pages/vibe.js';
 import {registerTracks} from './api/catalogue.js';
 import {store} from './playlists/storage.js';
 import {updateSearchLinks,copySearchList} from './components/platform-workflow.js';
@@ -49,13 +50,14 @@ function navigate() {
   });
   const main = document.querySelector('#main');
   displayedTracks = [];
-  main.innerHTML = route === 'home' ? homePage() : route === 'discover' ? discoverPage() : route === 'builder' ? builderPage() : route === 'vibe' ? '<section class="empty-state"><h1>Your next moment starts here.</h1><p>Explore real metadata and collect a playlist locally.</p><a class="primary-button" href="#/discover">Discover music</a></section>' : route === 'library' ? libraryPage() : route === 'settings' ? settingsPage() : route === 'track' ? '<div class="catalogue-state" role="status">Loading track…</div>' : homePage();
+  main.innerHTML = route === 'home' ? homePage() : route === 'discover' ? discoverPage() : route === 'builder' ? builderPage() : route === 'vibe' ? vibePage() : route === 'library' ? libraryPage() : route === 'settings' ? settingsPage() : route === 'track' ? '<div class="catalogue-state" role="status">Loading track…</div>' : homePage();
   if (route === 'home') loadHome(routeVersion);
   if (route === 'discover') {
     document.querySelector('#music-search').value = filters.q;
     loadDiscover(routeVersion);
   }
   const version = routeVersion;
+  if (route === 'vibe') mountVibe(new URLSearchParams(query),()=>version===routeVersion,tracks=>{if(version===routeVersion)displayedTracks=tracks;});
   if (route === 'settings') mountSettings(() => version === routeVersion);
   if (route === 'library') mountLibrary(() => version === routeVersion).then(tracks => {if (tracks && version === routeVersion) displayedTracks = tracks;});
   if (route === 'builder') refreshBuilder(draft.snapshot());
