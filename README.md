@@ -21,3 +21,5 @@ See [architecture](docs/ARCHITECTURE.md) and [progress](PROJECT_PROGRESS.md).
 ## Create and export
 
 Choose mood/activity/genres in Vibe Control, generate, then Edit this playlist. In Builder, rename, replace, remove and reorder tracks; save in Your Library. CSV/TXT exports support manual transfer and JSON is a full backup. Expand the Soundiiz instructions for its documented import steps, or search individual tracks on Spotify, Apple Music and YouTube Music. No direct platform playlist creation or playback is included. See [file formats](docs/FILE_FORMATS.md).
+
+The home shows recent local saves and activity shortcuts. Taste Insights counts only actual local saves/likes and the last ten generation snapshots. Static assets and the fallback are cached for offline reload after a successful production visit; development port 5173 skips service-worker registration. Offline support requires an initial online visit and a browser with service workers. [QA evidence](docs/QA.md).

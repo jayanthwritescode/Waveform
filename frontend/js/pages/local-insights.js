@@ -1,0 +1,9 @@
+import {store} from '../playlists/storage.js';
+import {escapeHtml as html} from '../utils/html.js';
+export function localInsightsPage() {
+  const d=store.read(),likes=Object.entries(d.feedback).filter(([,v])=>v==='like'),counts={};
+  for(const session of d.sessions){const mood=session.context.mood || 'Unspecified';counts[mood]=(counts[mood] || 0)+1;}
+  const savedGenres={};for(const track of d.playlists.flatMap(p=>p.tracks))for(const g of track.genres || [])savedGenres[g]=(savedGenres[g] || 0)+1;
+  const list=obj=>Object.keys(obj).length?`<dl class="local-counts">${Object.entries(obj).sort((a,b)=>b[1]-a[1]).slice(0,10).map(([k,v])=>`<div><dt>${html(k)}</dt><dd>${v}</dd></div>`).join('')}</dl>`:'<p class="small-empty">Nothing recorded yet. Create a playlist to begin.</p>';
+  return `<section class="page-intro"><div><div class="eyebrow">THE SHAPE OF YOUR TASTE</div><h1>Taste Insights<span class="title-dot">.</span></h1><p>Actual choices saved in this browser. No inferred listening or play counts.</p></div></section><div class="insight-stats"><article><strong>${d.playlists.length}</strong><span>Saved playlists</span></article><article><strong>${likes.length}</strong><span>Explicit likes</span></article><article><strong>${d.sessions.length}</strong><span>Recent generations</span></article></div><div class="preference-grid"><section class="form-panel"><h2>Moods you chose</h2><p>Counts across the last ${d.sessions.length} stored nonempty generations, up to ten snapshots.</p>${list(counts)}</section><section class="form-panel"><h2>Genres in saved playlists</h2><p>Counts are track occurrences across saved playlists; one track may have multiple genres.</p>${list(savedGenres)}</section><section class="form-panel"><h2>Favorite artists</h2>${d.profile.favorite_artists.length?`<p>${d.profile.favorite_artists.map(html).join(' · ')}</p>`:'<p>No favorites selected.</p>'}<a class="text-link" href="#/settings">Edit preferences ↗</a></section></div>`;
+}

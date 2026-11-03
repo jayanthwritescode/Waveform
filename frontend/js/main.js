@@ -1,9 +1,11 @@
+import {escapeHtml} from './utils/html.js';
+import {localInsightsPage} from './pages/local-insights.js';
 import {vibePage,mountVibe} from './pages/vibe.js';
 import {registerTracks} from './api/catalogue.js';
 import {store} from './playlists/storage.js';
 import {updateSearchLinks,copySearchList} from './components/platform-workflow.js';
 
-import {renderShell, routes} from './components/shell.js';
+import {renderShell, routes,setNavigationOpen} from './components/shell.js';
 import {homePage} from './pages/home.js';
 
 import {discoverPage, renderResults, trackPage} from './pages/discover.js';
@@ -22,6 +24,7 @@ import {saveEditor, downloadEditor, downloadSaved,readImport,loadImport,replaceE
 
 renderShell();
 renderDraftDock(draft.snapshot());
+let pageController=new AbortController();
 let routeVersion = 0;
 let searchVersion = 0;
 let displayedTracks = [];
@@ -30,6 +33,7 @@ let searchRequest;
 const filters = {q:'', genre:'', artist:'',searchType:'song',limit:24,offset:0};
 
 function navigate() {
+  pageController.abort();pageController=new AbortController();
   ++routeVersion;
   ++searchVersion;
   clearTimeout(filterTimer);
@@ -50,20 +54,20 @@ function navigate() {
   });
   const main = document.querySelector('#main');
   displayedTracks = [];
-  main.innerHTML = route === 'home' ? homePage() : route === 'discover' ? discoverPage() : route === 'builder' ? builderPage() : route === 'vibe' ? vibePage() : route === 'library' ? libraryPage() : route === 'settings' ? settingsPage() : route === 'track' ? '<div class="catalogue-state" role="status">Loading track…</div>' : homePage();
+  main.innerHTML = route === 'insights' ? localInsightsPage() : route === 'home' ? homePage() : route === 'discover' ? discoverPage() : route === 'builder' ? builderPage() : route === 'vibe' ? vibePage() : route === 'library' ? libraryPage() : route === 'settings' ? settingsPage() : route === 'track' ? '<div class="catalogue-state" role="status">Loading track…</div>' : homePage();
   if (route === 'home') loadHome(routeVersion);
   if (route === 'discover') {
     document.querySelector('#music-search').value = filters.q;
+    document.querySelector('#search-type').value=filters.searchType;
     loadDiscover(routeVersion);
   }
   const version = routeVersion;
-  if (route === 'vibe') mountVibe(new URLSearchParams(query),()=>version===routeVersion,tracks=>{if(version===routeVersion)displayedTracks=tracks;});
+  if (route === 'vibe') mountVibe(new URLSearchParams(query),()=>version===routeVersion,tracks=>{if(version===routeVersion)displayedTracks=tracks;},pageController.signal);
   if (route === 'settings') mountSettings(() => version === routeVersion);
   if (route === 'library') mountLibrary(() => version === routeVersion).then(tracks => {if (tracks && version === routeVersion) displayedTracks = tracks;});
   if (route === 'builder') refreshBuilder(draft.snapshot());
-  if (trackMatch) loadDetail(decodeURIComponent(trackMatch[1]), routeVersion);
-  document.body.classList.remove('nav-open');
-  document.querySelector('.menu-button').setAttribute('aria-expanded', 'false');
+  if (trackMatch) {try{loadDetail(decodeURIComponent(trackMatch[1]),routeVersion);}catch{main.innerHTML='<section class="empty-state"><h1>Invalid track address.</h1><a href="#/discover">Back to Discover</a></section>';}}
+  setNavigationOpen(false);
   window.scrollTo({top:0, behavior:'instant'});
 }
 
@@ -73,6 +77,7 @@ async function loadHome(version) {
     if (version !== routeVersion) return;
     displayedTracks = page.items; registerTracks(page.items);
     document.querySelector('#home-catalogue').innerHTML = renderResults(page);
+    const saved=store.read().playlists.slice(0,3);document.querySelector('#home-recent').innerHTML=saved.length?saved.map(p=>`<button class="recent-playlist" data-open-playlist="${escapeHtml(p.id)}"><span>≋</span><strong>${escapeHtml(p.title)}</strong><small>${p.tracks.length} tracks · this browser</small></button>`).join(''):'<p class="small-empty">Your saved playlists will appear here. Start with a mood above.</p>';
   } catch {
     if (version === routeVersion) document.querySelector('#home-catalogue').innerHTML = catalogueError();
   }
@@ -83,7 +88,6 @@ async function loadDiscover(version) {
   const controller = new AbortController();
   searchRequest = controller;
   const request = ++searchVersion;
-  const timeout = setTimeout(() => controller.abort(), 8000);
   const count = document.querySelector('#result-count');
   const results = document.querySelector('#catalogue-results');
   count.textContent = 'Searching…';
@@ -93,7 +97,7 @@ async function loadDiscover(version) {
     if (version !== routeVersion || request !== searchVersion) return;
     displayedTracks = page.items; registerTracks(page.items);
     results.innerHTML = renderResults(page);
-    document.querySelector('#catalogue-pagination').innerHTML = page.total ? `<button class="secondary-button" data-page-direction="-1" ${page.offset===0?'disabled':''}>Previous page</button><span>Page ${Math.floor(page.offset/page.limit)+1} of ${Math.ceil(page.total/page.limit)}</span><button class="secondary-button" data-page-direction="1" ${page.offset+page.items.length>=page.total?'disabled':''}>Next page</button>` : '';
+    document.querySelector('#catalogue-pagination').innerHTML = page.total && page.items.length ? `<button class="secondary-button" data-page-direction="-1" ${page.offset===0?'disabled':''}>Previous page</button><span>Page ${Math.floor(page.offset/page.limit)+1} of ${Math.ceil(page.total/page.limit)}</span><button class="secondary-button" data-page-direction="1" ${page.offset+page.items.length>=page.total?'disabled':''}>Next page</button>` : '';
     count.textContent = `${page.total} ${page.total === 1 ? 'track' : 'tracks'} · ${page.notice}`;
     populateFilter('genre-filter', page.genres, filters.genre, 'All genres');
     populateFilter('artist-filter', page.artists, filters.artist, 'All artists');
@@ -102,16 +106,15 @@ async function loadDiscover(version) {
     displayedTracks = [];
     results.innerHTML = catalogueError();
     document.querySelector('#catalogue-pagination').replaceChildren();
-    count.textContent = 'Catalogue unavailable';
+    count.textContent = 'Catalogue unavailable. Clear the search to retry the demo fallback.';
   } finally {
-    clearTimeout(timeout);
     if (version === routeVersion && request === searchVersion) results.removeAttribute('aria-busy');
   }
 }
 
 function populateFilter(id, values, selected, label) {
   const select = document.getElementById(id);
-  select.replaceChildren(new Option(label, ''), ...values.map(value => new Option(value, value)));
+  select.replaceChildren(new Option(label, ''), ...[...new Set([...(selected?[selected]:[]),...values])].map(value => new Option(value, value)));
   select.value = selected;
 }
 
@@ -142,9 +145,8 @@ window.addEventListener('hashchange', () => {navigate(); document.querySelector(
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape') {
     const wasOpen = document.body.classList.contains('nav-open');
-    document.body.classList.remove('nav-open');
-    document.querySelector('.menu-button').setAttribute('aria-expanded', 'false');
-    if (wasOpen) document.querySelector('.menu-button').focus();
+    setNavigationOpen(false);
+    if(wasOpen)document.querySelector('.menu-button').focus();
   }
 });
 document.addEventListener('submit', event => {
@@ -263,6 +265,7 @@ subscribeWorkspace(() => {
   syncFeedbackButtons();
   const notice = document.querySelector('#workspace-notice');
   notice.hidden = !workspace.error;
+  storageNotice();
   if (workspace.error) {
     notice.replaceChildren(document.createTextNode('Local preferences/feedback are unavailable. Your editor draft is kept. '));
     const retry = document.createElement('button'); retry.className='text-button'; retry.dataset.retryWorkspace=''; retry.textContent='Retry storage'; notice.append(retry);
@@ -283,3 +286,6 @@ document.addEventListener('dragstart',event=>{const row=event.target.closest('[d
 document.addEventListener('dragover',event=>{if(draggedTrack && event.target.closest('[data-draft-row]')){event.preventDefault();event.dataTransfer.dropEffect='move';}});
 document.addEventListener('drop',event=>{const row=event.target.closest('[data-draft-row]');if(row&&draggedTrack){event.preventDefault();draft.moveTo(draggedTrack,row.dataset.draftRow);toast('Playlist order updated.');}draggedTrack=null;});
 document.addEventListener('dragend',()=>{draggedTrack=null;document.querySelectorAll('.dragging').forEach(row=>row.classList.remove('dragging'));});
+if(location.port!=='5173' && 'serviceWorker' in navigator && window.isSecureContext)navigator.serviceWorker.register(new URL('../sw.js',import.meta.url),{scope:new URL('../',import.meta.url).pathname}).catch(()=>{toast('Offline shell caching is unavailable. The online app still works.');});
+
+window.addEventListener('storage',event=>{if(event.key==='waveform.workspace.v2'){loadWorkspace();if(['#/library','#/insights'].includes(location.hash))navigate();}});

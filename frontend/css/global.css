@@ -167,3 +167,6 @@ main:focus {
 summary:focus-visible {outline:2px solid var(--accent);outline-offset:5px;border-radius:3px;}
 :where(button,a,input,select,textarea,summary) {scroll-margin-top:85px;scroll-margin-bottom:150px;}
 @media(pointer:coarse){.icon-button,.feedback-button,.text-button {min-width:44px;min-height:44px;}.platform-search a {min-height:44px;display:inline-flex;align-items:center;}}
+/* Respect motion preferences and keep focus clear on every input method. */
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+input,select,textarea{min-width:0}button,a,input,select,textarea,summary{touch-action:manipulation}main{animation:page-arrival .25s ease-out}@keyframes page-arrival{from{opacity:.8;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}

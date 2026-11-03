@@ -16,7 +16,7 @@ Default weights: genre .35, context .25, explicit user preference .20, artist .1
 - Artist: exact normalized match to selected/favorite/seed artists, available only when those preferences and artist credits exist.
 - Discovery: preference-controlled value for artists outside versus inside explicit favorites/liked artist labels. This is not listening history or population popularity.
 
-Every positive explanation corresponds to an available component. Detailed contributions and redistributed weights remain attached to tracks; missing signals are named. Unknown audio energy/valence/tempo/instrumentalness stay unknown. Saved energy range is a historical preference retained for compatibility; the current Vibe slider drives the new energy proxy directly.
+Every positive explanation corresponds to an available component. Detailed contributions and redistributed weights remain attached to tracks; missing signals are named. Unknown audio energy/valence/tempo/instrumentalness stay unknown. The saved energy range midpoint supplies the initial Vibe energy setting before any generation settings exist; the current Vibe slider then drives the energy proxy directly.
 
 ## Selection and replacement
 

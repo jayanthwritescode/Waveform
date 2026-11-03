@@ -33,3 +33,11 @@ Phase 4 checkpoint: `d4f04d6`, pushed successfully to `origin/waveform-static-pi
 Added editor reserve replacement, drag ordering with existing keyboard up/down controls, context retention, local named saves, UTF-8 CSV/TXT/full JSON downloads, file preview/import (including old JSON v1 migration), clipboard fallback, encoded service searches and documented manual Soundiiz guidance. No OAuth/account connection or simulated transfer is included.
 
 Validation: 40 JavaScript tests pass. Actual browser downloads each contained 20 tracks; CSV had exact title/artist/album/isrc/duration headers and seconds, TXT had 20 Artist - Title lines, JSON retained stable IDs and explanations. Actual downloaded JSON was selected through the file picker, previewed and loaded through the dirty-editor guard. Browser replacement, button reordering, local save and clipboard contents were verified. CSV/TXT parser tests cover quoting, Unicode, formula protection, unknowns, malformed files and limits. Official Soundiiz format/import instructions verified; no third-party account transfer was attempted.
+
+Phase 5 checkpoint: `64fd80b`, pushed successfully to `origin/waveform-static-pivot`.
+
+## Phase 6 — visual polish and demo reliability
+
+Preserved the original dark/violet identity and refined source notices, controls, recent playlists, activity shortcuts, editor rows and responsive layouts. Added actual local Taste Insights, accessible mobile inert/focus behavior, named sliders, reduced-motion handling, skeleton feedback, route cancellation, bounded caches, corrupt-state validation and honest temporary-save notices. Added production offline-shell service worker and generated asset manifest (development port 5173 intentionally skips caching). Inactive backend-dependent UI/tests and old environment example are preserved under `legacy/`, excluded from the static app.
+
+Validation: 37 active JavaScript tests pass; nine obsolete tests were archived with inactive features. Browser QA covered seven routes at 320/768/1024/1440px without overflow, menu/Escape/hidden-link focus, ten real live recommendations, actual native drag ordering, and no captured console errors. All 27 preserved root data files match the pre-pivot hash baseline. Full testing detail is in `docs/QA.md`. Production artifact/offline/deployment checks continue in Phase 7.

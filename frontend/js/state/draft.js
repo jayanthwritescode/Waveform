@@ -127,13 +127,21 @@ export const draft = new PlaylistDraft();
 
 export let recoveryWarning = '';
 if (typeof window !== 'undefined') {
+  let safeToWrite=true;
   try {
-    const storage = window.localStorage;
-    const recovered = JSON.parse(storage.getItem('waveform-draft-v2') || 'null');
-    if (recovered?.version === 1) draft.load(recovered.draft, {recover:true});
-  } catch {recoveryWarning = 'The previous draft could not be restored. Saved playlists remain in Your Library.';}
-  draft.subscribe(snapshot => {
-    try {localStorage.setItem('waveform-draft-v2', JSON.stringify({version:1,draft:snapshot}));}
-    catch {recoveryWarning = 'Draft recovery is unavailable. Save your playlist to keep it after leaving this page.';}
+    const storage=window.localStorage;
+    const text=storage.getItem('waveform-draft-v2');
+    const legacy=!text?JSON.parse(window.sessionStorage?.getItem('waveform-draft-v1') || 'null'):null;
+    const recovered=text?JSON.parse(text):legacy;
+    if(recovered){
+      if(![1,2].includes(recovered.version))throw Error('Unknown draft version');
+      draft.load(recovered.draft,{recover:true});
+      if(legacy)draft.unlink(recovered.draft.savedId);
+    }
+  } catch {safeToWrite=false;recoveryWarning='Draft recovery is unavailable. Original stored text is preserved; download a JSON backup of your changes.';}
+  draft.subscribe(snapshot=>{
+    if(!safeToWrite)return;
+    try{localStorage.setItem('waveform-draft-v2',JSON.stringify({version:2,draft:snapshot}));}
+    catch{safeToWrite=false;recoveryWarning='Draft recovery is unavailable or full. Download a JSON backup before leaving.';}
   });
 }

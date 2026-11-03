@@ -51,7 +51,7 @@ export class MusicBrainz {
         if(!response.ok)throw Error(`MusicBrainz returned ${response.status}.`);
         const data=await response.json();
         const array=entity==='recording'?'recordings':'artists';
-        if(!data || !Array.isArray(data[array]) || !Number.isFinite(data.count))throw Error('MusicBrainz returned an unexpected response.');
+        if(!data || !Array.isArray(data[array]) || (!Number.isFinite(data.count)||data.count<0))throw Error('MusicBrainz returned an unexpected response.');
         const value={at:this.now(),data};this.cache.set(key,value);
         while(this.cache.size>30)this.cache.delete(this.cache.keys().next().value);
         try{this.storage?.setItem('waveform.mb.cache',JSON.stringify([...this.cache].map(([key,value])=>({key,value}))));}catch{ /* Live results remain usable without disk cache. */ }
