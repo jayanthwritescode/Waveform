@@ -10,7 +10,7 @@ export const trackCard = (track, index) => `<article class="track-card">
   </a>
   <a class="track-title" href="#/track/${encodeURIComponent(track.id)}">${html(track.title)}</a>
   <span class="track-artist">${html(track.artist)}</span>
-  <span class="track-meta">${html(track.genre)}<span>${formatTime(track.duration_seconds)}</span></span>
+  <span class="track-meta">${html(track.genre)}<span>${track.duration_seconds ? formatTime(track.duration_seconds) : 'Duration unknown'}</span></span>
   ${draftButton(track)}
   ${feedbackButtons(track)}${platformLinks(track)}
 </article>`;
@@ -19,4 +19,4 @@ export const mixCard = mix => `<a class="mix-card" href="#/builder"><img src="as
 
 export const skeletonCards = () => `<div class="track-grid" aria-busy="true" aria-label="Loading catalogue">${Array.from({length:4},()=>'<div class="skeleton-card"><div></div><span></span><span></span></div>').join('')}</div>`;
 export const catalogueError = () => `<div class="catalogue-state" role="alert"><h3>The catalogue couldn’t connect.</h3><p>The local fallback file could not load. Reload or check your static host.</p><button class="secondary-button" data-retry-catalogue>Try again</button></div>`;
-export const catalogueCredits = () => `<p class="catalogue-credits">Catalogue sources: <a href="https://github.com/mdeff/fma" target="_blank" rel="noopener noreferrer">FMA metadata (CC BY 4.0)</a> and <a href="https://incompetech.com/music/royalty-free/music.html" target="_blank" rel="noopener noreferrer">Kevin MacLeod / Incompetech</a>. Individual records retain source/license scope. Artwork is original Waveform illustration; no audio is provided.</p>`;
+export const catalogueCredits = () => `<p class="catalogue-credits">Live metadata: <a href="https://musicbrainz.org/" target="_blank" rel="noopener noreferrer">MusicBrainz</a>. Verified demo fallback: <a href="https://github.com/mdeff/fma" target="_blank" rel="noopener noreferrer">FMA metadata (CC BY 4.0)</a> and <a href="https://incompetech.com/music/royalty-free/music.html" target="_blank" rel="noopener noreferrer">Kevin MacLeod / Incompetech</a>. Individual records retain source/license scope. Artwork is original Waveform illustration; no audio is provided.</p>`;

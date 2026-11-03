@@ -1,15 +1,23 @@
 import {deduplicate} from './metadata.js';
 import {rememberTracks, getPlaylist} from '../playlists/manager.js';
+import {musicbrainz,literal} from './musicbrainz.js';
 import {store} from '../playlists/storage.js';
 let fallback;
 const known=new Map();
-export const liveAdapter={async search(){throw Error('Live catalogue adapter is not configured.');}};
+export const liveAdapter=musicbrainz;
 export async function fallbackTracks() {
   if (!fallback) fallback=fetch(new URL('../../data/fallback-tracks.json',import.meta.url)).then(r=>{if(!r.ok)throw Error('Fallback catalogue unavailable');return r.json();}).then(d=>deduplicate(d.tracks)).catch(e=>{fallback=null;throw e;});
   const tracks=await fallback;tracks.forEach(t=>known.set(t.id,t));return structuredClone(tracks);
 }
 export async function getTracks(filters={},signal) {
-  if(signal?.aborted) throw new DOMException('Cancelled','AbortError');
+  if(filters.q || filters.genre || filters.artist) {
+    const query=[filters.q ? (filters.searchType==='artist'?`artist:${literal(filters.q)}`:`recording:${literal(filters.q)}`):null,filters.genre?`tag:${literal(filters.genre)}`:null,filters.artist?`artist:${literal(filters.artist)}`:null].filter(Boolean).join(' AND ');
+    try {const response=await musicbrainz.search(query,{limit:filters.limit || 24,offset:filters.offset || 0,signal}); registerTracks(response.tracks);const all=await fallbackTracks();return {items:response.tracks,total:response.total,limit:filters.limit || 24,offset:filters.offset || 0,genres:[...new Set(all.flatMap(t=>t.genres))].sort(),artists:[],mode:response.cached?'cached':'live',notice:response.cached?'Cached MusicBrainz search · up to 24 hours old':'Live MusicBrainz metadata · recordings may include alternate versions'};}
+    catch(error){if(signal?.aborted)throw error;const result=await searchFallback(filters);return {...result,notice:`${error.message || 'Live request failed'} Showing verified demo fallback; it may not contain your search.`};}
+  }
+  return searchFallback(filters);
+}
+export async function searchFallback(filters={}) {
   const all=await fallbackTracks();
   const q=(filters.q || '').toLowerCase();
   const items=all.filter(t=>(!q || `${t.title} ${t.artist} ${t.genres.join(' ')} ${t.tags.join(' ')}`.toLowerCase().includes(q))&&(!filters.genre || t.genres.some(g=>g.toLowerCase()===filters.genre.toLowerCase()))&&(!filters.artist || t.artist.toLowerCase()===filters.artist.toLowerCase()));

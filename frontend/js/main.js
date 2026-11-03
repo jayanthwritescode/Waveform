@@ -26,7 +26,7 @@ let searchVersion = 0;
 let displayedTracks = [];
 let filterTimer;
 let searchRequest;
-const filters = {q:'', genre:'', artist:'',limit:24,offset:0};
+const filters = {q:'', genre:'', artist:'',searchType:'song',limit:24,offset:0};
 
 function navigate() {
   ++routeVersion;
@@ -131,6 +131,7 @@ async function loadDetail(id, version) {
 function captureFilters(resetPage = true) {
   if (resetPage) filters.offset=0;
   filters.q = document.querySelector('#music-search').value.trim();
+  filters.searchType=document.querySelector('#search-type').value;
   filters.genre = document.querySelector('#genre-filter').value;
   filters.artist = document.querySelector('#artist-filter').value;
 }
@@ -166,7 +167,7 @@ document.addEventListener('input', event => {
 });
 document.addEventListener('change', event => {
   if (event.target.id==='search-service') {updateSearchLinks();return;}
-  if (!['genre-filter','artist-filter'].includes(event.target.id)) return;
+  if (!['genre-filter','artist-filter','search-type'].includes(event.target.id)) return;
   clearTimeout(filterTimer);
   captureFilters();
   loadDiscover(routeVersion);

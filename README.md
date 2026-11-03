@@ -12,7 +12,7 @@ node tools/serve.mjs
 
 Open http://127.0.0.1:5173. Serve only `frontend/`, never the repository root. Test with `node --test frontend/tests/*.test.mjs`.
 
-Phase 2.5: the retained interface, local catalogue browsing, playlist editor, saved library and preferences work without a backend. Live discovery and contextual generation follow in subsequent checkpoints.
+The retained interface, live MusicBrainz song/artist/genre searches, explicit demo fallback, local playlist editor, saved library and preferences work without a backend. Contextual generation follows in Phase 4.
 
 Storage belongs to this browser/origin. Clearing site data or using a different device loses access to local copies. Storage failures use explicitly temporary memory. Historical code/data are preserved in `legacy/` and root `data/`, excluded from the served frontend.
 
