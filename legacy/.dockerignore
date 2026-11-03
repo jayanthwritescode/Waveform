@@ -1,0 +1,16 @@
+**
+!Dockerfile
+!backend/
+!backend/requirements-runtime-lock.txt
+!backend/app/
+!backend/app/**
+!frontend/
+!frontend/**
+!data/
+!data/catalogue/
+!data/catalogue/tracks.json
+!data/catalogue/fma.json
+!docs/
+!docs/evaluation-report.json
+**/__pycache__/
+**/*.pyc

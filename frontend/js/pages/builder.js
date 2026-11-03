@@ -1,3 +1,4 @@
+import {platformWorkflow,workflowBody} from '../components/platform-workflow.js';
 import {draft, summarizeDraft} from '../state/draft.js';
 import {draftDuration} from '../components/draft-actions.js';
 import {escapeHtml as html, formatTime} from '../utils/html.js';
@@ -11,6 +12,7 @@ export function builderPage() {
   return `<section class="page-intro"><div><div class="eyebrow">YOUR MUSIC. YOUR MOMENT.</div><h1>Playlist Builder<span class="title-dot">.</span></h1><p>Collect the tracks that fit. Shape the order. Make it yours.</p></div><a class="secondary-button" href="#/discover">${icon('plus')} Find more tracks</a></section>
     <section class="draft-metadata" aria-label="Playlist details"><label>Playlist title<input id="draft-title" maxlength="80" value="${html(snapshot.title)}" placeholder="Untitled playlist" autocomplete="off"></label><label>Description<textarea id="draft-description" maxlength="500" rows="2" placeholder="What is this playlist for?">${html(snapshot.description)}</textarea></label><p id="draft-persistence"></p></section>
     ${playlistTools()}
+    ${platformWorkflow(snapshot)}
     <section class="music-section" aria-labelledby="draft-tracks-heading"><div class="section-heading"><div><h2 id="draft-tracks-heading">Your selection</h2><p id="draft-summary"></p></div><button class="text-button" data-clear-draft id="builder-clear">Clear draft</button></div><div id="draft-tracks">${builderTracks(snapshot)}</div></section>`;
 }
 
@@ -29,5 +31,5 @@ export function refreshBuilder(snapshot, change = 'initial') {
   const summary = summarizeDraft(snapshot);
   document.querySelector('#draft-summary').textContent = `${summary.count} ${summary.count === 1 ? 'track' : 'tracks'} · ${draftDuration(summary)}`;
   document.querySelector('#builder-clear').hidden = summary.count === 0;
-  if (change !== 'metadata') document.querySelector('#draft-tracks').innerHTML = builderTracks(snapshot);
+  if (change !== 'metadata') {document.querySelector('#draft-tracks').innerHTML=builderTracks(snapshot);document.querySelector('#platform-workflow').innerHTML=workflowBody(snapshot);}
 }

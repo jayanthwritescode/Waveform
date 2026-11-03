@@ -1,0 +1,4401 @@
+{
+  "version": 1,
+  "description": "Verified subset of preserved FMA/Incompetech metadata. Not live results. No audio or album artwork.",
+  "tracks": [
+    {
+      "id": "USUAN1500027",
+      "title": "Dreams Become Real",
+      "artist": "Kevin MacLeod",
+      "album": null,
+      "durationMs": 410000,
+      "genres": [
+        "Contemporary"
+      ],
+      "tags": [
+        "Calming",
+        "Somber"
+      ],
+      "artworkUrl": null,
+      "isrc": "USUAN1500027",
+      "source": "incompetech",
+      "sourceId": "USUAN1500027",
+      "sourceUrl": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1500027",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "“Dreams Become Real” — Kevin MacLeod (incompetech.com). Licensed under Creative Commons Attribution 4.0. Audio unmodified. Waveform artwork is an original illustration, not the artist’s album artwork.",
+      "availability": "fallback"
+    },
+    {
+      "id": "USUAN1100844",
+      "title": "Cipher",
+      "artist": "Kevin MacLeod",
+      "album": null,
+      "durationMs": 231000,
+      "genres": [
+        "Electronica"
+      ],
+      "tags": [
+        "Bright",
+        "Grooving",
+        "Uplifting"
+      ],
+      "artworkUrl": null,
+      "isrc": "USUAN1100844",
+      "source": "incompetech",
+      "sourceId": "USUAN1100844",
+      "sourceUrl": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100844",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "“Cipher” — Kevin MacLeod (incompetech.com). Licensed under Creative Commons Attribution 4.0. Audio unmodified. Waveform artwork is an original illustration, not the artist’s album artwork.",
+      "availability": "fallback"
+    },
+    {
+      "id": "USUAN1400037",
+      "title": "Carefree",
+      "artist": "Kevin MacLeod",
+      "album": null,
+      "durationMs": 205000,
+      "genres": [
+        "Contemporary"
+      ],
+      "tags": [
+        "Bouncy",
+        "Bright",
+        "Calming",
+        "Uplifting"
+      ],
+      "artworkUrl": null,
+      "isrc": "USUAN1400037",
+      "source": "incompetech",
+      "sourceId": "USUAN1400037",
+      "sourceUrl": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1400037",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "“Carefree” — Kevin MacLeod (incompetech.com). Licensed under Creative Commons Attribution 4.0. Audio unmodified. Waveform artwork is an original illustration, not the artist’s album artwork.",
+      "availability": "fallback"
+    },
+    {
+      "id": "USUAN1300010",
+      "title": "Local Forecast",
+      "artist": "Kevin MacLeod",
+      "album": null,
+      "durationMs": 165000,
+      "genres": [
+        "Jazz"
+      ],
+      "tags": [
+        "Bouncy",
+        "Bright",
+        "Grooving"
+      ],
+      "artworkUrl": null,
+      "isrc": "USUAN1300010",
+      "source": "incompetech",
+      "sourceId": "USUAN1300010",
+      "sourceUrl": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1300010",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "“Local Forecast” — Kevin MacLeod (incompetech.com). Licensed under Creative Commons Attribution 4.0. Audio unmodified. Waveform artwork is an original illustration, not the artist’s album artwork.",
+      "availability": "fallback"
+    },
+    {
+      "id": "USUAN1400011",
+      "title": "Monkeys Spinning Monkeys",
+      "artist": "Kevin MacLeod",
+      "album": null,
+      "durationMs": 125000,
+      "genres": [
+        "Soundtrack"
+      ],
+      "tags": [
+        "Bouncy",
+        "Bright",
+        "Humorous",
+        "Uplifting"
+      ],
+      "artworkUrl": null,
+      "isrc": "USUAN1400011",
+      "source": "incompetech",
+      "sourceId": "USUAN1400011",
+      "sourceUrl": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1400011",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "“Monkeys Spinning Monkeys” — Kevin MacLeod (incompetech.com). Licensed under Creative Commons Attribution 4.0. Audio unmodified. Waveform artwork is an original illustration, not the artist’s album artwork.",
+      "availability": "fallback"
+    },
+    {
+      "id": "USUAN2100030",
+      "title": "Space Jazz",
+      "artist": "Kevin MacLeod",
+      "album": null,
+      "durationMs": 370000,
+      "genres": [
+        "Jazz"
+      ],
+      "tags": [
+        "Bright",
+        "Grooving",
+        "Relaxed"
+      ],
+      "artworkUrl": null,
+      "isrc": "USUAN2100030",
+      "source": "incompetech",
+      "sourceId": "USUAN2100030",
+      "sourceUrl": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN2100030",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "“Space Jazz” — Kevin MacLeod (incompetech.com). Licensed under Creative Commons Attribution 4.0. Audio unmodified. Waveform artwork is an original illustration, not the artist’s album artwork.",
+      "availability": "fallback"
+    },
+    {
+      "id": "USUAN1100192",
+      "title": "Ishikari Lore",
+      "artist": "Kevin MacLeod",
+      "album": null,
+      "durationMs": 164000,
+      "genres": [
+        "World"
+      ],
+      "tags": [
+        "Calming",
+        "Mystical",
+        "Relaxed"
+      ],
+      "artworkUrl": null,
+      "isrc": "USUAN1100192",
+      "source": "incompetech",
+      "sourceId": "USUAN1100192",
+      "sourceUrl": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100192",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "“Ishikari Lore” — Kevin MacLeod (incompetech.com). Licensed under Creative Commons Attribution 4.0. Audio unmodified. Waveform artwork is an original illustration, not the artist’s album artwork.",
+      "availability": "fallback"
+    },
+    {
+      "id": "USUAN1100772",
+      "title": "Sneaky Snitch",
+      "artist": "Kevin MacLeod",
+      "album": null,
+      "durationMs": 137000,
+      "genres": [
+        "Soundtrack"
+      ],
+      "tags": [
+        "Bouncy",
+        "Dark",
+        "Humorous",
+        "Mysterious"
+      ],
+      "artworkUrl": null,
+      "isrc": "USUAN1100772",
+      "source": "incompetech",
+      "sourceId": "USUAN1100772",
+      "sourceUrl": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100772",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "“Sneaky Snitch” — Kevin MacLeod (incompetech.com). Licensed under Creative Commons Attribution 4.0. Audio unmodified. Waveform artwork is an original illustration, not the artist’s album artwork.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-000134",
+      "title": "Street Music",
+      "artist": "AWOL",
+      "album": "AWOL - A Way Of Life",
+      "durationMs": 207000,
+      "genres": [
+        "Hip-Hop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-000134",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-000174",
+      "title": "Senator's Stance",
+      "artist": "Argumentix",
+      "album": "Boss of Goth",
+      "durationMs": 199000,
+      "genres": [
+        "Punk",
+        "Rock"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-000174",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-000208",
+      "title": "Safe Harbor",
+      "artist": "Ed Askew",
+      "album": "Blue Piano",
+      "durationMs": 273000,
+      "genres": [
+        "Folk"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-000208",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-000821",
+      "title": "Sir",
+      "artist": "Hecuba",
+      "album": "Sir 12\" EP",
+      "durationMs": 200000,
+      "genres": [
+        "Pop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-000821",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-001042",
+      "title": "Big Ole Bear",
+      "artist": "Little Howlin' Wolf",
+      "album": "Brave Nu World",
+      "durationMs": 242000,
+      "genres": [
+        "Blues"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-001042",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-001060",
+      "title": "Fuck The man",
+      "artist": "Lozenge",
+      "album": "Doozy",
+      "durationMs": 111000,
+      "genres": [
+        "Jazz"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-001060",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-001334",
+      "title": "Disturbance of Reality",
+      "artist": "Nicky Andrews",
+      "album": "Realistic Psychosis",
+      "durationMs": 165000,
+      "genres": [
+        "Electronic"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-001334",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-003587",
+      "title": "Interigation",
+      "artist": "Dengue Fever",
+      "album": "Live at WFMU on Terre T's Show on 7/16/2008",
+      "durationMs": 255000,
+      "genres": [
+        "International"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-003587",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-009546",
+      "title": "Part 4",
+      "artist": "Arrington de Dionyso",
+      "album": "Live at WFMU on Talk's Cheap 3/17/09",
+      "durationMs": 185000,
+      "genres": [
+        "Experimental",
+        "Free-Jazz",
+        "Improv",
+        "International"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-009546",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-010095",
+      "title": "An old sweetheart of mine",
+      "artist": "Harry E. Humphrey",
+      "album": "Edison Blue Amberol: 2630",
+      "durationMs": 214000,
+      "genres": [
+        "Old-Time / Historic"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-010095",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-010730",
+      "title": "Meteor Storm",
+      "artist": "M Shanghai String Band",
+      "album": "Live at WFMU on Irene Trudel's Show 4/6/09",
+      "durationMs": 169000,
+      "genres": [
+        "Bluegrass",
+        "Country",
+        "Folk"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-010730",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-011420",
+      "title": "Sonata No. 07 in D Major, Op. 10 No. 3 - I. Presto",
+      "artist": "Daniel Veesey",
+      "album": "Beethoven's Sonata No. 7 in D Major",
+      "durationMs": 402000,
+      "genres": [
+        "Classical"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-011420",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-011630",
+      "title": "Dis Denunciation",
+      "artist": "My Mind",
+      "album": "Dis-adelphia",
+      "durationMs": 39000,
+      "genres": [
+        "Compilation",
+        "Instrumental"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-011630",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-012286",
+      "title": "Lose Control",
+      "artist": "Dyabolical  feat. Gionni",
+      "album": "Wakka Chikka Wakka Chikka: Porn Music for the Masses volume 2",
+      "durationMs": 333000,
+      "genres": [
+        "Easy Listening",
+        "Electronic",
+        "Lounge",
+        "Soundtrack"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-012286",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-000671",
+      "title": "Triflin",
+      "artist": "Fanatic",
+      "album": "Change Thoughts",
+      "durationMs": 258000,
+      "genres": [
+        "Hip-Hop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-000671",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-000316",
+      "title": "Itching in my pants",
+      "artist": "Blah Blah Blah",
+      "album": "Gold Collection",
+      "durationMs": 87000,
+      "genres": [
+        "Post-Punk",
+        "Rock"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-000316",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-000210",
+      "title": "In the French Court",
+      "artist": "Ed Askew",
+      "album": "Blue Piano",
+      "durationMs": 184000,
+      "genres": [
+        "Folk"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-000210",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-004716",
+      "title": "Through This Time",
+      "artist": "Le Volume Courbe",
+      "album": "Live at ATP 2008",
+      "durationMs": 82000,
+      "genres": [
+        "Pop",
+        "Rock"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-004716",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-001043",
+      "title": "I'm Shufflin'",
+      "artist": "Little Howlin' Wolf",
+      "album": "Brave Nu World",
+      "durationMs": 332000,
+      "genres": [
+        "Blues"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-001043",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-011319",
+      "title": "soprano saxphone",
+      "artist": "Li Zenghui",
+      "album": "Li Zenghui Saxphone solos",
+      "durationMs": 164000,
+      "genres": [
+        "Free-Jazz",
+        "Jazz"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-011319",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-002080",
+      "title": "Method in Time",
+      "artist": "Thomas Dimuzio",
+      "album": "Mono M::P Free",
+      "durationMs": 318000,
+      "genres": [
+        "Electronic"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-002080",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-005398",
+      "title": "Guarana Superpower",
+      "artist": "Hayvanlar Alemi",
+      "album": "Demolar 2007-2008",
+      "durationMs": 395000,
+      "genres": [
+        "African",
+        "International",
+        "Psych-Rock"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-005398",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-009548",
+      "title": "Part 2",
+      "artist": "Arrington de Dionyso",
+      "album": "Live at WFMU on Talk's Cheap 3/17/09",
+      "durationMs": 91000,
+      "genres": [
+        "Experimental",
+        "Free-Jazz",
+        "Improv",
+        "International"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-009548",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-010097",
+      "title": "Hello, Frisco!",
+      "artist": "Harvey Hindermyer and Helen Clark",
+      "album": "Edison Blue Amberol: 2687",
+      "durationMs": 261000,
+      "genres": [
+        "Old-Time / Historic"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-010097",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-019594",
+      "title": "The Way I Love You",
+      "artist": "Clay Ross and Matuto",
+      "album": "Live on WFMU's Transpacific Sound Paradise broadcast from Barbes 9/19/09",
+      "durationMs": 214000,
+      "genres": [
+        "Bluegrass",
+        "Brazilian",
+        "Country",
+        "Folk",
+        "International",
+        "Jazz"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-019594",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-012925",
+      "title": "Fin che tu spiri (B. Strozzi)",
+      "artist": "Jody Pou",
+      "album": "Baroque Song Recital",
+      "durationMs": 623000,
+      "genres": [
+        "Classical",
+        "Composed Music"
+      ],
+      "tags": [
+        "baroque",
+        "lute",
+        "vocal",
+        "voice"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-012925",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-014568",
+      "title": "Monkey Dance",
+      "artist": "Ergo Phizmiz",
+      "album": "Music from \"The House of Dr Faustus\"",
+      "durationMs": 105000,
+      "genres": [
+        "Instrumental",
+        "Soundtrack"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-014568",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-012287",
+      "title": "Love her to death",
+      "artist": "Eraritjaritjaka",
+      "album": "Wakka Chikka Wakka Chikka: Porn Music for the Masses volume 2",
+      "durationMs": 55000,
+      "genres": [
+        "Easy Listening",
+        "Electronic",
+        "Lounge",
+        "Soundtrack"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-012287",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-003320",
+      "title": "Early Boy",
+      "artist": "Big Digits",
+      "album": "Live at WFMU on Marty McSorley's Show on 5/14/2008",
+      "durationMs": 164000,
+      "genres": [
+        "Hip-Hop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-003320",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-000367",
+      "title": "There goes my greenhouse",
+      "artist": "Blah Blah Blah",
+      "album": "30th Anniversary Blah Blah Blah",
+      "durationMs": 110000,
+      "genres": [
+        "Post-Punk",
+        "Rock"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-000367",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-001546",
+      "title": "Waiting by the Gate",
+      "artist": "Samara Lubelski",
+      "album": "The Fleeting Skies",
+      "durationMs": 198000,
+      "genres": [
+        "Folk",
+        "Psych-Folk"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-001546",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-005192",
+      "title": "Baby Don't Do It",
+      "artist": "caUSE co-MOTION",
+      "album": "Live at WFMU on Michael Goodstein's Show on 9/13/2004",
+      "durationMs": 86000,
+      "genres": [
+        "Pop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-005192",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-001046",
+      "title": "Eulb",
+      "artist": "Little Howlin' Wolf",
+      "album": "Brave Nu World",
+      "durationMs": 352000,
+      "genres": [
+        "Blues"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-001046",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-012022",
+      "title": "4951 Walnut Street",
+      "artist": "The Quadraphonnes",
+      "album": "Live on KBOO's The Outside World",
+      "durationMs": 402000,
+      "genres": [
+        "Jazz"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-012022",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-003257",
+      "title": "2Night",
+      "artist": "Adept",
+      "album": "Adept Live at WFMU on Keili's Show 10/26/2008",
+      "durationMs": 118000,
+      "genres": [
+        "Electronic",
+        "Indie-Rock"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-003257",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-006364",
+      "title": "Free Gaida / Cocer i Gong",
+      "artist": "Matt Darriau's Paradox Trio",
+      "album": "Paradox Trio Live on WFMU from the 2009 Golden Festival in NYC",
+      "durationMs": 579000,
+      "genres": [
+        "Balkan",
+        "Europe",
+        "Free-Jazz",
+        "International"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-006364",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-011577",
+      "title": "Seraphic Darkness",
+      "artist": "The Aperion Project",
+      "album": "All Music is Improvised",
+      "durationMs": 919000,
+      "genres": [
+        "Experimental",
+        "Improv",
+        "Jazz"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-011577",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-010100",
+      "title": "Somebody cares",
+      "artist": "Homer Rodeheaver",
+      "album": "Edison Blue Amberol: 2345",
+      "durationMs": 211000,
+      "genres": [
+        "Old-Time / Historic"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-010100",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-019598",
+      "title": "Dois Nordestes",
+      "artist": "Clay Ross and Matuto",
+      "album": "Live on WFMU's Transpacific Sound Paradise broadcast from Barbes 9/19/09",
+      "durationMs": 279000,
+      "genres": [
+        "Bluegrass",
+        "Brazilian",
+        "Country",
+        "Folk",
+        "International",
+        "Jazz"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-019598",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-015913",
+      "title": "Scriabin, Fragilité Opus 51/1",
+      "artist": "Vladimir Sofronitsky",
+      "album": "Scriabin chez Scriabin",
+      "durationMs": 105000,
+      "genres": [
+        "20th Century Classical",
+        "Classical"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-015913",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-014590",
+      "title": "Helen Entrance",
+      "artist": "Ergo Phizmiz",
+      "album": "Music from \"The House of Dr Faustus\"",
+      "durationMs": 102000,
+      "genres": [
+        "Instrumental",
+        "Soundtrack"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-014590",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-012288",
+      "title": "The Making Of 'RoXanne' (The FliX MiX)",
+      "artist": "JR Claiborn",
+      "album": "Wakka Chikka Wakka Chikka: Porn Music for the Masses volume 2",
+      "durationMs": 205000,
+      "genres": [
+        "Easy Listening",
+        "Electronic",
+        "Lounge",
+        "Soundtrack"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-012288",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-003323",
+      "title": "Why Did You Reject My Steve Perry Fan Fiction",
+      "artist": "Big Digits",
+      "album": "Live at WFMU on Marty McSorley's Show on 5/14/2008",
+      "durationMs": 207000,
+      "genres": [
+        "Hip-Hop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-003323",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-000862",
+      "title": "Yr. Life Is a Curse",
+      "artist": "I Am the Liquor",
+      "album": "No Demo",
+      "durationMs": 69000,
+      "genres": [
+        "Rock"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-000862",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-001928",
+      "title": "Vacuum Of The Day",
+      "artist": "The Twin Atlas",
+      "album": "Subtle Citrus",
+      "durationMs": 142000,
+      "genres": [
+        "Folk"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-001928",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-011053",
+      "title": "Salt, sand and stone",
+      "artist": "Meanwhileproject.ltd",
+      "album": "Today is Sunday",
+      "durationMs": 159000,
+      "genres": [
+        "Indie-Rock",
+        "Pop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-011053",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-003435",
+      "title": "Let's Not And Say We Did",
+      "artist": "Brother JT",
+      "album": "Live at WFMU on Brian Turner's Show on 5/14/2002",
+      "durationMs": 322000,
+      "genres": [
+        "Blues"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-003435",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-012374",
+      "title": "Empingue",
+      "artist": "Gepel",
+      "album": "netBloc Vol. 16: Sweet Sixteen",
+      "durationMs": 352000,
+      "genres": [
+        "Jazz"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-012374",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-009784",
+      "title": "Magnetic Tension",
+      "artist": "Double Helix (Morphamish & Texture)",
+      "album": "Future Proof",
+      "durationMs": 275000,
+      "genres": [
+        "Electronic",
+        "Hip-Hop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-009784",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-006366",
+      "title": "Taheya",
+      "artist": "Zikrayat",
+      "album": "Zikrayat Live on WFMU from the 2009 Golden Festival in NYC",
+      "durationMs": 340000,
+      "genres": [
+        "International",
+        "Middle East"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-006366",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-012110",
+      "title": "live at Issue Project Room (full set)",
+      "artist": "lydsod",
+      "album": "live at issue project room 5/1/09",
+      "durationMs": 1407000,
+      "genres": [
+        "Experimental",
+        "Improv",
+        "Psych-Rock"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-012110",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-010357",
+      "title": "At the mermaids' fancy ball",
+      "artist": "Billy Murray",
+      "album": "Edison Blue Amberol: 2313",
+      "durationMs": 183000,
+      "genres": [
+        "Old-Time / Historic"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-010357",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-029273",
+      "title": "Emerald City",
+      "artist": "Closely Watched Trains",
+      "album": "Closely Watched Trains",
+      "durationMs": 361000,
+      "genres": [
+        "Americana",
+        "Country",
+        "Rock"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-029273",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-017774",
+      "title": "Dvořák: Serenade for Winds and Strings in D minor, Op. 44",
+      "artist": "Gardner Chamber Orchestra",
+      "album": "Live at the Gardner Museum's Tapestry Room",
+      "durationMs": 1456000,
+      "genres": [
+        "Classical"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-017774",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-020370",
+      "title": "Shaman and Sedna",
+      "artist": "Ergo Phizmiz",
+      "album": "Outtakes from \"The Snow Flea\"",
+      "durationMs": 45000,
+      "genres": [
+        "Instrumental",
+        "Soundtrack"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-020370",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-012291",
+      "title": "Strange Wedding 60908",
+      "artist": "Marcel",
+      "album": "Wakka Chikka Wakka Chikka: Porn Music for the Masses volume 2",
+      "durationMs": 250000,
+      "genres": [
+        "Easy Listening",
+        "Electronic",
+        "Lounge",
+        "Soundtrack"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-012291",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-005264",
+      "title": "Classical Homicide",
+      "artist": "Dälek",
+      "album": "Live at WFMU on Mike's Show on 7/11/2002",
+      "durationMs": 431000,
+      "genres": [
+        "Hip-Hop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-005264",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-001953",
+      "title": "Rancid Hearts",
+      "artist": "Von Hayes",
+      "album": "Von Hayes",
+      "durationMs": 148000,
+      "genres": [
+        "Rock"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-001953",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-003911",
+      "title": "Dust Devils",
+      "artist": "Michael Chapman",
+      "album": "Live at WFMU on Irene Trudel's Show on 10/13/2008",
+      "durationMs": 158000,
+      "genres": [
+        "Folk"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-003911",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-011058",
+      "title": "The owls are not what they seem",
+      "artist": "Meanwhileproject.ltd",
+      "album": "Today is Sunday",
+      "durationMs": 195000,
+      "genres": [
+        "Indie-Rock",
+        "Pop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-011058",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-003711",
+      "title": "Gone",
+      "artist": "Ignatz",
+      "album": "Live at WFMU on Brian Turner's Show on 6/10/2008",
+      "durationMs": 476000,
+      "genres": [
+        "Blues"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-003711",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-015526",
+      "title": "Wave rider",
+      "artist": "Necronomikon Quartett",
+      "album": "Input",
+      "durationMs": 212000,
+      "genres": [
+        "Indie-Rock",
+        "Jazz",
+        "Krautrock",
+        "New Wave",
+        "Post-Rock"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-015526",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-009789",
+      "title": "Science Fiction",
+      "artist": "Double Helix (Morphamish & Texture)",
+      "album": "Future Proof",
+      "durationMs": 277000,
+      "genres": [
+        "Electronic",
+        "Hip-Hop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-009789",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-006368",
+      "title": "track 3",
+      "artist": "Kavala Brass Band",
+      "album": "Kavala Brass Band Live on WFMU from the 2009 Golden Festival in NYC",
+      "durationMs": 196000,
+      "genres": [
+        "Balkan",
+        "Europe",
+        "International"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-006368",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-016039",
+      "title": "kateetlinnut",
+      "artist": "Kiila",
+      "album": "Silmät Sulkaset",
+      "durationMs": 336000,
+      "genres": [
+        "Electroacoustic",
+        "Experimental",
+        "Folk"
+      ],
+      "tags": [
+        "toy instruments"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-016039",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-010363",
+      "title": "She's dancing her heart away",
+      "artist": "Manuel Romain",
+      "album": "Edison Blue Amberol: 2310",
+      "durationMs": 213000,
+      "genres": [
+        "Old-Time / Historic"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-010363",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-029274",
+      "title": "Hills Climb",
+      "artist": "Closely Watched Trains",
+      "album": "Closely Watched Trains",
+      "durationMs": 191000,
+      "genres": [
+        "Americana",
+        "Country",
+        "Rock"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-029274",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-017789",
+      "title": "Rachmaninoff: Suite No. 2 for two pianos, Op. 17",
+      "artist": "Robert Levin & Ya-Fei Chuang",
+      "album": "Live at the Gardner Museum's Tapestry Room",
+      "durationMs": 1404000,
+      "genres": [
+        "Classical"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-017789",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-020777",
+      "title": "01 ProudFlesh",
+      "artist": "Harrius",
+      "album": "Proud Flesh",
+      "durationMs": 2112000,
+      "genres": [
+        "Instrumental",
+        "Soundtrack"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-020777",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-012294",
+      "title": "The Phenylethylamine Affair",
+      "artist": "Savages",
+      "album": "Wakka Chikka Wakka Chikka: Porn Music for the Masses volume 2",
+      "durationMs": 297000,
+      "genres": [
+        "Easy Listening",
+        "Electronic",
+        "Lounge",
+        "Soundtrack"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-012294",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-005267",
+      "title": "Praise be the Man",
+      "artist": "Dälek",
+      "album": "Live at WFMU on Mike's Show on 7/11/2002",
+      "durationMs": 425000,
+      "genres": [
+        "Hip-Hop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-005267",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-001955",
+      "title": "Dead Ray",
+      "artist": "Von Hayes",
+      "album": "Von Hayes",
+      "durationMs": 58000,
+      "genres": [
+        "Rock"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-001955",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-005050",
+      "title": "Forever",
+      "artist": "The Bowmans",
+      "album": "Far Fom Home",
+      "durationMs": 296000,
+      "genres": [
+        "Folk"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-005050",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-016021",
+      "title": "Doa kumpt zeeek van!",
+      "artist": "D'r Sjaak",
+      "album": "Schijnheiligen",
+      "durationMs": 223000,
+      "genres": [
+        "Disco",
+        "Pop",
+        "Synth Pop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-016021",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-003845",
+      "title": "Unknown 4",
+      "artist": "Little Howlin' Wolf",
+      "album": "Live at WFMU on Brian Turner's Show on 2/14/2006",
+      "durationMs": 778000,
+      "genres": [
+        "Blues",
+        "Free-Jazz"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-003845",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-015763",
+      "title": "Title",
+      "artist": "Barnacled",
+      "album": "Charles",
+      "durationMs": 304000,
+      "genres": [
+        "Jazz",
+        "Jazz: Out"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-015763",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-011484",
+      "title": "Thavius Beck Live at Holocene 06",
+      "artist": "Thavius Beck",
+      "album": "KBOO Presents Thavius Beck Live at Holocene",
+      "durationMs": 264000,
+      "genres": [
+        "Electronic",
+        "Hip-Hop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-011484",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-006376",
+      "title": "track 4",
+      "artist": "Kavala Brass Band",
+      "album": "Kavala Brass Band Live on WFMU from the 2009 Golden Festival in NYC",
+      "durationMs": 289000,
+      "genres": [
+        "Balkan",
+        "Europe",
+        "International"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-006376",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-019624",
+      "title": "The Kiddies Christmas Frolic Part 1 - Morning",
+      "artist": "Columbia Orchestra",
+      "album": "Antique Phonograph Music Program 08/25/2009",
+      "durationMs": 186000,
+      "genres": [
+        "Experimental",
+        "Holiday",
+        "Old-Time / Historic"
+      ],
+      "tags": [
+        "holiday music"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-019624",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-016352",
+      "title": "Oh Mother I'm Wild",
+      "artist": "Jack Kaufman",
+      "album": "Antique Phonograph Music Program 7/1/2008",
+      "durationMs": 178000,
+      "genres": [
+        "Old-Time / Historic"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-016352",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-030388",
+      "title": "Maple Leaf Rag (1899, Z. Brewster-Geisz version)",
+      "artist": "Scott Joplin",
+      "album": "Frog Legs: Ragtime Era Favorites",
+      "durationMs": 154000,
+      "genres": [
+        "Americana",
+        "Country",
+        "Kid-Friendly",
+        "Old-Time / Historic"
+      ],
+      "tags": [
+        "children",
+        "for kids",
+        "gilbert and friedland",
+        "james scott",
+        "joe rosey",
+        "kazoomzoom",
+        "kid-friendly",
+        "moore and gardner",
+        "percy wenrich",
+        "ragtime",
+        "scott joplin",
+        "various artists kazoomzoom"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-030388",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-018256",
+      "title": "Twelve Jazzy Angles",
+      "artist": "Claudio Nuñez",
+      "album": "Odd Times, Uneven Dreams",
+      "durationMs": 600000,
+      "genres": [
+        "20th Century Classical",
+        "Classical",
+        "Free-Jazz",
+        "Improv",
+        "Jazz"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-018256",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-036037",
+      "title": "Betty Boop",
+      "artist": "Ergo Phizmiz",
+      "album": "Cinemacollages - Volume 1",
+      "durationMs": 2778000,
+      "genres": [
+        "Instrumental",
+        "Soundtrack"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-036037",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-012295",
+      "title": "autoeroTik",
+      "artist": "8m2stereo",
+      "album": "Wakka Chikka Wakka Chikka: Porn Music for the Masses volume 2",
+      "durationMs": 210000,
+      "genres": [
+        "Easy Listening",
+        "Electronic",
+        "Lounge",
+        "Soundtrack"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-012295",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-007482",
+      "title": "Seeing Things Intro",
+      "artist": "BrokeMC",
+      "album": "Seeing Things",
+      "durationMs": 108000,
+      "genres": [
+        "Hip-Hop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-007482",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-003751",
+      "title": "Lupus",
+      "artist": "Killdozer",
+      "album": "Live on WFMU's Brian Turner Show, Election Day 2008",
+      "durationMs": 208000,
+      "genres": [
+        "Rock"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-003751",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-006787",
+      "title": "Yew Pine Mountain",
+      "artist": "Cath and Phil Tyler",
+      "album": "Live at WFMU on Dan Bodah's Show on 4/6/2008",
+      "durationMs": 308000,
+      "genres": [
+        "Folk"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-006787",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-018593",
+      "title": "Quaker Gun",
+      "artist": "NiCad",
+      "album": "Live at WFMU on Beastin the Airwaves! 8/31/2009",
+      "durationMs": 233000,
+      "genres": [
+        "Pop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-018593",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-004540",
+      "title": "Doubt/Hope",
+      "artist": "Wildbirds and Peacedrums",
+      "album": "Live at WFMU on Trouble's Show on 6/19/2008",
+      "durationMs": 183000,
+      "genres": [
+        "Blues"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-004540",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-018243",
+      "title": "No Me Llores",
+      "artist": "Gato Loco de Bajo",
+      "album": "Live at WFMU's Transpacific Sound Paradise 8/15/2009",
+      "durationMs": 360000,
+      "genres": [
+        "Jazz"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-018243",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-016620",
+      "title": "SubwayFN",
+      "artist": "Victrola",
+      "album": "Flores, Nubes, y Pajaritos",
+      "durationMs": 209000,
+      "genres": [
+        "Alternative Hip-Hop",
+        "Electronic",
+        "Jazz"
+      ],
+      "tags": [
+        "downtempo",
+        "hip-hop",
+        "nu-jazz",
+        "sampling"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-016620",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-006381",
+      "title": "Kateva Lenko",
+      "artist": "Raya Brass Band",
+      "album": "Raya Brass Band Live on WFMU from the 2009 Golden Festival in NYC",
+      "durationMs": 294000,
+      "genres": [
+        "Balkan",
+        "International"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-006381",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-036338",
+      "title": "- Introduction",
+      "artist": "ZUHN",
+      "album": "les saintes glaces",
+      "durationMs": 143000,
+      "genres": [
+        "Drone",
+        "Experimental",
+        "Psych-Folk",
+        "Shoegaze"
+      ],
+      "tags": [
+        "black metal",
+        "drone",
+        "psychedelic"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-036338",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-016353",
+      "title": "Rosie",
+      "artist": "Paul Whiteman and His Orchestra",
+      "album": "Antique Phonograph Music Program 7/1/2008",
+      "durationMs": 184000,
+      "genres": [
+        "Old-Time / Historic"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-016353",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-031595",
+      "title": "Morgenstern",
+      "artist": "Boris & Olivier",
+      "album": "Holiday On",
+      "durationMs": 100000,
+      "genres": [
+        "Country",
+        "Electronic",
+        "Rockabilly"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-031595",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-021530",
+      "title": "Geese",
+      "artist": "Andrew Christopher Smith",
+      "album": "Wallace, for String Quartet",
+      "durationMs": 88000,
+      "genres": [
+        "Classical"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-021530",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-040654",
+      "title": "A Boat in the Fog and a Battle",
+      "artist": "Albert Glasser",
+      "album": "Confessions of an Opium Eater",
+      "durationMs": 597000,
+      "genres": [
+        "Instrumental",
+        "Soundtrack"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-040654",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-012297",
+      "title": "Soul Thing (Written By Keith Mansfield)",
+      "artist": "Principle Fetterman",
+      "album": "Wakka Chikka Wakka Chikka: Porn Music for the Masses volume 2",
+      "durationMs": 282000,
+      "genres": [
+        "Easy Listening",
+        "Electronic",
+        "Lounge",
+        "Soundtrack"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-012297",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-011796",
+      "title": "Beyon My",
+      "artist": "It's Notherground Music!!",
+      "album": "It's Notherground Music!!",
+      "durationMs": 174000,
+      "genres": [
+        "Hip-Hop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-011796",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-004084",
+      "title": "Korean Ghost Ship",
+      "artist": "Plastic Crimewave Sound",
+      "album": "Live at WFMU on Rob L's Show on 12/12/2003",
+      "durationMs": 458000,
+      "genres": [
+        "Psych-Rock",
+        "Rock"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-004084",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-010682",
+      "title": "She Said Nothing",
+      "artist": "Big Blood",
+      "album": "Space Gallery Jan. 27, 2007 Sahara Club Jan. 28, 2007",
+      "durationMs": 429000,
+      "genres": [
+        "Folk"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-010682",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-019758",
+      "title": "Row",
+      "artist": "Dirty Mittens",
+      "album": "Dirty Mittens Live at PDX Pop Now! '09",
+      "durationMs": 204000,
+      "genres": [
+        "Pop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-019758",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-012790",
+      "title": "Nobody Knows You When You're Down and Out",
+      "artist": "Roger McGuinn",
+      "album": "Folk Den Project",
+      "durationMs": 207000,
+      "genres": [
+        "Blues"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-012790",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-018974",
+      "title": "Daily Damage",
+      "artist": "Sandro Marinoni & Stefano Roncarolo",
+      "album": "Air",
+      "durationMs": 89000,
+      "genres": [
+        "Jazz"
+      ],
+      "tags": [
+        "clinical archives"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-018974",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-016824",
+      "title": "My Brown Tree",
+      "artist": "Owltree",
+      "album": "Tender Pecking",
+      "durationMs": 250000,
+      "genres": [
+        "Electronic",
+        "Trip-Hop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-016824",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-006390",
+      "title": "track 5",
+      "artist": "Kavala Brass Band",
+      "album": "Kavala Brass Band Live on WFMU from the 2009 Golden Festival in NYC",
+      "durationMs": 385000,
+      "genres": [
+        "Balkan",
+        "Europe",
+        "International"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-006390",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-038329",
+      "title": "Ite vanha Väinämöinen (Marvelry Skimmer Remix)",
+      "artist": "Marvelry Skimmer / Kiila",
+      "album": "Minor Musics: Finland",
+      "durationMs": 136000,
+      "genres": [
+        "Electroacoustic",
+        "Experimental",
+        "Folk"
+      ],
+      "tags": [
+        "kiila",
+        "kiila remix contest",
+        "minor musics finland"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-038329",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-016403",
+      "title": "A Ven Cigany",
+      "artist": "Kiraly Erno",
+      "album": "Antique Phonograph Music Program 09/09/2008",
+      "durationMs": 182000,
+      "genres": [
+        "Old-Time / Historic"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-016403",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-038561",
+      "title": "Anything You Want",
+      "artist": "The Crevulators",
+      "album": "The Crevulators",
+      "durationMs": 198000,
+      "genres": [
+        "Country",
+        "Rock",
+        "Rockabilly"
+      ],
+      "tags": [
+        "crevulators the",
+        "portugal",
+        "rock",
+        "rockabilly",
+        "you are not stealing records"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-038561",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-021542",
+      "title": "Variations",
+      "artist": "Andrew Christopher Smith",
+      "album": "Wallace, for String Quartet",
+      "durationMs": 229000,
+      "genres": [
+        "Classical"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-021542",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-040655",
+      "title": "The Dragon",
+      "artist": "Albert Glasser",
+      "album": "Confessions of an Opium Eater",
+      "durationMs": 198000,
+      "genres": [
+        "Instrumental",
+        "Soundtrack"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-040655",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-012298",
+      "title": "Liquid",
+      "artist": "Soulfool",
+      "album": "Wakka Chikka Wakka Chikka: Porn Music for the Masses volume 2",
+      "durationMs": 53000,
+      "genres": [
+        "Easy Listening",
+        "Electronic",
+        "Lounge",
+        "Soundtrack"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-012298",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-011830",
+      "title": "We Don't Stop (prod. 6th Sense)",
+      "artist": "6th Sense &amp; Mick Boogie",
+      "album": "Go For It",
+      "durationMs": 192000,
+      "genres": [
+        "Hip-Hop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-011830",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-005399",
+      "title": "Yerçekimsiz Ortam",
+      "artist": "Hayvanlar Alemi",
+      "album": "Demolar 2007-2008",
+      "durationMs": 226000,
+      "genres": [
+        "Psych-Rock",
+        "Rock"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-005399",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-010794",
+      "title": "Clouds Went That Way",
+      "artist": "Gary War",
+      "album": "New Raytheonport",
+      "durationMs": 253000,
+      "genres": [
+        "Folk",
+        "Psych-Folk",
+        "Psych-Rock"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-010794",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-022076",
+      "title": "Dr Buc",
+      "artist": "D'r Sjaak",
+      "album": "Speees KojBoj",
+      "durationMs": 154000,
+      "genres": [
+        "Pop",
+        "Synth Pop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-022076",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-012901",
+      "title": "Follow the Drinking Gourd",
+      "artist": "Roger McGuinn",
+      "album": "Folk Den Project",
+      "durationMs": 166000,
+      "genres": [
+        "Blues",
+        "Folk"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-012901",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-018976",
+      "title": "End up",
+      "artist": "Sandro Marinoni & Stefano Roncarolo",
+      "album": "Air",
+      "durationMs": 116000,
+      "genres": [
+        "Jazz"
+      ],
+      "tags": [
+        "clinical archives"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-018976",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-021420",
+      "title": "Drinking Songs That Put Yours To Shame",
+      "artist": "Dev/Null",
+      "album": "Summer",
+      "durationMs": 179000,
+      "genres": [
+        "Electronic"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-021420",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-012109",
+      "title": "The Mysticism of my Fucking Sound",
+      "artist": "Preggy Peggy &amp; The Lazy Babymakers",
+      "album": "Gang Rape of a Short-Bus Rider",
+      "durationMs": 303000,
+      "genres": [
+        "International"
+      ],
+      "tags": [
+        "egypt"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-012109",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-038712",
+      "title": "Monta Hahmoa",
+      "artist": "Muuttuvat Kasvot",
+      "album": "Muuttuvat Kasvot",
+      "durationMs": 178000,
+      "genres": [
+        "Drone",
+        "Experimental",
+        "Improv",
+        "Psych-Folk"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-038712",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-016431",
+      "title": "Medley Little Bit of Everything",
+      "artist": "Vess L Ossman",
+      "album": "Antique Phonograph Music Program 09/23/2008",
+      "durationMs": 139000,
+      "genres": [
+        "Old-Time / Historic"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-016431",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-038562",
+      "title": "You'd Come Back to Me",
+      "artist": "The Crevulators",
+      "album": "The Crevulators",
+      "durationMs": 190000,
+      "genres": [
+        "Country",
+        "Rock",
+        "Rockabilly"
+      ],
+      "tags": [
+        "crevulators the",
+        "portugal",
+        "rock",
+        "rockabilly",
+        "you are not stealing records"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-038562",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-023135",
+      "title": "Eros lui-meme",
+      "artist": "Lee Maddeford",
+      "album": "Eros et Psyche",
+      "durationMs": 117000,
+      "genres": [
+        "20th Century Classical",
+        "Choral Music",
+        "Classical",
+        "Europe"
+      ],
+      "tags": [
+        "20th century composition",
+        "cabaret",
+        "choir",
+        "choral",
+        "classical",
+        "french",
+        "lee maddeford choeur calliope",
+        "stage music",
+        "switzerland"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-023135",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-040656",
+      "title": "Into The Sewers",
+      "artist": "Albert Glasser",
+      "album": "Confessions of an Opium Eater",
+      "durationMs": 140000,
+      "genres": [
+        "Instrumental",
+        "Soundtrack"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-040656",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-012299",
+      "title": "Love Lickin'",
+      "artist": "V-Trap (feat. F master F)",
+      "album": "Wakka Chikka Wakka Chikka: Porn Music for the Masses volume 2",
+      "durationMs": 210000,
+      "genres": [
+        "Easy Listening",
+        "Electronic",
+        "Lounge",
+        "Soundtrack"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-012299",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-013209",
+      "title": "E.G.O. (with Intro)",
+      "artist": "El Klan de los DeDeTe",
+      "album": "netBloc Vol. 10: Postmodernism is dead. Postmillennialism killed it... sorry Andy :(",
+      "durationMs": 215000,
+      "genres": [
+        "Hip-Hop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-013209",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-007779",
+      "title": "Dust",
+      "artist": "Bonedust",
+      "album": "When you die and your bones are rotting think of me lest I be forgotten",
+      "durationMs": 238000,
+      "genres": [
+        "Metal",
+        "Rock",
+        "Sludge"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-007779",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-011059",
+      "title": "Vitamin C",
+      "artist": "Big Blood",
+      "album": "Sew Your Wild Days Tour Vol. 1",
+      "durationMs": 443000,
+      "genres": [
+        "Folk"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-011059",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-024239",
+      "title": "Live It Up",
+      "artist": "Steadman",
+      "album": "Revive",
+      "durationMs": 233000,
+      "genres": [
+        "Indie-Rock",
+        "Pop",
+        "Power-Pop",
+        "Rock"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-024239",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-016058",
+      "title": "Black Biting Bee Blues",
+      "artist": "Blind Blake & Leola Wilson",
+      "album": "Lifting the Veil, The First Bluesmen (1926-1956) Reverend Gary Davis & Peers",
+      "durationMs": 171000,
+      "genres": [
+        "Blues",
+        "Old-Time / Historic"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-016058",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-020451",
+      "title": "Terangi",
+      "artist": "Sandro Marinoni & Stefano Roncarolo with Roberto Padovan",
+      "album": "Cold Flowers",
+      "durationMs": 416000,
+      "genres": [
+        "Jazz"
+      ],
+      "tags": [
+        "clinical archives"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-020451",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-021945",
+      "title": "Orust Cottage",
+      "artist": "Wrexsoul",
+      "album": "Accelerating To the Sun [EAR010]",
+      "durationMs": 372000,
+      "genres": [
+        "Electronic"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-021945",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-014287",
+      "title": "Dobur Vecher",
+      "artist": "The Underscore Orkestra",
+      "album": "No Money No Honey All We Got Is Us",
+      "durationMs": 265000,
+      "genres": [
+        "Balkan",
+        "Big Band/Swing",
+        "International",
+        "Jazz"
+      ],
+      "tags": [
+        "balkan",
+        "eastern european",
+        "gypsy jazz",
+        "klezmer",
+        "swing"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-014287",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-038716",
+      "title": "Vetää Puoleensa",
+      "artist": "Muuttuvat Kasvot",
+      "album": "Muuttuvat Kasvot",
+      "durationMs": 61000,
+      "genres": [
+        "Drone",
+        "Experimental",
+        "Improv",
+        "Psych-Folk"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-038716",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-017987",
+      "title": "You'll Find Old Dixieland in France",
+      "artist": "Pietro",
+      "album": "Antique Phonograph Music Program 01/13/2009",
+      "durationMs": 174000,
+      "genres": [
+        "Old-Time / Historic"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-017987",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-038564",
+      "title": "State of Mine",
+      "artist": "The Crevulators",
+      "album": "The Crevulators",
+      "durationMs": 166000,
+      "genres": [
+        "Country",
+        "Rock",
+        "Rockabilly"
+      ],
+      "tags": [
+        "crevulators the",
+        "portugal",
+        "rock",
+        "rockabilly",
+        "you are not stealing records"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-038564",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-023141",
+      "title": "The black hole",
+      "artist": "Lee Maddeford",
+      "album": "An Astral Fable",
+      "durationMs": 241000,
+      "genres": [
+        "20th Century Classical",
+        "Classical"
+      ],
+      "tags": [
+        "20th century composition",
+        "brass",
+        "chamber music",
+        "classical",
+        "stage music",
+        "switzerland"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-023141",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-040660",
+      "title": "Pursuit",
+      "artist": "Albert Glasser",
+      "album": "Confessions of an Opium Eater",
+      "durationMs": 186000,
+      "genres": [
+        "Instrumental",
+        "Soundtrack"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-040660",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-014664",
+      "title": "Halfway Pleased",
+      "artist": "Curt Smith",
+      "album": "Halfway, Pleased",
+      "durationMs": 248000,
+      "genres": [
+        "Easy Listening",
+        "Pop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-014664",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-013662",
+      "title": "The Legacy",
+      "artist": "Zengineers",
+      "album": "netBloc Vol. 02: DRM killed the music-product machine",
+      "durationMs": 216000,
+      "genres": [
+        "Hip-Hop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-013662",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-009999",
+      "title": "Hot Pink, Distorted",
+      "artist": "50 Foot Wave",
+      "album": "Free Music",
+      "durationMs": 215000,
+      "genres": [
+        "Indie-Rock",
+        "Rock"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-009999",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-011685",
+      "title": "Daddy's On The Roof",
+      "artist": "Matt Keating",
+      "album": "Live at WFMU with Irene Trudel 4/20/2009",
+      "durationMs": 187000,
+      "genres": [
+        "Folk"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-011685",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-027550",
+      "title": "Sepasang Kekasih Yang Pertama Bercinta Di Luar Angkasa",
+      "artist": "Frau",
+      "album": "Starlit Carousel",
+      "durationMs": 388000,
+      "genres": [
+        "Pop"
+      ],
+      "tags": [
+        "female",
+        "indonesia",
+        "piano",
+        "pop"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-027550",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-018919",
+      "title": "Coming Down",
+      "artist": "Mattress",
+      "album": "Live at WFMU on Talk's Cheap 9/15/2009",
+      "durationMs": 138000,
+      "genres": [
+        "Blues",
+        "Synth Pop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-018919",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-020452",
+      "title": "Stolen Moments",
+      "artist": "Sandro Marinoni & Stefano Roncarolo with Roberto Padovan",
+      "album": "Cold Flowers",
+      "durationMs": 445000,
+      "genres": [
+        "Jazz"
+      ],
+      "tags": [
+        "clinical archives"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-020452",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-022443",
+      "title": "Until I Sleep",
+      "artist": "Henry Homesweet",
+      "album": "Collected Songs",
+      "durationMs": 348000,
+      "genres": [
+        "Chiptune",
+        "Electronic"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-022443",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-016117",
+      "title": "Bollate centro",
+      "artist": "Bacco Baccanels",
+      "album": "Bollate centro",
+      "durationMs": 229000,
+      "genres": [
+        "Europe",
+        "International",
+        "Jazz: Vocal",
+        "Pop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-016117",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-038719",
+      "title": "Planeettoihin Olet Kietoutuva",
+      "artist": "Muuttuvat Kasvot",
+      "album": "Muuttuvat Kasvot",
+      "durationMs": 208000,
+      "genres": [
+        "Drone",
+        "Experimental",
+        "Improv",
+        "Psych-Folk"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-038719",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-017992",
+      "title": "Irish Hearts",
+      "artist": "Fred van Eps",
+      "album": "Antique Phonograph Music Program 01/13/2009",
+      "durationMs": 166000,
+      "genres": [
+        "Old-Time / Historic"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-017992",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-038741",
+      "title": "Rose Room",
+      "artist": "Jeremy Cohen & Matt Munisteri",
+      "album": "Live on Irene Trudel's Show on WFMU 11/1/10",
+      "durationMs": 351000,
+      "genres": [
+        "Country",
+        "Jazz",
+        "Western Swing"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-038741",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-023145",
+      "title": "Wink",
+      "artist": "Lee Maddeford",
+      "album": "An Astral Fable",
+      "durationMs": 163000,
+      "genres": [
+        "20th Century Classical",
+        "Classical"
+      ],
+      "tags": [
+        "20th century composition",
+        "brass",
+        "chamber music",
+        "classical",
+        "stage music",
+        "switzerland"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-023145",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-041968",
+      "title": "Naves que dan vueltas a un balon",
+      "artist": "Prin' La Lá",
+      "album": "Voy a Explotar Soundtrack",
+      "durationMs": 255000,
+      "genres": [
+        "Instrumental",
+        "Latin",
+        "Soundtrack"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-041968",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-016680",
+      "title": "Finest Morning",
+      "artist": "Superbus",
+      "album": "Debut",
+      "durationMs": 284000,
+      "genres": [
+        "Bigbeat",
+        "Chill-out",
+        "Easy Listening",
+        "Electronic",
+        "House",
+        "Lounge"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-016680",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-014539",
+      "title": "Intro",
+      "artist": "Opio",
+      "album": "Everybody Loves the Sun EP",
+      "durationMs": 70000,
+      "genres": [
+        "Hip-Hop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-014539",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-012533",
+      "title": "H.E.C.T.O.R.",
+      "artist": "Jamie Dull",
+      "album": "netBloc Vol. 13: Color in a world of monochrome",
+      "durationMs": 348000,
+      "genres": [
+        "Indie-Rock",
+        "Rock"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-012533",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-012068",
+      "title": "Polly + The Sheep",
+      "artist": "Big Blood",
+      "album": "Already Gone II",
+      "durationMs": 322000,
+      "genres": [
+        "Folk"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-012068",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-028307",
+      "title": "No Control",
+      "artist": "The Laureates",
+      "album": "Live on WFMU's Evan \"Funk\" Davies Show 4/13/2010",
+      "durationMs": 187000,
+      "genres": [
+        "Indie-Rock",
+        "Pop",
+        "Power-Pop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-028307",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-020576",
+      "title": "One",
+      "artist": "Sim Cain",
+      "album": "@ ISSUE 10/22/09",
+      "durationMs": 257000,
+      "genres": [
+        "Blues"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-020576",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-022332",
+      "title": "Jazz Club",
+      "artist": "Kriss",
+      "album": "no.mad e.p.",
+      "durationMs": 325000,
+      "genres": [
+        "Jazz"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-022332",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-024808",
+      "title": "We Are, Now (Just Plain Ant Remix)",
+      "artist": "Just Plain Ant",
+      "album": "Songs About Something XE",
+      "durationMs": 288000,
+      "genres": [
+        "Downtempo",
+        "Electronic",
+        "Trip-Hop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-024808",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-017631",
+      "title": "Jaliya",
+      "artist": "Jalikebba Kuyateh and the Toubabs",
+      "album": "Jalikebba and the Toubabs",
+      "durationMs": 316000,
+      "genres": [
+        "African",
+        "Indian",
+        "International"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-017631",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-040549",
+      "title": "On A Christmas Morning [1911]",
+      "artist": "Prince's Orchestra",
+      "album": "Voices of Christmas Past",
+      "durationMs": 197000,
+      "genres": [
+        "Experimental",
+        "Holiday",
+        "Old-Time / Historic"
+      ],
+      "tags": [
+        "78 rpm",
+        "classical",
+        "cylinder",
+        "cylinders",
+        "holiday music",
+        "new year",
+        "nutcracker ballet",
+        "old-time historic",
+        "radio theater",
+        "spoken"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-040549",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-018000",
+      "title": "Coaxing the Piano",
+      "artist": "Zez Confrey",
+      "album": "Antique Phonograph Music Program 01/27/2009",
+      "durationMs": 181000,
+      "genres": [
+        "Old-Time / Historic"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-018000",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-039183",
+      "title": "Talk About Suffering",
+      "artist": "Lucas Gonze",
+      "album": "Ghost Solos",
+      "durationMs": 149000,
+      "genres": [
+        "Americana",
+        "Country",
+        "Folk",
+        "Old-Time / Historic"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-039183",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-024611",
+      "title": "The Heavens Are Parting and the Spirit Descends Like a Dove",
+      "artist": "Jozef van Wissem",
+      "album": "Live on WFMU's Airborne Event with Dan Bodah 1/17/2010",
+      "durationMs": 190000,
+      "genres": [
+        "Classical",
+        "Minimalism"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-024611",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-041969",
+      "title": "Preocupación Genuina",
+      "artist": "Ulises Hadjis",
+      "album": "Voy a Explotar Soundtrack",
+      "durationMs": 135000,
+      "genres": [
+        "Indie-Rock",
+        "Instrumental",
+        "Soundtrack"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-041969",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-016682",
+      "title": "Han Solo",
+      "artist": "Superbus",
+      "album": "Debut",
+      "durationMs": 208000,
+      "genres": [
+        "Bigbeat",
+        "Chill-out",
+        "Easy Listening",
+        "Electronic",
+        "House",
+        "Lounge"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-016682",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-014540",
+      "title": "With Or Without You rmx",
+      "artist": "Opio",
+      "album": "Everybody Loves the Sun EP",
+      "durationMs": 146000,
+      "genres": [
+        "Hip-Hop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-014540",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-015608",
+      "title": "Wild Eyes",
+      "artist": "Vivian Girls",
+      "album": "Vivian Girls Live at Primavera Sound 2009 on WFMU",
+      "durationMs": 99000,
+      "genres": [
+        "Rock"
+      ],
+      "tags": [
+        "barcelona"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-015608",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-012853",
+      "title": "America for Me",
+      "artist": "Roger McGuinn",
+      "album": "Folk Den Project",
+      "durationMs": 256000,
+      "genres": [
+        "Folk"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-012853",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-028322",
+      "title": "Nu-ka (feat. Voskresenie)",
+      "artist": "VAD",
+      "album": "NetLabel Coalition Volume 1",
+      "durationMs": 312000,
+      "genres": [
+        "Disco",
+        "Pop",
+        "Synth Pop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-028322",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-020578",
+      "title": "Two",
+      "artist": "Sim Cain",
+      "album": "@ ISSUE 10/22/09",
+      "durationMs": 611000,
+      "genres": [
+        "Blues"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-020578",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-023072",
+      "title": "Intergalactic Shoutout",
+      "artist": "BLOB",
+      "album": "Halloween",
+      "durationMs": 260000,
+      "genres": [
+        "Jazz"
+      ],
+      "tags": [
+        "clinical archives",
+        "eclectic",
+        "experimental",
+        "expressionism",
+        "halloween",
+        "horror",
+        "improvisation",
+        "jam band",
+        "jazz",
+        "other",
+        "psychedelic"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-023072",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-028931",
+      "title": "Youssou N'Dour - \"Africa Calling\"",
+      "artist": "IntraHealth International",
+      "album": "Open Remix: To Benefit IntraHealth Open",
+      "durationMs": 265000,
+      "genres": [
+        "African",
+        "Dance",
+        "Electronic",
+        "International"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-028931",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-017633",
+      "title": "Caira",
+      "artist": "Jalikebba Kuyateh and the Toubabs",
+      "album": "Jalikebba and the Toubabs",
+      "durationMs": 312000,
+      "genres": [
+        "African",
+        "Indian",
+        "International"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-017633",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-040555",
+      "title": "Christmas Hymns [1917]",
+      "artist": "Francis J. Lapitino",
+      "album": "Voices of Christmas Past",
+      "durationMs": 187000,
+      "genres": [
+        "Experimental",
+        "Holiday",
+        "Old-Time / Historic"
+      ],
+      "tags": [
+        "78 rpm",
+        "classical",
+        "cylinder",
+        "cylinders",
+        "holiday music",
+        "new year",
+        "nutcracker ballet",
+        "old-time historic",
+        "radio theater",
+        "spoken"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-040555",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-018006",
+      "title": "What's the Matter with the Moon Tonight",
+      "artist": "J.W. Meyers",
+      "album": "Antique Phonograph Music Program 01/27/2009",
+      "durationMs": 151000,
+      "genres": [
+        "Old-Time / Historic"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-018006",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-040576",
+      "title": "Morning Prayer",
+      "artist": "Krestovsky",
+      "album": "sleE.P.",
+      "durationMs": 252000,
+      "genres": [
+        "Americana",
+        "Country",
+        "Indie-Rock",
+        "Pop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-040576",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-028812",
+      "title": "Lodge",
+      "artist": "Nest",
+      "album": "Nest",
+      "durationMs": 234000,
+      "genres": [
+        "20th Century Classical",
+        "Classical",
+        "Electronic",
+        "Minimalism"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-028812",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-041970",
+      "title": "Camara Lenta",
+      "artist": "Javiera Mena",
+      "album": "Voy a Explotar Soundtrack",
+      "durationMs": 326000,
+      "genres": [
+        "Indie-Rock",
+        "Instrumental",
+        "Soundtrack"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-041970",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-016683",
+      "title": "Fujjad!",
+      "artist": "Superbus feat. NS",
+      "album": "Debut",
+      "durationMs": 227000,
+      "genres": [
+        "Bigbeat",
+        "Chill-out",
+        "Easy Listening",
+        "Electronic",
+        "House",
+        "Lounge"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-016683",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-015149",
+      "title": "Lover's Rock",
+      "artist": "The Years",
+      "album": "vosotros presents: the years // mixtape",
+      "durationMs": 87000,
+      "genres": [
+        "Hip-Hop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-015149",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-015612",
+      "title": "Surfin' Away",
+      "artist": "Vivian Girls",
+      "album": "Vivian Girls Live at Primavera Sound 2009 on WFMU",
+      "durationMs": 130000,
+      "genres": [
+        "Rock"
+      ],
+      "tags": [
+        "barcelona"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-015612",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-013930",
+      "title": "John Henry",
+      "artist": "Foghorn Stringband",
+      "album": "Old Town School of Folk Music:  Volumes Two And Three",
+      "durationMs": 191000,
+      "genres": [
+        "Folk"
+      ],
+      "tags": [
+        "appalachian",
+        "banjo",
+        "bluegrass",
+        "country",
+        "down home radio",
+        "folk",
+        "hill music"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-013930",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-028430",
+      "title": "The Warm Son",
+      "artist": "The Laureates",
+      "album": "The Laureates 7'' EP",
+      "durationMs": 194000,
+      "genres": [
+        "Indie-Rock",
+        "Pop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-028430",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-021798",
+      "title": "Yesterday's News",
+      "artist": "Delta Dreambox",
+      "album": "Live at WFMU on Antique Phonograph Music 12/1/09",
+      "durationMs": 248000,
+      "genres": [
+        "Blues"
+      ],
+      "tags": [
+        "bliss blood"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-021798",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-023077",
+      "title": "Whiskers",
+      "artist": "BLOB",
+      "album": "Halloween",
+      "durationMs": 281000,
+      "genres": [
+        "Jazz"
+      ],
+      "tags": [
+        "clinical archives",
+        "eclectic",
+        "experimental",
+        "expressionism",
+        "halloween",
+        "horror",
+        "improvisation",
+        "jam band",
+        "jazz",
+        "other",
+        "psychedelic"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-023077",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-031032",
+      "title": "The Car Chase",
+      "artist": "Lee Rosevere",
+      "album": "B.A.M.",
+      "durationMs": 159000,
+      "genres": [
+        "Electronic",
+        "Rock",
+        "Soundtrack"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-031032",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-019248",
+      "title": "Poetic Pitbull Revolutions",
+      "artist": "Diablo Swing Orchestra",
+      "album": "The Butcher's Ballroom",
+      "durationMs": 291000,
+      "genres": [
+        "International",
+        "Metal",
+        "Progressive"
+      ],
+      "tags": [
+        "avantgarde"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-019248",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-040566",
+      "title": "While Shepherds Watched their Flocks by Night, Christians Awake [1921]",
+      "artist": "Trinity Quartet",
+      "album": "Voices of Christmas Past",
+      "durationMs": 147000,
+      "genres": [
+        "Experimental",
+        "Holiday",
+        "Old-Time / Historic"
+      ],
+      "tags": [
+        "78 rpm",
+        "classical",
+        "cylinder",
+        "cylinders",
+        "holiday music",
+        "new year",
+        "nutcracker ballet",
+        "old-time historic",
+        "radio theater",
+        "spoken"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-040566",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-018014",
+      "title": "Pay Day",
+      "artist": "Arthur Fields",
+      "album": "Antique Phonograph Music Program 04/21/2009",
+      "durationMs": 176000,
+      "genres": [
+        "Old-Time / Historic"
+      ],
+      "tags": [
+        "waltz"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-018014",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-044045",
+      "title": "Purple Vapor",
+      "artist": "Two Prong",
+      "album": "Good V. Bad",
+      "durationMs": 299000,
+      "genres": [
+        "Americana",
+        "Country",
+        "Folk",
+        "Rock"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-044045",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-028815",
+      "title": "Charlotte",
+      "artist": "Nest",
+      "album": "Nest",
+      "durationMs": 284000,
+      "genres": [
+        "20th Century Classical",
+        "Classical",
+        "Electronic",
+        "Minimalism"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-028815",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-041971",
+      "title": "El Agujero",
+      "artist": "Juanita y los Feos",
+      "album": "Voy a Explotar Soundtrack",
+      "durationMs": 108000,
+      "genres": [
+        "Instrumental",
+        "Soundtrack"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-041971",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-016684",
+      "title": "Hi-4",
+      "artist": "Superbus feat. Loop Loops Clan",
+      "album": "Debut",
+      "durationMs": 369000,
+      "genres": [
+        "Bigbeat",
+        "Chill-out",
+        "Easy Listening",
+        "Electronic",
+        "House",
+        "Lounge"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-016684",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-015207",
+      "title": "Runaway feat. Jada",
+      "artist": "Seven",
+      "album": "Da Interview EP",
+      "durationMs": 193000,
+      "genres": [
+        "Hip-Hop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-015207",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-018608",
+      "title": "I Am A Worm",
+      "artist": "Kraus",
+      "album": "I Could Destroy You with a Single Thought",
+      "durationMs": 197000,
+      "genres": [
+        "Psych-Rock",
+        "Rock"
+      ],
+      "tags": [
+        "new zealand",
+        "ultra eczema"
+      ],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-018608",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-015437",
+      "title": "Poor Martin",
+      "artist": "Pierre De Gaillande",
+      "album": "Live at WFMU on Irene Trudel's Show 6/4/09",
+      "durationMs": 122000,
+      "genres": [
+        "Folk"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-015437",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    },
+    {
+      "id": "fma-028432",
+      "title": "Get Sensitive",
+      "artist": "The Laureates",
+      "album": "No Kontrol",
+      "durationMs": 172000,
+      "genres": [
+        "Indie-Rock",
+        "Pop"
+      ],
+      "tags": [],
+      "artworkUrl": null,
+      "isrc": null,
+      "source": "fma",
+      "sourceId": "fma-028432",
+      "sourceUrl": "https://github.com/mdeff/fma#data",
+      "license": "CC BY 4.0 (metadata)",
+      "attribution": "FMA metadata: Defferrard, Benzi, Vandergheynst and Bresson, ISMIR 2017. Metadata licensed CC BY 4.0. Recording licenses are separate; no audio is provided. Artwork is an original Waveform illustration.",
+      "availability": "fallback"
+    }
+  ]
+}

@@ -1,7 +1,10 @@
-import {artistLabPage,mountArtistLab} from './pages/artist-lab.js';
+import {registerTracks} from './api/catalogue.js';
+import {store} from './playlists/storage.js';
+import {updateSearchLinks,copySearchList} from './components/platform-workflow.js';
+
 import {renderShell, routes} from './components/shell.js';
 import {homePage} from './pages/home.js';
-import {insightsPage,mountInsights} from './pages/insights.js';
+
 import {discoverPage, renderResults, trackPage} from './pages/discover.js';
 import {draft} from './state/draft.js';
 import {renderDraftDock, syncDraftButtons} from './components/draft-actions.js';
@@ -9,12 +12,12 @@ import {builderPage, refreshBuilder} from './pages/builder.js';
 import {toast} from './utils/toast.js';
 import {getTracks, getTrack} from './api/client.js';
 import {catalogueError} from './components/cards.js';
-import {recommendationsPage, mountRecommendations} from './pages/recommendations.js';
+
 import {libraryPage, mountLibrary} from './pages/library.js';
 import {settingsPage, mountSettings} from './pages/settings.js';
 import {workspace, loadWorkspace, subscribeWorkspace, toggleFeedback} from './state/workspace.js';
 import {syncFeedbackButtons} from './components/track-actions.js';
-import {saveEditor, downloadEditor, readImport, loadImport, openSaved, removeSaved, downloadSaved, requestReplacement} from './components/playlist-tools.js';
+import {saveEditor, openSaved, removeSaved, requestReplacement} from './components/playlist-tools.js';
 
 renderShell();
 renderDraftDock(draft.snapshot());
@@ -33,7 +36,7 @@ function navigate() {
   const raw = location.hash.replace('#/', '') || 'home';
   let [requested,query = ''] = raw.split('?',2);
   if (requested === 'playlists') {requested = 'builder'; history.replaceState(null, '', '#/builder');}
-  const trackMatch = /^track\/([A-Za-z0-9-]+)$/.exec(requested);
+  const trackMatch = /^track\/(.+)$/.exec(requested);
   const route = trackMatch ? 'track' : routes.some(([id]) => id === requested) ? requested : 'home';
   if (requested !== route && !trackMatch || !location.hash) history.replaceState(null, '', '#/home');
   const title = route === 'track' ? 'Track details' : routes.find(([id]) => id === route)[1];
@@ -46,20 +49,17 @@ function navigate() {
   });
   const main = document.querySelector('#main');
   displayedTracks = [];
-  main.innerHTML = route === 'lab' ? artistLabPage() : route === 'home' ? homePage() : route === 'discover' ? discoverPage() : route === 'builder' ? builderPage() : route === 'insights' ? insightsPage() : ['recommend','vibe','explorer'].includes(route) ? recommendationsPage(route!=='recommend',route==='explorer') : route === 'library' ? libraryPage() : route === 'settings' ? settingsPage() : route === 'track' ? '<div class="catalogue-state" role="status">Loading track…</div>' : homePage();
+  main.innerHTML = route === 'home' ? homePage() : route === 'discover' ? discoverPage() : route === 'builder' ? builderPage() : route === 'vibe' ? '<section class="empty-state"><h1>Your next moment starts here.</h1><p>Explore real metadata and collect a playlist locally.</p><a class="primary-button" href="#/discover">Discover music</a></section>' : route === 'library' ? libraryPage() : route === 'settings' ? settingsPage() : route === 'track' ? '<div class="catalogue-state" role="status">Loading track…</div>' : homePage();
   if (route === 'home') loadHome(routeVersion);
   if (route === 'discover') {
     document.querySelector('#music-search').value = filters.q;
     loadDiscover(routeVersion);
   }
   const version = routeVersion;
-  if (['recommend','vibe','explorer'].includes(route)) mountRecommendations(new URLSearchParams(query),()=>version === routeVersion,tracks=>{if (version === routeVersion) displayedTracks=tracks;},route!=='recommend',route==='explorer');
-  if (route === 'lab') mountArtistLab(()=>version===routeVersion);
-  if (route === 'insights') mountInsights(()=>version===routeVersion);
   if (route === 'settings') mountSettings(() => version === routeVersion);
   if (route === 'library') mountLibrary(() => version === routeVersion).then(tracks => {if (tracks && version === routeVersion) displayedTracks = tracks;});
   if (route === 'builder') refreshBuilder(draft.snapshot());
-  if (trackMatch) loadDetail(trackMatch[1], routeVersion);
+  if (trackMatch) loadDetail(decodeURIComponent(trackMatch[1]), routeVersion);
   document.body.classList.remove('nav-open');
   document.querySelector('.menu-button').setAttribute('aria-expanded', 'false');
   window.scrollTo({top:0, behavior:'instant'});
@@ -69,7 +69,7 @@ async function loadHome(version) {
   try {
     const page = await getTracks({limit:4});
     if (version !== routeVersion) return;
-    displayedTracks = page.items;
+    displayedTracks = page.items; registerTracks(page.items);
     document.querySelector('#home-catalogue').innerHTML = renderResults(page);
   } catch {
     if (version === routeVersion) document.querySelector('#home-catalogue').innerHTML = catalogueError();
@@ -89,10 +89,10 @@ async function loadDiscover(version) {
   try {
     const page = await getTracks(filters, controller.signal);
     if (version !== routeVersion || request !== searchVersion) return;
-    displayedTracks = page.items;
+    displayedTracks = page.items; registerTracks(page.items);
     results.innerHTML = renderResults(page);
     document.querySelector('#catalogue-pagination').innerHTML = page.total ? `<button class="secondary-button" data-page-direction="-1" ${page.offset===0?'disabled':''}>Previous page</button><span>Page ${Math.floor(page.offset/page.limit)+1} of ${Math.ceil(page.total/page.limit)}</span><button class="secondary-button" data-page-direction="1" ${page.offset+page.items.length>=page.total?'disabled':''}>Next page</button>` : '';
-    count.textContent = `${page.total} ${page.total === 1 ? 'track' : 'tracks'} · Catalogue order, no personalized ranking`;
+    count.textContent = `${page.total} ${page.total === 1 ? 'track' : 'tracks'} · ${page.notice}`;
     populateFilter('genre-filter', page.genres, filters.genre, 'All genres');
     populateFilter('artist-filter', page.artists, filters.artist, 'All artists');
   } catch {
@@ -152,6 +152,7 @@ document.addEventListener('submit', event => {
   loadDiscover(routeVersion);
 });
 document.addEventListener('input', event => {
+  if (event.target.matches('[data-platform-query]')) {updateSearchLinks();return;}
   if (event.target.id === 'draft-title' || event.target.id === 'draft-description') {
     draft.setMetadata(event.target.id === 'draft-title' ? 'title' : 'description', event.target.value);
     return;
@@ -164,7 +165,7 @@ document.addEventListener('input', event => {
   filterTimer = setTimeout(() => {captureFilters(); loadDiscover(routeVersion);}, 250);
 });
 document.addEventListener('change', event => {
-  if (event.target.id === 'playlist-file') {readImport(event.target.files[0]); return;}
+  if (event.target.id==='search-service') {updateSearchLinks();return;}
   if (!['genre-filter','artist-filter'].includes(event.target.id)) return;
   clearTimeout(filterTimer);
   captureFilters();
@@ -181,6 +182,7 @@ document.addEventListener('reset', event => {
   loadDiscover(routeVersion);
 });
 document.addEventListener('click', async event => {
+  if (event.target.closest('#copy-search-list')) copySearchList();
   if (event.target.closest('.skip-link')) {event.preventDefault(); document.querySelector('#main').focus(); return;}
   const toggle = event.target.closest('[data-draft-toggle]');
   if (toggle) {
@@ -226,18 +228,15 @@ document.addEventListener('click', async event => {
   const feedback = event.target.closest('[data-feedback]');
   if (feedback) {
     try {await toggleFeedback(feedback.dataset.feedbackTrack,feedback.dataset.feedback); if (location.hash === '#/library') navigate();}
-    catch (error) {toast(error.message || 'Feedback could not be saved. Check the backend and retry.');}
+    catch (error) {toast(error.message || 'Feedback could not be saved. Check the browser storage and retry.');}
   }
   if (event.target.closest('#save-playlist')) saveEditor();
   if (event.target.closest('#save-copy')) saveEditor(true);
   if (event.target.closest('#new-playlist')) requestReplacement(()=>{draft.newPlaylist(); toast('New playlist draft started.');},'Start a new playlist?');
   const exportButton = event.target.closest('[data-export-format]');
-  if (exportButton) downloadEditor(exportButton.dataset.exportFormat,exportButton);
-  if (event.target.closest('#load-import')) {loadImport(); document.querySelector('#import-preview').replaceChildren();}
   const open = event.target.closest('[data-open-playlist]');
   if (open) {const version=routeVersion; openSaved(open.dataset.openPlaylist,()=>version===routeVersion);}
   const exportSavedButton = event.target.closest('[data-export-saved]');
-  if (exportSavedButton) downloadSaved(exportSavedButton.dataset.exportSaved,exportSavedButton.dataset.format,exportSavedButton);
   const removeSavedButton = event.target.closest('[data-delete-playlist]');
   if (removeSavedButton) {
     removeSavedButton.disabled=true;
@@ -258,7 +257,7 @@ subscribeWorkspace(() => {
   notice.hidden = !workspace.error;
   if (workspace.error) {
     notice.replaceChildren(document.createTextNode('Local preferences/feedback are unavailable. Your editor draft is kept. '));
-    const retry = document.createElement('button'); retry.className='text-button'; retry.dataset.retryWorkspace=''; retry.textContent='Retry connection'; notice.append(retry);
+    const retry = document.createElement('button'); retry.className='text-button'; retry.dataset.retryWorkspace=''; retry.textContent='Retry storage'; notice.append(retry);
   }
   if (workspace.profile) {
     document.querySelectorAll('.profile strong').forEach(element=>element.textContent=workspace.profile.name);
@@ -268,3 +267,5 @@ subscribeWorkspace(() => {
 window.addEventListener('waveform-library-changed',()=>{if (location.hash === '#/library') navigate();});
 loadWorkspace();
 navigate();
+function storageNotice(){const notice=document.querySelector('#workspace-notice');if(store.warning){notice.hidden=false;notice.textContent=store.warning;}}
+window.addEventListener('waveform-storage-status',storageNotice);storageNotice();

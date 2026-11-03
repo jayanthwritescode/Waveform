@@ -41,3 +41,5 @@
 .comparison-grid .secondary-button {width:100%;white-space:normal;margin:10px 0;}
 .score-note,code {overflow-wrap:anywhere;}
 @media(max-width:680px){.analysis-grid {grid-template-columns:1fr;}.insight-stats {grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}.insight-stats article {padding:15px;}.analysis-panel {padding:18px;}.analysis-toolbar {align-items:start;flex-direction:column;}.analysis-table-scroll th,.analysis-table-scroll td {padding:8px;}}
+
+.analysis-table-scroll:focus-visible {outline:2px solid var(--accent);outline-offset:4px;}

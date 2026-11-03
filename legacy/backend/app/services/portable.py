@@ -43,6 +43,14 @@ def export_playlist(playlist, format):
     return "\n".join(lines) + "\n"
 
 
+def unique_object(pairs):
+    result={}
+    for key,value in pairs:
+        if key in result:raise ValueError('Repeated JSON field names are not supported')
+        result[key]=value
+    return result
+
+
 def import_playlist(content: str, format: str):
     content = content.lstrip("\ufeff")
     warnings = []
@@ -50,7 +58,7 @@ def import_playlist(content: str, format: str):
         raise ValueError("The playlist file is empty")
     try:
         if format == "json":
-            value = json.loads(content)
+            value = json.loads(content,object_pairs_hook=unique_object)
             if not isinstance(value, dict) or value.get("format") != "waveform-playlist" or value.get("version") != 1:
                 raise ValueError("Use a Waveform playlist JSON export (version 1)")
             data = value["playlist"]
@@ -58,15 +66,20 @@ def import_playlist(content: str, format: str):
             reader = csv.DictReader(io.StringIO(content, newline=""), strict=True)
             if not reader.fieldnames or not {"Track Title","Artist"}.issubset(reader.fieldnames):
                 raise ValueError("CSV must include Track Title and Artist columns")
+            if len(reader.fieldnames)!=len(set(reader.fieldnames)):raise ValueError('CSV has repeated column names')
             rows = list(reader)
             if len(rows) > 500:
                 raise ValueError("A playlist can contain at most 500 tracks")
             data = {"title":"Imported playlist", "description":"", "tracks":[]}
+            metadata_values={'Playlist Title':set(),'Playlist Description':set()}
             for index,row in enumerate(rows):
                 if None in row:
                     raise ValueError("CSV row has more values than the header")
                 if row.get("CSV Escaping") == "waveform-v1":
                     row = {key:(value[1:] if value and value.startswith("'") else value) for key,value in row.items()}
+                for label,values in metadata_values.items():
+                    if row.get(label):values.add(row[label])
+                    if len(values)>1:raise ValueError('CSV mixes different playlist titles or descriptions')
                 if index == 0:
                     data.update(title=row.get("Playlist Title") or "Imported playlist", description=row.get("Playlist Description") or "")
                 if not row.get("Track Title") and not row.get("Artist"):
@@ -84,16 +97,21 @@ def import_playlist(content: str, format: str):
                 raise ValueError("TXT import supports Waveform playlist v1 exports")
             data = {"title":"Imported playlist", "description":"", "tracks":[]}
             track = None
+            seen_fields=set()
             for line in lines[1:]:
                 if not line.strip():
                     continue
                 if re.fullmatch(r"Track [1-9][0-9]*:",line):
+                    if line!=f'Track {len(data["tracks"])+1}:':raise ValueError('TXT tracks must be numbered in order starting at 1')
+                    seen_fields=set()
                     track = {}
                     data["tracks"].append(track)
                     continue
                 key, separator, value = line.partition(": ")
                 if not separator:
                     raise ValueError("Unrecognized TXT field")
+                if key.strip() in seen_fields:raise ValueError('TXT repeats a field')
+                seen_fields.add(key.strip())
                 if key in {"Title","Description"} and track is None:
                     data[key.lower()] = json.loads(value)
                 elif track is not None and key.strip() in FIELDS:
@@ -101,8 +119,8 @@ def import_playlist(content: str, format: str):
                 else:
                     raise ValueError("Unrecognized TXT field")
         original = PlaylistInput.model_validate(data)
-        normalized = normalize_playlist(original)
-    except (KeyError, TypeError, json.JSONDecodeError, csv.Error, ValidationError, OverflowError) as error:
+        normalized,match_report = normalize_playlist(original,with_report=True)
+    except (KeyError, TypeError, json.JSONDecodeError, csv.Error, ValidationError, OverflowError,RecursionError) as error:
         raise ValueError("Invalid playlist file: check required fields, durations, limits and format version") from error
     removed = len(original.tracks) - len(normalized.tracks)
     imported = sum(track.provenance == "user_import" for track in normalized.tracks)
@@ -110,7 +128,9 @@ def import_playlist(content: str, format: str):
         warnings.append(f"Removed {removed} duplicate track(s).")
     if imported:
         warnings.append(f"{imported} track(s) are user-imported metadata, not matched to the catalogue or any music platform.")
+    replaced=sum(row['metadata_replaced'] for row in match_report)
+    if replaced:warnings.append(f'{replaced} stable-ID match(es) replaced different title/artist text with catalogue metadata. Review the match evidence.')
     if format != "json":
         warnings.append("CSV/TXT preserve portable fields. Use JSON to retain full track metadata.")
     return {"playlist":normalized.model_dump(mode="json"), "warnings":warnings,
-            "catalogue_matches":len(normalized.tracks)-imported, "unmatched_tracks":imported}
+            "match_report":match_report, "catalogue_matches":len(normalized.tracks)-imported, "unmatched_tracks":imported}

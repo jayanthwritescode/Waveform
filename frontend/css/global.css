@@ -163,3 +163,7 @@ main:focus {
 [hidden] {
   display:none!important;
 }
+/* Keyboard navigation and small-screen interaction targets. */
+summary:focus-visible {outline:2px solid var(--accent);outline-offset:5px;border-radius:3px;}
+:where(button,a,input,select,textarea,summary) {scroll-margin-top:85px;scroll-margin-bottom:150px;}
+@media(pointer:coarse){.icon-button,.feedback-button,.text-button {min-width:44px;min-height:44px;}.platform-search a {min-height:44px;display:inline-flex;align-items:center;}}

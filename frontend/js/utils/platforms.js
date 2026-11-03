@@ -1,6 +1,6 @@
 /** Search interfaces only: no account tokens, guessed track IDs, or transfer claims. */
-export function platformSearches(track) {
-  const query = `${track.artist} ${track.title}`.trim();
+export function platformSearches(track,queryOverride=null) {
+  const query = queryOverride ?? `${track.artist} ${track.title}`.trim();
   return [
     {name:'Spotify', url:`https://open.spotify.com/search/${encodeURIComponent(query)}`},
     {name:'Apple Music', url:`https://music.apple.com/us/search?term=${encodeURIComponent(query)}`},

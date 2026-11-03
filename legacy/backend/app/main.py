@@ -2,9 +2,11 @@ import logging
 from contextlib import asynccontextmanager
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
 from sqlalchemy.exc import SQLAlchemyError
+from app.services.playlists import IdentityConflict
 from app.api.health import router
 from app.api.tracks import router as tracks_router
 from app.api.workspace import router as workspace_router
@@ -23,7 +25,7 @@ async def lifespan(app):
     yield
 
 
-app = FastAPI(title=settings.app_name, version="0.7.0", lifespan=lifespan,
+app = FastAPI(title=settings.app_name, version="0.8.0", lifespan=lifespan,
               description="Waveform — Your music. Your moment. Context-aware discovery, preferences, playlists and portable exports.")
 app.add_middleware(CORSMiddleware, allow_origins=settings.cors_origins,
                    allow_methods=["GET", "POST", "PUT", "DELETE"], allow_headers=["*"],
@@ -36,6 +38,11 @@ async def invalid_input(request: Request, error: RequestValidationError):
     return JSONResponse(status_code=422, content={"detail":[
         {"loc":list(item["loc"]), "msg":item["msg"], "type":item["type"]}
         for item in error.errors()]})
+
+
+@app.exception_handler(IdentityConflict)
+async def identity_error(request,error):
+    return JSONResponse(status_code=422,content={'detail':str(error)})
 
 
 @app.exception_handler(SQLAlchemyError)
@@ -55,3 +62,20 @@ app.include_router(experiments_router,prefix="/api")
 
 from app.api.insights import router as insights_router
 app.include_router(insights_router,prefix="/api")
+
+from app.auth import configure_auth
+configure_auth(app)
+
+app.add_middleware(GZipMiddleware,minimum_size=1000)
+
+@app.middleware('http')
+async def response_policy(request,call_next):
+    response=await call_next(request)
+    response.headers['X-Content-Type-Options']='nosniff'
+    response.headers['Referrer-Policy']='no-referrer'
+    response.headers['X-Frame-Options']='DENY'
+    response.headers['Cache-Control']='no-store' if request.url.path in {'/','/index.html'} or request.url.path.startswith('/api/') else 'no-cache'
+    return response
+
+from app.deployment import configure_deployment
+configure_deployment(app)

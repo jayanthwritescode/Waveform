@@ -18,7 +18,7 @@ export async function mountLibrary(isCurrent) {
     document.querySelector('#library-content').innerHTML = libraryContent(library);
     return library.feedback.map(item=>item.track);
   } catch (error) {
-    if (isCurrent()) document.querySelector('#library-content').innerHTML = '<h2>Your Library is unavailable.</h2><p>Check the local backend/database and retry. The editor draft is kept.</p><button class="secondary-button" data-retry-page>Try again</button>';
+    if (isCurrent()) document.querySelector('#library-content').innerHTML = '<h2>Your Library is unavailable.</h2><p>Check the local browser storage and retry. The editor draft is kept.</p><button class="secondary-button" data-retry-page>Try again</button>';
     return null;
   }
 }
@@ -36,5 +36,5 @@ function libraryContent(library) {
 
 function savedCard(playlist) {
   const summary = summarizeDraft(playlist);
-  return `<article class="saved-playlist"><div class="saved-cover" aria-hidden="true">≋</div><div class="saved-info"><h3>${html(playlist.title)}</h3><p>${html(playlist.description || 'No description')}</p><small>${summary.count} tracks · ${formatTime(summary.seconds)}${summary.unknownDurations?' + unknown durations':''} · Revision ${playlist.revision}</small></div><div class="saved-actions"><button class="secondary-button" data-open-playlist="${html(playlist.id)}">Edit ${html(playlist.title)}</button><details><summary>Export file</summary><div class="download-actions">${['csv','txt','json'].map(format=>`<button class="text-button" data-export-saved="${html(playlist.id)}" data-format="${format}">${format.toUpperCase()}</button>`).join('')}</div></details><details class="delete-playlist"><summary>Delete playlist</summary><p>This removes the saved playlist from your local library.</p><button class="danger-button" data-delete-playlist="${html(playlist.id)}" data-revision="${playlist.revision}">Delete ${html(playlist.title)}</button></details></div></article>`;
+  return `<article class="saved-playlist"><div class="saved-cover" aria-hidden="true">≋</div><div class="saved-info"><h3>${html(playlist.title)}</h3><p>${html(playlist.description || 'No description')}</p><small>${summary.count} tracks · ${formatTime(summary.seconds)}${summary.unknownDurations?' + unknown durations':''} · Revision ${playlist.revision}</small></div><div class="saved-actions"><button class="secondary-button" data-open-playlist="${html(playlist.id)}">Edit ${html(playlist.title)}</button><details class="delete-playlist"><summary>Delete playlist</summary><p>This removes the saved playlist from your local library.</p><button class="danger-button" data-delete-playlist="${html(playlist.id)}" data-revision="${playlist.revision}">Delete ${html(playlist.title)}</button></details></div></article>`;
 }

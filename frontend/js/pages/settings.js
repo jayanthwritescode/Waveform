@@ -26,16 +26,16 @@ export async function mountSettings(isCurrent) {
         const saved = await saveProfile(payload);
         Object.assign(profile, saved); updateProfile(saved);
         status.textContent = 'Preferences saved locally.';
-      } catch (error) {status.textContent = error.message || 'Preferences could not be saved. Your form is kept; check the backend and retry.';}
+      } catch (error) {status.textContent = error.message || 'Preferences could not be saved. Your form is kept; check the browser storage and retry.';}
       finally {button.disabled = false;}
     });
   } catch (error) {
-    if (isCurrent()) document.querySelector('#profile-panel').innerHTML = '<h2>Preferences unavailable.</h2><p>Start the backend and check the database configuration, then retry.</p><button class="secondary-button" data-retry-page>Try again</button>';
+    if (isCurrent()) document.querySelector('#profile-panel').innerHTML = '<h2>Preferences unavailable.</h2><p>Start the browser storage, then retry.</p><button class="secondary-button" data-retry-page>Try again</button>';
   }
 }
 
 function profileForm(profile) {
   const list = (name,label) => `<label>${label}<textarea name="${name}" rows="3" maxlength="12000">${html(profile[name].join('\n'))}</textarea><small>One per line.</small></label>`;
-  return `<form id="profile-form" class="profile-form"><section class="form-panel"><h2>Your profile</h2><label>Profile name<input name="name" required maxlength="80" value="${html(profile.name)}"></label><p>Stored in your local Waveform database. No platform account is connected.</p></section>
+  return `<form id="profile-form" class="profile-form"><section class="form-panel"><h2>Your profile</h2><label>Profile name<input name="name" required maxlength="80" value="${html(profile.name)}"></label><p>Stored in your this browser only. No platform account is connected.</p></section>
     <section class="form-panel"><h2>Your musical taste</h2><div class="preference-grid">${list('favorite_genres','Favorite genres')}${list('disliked_genres','Disliked genres')}${list('favorite_artists','Favorite artists')}</div><div class="preference-grid"><label>Minimum energy (%)<input type="number" name="energy_min" min="0" max="100" required value="${profile.energy_min*100}"></label><label>Maximum energy (%)<input type="number" name="energy_max" min="0" max="100" required value="${profile.energy_max*100}"></label><label>Discovery preference (%)<input type="number" name="discovery_preference" min="0" max="100" required value="${profile.discovery_preference*100}"><small>0 = familiar, 100 = more discovery.</small></label><label>Instrumental preference<select name="instrumental_preference">${[['any','No preference'],['prefer','Prefer instrumental'],['avoid','Prefer vocals']].map(([value,label])=>`<option value="${value}" ${profile.instrumental_preference===value?'selected':''}>${label}</option>`).join('')}</select></label></div><p>Generate content recommendations to apply these preferences to available features. Catalogue browsing order stays fixed. Vibe Control uses familiarity/discovery when liked or favorite artist labels are available; these labels are not listening history.</p></section><div class="form-actions"><button class="primary-button" type="submit">Save preferences</button><span role="status" aria-live="polite"></span></div></form>`;
 }

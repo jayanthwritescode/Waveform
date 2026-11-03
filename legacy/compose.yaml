@@ -1,0 +1,13 @@
+services:
+  waveform:
+    build: .
+    ports:
+      - "127.0.0.1:8000:8000"
+    environment:
+      APP_ENV: deployment
+      DATABASE_URL: sqlite:////app/data/workspace/waveform.db
+    volumes:
+      - workspace:/app/data/workspace
+    restart: unless-stopped
+volumes:
+  workspace:

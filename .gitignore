@@ -16,3 +16,6 @@ data/audio/*
 !data/audio/.gitkeep
 
 *.db-*
+
+.env.auth
+.env.auth.*

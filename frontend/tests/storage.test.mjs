@@ -1,0 +1,8 @@
+import {test} from 'node:test';import assert from 'node:assert/strict';
+import {LocalStore,STORAGE_KEY} from '../js/playlists/storage.js';
+import {normalizeTrack} from '../js/api/metadata.js';
+const memory=()=>{const data=new Map();return {getItem:k=>data.get(k)??null,setItem:(k,v)=>data.set(k,v)};};
+test('versioned local data survives a new store and reads external tab writes',()=>{const disk=memory(),a=new LocalStore(disk);a.change(s=>s.profile.name='Test');const b=new LocalStore(disk);assert.equal(b.read().profile.name,'Test');b.change(s=>s.profile.name='Other tab');assert.equal(a.read().profile.name,'Other tab');});
+test('corrupt original stays untouched while temporary memory remains usable',()=>{const disk=memory();disk.setItem(STORAGE_KEY,'{broken');const s=new LocalStore(disk);s.change(d=>d.profile.name='Temporary');assert.equal(disk.getItem(STORAGE_KEY),'{broken');assert.match(s.warning,/temporary/);assert.equal(s.read().profile.name,'Temporary');});
+test('blocked/quota storage does not crash and signals temporary persistence',()=>{const s=new LocalStore({getItem:()=>null,setItem:()=>{throw Error('quota');}});s.change(d=>d.profile.name='Keep');assert.equal(s.read().profile.name,'Keep');assert.match(s.warning,/temporary/);const absent=new LocalStore(null);assert.equal(absent.read().version,2);assert.ok(absent.warning);});
+test('normalized model keeps missing metadata unknown and rejects invalid identities',()=>{const t=normalizeTrack({id:'x',title:'日本語'});assert.equal(t.artist,'Unknown artist');assert.equal(t.durationMs,null);assert.deepEqual(t.genres,[]);assert.equal(t.artworkUrl,null);assert.equal(normalizeTrack({title:'no id'}),null);});

@@ -1,4 +1,4 @@
-/** Editor state; tab recovery is separate from saved backend playlists. */
+/** Editor state; browser-local editor recovery is separate from named playlists. */
 export class PlaylistDraft {
   #state = {title: 'My moment', description: '', tracks: [], savedId:null, savedRevision:null, dirty:false};
   #listeners = new Set();
@@ -117,12 +117,12 @@ export const draft = new PlaylistDraft();
 export let recoveryWarning = '';
 if (typeof window !== 'undefined') {
   try {
-    const storage = window.sessionStorage;
-    const recovered = JSON.parse(storage.getItem('waveform-draft-v1') || 'null');
+    const storage = window.localStorage;
+    const recovered = JSON.parse(storage.getItem('waveform-draft-v2') || 'null');
     if (recovered?.version === 1) draft.load(recovered.draft, {recover:true});
-  } catch {recoveryWarning = 'The previous tab draft could not be restored. Saved playlists remain in Your Library.';}
+  } catch {recoveryWarning = 'The previous draft could not be restored. Saved playlists remain in Your Library.';}
   draft.subscribe(snapshot => {
-    try {sessionStorage.setItem('waveform-draft-v1', JSON.stringify({version:1,draft:snapshot}));}
-    catch {recoveryWarning = 'Tab recovery is unavailable. Save your playlist to keep it after leaving this page.';}
+    try {localStorage.setItem('waveform-draft-v2', JSON.stringify({version:1,draft:snapshot}));}
+    catch {recoveryWarning = 'Draft recovery is unavailable. Save your playlist to keep it after leaving this page.';}
   });
 }

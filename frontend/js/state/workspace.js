@@ -9,7 +9,7 @@ export async function loadWorkspace() {
     const [profile, feedback] = await Promise.all([getProfile(), getFeedback()]);
     Object.assign(workspace, {profile, feedback, ready:true, error:null});
   } catch (error) {
-    workspace.error = error.message || 'Local preferences are unavailable. Start the backend and retry.';
+    workspace.error = error.message || 'Local preferences are unavailable. Check browser storage and retry.';
   }
   notify();
 }
