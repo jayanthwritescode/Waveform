@@ -1,0 +1,5 @@
+# Keep the language summary focused on the application people run.
+legacy/** linguist-detectable=false
+data/** linguist-detectable=false
+frontend/data/** linguist-detectable=false
+docs/** linguist-documentation

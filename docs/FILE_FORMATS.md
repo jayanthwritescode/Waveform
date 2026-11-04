@@ -27,3 +27,7 @@ Imported portable rows receive local imported identities; title matching does no
 5. Review unresolved songs and alternate versions at the destination.
 
 These are [documented import methods](https://support.soundiiz.com/hc/en-us/articles/37958924057234-How-to-Import-a-Playlist-from-a-URL-CSV-File-or-Plain-Text). No local file is uploaded automatically, arbitrary Waveform URLs are not represented as supported imports, and success is never inferred. Soundiiz has its own account/streaming connection requirements and [plan limits](https://soundiiz.com/pricing); optional third-party features may cost money. Waveform itself requires no account, subscription or paid hosting. Spotify/Apple Music/YouTube Music search links remain available independently.
+
+## Full-library backup (1.1)
+
+Settings exports a separate `waveform-library` JSON v1 envelope containing the versioned workspace and a draft snapshot, up to 5 MB. This is distinct from a single-playlist JSON file. Restore previews the file before changes, adds missing playlists, skips identical versions, and copies conflicting IDs with a restored suffix. It merges favorites/history without overwriting current feedback. Preferences are restored only when selected, with a fresh local revision. The current editor remains untouched; a backed-up draft can be downloaded separately. Exceeding capacity or validation failure changes nothing. A blocked/full browser store retains the visible temporary-memory warning rather than promising durable restoration.

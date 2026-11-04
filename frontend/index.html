@@ -6,12 +6,19 @@
   <title>Waveform — Your music. Your moment.</title>
   <link rel="icon" href="assets/images/mark.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/variables.css"><link rel="stylesheet" href="css/global.css"><link rel="stylesheet" href="css/layout.css"><link rel="stylesheet" href="css/components.css"><link rel="stylesheet" href="css/responsive.css"><link rel="stylesheet" href="css/catalogue.css"><link rel="stylesheet" href="css/playlist.css"><link rel="stylesheet" href="css/workspace.css"><link rel="stylesheet" href="css/recommendations.css"><link rel="stylesheet" href="css/analysis.css">
+  <link rel="stylesheet" href="css/product.css">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta property="og:title" content="Waveform — Your music. Your moment.">
+  <meta property="og:description" content="Discover a playlist for the way you feel. Make it yours. Take it with you.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
+<button class="nav-backdrop" type="button" aria-label="Close navigation" tabindex="-1" hidden></button>
 <aside class="sidebar" id="sidebar" aria-label="Main navigation"></aside>
-<div class="workspace"><header class="topbar" id="topbar"></header><div id="workspace-notice" class="workspace-notice" role="status" hidden></div><main id="main" tabindex="-1"></main><footer class="page-footer"><span>Your music. Your moment.</span><span id="offline-status">WAVEFORM / YOUR MOMENT</span></footer></div>
+<div class="workspace"><header class="topbar" id="topbar"></header><div id="workspace-notice" class="workspace-notice" role="status" hidden></div><main id="main" tabindex="-1"></main><footer class="page-footer"><span>Waveform · Your music. Your moment.</span><nav aria-label="Footer"><a href="#/about">About & privacy</a><a href="https://github.com/jayanthwritescode/Waveform" target="_blank" rel="noopener noreferrer">GitHub ↗</a></nav><span id="offline-status">Made for discovery</span></footer></div>
 <section class="draft-dock" id="draft-dock" aria-label="Playlist draft" hidden></section>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div class="toast" id="toast" inert role="status" aria-live="polite"></div>
 <script type="module" src="js/main.js"></script>
 </body></html>

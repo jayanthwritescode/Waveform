@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Help with Waveform
+    url: https://github.com/jayanthwritescode/Waveform/blob/main/SUPPORT.md
+    about: Common questions about local saves, music searches and playlist transfers.

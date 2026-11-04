@@ -6,7 +6,7 @@ const root=resolve('dist');
 // dist is generated output only; never remove source/user directories.
 if(root!==resolve(process.cwd(),'dist'))throw Error('Invalid build output');
 await rm(root,{recursive:true,force:true});await mkdir(root,{recursive:true});
-for(const name of ['index.html','sw.js','offline-assets.json'])await cp(join('frontend',name),join(root,name));
+for(const name of ['index.html','sw.js','offline-assets.json','manifest.webmanifest'])await cp(join('frontend',name),join(root,name));
 for(const dir of ['js','css','assets'])await cp(join('frontend',dir),join(root,dir),{recursive:true});
 await mkdir(join(root,'data'));await cp('frontend/data/fallback-tracks.json',join(root,'data/fallback-tracks.json'));
 const assets=JSON.parse(await readFile(join(root,'offline-assets.json'),'utf8'));

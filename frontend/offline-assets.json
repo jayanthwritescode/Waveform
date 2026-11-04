@@ -1,5 +1,6 @@
 [
   "./",
+  "assets/images/app-icon.svg",
   "assets/images/catalogue-1.svg",
   "assets/images/catalogue-2.svg",
   "assets/images/catalogue-3.svg",
@@ -22,6 +23,7 @@
   "css/global.css",
   "css/layout.css",
   "css/playlist.css",
+  "css/product.css",
   "css/recommendations.css",
   "css/responsive.css",
   "css/variables.css",
@@ -33,6 +35,7 @@
   "js/api/metadata.js",
   "js/api/musicbrainz.js",
   "js/components/cards.js",
+  "js/components/data-settings.js",
   "js/components/draft-actions.js",
   "js/components/icons.js",
   "js/components/platform-workflow.js",
@@ -40,6 +43,7 @@
   "js/components/shell.js",
   "js/components/track-actions.js",
   "js/main.js",
+  "js/pages/about.js",
   "js/pages/builder.js",
   "js/pages/discover.js",
   "js/pages/home.js",
@@ -47,6 +51,7 @@
   "js/pages/local-insights.js",
   "js/pages/settings.js",
   "js/pages/vibe.js",
+  "js/playlists/backup.js",
   "js/playlists/export.js",
   "js/playlists/import.js",
   "js/playlists/manager.js",
@@ -57,8 +62,10 @@
   "js/recommender/scoring.js",
   "js/state/catalogue.js",
   "js/state/draft.js",
+  "js/state/undo.js",
   "js/state/workspace.js",
   "js/utils/html.js",
   "js/utils/platforms.js",
-  "js/utils/toast.js"
+  "js/utils/toast.js",
+  "manifest.webmanifest"
 ]

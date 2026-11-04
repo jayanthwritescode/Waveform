@@ -5,7 +5,7 @@ import {skeletonCards, trackCard, catalogueCredits} from '../components/cards.js
 import {escapeHtml as html, formatTime} from '../utils/html.js';
 
 export function discoverPage() {
-  return `<section class="page-intro"><div><div class="eyebrow">A WORLD OF SOUND</div><h1>Discover<span class="title-dot">.</span></h1><p>Search MusicBrainz for songs or artists. Start with our verified demo collection.</p></div><span class="sample-chip">METADATA DISCOVERY</span></section>
+  return `<section class="page-intro"><div><div class="eyebrow">A WORLD OF SOUND</div><h1>Discover<span class="title-dot">.</span></h1><p>Search MusicBrainz for songs or artists. Or browse the offline collection below.</p></div><span class="sample-chip">FIND SOMETHING NEW</span></section>
     <form id="catalogue-search" class="search-panel" role="search">
       <label class="search-field">${icon('search')}<span class="visually-hidden">Search music</span><input type="search" id="music-search" name="q" maxlength="120" placeholder="Search a song or artist…" autocomplete="off"></label>
       <label class="filter-field">Search by<select id="search-type"><option value="song">Song title</option><option value="artist">Artist name</option></select></label><label class="filter-field">Genre<select id="genre-filter" name="genre"><option value="">All genres</option></select></label>
@@ -14,7 +14,7 @@ export function discoverPage() {
       <button class="text-button" type="reset">Clear</button>
     </form>
     <section class="music-section" aria-labelledby="results-heading"><div class="section-heading"><div><h2 id="results-heading">The collection</h2><p id="result-count" role="status">Loading tracks…</p></div></div><div id="catalogue-results">${skeletonCards()}</div><nav id="catalogue-pagination" class="pagination" aria-label="Catalogue pages"></nav></section>
-    ${catalogueCredits()}<div class="preview-note">${icon('playlists')}<span>Searches retrieve MusicBrainz metadata on demand. Empty search shows the attributed demo fallback. Coverage varies; search links do not verify streaming availability.</span></div>`;
+    ${catalogueCredits()}<div class="preview-note">${icon('playlists')}<span>Searches retrieve MusicBrainz metadata on demand. Empty search shows the offline collection. Coverage varies; search links do not verify streaming availability.</span></div>`;
 }
 
 export function renderResults(page) {

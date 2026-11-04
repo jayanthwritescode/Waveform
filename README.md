@@ -1,63 +1,101 @@
-# Waveform
+<p align="center"><img src="docs/assets/waveform-banner.svg" alt="Waveform — Your music. Your moment." width="100%"></p>
 
-**Your music. Your moment.**
+<p align="center">A playlist for the way you feel. Discover something new, make it yours, and take it with you.</p>
 
-Waveform is a lightweight, context-aware music discovery and playlist generator. Discover music → create a playlist → export. It runs entirely in the browser: no Python server, database, signup, streaming subscription, OAuth, paid backend or environment credentials are required.
+<p align="center">
+  <a href="https://github.com/jayanthwritescode/Waveform/actions/workflows/quality.yml"><img src="https://github.com/jayanthwritescode/Waveform/actions/workflows/quality.yml/badge.svg" alt="Quality checks"></a>
+  · <a href="#run-locally">Run locally</a>
+  · <a href="docs/DEPLOYMENT.md">Deploy</a>
+  · <a href="SUPPORT.md">Get help</a>
+</p>
+
+![Waveform desktop interface](docs/assets/product-desktop.png)
+
+## Find your frequency
+
+For the deep-work session. The late-night reset. The long way home. Waveform turns a little context into a playlist you can make your own.
+
+| Set the scene | Make it yours | Take it with you |
+| --- | --- | --- |
+| Choose a mood, activity, genres and a few favorites. Search real recordings on MusicBrainz. | Replace, remove and rearrange tracks. See why a discovery fits. Save the mixes you love. | Download CSV or a simple tracklist, find songs on your music service, or keep a full JSON backup. |
+
+**No account. No subscription. Your collection stays on your device.**
+
+- **Live discovery:** songs, artists and genre/tag searches through the official MusicBrainz API.
+- **Personal playlists:** six moods, seven activities, 10/20/30-track mixes, adjustable discovery and optional fine-tuning.
+- **A collection that travels:** playlist files plus full-library backup/restore. Conflicting versions restore as separate copies.
+- **Room for a second thought:** track replacement, drag or keyboard ordering, and Undo for removing/clearing draft tracks.
+- **Ready when the connection isn’t:** a credited 208-track offline collection and cached app shell after a successful production visit.
+- **Made for everyday use:** responsive layouts, keyboard focus, reduced motion, honest source states and a built-in About & privacy guide.
+
+<details>
+<summary>See the mobile playlist studio</summary>
+<br>
+<img src="docs/assets/product-mobile.png" alt="Waveform mobile playlist studio" width="320">
+</details>
 
 ## Run locally
 
-Use Node.js 20+ (22 LTS recommended). There are **zero package dependencies**; no install step is needed.
+Use **Node.js 22 or 24**. There are no package dependencies to install.
 
 ```sh
+git clone https://github.com/jayanthwritescode/Waveform.git
+cd Waveform
 npm run dev
 ```
 
-Open [Waveform locally](http://127.0.0.1:5173). The development server serves only `frontend/` and skips service-worker caching to keep edits fresh. The app uses standard HTML, CSS and native JavaScript modules.
+Open **http://127.0.0.1:5173**. No Python server, database, API key or environment configuration is required.
 
 ```sh
-npm test
-npm run build
-npm run verify
-npm run preview
+npm test          # Active JavaScript tests
+npm run build    # Generate the static dist/ artifact
+npm run verify   # Validate public files and exclusions
+npm run preview  # Production preview at http://127.0.0.1:4173
 ```
 
-The production preview is [http://127.0.0.1:4173](http://127.0.0.1:4173). In another terminal, run `node tools/verify.mjs http://127.0.0.1:4173` for the HTTP checks. Only `dist/` should be published. Never serve or publish the repository root.
+Development serves only `frontend/`. Publish only `dist/`; the repository root contains historical code and private local-data paths that are outside the application.
 
-## Features
+## Make a playlist
 
-- Live MusicBrainz song, artist-name and genre/tag searches with a cross-tab request queue, debouncing, cache, timeout/retry handling and honest source states.
-- A verified, attributed 208-track fallback for API failures/offline demos; it is always labeled as fallback rather than live data.
-- Six moods, seven activities, genre/artist preferences, exclusions, energy proxy, instrumental tags, discovery, variety and optional seed song/artist.
-- Explainable 10/20/30-track recommendations, missing-signal weight redistribution, recording/version deduplication, artist limits, seeded variation and replacements.
-- The retained midnight/violet interface, responsive navigation, skeletons, keyboard ordering, native drag ordering and reduced-motion support.
-- Rename, replace, remove, reorder and save playlists locally. Recover drafts, reopen saved playlists, record explicit likes/dislikes and inspect real local Taste Insights.
-- UTF-8 CSV, Artist - Title TXT/clipboard and full JSON backup; preview/import files before replacing a draft. Encoded Spotify, Apple Music and YouTube Music search links.
-- Manual Soundiiz transfer instructions based on its documented format. No file download is presented as a completed streaming transfer.
-- Offline shell/fallback caching after a successful production visit; the footer confirms when the offline demo is ready.
+1. Open **Create a playlist** and choose a feeling and an activity.
+2. Select genres or leave room for surprise. Adjust energy/discovery; optional fine-tuning lives behind one disclosure.
+3. Create your mix. Review the live, cached or offline source notice and explanations.
+4. Select **Make it mine** to rename, replace, remove and arrange tracks in the editor.
+5. Save to **Your Library**, export a playlist file, or follow the manual transfer instructions.
 
-## Architecture and data
+To move everything to another browser, go to **Settings → Download library backup**, then restore that file on the other device. Existing playlists are preserved. Preferences restore only when selected, and your current editor stays untouched.
 
-`frontend/js/api/` provides catalogue adapters and normalization; `recommender/` owns editorial mappings, scoring and diversification; `playlists/` owns local persistence and files. The existing editor, shell, cards, CSS and illustrations are retained. Hash navigation needs no server rewrites. `tools/build.mjs` creates an allowlisted static artifact with a content-versioned offline cache. No serverless proxy/functions are needed: direct MusicBrainz CORS was verified in the actual browser.
+## Deploy on a static host
 
-The previous FastAPI/SQLAlchemy/research app and unfinished Render/authentication work are preserved in `legacy/`, excluded from deployment. Original datasets, private SQLite database, audio and fitted artifacts remain untouched in root `data/`. No audio is served. Historical evaluation reports describe the old models, not this browser ranker. Prior docs are in `docs/history/`.
+Both Vercel and Netlify can build this project using their free plans, within the provider’s eligibility and usage limits.
 
-Local storage belongs to this browser and origin, without cloud sync. Clearing site data/private browsing can remove it. Export JSON backups before changing devices/origins. Corrupt stored workspace/draft text is preserved; blocked/full storage falls back to explicitly temporary memory. Old Waveform JSON v1 playlist exports can be imported; the old database is not migrated automatically.
+| Setting | Value |
+| --- | --- |
+| Branch | `main` |
+| Root directory | Repository root |
+| Build command | `node tools/build.mjs` |
+| Output / publish directory | `dist` |
+| Framework preset | Other / static |
+| Environment variables | None |
 
-## Deploy free
+`vercel.json` and `netlify.toml` include the static build and security headers. No server functions or paid backend are needed. **A public application deployment has not been performed in this session.** See [deployment and HTTPS verification](docs/DEPLOYMENT.md) before sharing a hosted URL.
 
-Both providers use the repository root, branch **`waveform-static-pivot`**, build command **`node tools/build.mjs`** and publish/output directory **`dist`**. No environment variables or functions are required.
+## Built with a little transparency
 
-- **Vercel:** Import the GitHub repository, select the pivot branch, choose Other framework, confirm `dist` output and use the Hobby plan where eligible. [Build settings](https://vercel.com/docs/builds/configure-a-build); [Hobby terms and limits](https://vercel.com/docs/plans/hobby).
-- **Netlify:** Import the repository, select the pivot branch and use the checked-in `netlify.toml` with publish directory `dist`. Choose Free; do not enable paid add-ons. Alternatively upload the generated `dist/` folder manually. [Build settings](https://docs.netlify.com/build/configure-builds/overview/); [Free plan limits](https://www.netlify.com/pricing/).
+Waveform uses HTML, CSS and native JavaScript modules. A deterministic metadata ranker combines genres/tags, context and explicit preferences, then balances variety and artist repetition. Missing signals stay unknown; energy is a documented genre proxy, not audio analysis. There are no fabricated confidence percentages or listening statistics.
 
-See [exact deployment and verification steps](docs/DEPLOYMENT.md). **No public deployment was performed:** no Vercel/Netlify account was connected here. The static artifact and local production demo were verified; deployed-origin CORS still needs verification after hosting.
+MusicBrainz supplies live recording metadata. The offline collection retains attribution to FMA and Kevin MacLeod / Incompetech; its metadata is CC BY 4.0. Illustrated covers are original Waveform artwork. No audio is hosted. See [sources, caching and API terms](docs/CATALOGUE.md) and the in-app credits.
 
-## Limits and verification
+Your playlists and preferences use localStorage, without cloud sync, advertising or built-in analytics. Music searches go directly to MusicBrainz; external search/transfer services have their own policies. Clearing site data can remove local saves, so keep a backup. CSV/TXT downloads and service links do not create streaming playlists automatically.
 
-MusicBrainz coverage, tags, durations and API availability vary. Read-only API use for this non-commercial demo needs no key; commercial use requires checking provider terms. Browser-controlled User-Agent is not overridden. Web Locks/HTTPS are needed for coordinated live searches; unsupported browsers use fallback. Shared-IP/global throttling can still occur.
+## Release checks
 
-Energy is an editorial genre/tag proxy, not measured audio energy. Unknown metadata stays unknown. Artwork is original Waveform illustration rather than album artwork. No playback, neural training, collaborative user model, direct streaming account integration or quality/confidence claims are included. Soundiiz is optional and has its own accounts/plan limits; matching can fail. Offline first visits require network, and new cached releases may wait until older tabs close.
+The active suite covers API scheduling/retries/failures, real fallback ranking, format round trips, local persistence, backup conflicts and safe undo. Browser review covers desktop/mobile, keyboard use, live discovery, playlist editing/export and cached offline use. GitHub Actions runs tests, build and artifact verification on Node 22 and 24.
 
-**38 active JavaScript tests pass**, including 126 mood/activity/length scenarios. Browser QA verified live CORS/generation, the full create/edit/save/download/reopen flow, native drag, real file import, clipboard, mobile focus and seven screens at 320–1440px. The production build passed 68 HTTP checks and cached reload/fallback generation with its static server stopped. All 27 original data files match the preservation baseline. No external deployment or third-party-account transfer is claimed.
+[Product QA](docs/PRODUCT_QA.md) · [Architecture](docs/ARCHITECTURE.md) · [Recommendation model](docs/RECOMMENDATION_MODEL.md) · [File formats](docs/FILE_FORMATS.md)
 
-[Architecture](docs/ARCHITECTURE.md) · [Algorithm](docs/RECOMMENDATION_MODEL.md) · [Catalogue/terms](docs/CATALOGUE.md) · [File formats](docs/FILE_FORMATS.md) · [QA](docs/QA.md) · [Progress](PROJECT_PROGRESS.md)
+## Project
+
+[Changelog](CHANGELOG.md) · [Contributing](CONTRIBUTING.md) · [Support](SUPPORT.md) · [Report an issue](https://github.com/jayanthwritescode/Waveform/issues/new/choose)
+
+The earlier full-stack application and research are preserved under `legacy/` and `docs/history/`, excluded from the deployed app. Original source datasets, private database, audio and fitted artifacts remain untouched in root `data/`.

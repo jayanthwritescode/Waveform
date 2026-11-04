@@ -1,0 +1,33 @@
+name: Report a bug
+description: Tell us what got in the way of your music discovery.
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: Please leave out personal library backups, credentials, and private information.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Include what you expected to happen.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: How can we reproduce it?
+      placeholder: "1. Open…\n2. Select…\n3. Notice…"
+    validations:
+      required: true
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and device
+      placeholder: "Chrome 140 on Android, Safari on macOS…"
+    validations:
+      required: true
+  - type: dropdown
+    id: source
+    attributes:
+      label: Were you using live search or the offline collection?
+      options: [Live MusicBrainz search, Offline collection, Not sure]

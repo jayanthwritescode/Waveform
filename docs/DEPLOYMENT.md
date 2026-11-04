@@ -27,17 +27,17 @@ The build publishes only static HTML/CSS/JS/SVG and one small fallback metadata 
 
 1. Use a Vercel account eligible for the free [Hobby plan](https://vercel.com/docs/plans/hobby), which is for personal/non-commercial use and has usage limits.
 2. Add New → Project → import `jayanthwritescode/Waveform` from GitHub.
-3. Select `waveform-static-pivot`. Keep Root Directory at the repository root, not `frontend` or `legacy`.
+3. Select `main`. Keep Root Directory at the repository root, not `frontend` or `legacy`.
 4. Framework Preset: Other. Build Command: `node tools/build.mjs`. Output Directory: `dist`. The checked-in `vercel.json` supplies these settings and skips dependency installation.
-5. Add no environment variables. Do not add a database, paid integrations or server functions. Deploy the current pivot branch, not the old `main` implementation.
-6. Verify the resulting HTTPS URL using the checks below. If promoting a preview to production, ensure the production branch is the pivot branch or merge it through your normal review process first.
+5. Add no environment variables. Do not add a database, paid integrations or server functions. Deploy the current main branch, not historical revisions.
+6. Verify the resulting HTTPS URL using the checks below. If promoting a preview to production, ensure the production branch is the main branch or merge it through your normal review process first.
 
 [Official build settings](https://vercel.com/docs/builds/configure-a-build). Host UI wording may change; the build command/output contract is the important part.
 
 ## Netlify
 
 1. Use the [Free plan](https://www.netlify.com/pricing/) within its monthly credit limits. Do not enable paid add-ons or auto-recharge.
-2. Add new project/site → import an existing Git repository → choose `jayanthwritescode/Waveform` and `waveform-static-pivot`.
+2. Add new project/site → import an existing Git repository → choose `jayanthwritescode/Waveform` and `main`.
 3. Base directory: repository root. Build command: `node tools/build.mjs`. Publish directory: `dist`. `netlify.toml` already sets these and Node 22.
 4. No API keys, environment secrets, functions or database are needed. Deploy/publish using Netlify’s normal controls.
 5. For a manual upload instead, run `npm run build` and upload only `dist/`. Git-connected deployment is preferable because it applies the checked-in configuration. Reproduce headers for manual uploads if the host does not read root `netlify.toml`.
@@ -52,7 +52,7 @@ The build publishes only static HTML/CSS/JS/SVG and one small fallback metadata 
 3. In Vibe Control select mood/activity/genres and generate 10 tracks. Review source explanations; missing data must stay unknown.
 4. Replace one track, load Builder, reorder, rename, save, download CSV/TXT/JSON and expand transfer instructions. Reopen the saved playlist after reload. Inspect the downloaded CSV headers/track count and duration seconds.
 5. Test the mobile menu at 390px, keyboard ordering and Escape focus restoration.
-6. Wait for OFFLINE DEMO READY. Disable network using your browser’s developer tools, reload and generate with Use verified demo fallback only. Re-enable network afterward. Offline caching requires an initial successful visit and service-worker support.
+6. Wait for Available offline. Disable network using your browser’s developer tools, reload and generate with Use the offline collection. Re-enable network afterward. Offline caching requires an initial successful visit and service-worker support.
 7. Confirm `/.env`, `/data/waveform.db`, `/legacy/backend/app/main.py` and `/api/health` return 404, not source data. Use `node tools/verify.mjs https://YOUR-HOST` for asset/private-path checks.
 8. Close old tabs after a new release if the previous offline cache remains active. Export JSON before clearing site data, because doing so also removes local playlists.
 

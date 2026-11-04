@@ -7,10 +7,10 @@ const texts=value=>Array.isArray(value)&&value.length<=100&&value.every(x=>typeo
 export function validWorkspace(d) {
   if(!object(d)||d.version!==2||!object(d.profile)||!Array.isArray(d.playlists)||d.playlists.length>50||!object(d.feedback)||!object(d.tracks)||!Array.isArray(d.sessions)||!object(d.settings))return false;
   const p=d.profile;
-  if(typeof p.name!=='string'||!p.name.trim()||!Number.isInteger(p.revision)||!['favorite_genres','favorite_artists','disliked_genres'].every(k=>texts(p[k]))||!['energy_min','energy_max','discovery_preference'].every(k=>Number.isFinite(p[k])&&p[k]>=0&&p[k]<=1))return false;
-  if(!Object.values(d.feedback).every(x=>['like','dislike'].includes(x)))return false;
+  if(p.revision<1||p.energy_min>p.energy_max||!['any','prefer','avoid'].includes(p.instrumental_preference)||typeof p.name!=='string'||!p.name.trim()||!Number.isInteger(p.revision)||!['favorite_genres','favorite_artists','disliked_genres'].every(k=>texts(p[k]))||!['energy_min','energy_max','discovery_preference'].every(k=>Number.isFinite(p[k])&&p[k]>=0&&p[k]<=1))return false;
+  if(!Object.entries(d.feedback).every(([id,x])=>/^[A-Za-z0-9][A-Za-z0-9:._-]{0,199}$/.test(id)&&['like','dislike'].includes(x)))return false;
   const track=t=>Boolean(normalizeTrack(t))&&typeof t.artist==='string';
-  if(!Object.values(d.tracks).every(track))return false;
+  if(!Object.entries(d.tracks).every(([id,t])=>id===t?.id&&track(t)))return false;
   if(!d.playlists.every(p=>object(p)&&typeof p.id==='string'&&typeof p.title==='string'&&typeof p.description==='string'&&Number.isInteger(p.revision)&&Array.isArray(p.tracks)&&p.tracks.length<=500&&p.tracks.every(track)))return false;
   if(d.sessions.length>10||!d.sessions.every(s=>object(s)&&typeof s.id==='string'&&typeof s.model_name==='string'&&typeof s.created_at==='string'&&Array.isArray(s.track_ids)&&Array.isArray(s.tracks)&&s.tracks.every(track)&&object(s.context)))return false;
   const c=d.settings.lastContext;if(c&&(!object(c)||!Array.isArray(c.genres)||!Array.isArray(c.artists)||!Array.isArray(c.excluded)))return false;

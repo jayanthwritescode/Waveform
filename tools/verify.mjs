@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFile,readdir,stat} from 'node:fs/promises';import {join} from 'node:path';
 const assets=JSON.parse(await readFile('dist/offline-assets.json','utf8'));
-const expectedTop=['assets','css','data','index.html','js','offline-assets.json','sw.js'];
+const expectedTop=['assets','css','data','index.html','js','manifest.webmanifest','offline-assets.json','sw.js'];
 assert.deepEqual((await readdir('dist')).sort(),expectedTop.sort());
 assert.deepEqual(await readdir('dist/data'),['fallback-tracks.json']);
 const fallback=JSON.parse(await readFile('dist/data/fallback-tracks.json','utf8'));

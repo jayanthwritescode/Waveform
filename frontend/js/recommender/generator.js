@@ -18,7 +18,7 @@ export async function collectCandidates(context,{service=musicbrainz,loadFallbac
   }
   const fallback=await loadFallback();
   const useFallback=offline || live.length<Number(context.count)+12;
-  return {candidates:deduplicate(useFallback?[...live,...fallback]:live),mode:live.length?(useFallback?'mixed':cached===queries.slice(0,3).length?'cached':'live'):'fallback',notice:offline?'Demo mode · verified fallback metadata only.':failures.length?`${failures[0]} Verified fallback fills available gaps.`:useFallback?'Verified demo fallback supplements limited live candidates.':'MusicBrainz candidates retrieved and ranked in your browser.'};
+  return {candidates:deduplicate(useFallback?[...live,...fallback]:live),mode:live.length?(useFallback?'mixed':cached===queries.slice(0,3).length?'cached':'live'):'fallback',notice:offline?'Made from the offline collection. Live music searches are turned off for this mix.':failures.length?`${failures[0]} The offline collection is keeping discovery available.`:useFallback?'Includes tracks from the offline collection where live results were limited.':'Discovered on MusicBrainz and selected for the preferences you chose.'};
 }
 export async function generatePlaylist(context,options={}) {
   const data=store.read();

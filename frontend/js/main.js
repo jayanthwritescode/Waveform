@@ -1,3 +1,5 @@
+import {draftUndo} from './state/undo.js';
+import {aboutPage} from './pages/about.js';
 import {escapeHtml} from './utils/html.js';
 import {localInsightsPage} from './pages/local-insights.js';
 import {vibePage,mountVibe} from './pages/vibe.js';
@@ -54,7 +56,7 @@ function navigate() {
   });
   const main = document.querySelector('#main');
   displayedTracks = [];
-  main.innerHTML = route === 'insights' ? localInsightsPage() : route === 'home' ? homePage() : route === 'discover' ? discoverPage() : route === 'builder' ? builderPage() : route === 'vibe' ? vibePage() : route === 'library' ? libraryPage() : route === 'settings' ? settingsPage() : route === 'track' ? '<div class="catalogue-state" role="status">Loading track…</div>' : homePage();
+  main.innerHTML = route === 'about' ? aboutPage() : route === 'insights' ? localInsightsPage() : route === 'home' ? homePage() : route === 'discover' ? discoverPage() : route === 'builder' ? builderPage() : route === 'vibe' ? vibePage() : route === 'library' ? libraryPage() : route === 'settings' ? settingsPage() : route === 'track' ? '<div class="catalogue-state" role="status">Loading track…</div>' : homePage();
   if (route === 'home') loadHome(routeVersion);
   if (route === 'discover') {
     document.querySelector('#music-search').value = filters.q;
@@ -77,7 +79,7 @@ async function loadHome(version) {
     if (version !== routeVersion) return;
     displayedTracks = page.items; registerTracks(page.items);
     document.querySelector('#home-catalogue').innerHTML = renderResults(page);
-    const saved=store.read().playlists.slice(0,3);document.querySelector('#home-recent').innerHTML=saved.length?saved.map(p=>`<button class="recent-playlist" data-open-playlist="${escapeHtml(p.id)}"><span>≋</span><strong>${escapeHtml(p.title)}</strong><small>${p.tracks.length} tracks · this browser</small></button>`).join(''):'<p class="small-empty">Your saved playlists will appear here. Start with a mood above.</p>';
+    const saved=store.read().playlists.slice(0,3);document.querySelector('#home-recent').innerHTML=saved.length?saved.map(p=>`<button class="recent-playlist" data-open-playlist="${escapeHtml(p.id)}"><span>≋</span><strong>${escapeHtml(p.title)}</strong><small>${p.tracks.length} ${p.tracks.length===1?'track':'tracks'} · on this device</small></button>`).join(''):'<p class="small-empty">Your shelf is waiting for its first playlist. <a class="text-link" href="#/vibe">Make something for this moment ↗</a></p>';
   } catch {
     if (version === routeVersion) document.querySelector('#home-catalogue').innerHTML = catalogueError();
   }
@@ -106,7 +108,7 @@ async function loadDiscover(version) {
     displayedTracks = [];
     results.innerHTML = catalogueError();
     document.querySelector('#catalogue-pagination').replaceChildren();
-    count.textContent = 'Catalogue unavailable. Clear the search to retry the demo fallback.';
+    count.textContent = 'Catalogue unavailable. Clear the search to retry the offline collection.';
   } finally {
     if (version === routeVersion && request === searchVersion) results.removeAttribute('aria-busy');
   }
@@ -212,16 +214,18 @@ document.addEventListener('click', async event => {
   if (remove) {
     const rows = [...document.querySelectorAll('[data-draft-row]')];
     const index = rows.findIndex(row => row.dataset.draftRow === remove.dataset.removeTrack);
+    const before=draft.snapshot();
     draft.remove(remove.dataset.removeTrack);
+    const undo=draftUndo(draft,before);
     const remaining = document.querySelectorAll('[data-remove-track]');
     if (remaining.length) remaining[Math.min(index, remaining.length - 1)].focus({preventScroll:true});
     else document.querySelector('#main').focus({preventScroll:true});
-    toast('Track removed from your draft.');
+    toast('Track removed.',{actionLabel:'Undo',onAction:()=>toast(undo()?'Track restored.':'Your draft has changed. Undo is no longer available.')});
   }
   if (event.target.closest('[data-clear-draft]')) {
-    draft.clear();
+    const before=draft.snapshot();draft.clear();const undo=draftUndo(draft,before);
     document.querySelector('#main').focus({preventScroll:true});
-    toast('All tracks removed. Your draft title and description are kept.');
+    toast('Draft cleared.',{actionLabel:'Undo',onAction:()=>toast(undo()?'Draft restored.':'Your draft has changed. Undo is no longer available.')});
   }
   const pageButton=event.target.closest('[data-page-direction]');
   if (pageButton) {
@@ -286,6 +290,6 @@ document.addEventListener('dragstart',event=>{const row=event.target.closest('[d
 document.addEventListener('dragover',event=>{if(draggedTrack && event.target.closest('[data-draft-row]')){event.preventDefault();event.dataTransfer.dropEffect='move';}});
 document.addEventListener('drop',event=>{const row=event.target.closest('[data-draft-row]');if(row&&draggedTrack){event.preventDefault();draft.moveTo(draggedTrack,row.dataset.draftRow);toast('Playlist order updated.');}draggedTrack=null;});
 document.addEventListener('dragend',()=>{draggedTrack=null;document.querySelectorAll('.dragging').forEach(row=>row.classList.remove('dragging'));});
-if(location.port!=='5173' && 'serviceWorker' in navigator && window.isSecureContext)navigator.serviceWorker.register(new URL('../sw.js',import.meta.url),{scope:new URL('../',import.meta.url).pathname}).then(()=>navigator.serviceWorker.ready).then(()=>{document.querySelector('#offline-status').textContent='OFFLINE DEMO READY';}).catch(()=>{toast('Offline shell caching is unavailable. The online app still works.');});
+if(location.port!=='5173' && 'serviceWorker' in navigator && window.isSecureContext)navigator.serviceWorker.register(new URL('../sw.js',import.meta.url),{scope:new URL('../',import.meta.url).pathname}).then(()=>navigator.serviceWorker.ready).then(()=>{document.querySelector('#offline-status').textContent='Available offline';}).catch(()=>{toast('Offline shell caching is unavailable. The online app still works.');});
 
 window.addEventListener('storage',event=>{if(event.key==='waveform.workspace.v2'){loadWorkspace();if(['#/library','#/insights'].includes(location.hash))navigate();}});

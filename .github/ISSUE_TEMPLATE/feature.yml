@@ -1,0 +1,14 @@
+name: Suggest an improvement
+description: Help make Waveform better for your everyday listening.
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: What would you like to do?
+      description: Describe the moment or problem, and how the change would help.
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Your idea

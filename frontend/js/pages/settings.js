@@ -1,17 +1,20 @@
+import {mountDataSettings} from '../components/data-settings.js';
 import {store} from '../playlists/storage.js';
 import {escapeHtml as html} from '../utils/html.js';
 import {workspace, updateProfile} from '../state/workspace.js';
 import {getProfile, saveProfile} from '../api/client.js';
 
-export const settingsPage = () => `<section class="page-intro"><div><div class="eyebrow">MAKE IT YOURS</div><h1>Settings<span class="title-dot">.</span></h1><p>Your local profile and musical preferences.</p></div></section><div id="profile-panel" class="catalogue-state" role="status">Loading your preferences…</div>`;
+export const settingsPage = () => `<section class="page-intro"><div><div class="eyebrow">MAKE IT YOURS</div><h1>Settings<span class="title-dot">.</span></h1><p>Your taste, your preferences, your data.</p></div></section><div id="data-settings"></div><div id="profile-panel" class="catalogue-state" role="status">Loading your preferences…</div>`;
 
 export async function mountSettings(isCurrent) {
   try {
     const profile = await getProfile();
     if (!isCurrent()) return;
     updateProfile(profile);
+    mountDataSettings();
     document.querySelector('#profile-panel').outerHTML = profileForm(profile);
     const form = document.querySelector('#profile-form');
+    form.addEventListener('waveform-profile-restored',event=>{Object.assign(profile,event.detail);for(const [key,value] of Object.entries(profile)){const field=form.elements.namedItem(key);if(!field)continue;field.value=Array.isArray(value)?value.join('\n'):['energy_min','energy_max','discovery_preference'].includes(key)?String(Math.round(value*100)):String(value);}});
     form.addEventListener('submit', async event => {
       event.preventDefault();
       const status = form.querySelector('[role=status]');
@@ -31,12 +34,12 @@ export async function mountSettings(isCurrent) {
       finally {button.disabled = false;}
     });
   } catch (error) {
-    if (isCurrent()) document.querySelector('#profile-panel').innerHTML = '<h2>Preferences unavailable.</h2><p>Start the browser storage, then retry.</p><button class="secondary-button" data-retry-page>Try again</button>';
+    if (isCurrent()) document.querySelector('#profile-panel').innerHTML = '<h2>Preferences unavailable.</h2><p>Your preferences couldn’t load. Refresh the page and try again.</p><button class="secondary-button" data-retry-page>Try again</button>';
   }
 }
 
 function profileForm(profile) {
   const list = (name,label) => `<label>${label}<textarea name="${name}" rows="3" maxlength="12000">${html(profile[name].join('\n'))}</textarea><small>One per line.</small></label>`;
-  return `<form id="profile-form" class="profile-form"><section class="form-panel"><h2>Your profile</h2><label>Profile name<input name="name" required maxlength="80" value="${html(profile.name)}"></label><p>Stored in your this browser only. No platform account is connected.</p></section>
+  return `<form id="profile-form" class="profile-form"><section class="form-panel"><h2>Your profile</h2><label>Profile name<input name="name" required maxlength="80" value="${html(profile.name)}"></label><p>A name for your space. Saved on this device, with no account to create.</p></section>
     <section class="form-panel"><h2>Your musical taste</h2><div class="preference-grid">${list('favorite_genres','Favorite genres')}${list('disliked_genres','Disliked genres')}${list('favorite_artists','Favorite artists')}</div><div class="preference-grid"><label>Minimum energy (%)<input type="number" name="energy_min" min="0" max="100" required value="${profile.energy_min*100}"></label><label>Maximum energy (%)<input type="number" name="energy_max" min="0" max="100" required value="${profile.energy_max*100}"></label><label>Discovery preference (%)<input type="number" name="discovery_preference" min="0" max="100" required value="${profile.discovery_preference*100}"><small>0 = familiar, 100 = more discovery.</small></label><label>Instrumental preference<select name="instrumental_preference">${[['any','No preference'],['prefer','Prefer instrumental'],['avoid','Prefer vocals']].map(([value,label])=>`<option value="${value}" ${profile.instrumental_preference===value?'selected':''}>${label}</option>`).join('')}</select></label></div><p>Vibe Control uses your genres, artists, dislikes and explicit likes. Its energy slider is a genre-based proxy; the midpoint of this saved energy range supplies the initial Vibe energy default. Last generation settings take precedence when reopening Vibe Control. Familiarity means explicit favorites, never listening history.</p></section><div class="form-actions"><button class="primary-button" type="submit">Save preferences</button><span role="status" aria-live="polite"></span></div></form>`;
 }

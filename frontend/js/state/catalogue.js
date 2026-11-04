@@ -1,4 +1,4 @@
-// Illustrative future mix concepts, not generated playlists.
+// Editorial starting points that open the playlist studio.
 export const mixes = [
  {title:'Deep Focus', subtitle:'Less noise. More flow.', artwork:'focus', tag:'FOCUS / AMBIENT'},
  {title:'After Hours', subtitle:'Let the world slow down.', artwork:'night', tag:'UNWIND / ELECTRONIC'},

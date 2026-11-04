@@ -15,3 +15,9 @@ Historical Python algorithms, work-in-progress authentication, deployment recipe
 `tools/build.mjs` produces an allowlisted `dist/`, fingerprints its offline cache, and uses no dependencies. `sw.js` precaches public app assets/fallback only, not private state or external API responses. Local preferences, small saved playlists (up to 50), feedback and ten generation snapshots use a versioned localStorage workspace. Draft recovery is separate; old tab drafts can be recovered without writing back to old storage. Persistent local catalogue history is bounded. New releases wait for older controlled tabs to close before activation.
 
 Both Vercel and Netlify serve `dist/` with no Python, database, authentication or environment secrets. Actual public deployment was unavailable; see [deployment](DEPLOYMENT.md). The app is intentionally single-browser/local, with JSON files for portability rather than automatic cloud synchronization.
+
+## Product release 1.1
+
+The product layer adds optional fine-tuning in the playlist studio, library backup/restore (`playlists/backup.js`), guarded draft undo (`state/undo.js`), About & privacy, a manifest and a consistent visual system in `css/product.css`. Backups merge additively, copy conflicting playlist versions and leave the current editor untouched; restoring preferences is explicit. Untrusted backup input is bounded and validated before any change. Storage failures retain the existing temporary-memory warning.
+
+The production service worker serves cached HTML with that release’s cached modules, avoiding a new-HTML/old-module mix during updates. Hash navigation is handled only at the app root/index; retired private/API paths retain host responses. It never caches private library state or MusicBrainz responses. New releases wait for old controlled tabs to close.

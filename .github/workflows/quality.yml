@@ -1,0 +1,32 @@
+name: Quality
+on:
+  push:
+    branches: [main, waveform-static-pivot]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: quality-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    name: Node ${{ matrix.node }} · test and build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [22, 24]
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm test
+      - run: npm run build
+      - run: npm run verify
+      - name: Check generated manifest stays current
+        run: git diff --exit-code -- frontend/offline-assets.json

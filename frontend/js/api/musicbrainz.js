@@ -1,5 +1,5 @@
 import {normalizeTrack,deduplicate} from './metadata.js';
-export const APP_ID='Waveform/1.0 (https://github.com/jayanthwritescode/Waveform)';
+export const APP_ID='Waveform/1.1 (https://github.com/jayanthwritescode/Waveform)';
 const MBID=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 export const literal=value=>`"${String(value).slice(0,120).replace(/([+\-!(){}\[\]^"~*?:\\/|&])/g,'\\$1')}"`;
 export function normalizeRecording(record) {
@@ -13,7 +13,7 @@ export function normalizeRecording(record) {
 const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 /** Hold the same-origin Web Lock through the spacing interval, including across tabs. */
 async function browserGate(action) {
-  if(!globalThis.navigator?.locks)throw Error('Live searches need Web Locks in a secure browser. Using demo fallback.');
+  if(!globalThis.navigator?.locks)throw Error('Live search is unavailable in this browser. Use a current browser over HTTPS, or try the offline collection.');
   return navigator.locks.request('waveform-musicbrainz-request',action);
 }
 export class MusicBrainz {
